@@ -58,7 +58,7 @@ CREATE TABLE region (
 
 CREATE TABLE job (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  name VARCHAR(80) NOT NULL,
+  name VARCHAR(80) NOT NULL
 );
 
 CREATE TABLE job-candidate (
@@ -75,7 +75,7 @@ CREATE TABLE job-candidate (
 
 CREATE TABLE techno (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  name VARCHAR(80) NOT NULL,
+  name VARCHAR(80) NOT NULL
 );
 
 CREATE TABLE techno-candidate (
@@ -95,7 +95,7 @@ CREATE TABLE company (
   name VARCHAR(255) NOT NULL,
   banner VARCHAR(255),
   logo VARCHAR(255),
-  description TEXT,
+  description TEXT
 );
 
 CREATE TABLE offer (
