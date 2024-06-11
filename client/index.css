@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-font: "Jost", sans-serif;
+
+  --primary-color: #ca2061;
+  --secondary-color: #851342;
+  --primary-background-color: #ffffff;
+  --text-color: #000000;
+  --secondary-background-color: #f9f9f9;
+  --validation-color-ok: #038e00;
+  --validation-color-in-progress: #e26c00;
+  --validation-color-no: #851342;
+
+  --text-content-size: 1.125rem;
+  --text-content-weight: 300;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--primary-font);
+  font-weight: var(--text-content-weight);
+  line-height: 1.5;
+}
+
+html,
+body {
+  @apply h-full;
+}
+
+h1 {
+  @apply text-4xl font-semibold;
+}
+
+h2 {
+  @apply text-3xl font-medium;
+}
+
+h3 {
+  @apply text-2xl font-normal;
+}
