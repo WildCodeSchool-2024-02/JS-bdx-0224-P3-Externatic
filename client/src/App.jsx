@@ -1,5 +1,3 @@
 export default function App() {
-  return (
-    <h1 className="text-3xl font-bold underline text-pink-600">Hello world!</h1>
-  );
+  return <h1 className="text-[var(--pink-color)] md:text-5xl">Hello world!</h1>;
 }
