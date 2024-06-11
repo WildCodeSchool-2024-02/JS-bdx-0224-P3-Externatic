@@ -5,16 +5,16 @@
 @tailwind utilities;
 
 :root {
-  --jost: "Jost", sans-serif;
+  --primary-font: "Jost", sans-serif;
 
-  --pink-color: #ca2061;
-  --pink-dark-color: #851342;
-  --white-color: #ffffff;
-  --black-color: #000000;
-  --grey-color: #f9f9f9;
-  --green-color: #05e200;
-  --orange-color: #e26c00;
-  --red--color: #fe0000;
+  --primary-color: #ca2061;
+  --secondary-color: #851342;
+  --primary-background-color: #ffffff;
+  --text-color: #000000;
+  --secondary-background-color: #f9f9f9;
+  --validation-color-ok: #038e00;
+  --validation-color-in-progress: #e26c00;
+  --validation-color-no: #851342;
 
   --text-content-size: 1.125rem;
   --text-content-weight: 300;
@@ -23,7 +23,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: var(--jost);
+  font-family: var(--primary-font);
   font-weight: var(--text-content-weight);
   line-height: 1.5;
 }
