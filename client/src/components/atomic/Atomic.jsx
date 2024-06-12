@@ -1,23 +1,14 @@
-import SearchInputCandidat from "../inputCandidat/searchInput/SearchInputCandidat";
+import SearchInputCandidat from "./inputCandidat/searchInput/SearchInputCandidat";
+import SearchInputConsultant from "./inputConsultant/searchInput/SearchInputConsultant";
 import Card from "./card/Card";
 
 export default function Atomic() {
   return (
     <>
       {/* LOGO EXTERNATIC */}
-      <header className="flex justify-around p-4 bg-[var(--secondary-background-color)]">
+      <header className="flex justify-center p-4 bg-[var(--secondary-background-color)]">
         <img
-          className="h-12"
-          src="./src/assets/Externatic.svg"
-          alt="Logo externatic"
-        />
-        <img
-          className="h-20"
-          src="./src/assets/Externatic.svg"
-          alt="Logo externatic"
-        />
-        <img
-          className="h-44"
+          className="h-12 md:h-20 lg:h-44 "
           src="./src/assets/Externatic.svg"
           alt="Logo externatic"
         />
@@ -74,22 +65,12 @@ export default function Atomic() {
               type="text"
             />
           </div>
-          <div className="relative flex items-center w-[37rem] h-24 max-sm:w-64 max-sm:h-14">
-            <label className="hidden" htmlFor="champ">
-              Search
-            </label>
-            <input
-              className="bg-[var(--secondary-background-color)] w-full h-full pl-12 pr-4 rounded-lg outline-[var(--primary-color)]"
-              id="champ"
-              type="search"
+          <form>
+            <SearchInputConsultant
+              id="searchCandidate"
               placeholder="Rechercher des candidats ..."
             />
-            <img
-              src="./src/assets/images/ICONSEARCH.svg"
-              alt="Search Icon"
-              className="absolute left-4 w-6 h-6"
-            />
-          </div>
+          </form>
           <form>
             <SearchInputCandidat
               id="searchJob"
