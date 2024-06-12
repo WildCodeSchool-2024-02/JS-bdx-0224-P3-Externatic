@@ -7,7 +7,7 @@ function Navbar() {
 
   const handleChange = () => {
     setIsVisible(true);
-    if (isVisible === true) {
+    if (isVisible) {
       setTimeout(() => {
         setIsVisible(false);
       }, 500);
@@ -20,9 +20,9 @@ function Navbar() {
   const menuRef = useRef(null);
 
   useEffect(() => {
+    const menuRefCurrent = menuRef.current;
     const focusableElementsString = "a, button";
     const menuLinks = menuRef.current.querySelectorAll(focusableElementsString);
-
     const firstElement = menuLinks[0];
     const lastElement = menuLinks[menuLinks.length - 1];
 
@@ -33,19 +33,18 @@ function Navbar() {
             e.preventDefault();
             lastElement.focus();
           }
-        } else {
-          if (document.activeElement === lastElement) {
-            e.preventDefault();
-            firstElement.focus();
-          }
+        }
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
         }
       }
     };
 
-    menuRef.current.addEventListener("keydown", handleTabKey);
+    menuRefCurrent.addEventListener("keydown", handleTabKey);
 
     return () => {
-      menuRef.current.removeEventListener("keydown", handleTabKey);
+      menuRefCurrent.removeEventListener("keydown", handleTabKey);
     };
   }, []);
 
@@ -55,6 +54,7 @@ function Navbar() {
         type="button"
         className="block absolute left-4 top-4 md:hidden"
         onClick={handleChange}
+        aria-label="Open menu"
       >
         <img src="/src/assets/images/menuBurger.svg" alt="" />
       </button>
@@ -84,6 +84,7 @@ function Navbar() {
               type="button"
               className="block w-10 md:hidden"
               onClick={handleChange}
+              aria-label="Close menu"
             >
               <img src="/src/assets/images/cross-svgrepo-com.svg" alt="" />
             </button>
@@ -110,7 +111,10 @@ function Navbar() {
             <Link to="null">Se connecter</Link>
           </li>
           <li className="self-center max-w-7">
-            <img src="/src/assets/images/iconDisconnect.svg" alt="" />
+            <img
+              src="/src/assets/images/iconDisconnect.svg"
+              alt="disconnected icon"
+            />
           </li>
         </ul>
       </nav>
