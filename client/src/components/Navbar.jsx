@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleChange = () => {
@@ -58,4 +58,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default NavBar;
