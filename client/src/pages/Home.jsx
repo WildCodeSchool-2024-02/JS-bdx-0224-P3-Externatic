@@ -1,14 +1,5 @@
 function Home() {
-  return (
-    <>
-      <button className="text-center">Home</button>
-      <button className="text-center">Home</button>
-      <button className="text-center">Home</button>
-      <button className="text-center">Home</button>
-      <button className="text-center">Home</button>
-      <button className="text-center">Home</button>
-    </>
-  );
+  return <div>Home</div>;
 }
 
 export default Home;

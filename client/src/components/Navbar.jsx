@@ -52,6 +52,7 @@ function Navbar() {
   return (
     <>
       <button
+        type="button"
         className="block absolute left-4 top-4 md:hidden"
         onClick={handleChange}
       >
@@ -74,9 +75,16 @@ function Navbar() {
           src="/src/assets/Externatic.svg"
           alt=""
         />
-        <ul className="text-[var(--primary-background-color)] flex flex-col gap-8 text-center md:flex-row md:gap-10 md:self-center md:justify-end md:ml-auto md:mr-6 md:text-[var(--text-color)]">
+        <ul
+          className="text-[var(--primary-background-color)] flex flex-col gap-8 text-center 
+        md:flex-row md:gap-10 md:self-center md:justify-end md:ml-auto md:mr-6 md:text-[var(--text-color)]"
+        >
           <li className="self-end mr-2 mt-2">
-            <button className="block w-10 md:hidden" onClick={handleChange}>
+            <button
+              type="button"
+              className="block w-10 md:hidden"
+              onClick={handleChange}
+            >
               <img src="/src/assets/images/cross-svgrepo-com.svg" alt="" />
             </button>
           </li>
@@ -92,7 +100,8 @@ function Navbar() {
           <li>
             <Link
               to="null"
-              className="bg-[var(--secondary-background-color)] pt-1 pb-1 pr-2 pl-2 rounded-md text-[var(--primary-color)] font-medium md:bg-[var(--primary-color)] md:text-[var(--primary-background-color)] md:-mr-8"
+              className="bg-[var(--secondary-background-color)] pt-1 pb-1 pr-2 pl-2 rounded-md text-[var(--primary-color)] font-medium 
+              md:bg-[var(--primary-color)] md:text-[var(--primary-background-color)] md:-mr-8"
             >
               S'inscrire
             </Link>
