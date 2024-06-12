@@ -1,24 +1,26 @@
+import Card from "./card/Card";
+
 export default function Atomic() {
   return (
     <>
       {/* LOGO EXTERNATIC */}
-      <header className=" flex justify-around p-4 bg-[var(--secondary-background-color)]">
-        <img
-          className=" h-12"
-          src="./src/assets/Externatic.svg"
-          alt="Logo externatic"
-        />
-        <img
-          className="h-20"
-          src="./src/assets/Externatic.svg"
-          alt="Logo externatic"
-        />
-        <img
-          className="h-44"
-          src="./src/assets/Externatic.svg"
-          alt="Logo externatic"
-        />
-      </header>
+      <header className="flex justify-around p-4 bg-[var(--secondary-background-color)]">
+      <img
+        className="h-12"
+        src="./src/assets/Externatic.svg"
+        alt="Logo externatic"
+      />
+      <img
+        className="h-20"
+        src="./src/assets/Externatic.svg"
+        alt="Logo externatic"
+      />
+      <img
+        className="h-44"
+        src="./src/assets/Externatic.svg"
+        alt="Logo externatic"
+      />
+    </header>
       {/* END */}
 
       <main className=" p-4">
@@ -166,80 +168,8 @@ export default function Atomic() {
 
         {/* CARD */}
         <hgroup className="flex gap-4 max-md:flex-col max-md:items-center max-md:justify-center">
-          <section className=" max-w-xl border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 bg-[var(--secondary-background-color)] mb-4 max-md:max-w-96 ">
-            <header className="flex justify-between items-center mb-4">
-              <h3 className="text-[var(--primary-color)] max-md:text-lg">
-                Title-3{" "}
-              </h3>
-              <img src="./src/assets/images/signet.svg" alt="" />
-            </header>
-            <ul className="flex gap-1 relative mb-4">
-              <li className="w-14 bg-[var(--secondary-color)] text-[var(--primary-background-color)] text-center max-md:w-10 max-md:text-xs">
-                REACT
-              </li>
-              <li className="w-14 bg-[var(--secondary-color)] text-[var(--primary-background-color)] text-center max-md:w-10 max-md:text-xs">
-                REACT
-              </li>
-              <li className="w-14 bg-[var(--secondary-color)] text-[var(--primary-background-color)] text-center max-md:w-10 max-md:text-xs">
-                REACT
-              </li>
-              <li className="w-28 bg-[var(--secondary-color)] text-[var(--primary-background-color)] text-center absolute right-0 max-md:w-20 max-md:text-xs">
-                BORDEAUX
-              </li>
-            </ul>
-            <p className="text-content mb-4 max-md:text-sm">
-              {" "}
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam
-              perspiciatis officia consequuntur expedita, sequi doloremque
-              dolor, aut quasi exercitationem doloribus dicta, facere ipsum
-              rerum ratione cumque. Aperiam debitis sit eaque.
-            </p>
-            <div className="flex justify-center">
-              <button
-                className="w-40 h-8 bg-[var(--primary-color)] font-semibold text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-36 max-md:h-8 max-md:text-sm"
-                type="button"
-              >
-                LOREM IPSUM
-              </button>
-            </div>
-          </section>
-          <section className=" max-w-xl border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44  p-4 mb-4 bg-[var(--secondary-background-color)] max-md:max-w-96">
-            <header className="flex justify-between items-center mb-4">
-              <h3 className="text-[var(--primary-color)] max-md:text-lg">
-                Title-3{" "}
-              </h3>
-              <img src="./src/assets/images/signet.svg" alt="" />
-            </header>
-            <ul className="flex gap-1 relative mb-4">
-              <li className="w-14 bg-[var(--secondary-color)] text-[var(--primary-background-color)] text-center max-md:w-10 max-md:text-xs">
-                REACT
-              </li>
-              <li className="w-14 bg-[var(--secondary-color)] text-[var(--primary-background-color)] text-center max-md:w-10 max-md:text-xs">
-                REACT
-              </li>
-              <li className="w-14 bg-[var(--secondary-color)] text-[var(--primary-background-color)] text-center max-md:w-10 max-md:text-xs">
-                REACT
-              </li>
-              <li className="w-28 bg-[var(--secondary-color)] text-[var(--primary-background-color)] text-center absolute right-0 max-md:w-20 max-md:text-xs">
-                BORDEAUX
-              </li>
-            </ul>
-            <p className="text-content mb-4 max-md:text-sm">
-              {" "}
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam
-              perspiciatis officia consequuntur expedita, sequi doloremque
-              dolor, aut quasi exercitationem doloribus dicta, facere ipsum
-              rerum ratione cumque. Aperiam debitis sit eaque.
-            </p>
-            <div className="flex justify-center">
-              <button
-                className=" w-40 h-8 bg-[var(--primary-color)] font-semibold text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-36 max-md:h-8 max-md:text-sm"
-                type="button"
-              >
-                CTA
-              </button>
-            </div>
-          </section>
+          <Card />
+          <Card />
         </hgroup>
         {/* END */}
 
