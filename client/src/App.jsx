@@ -1,7 +1,18 @@
-import Atomic from "./components/Atomic";
+import { Outlet } from "react-router-dom";
+import "./App.css";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
-export default function App() {
+function App() {
   return (
-    <Atomic />
-  )
+    <>
+      <NavBar />
+      <Outlet />
+      <ScrollToTop />
+      <Footer />
+    </>
+  );
 }
+
+export default App;
