@@ -6,19 +6,9 @@ export default function Atomic() {
   return (
     <>
       {/* LOGO EXTERNATIC */}
-      <header className="flex justify-around p-4 bg-[var(--secondary-background-color)]">
+      <header className="flex justify-center p-4 bg-[var(--secondary-background-color)]">
         <img
-          className="h-12"
-          src="./src/assets/Externatic.svg"
-          alt="Logo externatic"
-        />
-        <img
-          className="h-20"
-          src="./src/assets/Externatic.svg"
-          alt="Logo externatic"
-        />
-        <img
-          className="h-44"
+          className="h-12 md:h-20 lg:h-44 "
           src="./src/assets/Externatic.svg"
           alt="Logo externatic"
         />
