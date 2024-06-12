@@ -1,6 +1,15 @@
 import SearchInputCandidat from "./inputCandidat/searchInput/SearchInputCandidat";
 import SearchInputConsultant from "./inputConsultant/searchInput/SearchInputConsultant";
+import ButtonOffer from "./buttons/ButtonOffer";
+import Tag from "./tag/Tag";
 import Card from "./card/Card";
+import TagNotSelect from "./tag/TagNotSelect";
+import TagStatusGreen from "./tag/TagStatusGreen";
+import TagStatusOrange from "./tag/TagStatusOrange";
+import TagStatusRed from "./tag/TagStatusRed";
+import ButtonDeleteSmall from "./buttons/ButtonDeleteSmall";
+import SmallCheckBox from "./checkBox/SmallCheckBox";
+import BigCheckBox from "./checkBox/BigCheckBox";
 import ButtonPostuler from "./buttons/ButtonPostuler";
 import ButtonDelete from "./buttons/ButtonDelete";
 
@@ -118,93 +127,46 @@ export default function Atomic() {
 
         {/* CTA / SKILL / DISPONIBILITÉ */}
         <hgroup className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4 flex flex-wrap gap-4 items-center">
-          <button
-            className=" w-56 h-11 bg-[var(--primary-color)] font-semibold text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-36 max-md:h-8 max-md:text-sm"
-            type="button"
-          >
-            VOIR L'OFFRE
-          </button>
-          <p className=" w-14 bg-[var(--secondary-color)] text-[var(--primary-background-color)] text-center max-md:w-10 max-md:text-xs">
-            REACT
-          </p>
-          <p className="w-14 bg-[var(--primary-color)] text-[var(--primary-background-color)] text-center max-md:w-10 max-md:text-xs">
-            JAVA
-          </p>
-          <p className=" w-28 bg-[var(--secondary-color)] text-[var(--primary-background-color)] text-center max-md:w-20 max-md:text-xs">
-            BORDEAUX
-          </p>
-          <p className=" w-28 bg-[var(--primary-color)] text-[var(--primary-background-color)] text-center max-md:w-20 max-md:text-xs ">
-            ALTERNANCE
-          </p>
-          <p className="text-[var(--validation-color-ok)] w-24 border border-[var(--green-color)]  text-center max-md:w-20 max-md:text-xs">
-            DISPONIBLE
-          </p>
-          <p className="text-[var(--validation-color-in-progress)] w-24 text-center border border-[var(--validation-color-in-progress)] max-md:w-20 max-md:text-xs ">
-            EN COURS
-          </p>
-          <p className="text-[var(--secondary-color)] w-24 text-center border border-[var(--secondary-color)] max-md:w-20 max-md:text-xs ">
-            REFUSE
-          </p>
+          <ButtonOffer />
+          <Tag tag="REACT " />
+          <TagNotSelect tag="JAVA" />
+          <TagStatusGreen />
+          <TagStatusOrange />
+          <TagStatusRed />
+          <ButtonDeleteSmall
+            name="Supprimer"
+            img="/src/assets/images/delete.svg"
+            alt="supprimer"
+          />
+          <ButtonDeleteSmall
+            name="Modifier"
+            img="/src/assets/images/modifier.svg"
+            alt="modifier"
+          />
+          <ButtonDeleteSmall
+            name="Voir"
+            img="/src/assets/images/open.svg"
+            alt="voir"
+          />
+          <ButtonDeleteSmall
+            name="Téléphone"
+            img="/src/assets/images/phone.svg"
+            alt="téléphone"
+          />
+          <ButtonDeleteSmall
+            name="Email"
+            img="/src/assets/images/mail.svg"
+            alt="Email"
+          />
+          <ButtonDeleteSmall
+            name="CV"
+            img="/src/assets/images/cv.svg"
+            alt="cv"
+          />
+          <SmallCheckBox />
+          <BigCheckBox />
           <ButtonPostuler />
           <ButtonDelete />
-          <button
-            className=" flex justify-around items-center w-36 h-11 bg-[var(--primary-color)] font-medium text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm"
-            type="button"
-          >
-            Supprimer <img src="./src/assets/images/delete.svg" alt="Delete" />
-          </button>
-          <button
-            className=" flex justify-around items-center w-36 h-11 bg-[var(--primary-color)] font-medium text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm"
-            type="button"
-          >
-            Modifier{" "}
-            <img
-              className=""
-              src="./src/assets/images/modifier.svg"
-              alt="Delete"
-            />
-          </button>
-          <button
-            className=" flex justify-around items-center w-36 h-11 bg-[var(--primary-color)] font-medium text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm"
-            type="button"
-          >
-            Voir{" "}
-            <img className="" src="./src/assets/images/open.svg" alt="Delete" />
-          </button>
-          <button
-            className=" flex justify-around items-center w-36 h-11 bg-[var(--primary-color)] font-medium text-[var(--primary-background-color)] rounded-lg cursor-pointer  max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm"
-            type="button"
-          >
-            Téléphone{" "}
-            <img
-              className=""
-              src="./src/assets/images/phone.svg"
-              alt="Delete"
-            />
-          </button>
-          <button
-            className=" flex justify-around items-center w-36 h-11 bg-[var(--primary-color)] font-medium text-[var(--primary-background-color)] rounded-lg cursor-pointer  max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm"
-            type="button"
-          >
-            Email{" "}
-            <img className="" src="./src/assets/images/mail.svg" alt="Delete" />
-          </button>
-          <button
-            className=" flex justify-around items-center w-36 h-11 bg-[var(--primary-color)] font-medium text-[var(--primary-background-color)] rounded-lg cursor-pointer  max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm"
-            type="button"
-          >
-            CV{" "}
-            <img className="" src="./src/assets/images/cv.svg" alt="Delete" />
-          </button>
-          <input
-            type="checkbox"
-            value=""
-            className=" accent-[var(--primary-color)] scale-100 transition-all duration-500 ease-in-out hover:scale-110 checked:scale-100 w-4 h-4"
-          />
-          <input
-            className="accent-[var(--primary-color)] scale-100 transition-all duration-500 ease-in-out hover:scale-110 checked:scale-100 w-5 h-5"
-            type="checkbox"
-          />
         </hgroup>
         {/* END */}
       </main>
