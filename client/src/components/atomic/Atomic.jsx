@@ -7,6 +7,9 @@ import TagNotSelect from "./tag/TagNotSelect";
 import TagStatusGreen from "./tag/TagStatusGreen";
 import TagStatusOrange from "./tag/TagStatusOrange";
 import TagStatusRed from "./tag/TagStatusRed";
+import ButtonDelete from "./buttons/ButtonDelete";
+import SmallCheckBox from "./checkBox/SmallCheckBox";
+import BigCheckBox from "./checkBox/BigCheckBox";
 
 export default function Atomic() {
   return (
@@ -146,65 +149,34 @@ export default function Atomic() {
           >
             SUPPRIMER MON COMPTE
           </button>
-          <button
-            className=" flex justify-around items-center w-36 h-11 bg-[var(--primary-color)] font-medium text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm"
-            type="button"
-          >
-            Supprimer <img src="./src/assets/images/delete.svg" alt="Delete" />
-          </button>
-          <button
-            className=" flex justify-around items-center w-36 h-11 bg-[var(--primary-color)] font-medium text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm"
-            type="button"
-          >
-            Modifier{" "}
-            <img
-              className=""
-              src="./src/assets/images/modifier.svg"
-              alt="Delete"
-            />
-          </button>
-          <button
-            className=" flex justify-around items-center w-36 h-11 bg-[var(--primary-color)] font-medium text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm"
-            type="button"
-          >
-            Voir{" "}
-            <img className="" src="./src/assets/images/open.svg" alt="Delete" />
-          </button>
-          <button
-            className=" flex justify-around items-center w-36 h-11 bg-[var(--primary-color)] font-medium text-[var(--primary-background-color)] rounded-lg cursor-pointer  max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm"
-            type="button"
-          >
-            Téléphone{" "}
-            <img
-              className=""
-              src="./src/assets/images/phone.svg"
-              alt="Delete"
-            />
-          </button>
-          <button
-            className=" flex justify-around items-center w-36 h-11 bg-[var(--primary-color)] font-medium text-[var(--primary-background-color)] rounded-lg cursor-pointer  max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm"
-            type="button"
-          >
-            Email{" "}
-            <img className="" src="./src/assets/images/mail.svg" alt="Delete" />
-          </button>
-          <button
-            className=" flex justify-around items-center w-36 h-11 bg-[var(--primary-color)] font-medium text-[var(--primary-background-color)] rounded-lg cursor-pointer  max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm"
-            type="button"
-          >
-            CV{" "}
-            <img className="" src="./src/assets/images/cv.svg" alt="Delete" />
-          </button>
-          <input
-            type="checkbox"
-            value=""
-            className=" accent-[var(--primary-color)] hover:accent-[var(--primary-color)]"
+          <ButtonDelete
+            name="Supprimer"
+            img="/src/assets/images/delete.svg"
+            alt="supprimer"
           />
-          <input
-            type="checkbox"
-            value=""
-            className="w-5 h-5 accent-[var(--primary-color)] hover:accent-[var(--primary-color)] "
+          <ButtonDelete
+            name="Modifier"
+            img="/src/assets/images/modifier.svg"
+            alt="modifier"
           />
+          <ButtonDelete
+            name="Voir"
+            img="/src/assets/images/open.svg"
+            alt="voir"
+          />
+          <ButtonDelete
+            name="Téléphone"
+            img="/src/assets/images/phone.svg"
+            alt="téléphone"
+          />
+          <ButtonDelete
+            name="Email"
+            img="/src/assets/images/mail.svg"
+            alt="Email"
+          />
+          <ButtonDelete name="CV" img="/src/assets/images/cv.svg" alt="cv" />
+          <SmallCheckBox />
+          <BigCheckBox />
         </hgroup>
         {/* END */}
       </main>
