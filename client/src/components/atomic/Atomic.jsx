@@ -7,7 +7,7 @@ import TagNotSelect from "./tag/TagNotSelect";
 import TagStatusGreen from "./tag/TagStatusGreen";
 import TagStatusOrange from "./tag/TagStatusOrange";
 import TagStatusRed from "./tag/TagStatusRed";
-import ButtonDelete from "./buttons/ButtonDelete";
+import ButtonDeleteSmall from "./buttons/ButtonDeleteSmall";
 import SmallCheckBox from "./checkBox/SmallCheckBox";
 import BigCheckBox from "./checkBox/BigCheckBox";
 
@@ -149,32 +149,36 @@ export default function Atomic() {
           >
             SUPPRIMER MON COMPTE
           </button>
-          <ButtonDelete
+          <ButtonDeleteSmall
             name="Supprimer"
             img="/src/assets/images/delete.svg"
             alt="supprimer"
           />
-          <ButtonDelete
+          <ButtonDeleteSmall
             name="Modifier"
             img="/src/assets/images/modifier.svg"
             alt="modifier"
           />
-          <ButtonDelete
+          <ButtonDeleteSmall
             name="Voir"
             img="/src/assets/images/open.svg"
             alt="voir"
           />
-          <ButtonDelete
+          <ButtonDeleteSmall
             name="Téléphone"
             img="/src/assets/images/phone.svg"
             alt="téléphone"
           />
-          <ButtonDelete
+          <ButtonDeleteSmall
             name="Email"
             img="/src/assets/images/mail.svg"
             alt="Email"
           />
-          <ButtonDelete name="CV" img="/src/assets/images/cv.svg" alt="cv" />
+          <ButtonDeleteSmall
+            name="CV"
+            img="/src/assets/images/cv.svg"
+            alt="cv"
+          />
           <SmallCheckBox />
           <BigCheckBox />
         </hgroup>
