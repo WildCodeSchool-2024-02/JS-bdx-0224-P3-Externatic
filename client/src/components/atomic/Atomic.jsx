@@ -10,6 +10,8 @@ import TagStatusRed from "./tag/TagStatusRed";
 import ButtonDeleteSmall from "./buttons/ButtonDeleteSmall";
 import SmallCheckBox from "./checkBox/SmallCheckBox";
 import BigCheckBox from "./checkBox/BigCheckBox";
+import ButtonPostuler from "./buttons/ButtonPostuler";
+import ButtonDelete from "./buttons/ButtonDelete";
 
 export default function Atomic() {
   return (
@@ -181,6 +183,8 @@ export default function Atomic() {
           />
           <SmallCheckBox />
           <BigCheckBox />
+          <ButtonPostuler />
+          <ButtonDelete />
         </hgroup>
         {/* END */}
       </main>
