@@ -128,9 +128,9 @@ export default function Atomic() {
           <ButtonOffer />
           <Tag tag="REACT " />
           <TagNotSelect tag="JAVA" />
-          <TagStatusGreen status="DISPONIBLE" />
-          <TagStatusOrange status="EN COURS" />
-          <TagStatusRed status="REFUSÉ" />
+          <TagStatusGreen />
+          <TagStatusOrange />
+          <TagStatusRed />
           <button
             className=" w-80 h-20 bg-[var(--primary-color)] font-semibold text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-60 max-md:h-11 max-md:text-sm"
             type="button"
