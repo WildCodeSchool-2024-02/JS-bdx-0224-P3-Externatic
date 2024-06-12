@@ -1,3 +1,4 @@
+import SearchInputCandidat from "../inputCandidat/searchInput/SearchInputCandidat";
 import Card from "./card/Card";
 
 export default function Atomic() {
@@ -5,22 +6,22 @@ export default function Atomic() {
     <>
       {/* LOGO EXTERNATIC */}
       <header className="flex justify-around p-4 bg-[var(--secondary-background-color)]">
-      <img
-        className="h-12"
-        src="./src/assets/Externatic.svg"
-        alt="Logo externatic"
-      />
-      <img
-        className="h-20"
-        src="./src/assets/Externatic.svg"
-        alt="Logo externatic"
-      />
-      <img
-        className="h-44"
-        src="./src/assets/Externatic.svg"
-        alt="Logo externatic"
-      />
-    </header>
+        <img
+          className="h-12"
+          src="./src/assets/Externatic.svg"
+          alt="Logo externatic"
+        />
+        <img
+          className="h-20"
+          src="./src/assets/Externatic.svg"
+          alt="Logo externatic"
+        />
+        <img
+          className="h-44"
+          src="./src/assets/Externatic.svg"
+          alt="Logo externatic"
+        />
+      </header>
       {/* END */}
 
       <main className=" p-4">
@@ -89,54 +90,13 @@ export default function Atomic() {
               className="absolute left-4 w-6 h-6"
             />
           </div>
-          <div className="relative flex items-center w-96 h-20 max-sm:w-64 max-sm:h-14">
-            <label className="hidden" htmlFor="champ">
-              Search
-            </label>
-            <input
-              className="bg-[var(--secondary-background-color)] w-full h-full pl-12 pr-4 rounded-lg outline-[var(--primary-color)]"
-              id="champ"
-              type="search"
+          <form>
+            <SearchInputCandidat
+              id="searchJob"
               placeholder="Rechercher un poste ..."
+              iconSrc="./src/assets/images/ICONSEARCH.svg"
             />
-            <img
-              src="./src/assets/images/ICONSEARCH.svg"
-              alt="Search Icon"
-              className="absolute left-4 w-6 h-6"
-            />
-          </div>
-          <div className="relative flex items-center w-96 h-20  max-sm:w-64 max-sm:h-14">
-            <label className="hidden" htmlFor="champ">
-              Search
-            </label>
-            <input
-              className="bg-[var(--secondary-background-color)] w-full h-full pl-12 pr-4 rounded-lg outline-[var(--primary-color)]"
-              id="champ"
-              type="search"
-              placeholder="Filtrer une ville / région ..."
-            />
-            <img
-              src="./src/assets/images/ICONLOC.svg"
-              alt="Search Icon"
-              className="absolute left-4 w-6 h-6"
-            />
-          </div>
-          <div className="relative flex items-center w-96 h-20 max-sm:w-64 max-sm:h-14">
-            <label className="hidden" htmlFor="champ">
-              Search
-            </label>
-            <input
-              className="bg-[var(--secondary-background-color)] w-full h-full pl-12 pr-4 rounded-lg outline-[var(--primary-color)]"
-              id="champ"
-              type="search"
-              placeholder="Filtrer par compétences ..."
-            />
-            <img
-              src="./src/assets/images/ICONSTACK.svg"
-              alt="Search Icon"
-              className="absolute left-4 w-6 h-6"
-            />
-          </div>
+          </form>
           <div className="w-[34rem] flex flex-col gap-4 max-sm:w-64 max-md:w-96">
             <label
               className="text-[var(--primary-color)] font-medium max-md:text-sm max-md:font-normal"
@@ -167,10 +127,10 @@ export default function Atomic() {
         {/* END */}
 
         {/* CARD */}
-        <hgroup className="flex gap-4 max-md:flex-col max-md:items-center max-md:justify-center">
+        <section className="flex gap-4 max-md:flex-col max-md:items-center max-md:justify-center">
           <Card />
           <Card />
-        </hgroup>
+        </section>
         {/* END */}
 
         {/* CTA / SKILL / DISPONIBILITÉ */}
