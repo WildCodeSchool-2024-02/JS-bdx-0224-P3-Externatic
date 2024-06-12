@@ -133,24 +133,6 @@ export default function Atomic() {
           <TagStatusGreen />
           <TagStatusOrange />
           <TagStatusRed />
-          <button
-            className=" w-80 h-20 bg-[var(--primary-color)] font-semibold text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-60 max-md:h-11 max-md:text-sm"
-            type="button"
-          >
-            POSTULER
-          </button>
-          <button
-            className=" w-80 h-20 bg-[var(--secondary-color)] font-semibold text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-60 max-md:h-11 max-md:text-sm"
-            type="button"
-          >
-            POSTULER
-          </button>
-          <button
-            className=" w-80 h-20 bg-[var(--primary-background-color)] font-semibold text-[var(--secondary-color)] border border-[var(--secondary-color)] rounded-lg cursor-pointer max-md:w-60 max-md:h-11 max-md:text-sm"
-            type="button"
-          >
-            SUPPRIMER MON COMPTE
-          </button>
           <ButtonDeleteSmall
             name="Supprimer"
             img="/src/assets/images/delete.svg"
