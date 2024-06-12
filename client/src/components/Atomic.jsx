@@ -279,12 +279,6 @@ export default function Atomic() {
             POSTULER
           </button>
           <button
-            className=" w-80 h-20 bg-[var(--secondary-color)] font-semibold text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-60 max-md:h-11 max-md:text-sm"
-            type="button"
-          >
-            POSTULER
-          </button>
-          <button
             className=" w-80 h-20 bg-[var(--primary-background-color)] font-semibold text-[var(--secondary-color)] border border-[var(--secondary-color)] rounded-lg cursor-pointer max-md:w-60 max-md:h-11 max-md:text-sm"
             type="button"
           >
@@ -347,8 +341,8 @@ export default function Atomic() {
           <input
             className="accent-[var(--primary-color)] scale-100 transition-all duration-500 ease-in-out hover:scale-110 checked:scale-100 w-5 h-5"
             type="checkbox"
-          />          
-          </hgroup>
+          />
+        </hgroup>
         {/* END */}
       </main>
       {/* LOGO SVG */}

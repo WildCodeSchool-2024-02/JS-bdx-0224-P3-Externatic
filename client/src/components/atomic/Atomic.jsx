@@ -1,6 +1,8 @@
 import SearchInputCandidat from "./inputCandidat/searchInput/SearchInputCandidat";
 import SearchInputConsultant from "./inputConsultant/searchInput/SearchInputConsultant";
 import Card from "./card/Card";
+import ButtonPostuler from "./buttons/ButtonPostuler";
+import ButtonDelete from "./buttons/ButtonDelete";
 
 export default function Atomic() {
   return (
@@ -143,24 +145,8 @@ export default function Atomic() {
           <p className="text-[var(--secondary-color)] w-24 text-center border border-[var(--secondary-color)] max-md:w-20 max-md:text-xs ">
             REFUSE
           </p>
-          <button
-            className=" w-80 h-20 bg-[var(--primary-color)] font-semibold text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-60 max-md:h-11 max-md:text-sm"
-            type="button"
-          >
-            POSTULER
-          </button>
-          <button
-            className=" w-80 h-20 bg-[var(--secondary-color)] font-semibold text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-60 max-md:h-11 max-md:text-sm"
-            type="button"
-          >
-            POSTULER
-          </button>
-          <button
-            className=" w-80 h-20 bg-[var(--primary-background-color)] font-semibold text-[var(--secondary-color)] border border-[var(--secondary-color)] rounded-lg cursor-pointer max-md:w-60 max-md:h-11 max-md:text-sm"
-            type="button"
-          >
-            SUPPRIMER MON COMPTE
-          </button>
+          <ButtonPostuler />
+          <ButtonDelete />
           <button
             className=" flex justify-around items-center w-36 h-11 bg-[var(--primary-color)] font-medium text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm"
             type="button"
