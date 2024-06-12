@@ -220,6 +220,8 @@ export default function Atomic() {
             CV{" "}
             <img className="" src="./src/assets/images/cv.svg" alt="Delete" />
           </button>
+          <input type="checkbox" value="" className=" accent-[var(--primary-color)] hover:accent-[var(--primary-color)]"/>
+          <input type="checkbox" value="" className="w-5 h-5 accent-[var(--primary-color)] hover:accent-[var(--primary-color)] "/>
         </hgroup>
         {/* END */}
       </main>
@@ -243,11 +245,6 @@ export default function Atomic() {
         <img
           className=""
           src="./src/assets/images/add.svg"
-          alt="Logo linkedin"
-        />
-        <img
-          className=""
-          src="./src/assets/images/checkedBox.svg"
           alt="Logo linkedin"
         />
         <img
