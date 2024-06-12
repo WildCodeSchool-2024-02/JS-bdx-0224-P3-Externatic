@@ -1,6 +1,12 @@
 import SearchInputCandidat from "./inputCandidat/searchInput/SearchInputCandidat";
 import SearchInputConsultant from "./inputConsultant/searchInput/SearchInputConsultant";
+import ButtonOffer from "./buttons/ButtonOffer";
+import Tag from "./tag/Tag";
 import Card from "./card/Card";
+import TagNotSelect from "./tag/TagNotSelect";
+import TagStatusGreen from "./tag/TagStatusGreen";
+import TagStatusOrange from "./tag/TagStatusOrange";
+import TagStatusRed from "./tag/TagStatusRed";
 
 export default function Atomic() {
   return (
@@ -116,33 +122,12 @@ export default function Atomic() {
 
         {/* CTA / SKILL / DISPONIBILITÉ */}
         <hgroup className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4 flex flex-wrap gap-4 items-center">
-          <button
-            className=" w-56 h-11 bg-[var(--primary-color)] font-semibold text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-36 max-md:h-8 max-md:text-sm"
-            type="button"
-          >
-            VOIR L'OFFRE
-          </button>
-          <p className=" w-14 bg-[var(--secondary-color)] text-[var(--primary-background-color)] text-center max-md:w-10 max-md:text-xs">
-            REACT
-          </p>
-          <p className="w-14 bg-[var(--primary-color)] text-[var(--primary-background-color)] text-center max-md:w-10 max-md:text-xs">
-            JAVA
-          </p>
-          <p className=" w-28 bg-[var(--secondary-color)] text-[var(--primary-background-color)] text-center max-md:w-20 max-md:text-xs">
-            BORDEAUX
-          </p>
-          <p className=" w-28 bg-[var(--primary-color)] text-[var(--primary-background-color)] text-center max-md:w-20 max-md:text-xs ">
-            ALTERNANCE
-          </p>
-          <p className="text-[var(--validation-color-ok)] w-24 border border-[var(--green-color)]  text-center max-md:w-20 max-md:text-xs">
-            DISPONIBLE
-          </p>
-          <p className="text-[var(--validation-color-in-progress)] w-24 text-center border border-[var(--validation-color-in-progress)] max-md:w-20 max-md:text-xs ">
-            EN COURS
-          </p>
-          <p className="text-[var(--secondary-color)] w-24 text-center border border-[var(--secondary-color)] max-md:w-20 max-md:text-xs ">
-            REFUSE
-          </p>
+          <ButtonOffer />
+          <Tag tag="REACT " />
+          <TagNotSelect tag="JAVA" />
+          <TagStatusGreen status="DISPONIBLE" />
+          <TagStatusOrange status="EN COURS" />
+          <TagStatusRed status="REFUSÉ" />
           <button
             className=" w-80 h-20 bg-[var(--primary-color)] font-semibold text-[var(--primary-background-color)] rounded-lg cursor-pointer max-md:w-60 max-md:h-11 max-md:text-sm"
             type="button"
@@ -210,8 +195,16 @@ export default function Atomic() {
             CV{" "}
             <img className="" src="./src/assets/images/cv.svg" alt="Delete" />
           </button>
-          <input type="checkbox" value="" className=" accent-[var(--primary-color)] hover:accent-[var(--primary-color)]"/>
-          <input type="checkbox" value="" className="w-5 h-5 accent-[var(--primary-color)] hover:accent-[var(--primary-color)] "/>
+          <input
+            type="checkbox"
+            value=""
+            className=" accent-[var(--primary-color)] hover:accent-[var(--primary-color)]"
+          />
+          <input
+            type="checkbox"
+            value=""
+            className="w-5 h-5 accent-[var(--primary-color)] hover:accent-[var(--primary-color)] "
+          />
         </hgroup>
         {/* END */}
       </main>
