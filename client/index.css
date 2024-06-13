@@ -18,6 +18,9 @@
 
   --text-content-size: 1.125rem;
   --text-content-weight: 300;
+
+  --box-shadow: 0 2.63px 4.63px 0 rgba(0 0 0 / 0.02),
+    0 12px 13px 0 rgba(0 0 0 / 0.04), 0 30.38px 34.88px 0 rgba(0 0 0 / 0.05);
 }
 
 * {
@@ -43,4 +46,10 @@ h2 {
 
 h3 {
   @apply text-2xl font-normal;
+}
+
+@layer utilities {
+  .custom-shadow {
+    box-shadow: var(--box-shadow);
+  }
 }

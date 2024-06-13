@@ -64,7 +64,7 @@ export default function Atomic() {
         {/* END */}
 
         {/* INPUT */}
-        <section className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4 flex flex-col gap-4 items-center">
+        <section className="border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 mb-4 flex flex-col gap-4 items-center">
         
           <form>
             <FormInputCandidat id="champPrenom" label="PRÉNOM" type="text" />
