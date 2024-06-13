@@ -29,7 +29,7 @@ export default function Atomic() {
 
       <main className=" p-4">
         {/* TITLE */}
-        <hgroup className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4">
+        <hgroup className="border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 mb-4">
           <h1 className=" max-md:text-2xl">Title-1 </h1>
           <h1 className="text-[var(--primary-color)] max-md:text-2xl">
             Title-1{" "}
@@ -46,7 +46,7 @@ export default function Atomic() {
         {/* END */}
 
         {/* PARAGRAPHE */}
-        <hgroup className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4">
+        <hgroup className="border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 mb-4">
           <p className="max-md:text-sm">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam
             perspiciatis officia consequuntur expedita, sequi doloremque dolor,
@@ -63,7 +63,7 @@ export default function Atomic() {
         {/* END */}
 
         {/* INPUT */}
-        <hgroup className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4 flex flex-col gap-4 items-center">
+        <hgroup className="border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 mb-4 flex flex-col gap-4 items-center">
           <div className=" w-72 flex flex-col gap-4 max-sm:w-64">
             <label
               className="text-[var(--primary-color)] font-medium max-md:text-sm max-md:font-normal"
