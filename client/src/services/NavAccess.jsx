@@ -17,7 +17,7 @@ const NavAccess = (menuRef) => {
             lastElement.focus();
           }
         } else {
-          document.activeElement === lastElement;
+          (document.activeElement === lastElement);
           e.preventDefault();
           firstElement.focus();
         }
