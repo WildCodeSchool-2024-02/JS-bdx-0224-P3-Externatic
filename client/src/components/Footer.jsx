@@ -1,6 +1,6 @@
 function Footer() {
     return (
-      <img alt="lien vers..."/>
+      <h1>Footer</h1>
     )
   }
   
