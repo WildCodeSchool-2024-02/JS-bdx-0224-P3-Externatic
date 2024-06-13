@@ -1,5 +1,6 @@
 import SearchInputCandidat from "./inputCandidat/searchInput/SearchInputCandidat";
 import SearchInputConsultant from "./inputConsultant/searchInput/SearchInputConsultant";
+import FormInputCandidat from "./inputCandidat/formCandidat/FormInputCandidat";
 import FormInputConsultant from "./inputConsultant/formConsultant/FormInputConsultant";
 import ButtonOffer from "./buttons/ButtonOffer";
 import Tag from "./tag/Tag";
@@ -63,20 +64,13 @@ export default function Atomic() {
         {/* END */}
 
         {/* INPUT */}
-        <hgroup className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4 flex flex-col gap-4 items-center">
-          <div className=" w-72 flex flex-col gap-4 max-sm:w-64">
-            <label
-              className="text-[var(--primary-color)] font-medium max-md:text-sm max-md:font-normal"
-              htmlFor="champ"
-            >
-              PRÉNOM
-            </label>
-            <input
-              className="  h-10 border-2 outline-[var(--primary-color)] rounded-s"
-              id="champ"
-              type="text"
-            />
-          </div>
+        <section className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4 flex flex-col gap-4 items-center">
+        
+          <form>
+            <FormInputCandidat id="champPrenom" label="PRÉNOM" type="text" />
+            <FormInputCandidat id="champNom" label="NOM" type="text" />
+            <FormInputCandidat id="champEmail" label="EMAIL" type="email" />
+          </form>
           <form>
             <SearchInputConsultant
               id="searchCandidate"
@@ -90,32 +84,19 @@ export default function Atomic() {
               iconSrc="./src/assets/images/ICONSEARCH.svg"
             />
           </form>
-          <div className="w-[34rem] flex flex-col gap-4 max-sm:w-64 max-md:w-96">
-            <label
-              className="text-[var(--primary-color)] font-medium max-md:text-sm max-md:font-normal"
-              htmlFor="champ"
-            >
-              TITRE DE L'OFFRE
-            </label>
-            <input
-              className=" h-12 border-2 outline-[var(--primary-color)] rounded-s "
-              id="champ"
-              type="text"
-            />
-          </div>
-          <form>
+          <form >
             <FormInputConsultant
-              id="champ1"
+              id="champOffre"
               label="TITRE DE L'OFFRE"
               type="text"
             />
             <FormInputConsultant
-              id="champ2"
+              id="champPoste"
               label="DÉTAILS DU POSTE"
               type="textarea"
             />
           </form>
-        </hgroup>
+        </section>
         {/* END */}
 
         {/* CARD */}
@@ -126,7 +107,7 @@ export default function Atomic() {
         {/* END */}
 
         {/* CTA / SKILL / DISPONIBILITÉ */}
-        <hgroup className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4 flex flex-wrap gap-4 items-center">
+        <section className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4 flex flex-wrap gap-4 items-center">
           <ButtonOffer />
           <Tag tag="REACT " />
           <TagNotSelect tag="JAVA" />
@@ -167,7 +148,7 @@ export default function Atomic() {
           <BigCheckBox />
           <ButtonPostuler />
           <ButtonDelete />
-        </hgroup>
+        </section>
         {/* END */}
       </main>
       {/* LOGO SVG */}
