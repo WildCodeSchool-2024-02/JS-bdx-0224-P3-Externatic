@@ -154,104 +154,84 @@ export default function Atomic() {
       {/* LOGO SVG */}
       <footer className=" bg-slate-400 flex flex-wrap gap-4 p-4">
         <img
-          className=""
           src="./src/assets/images/linkedin.svg"
           alt="Logo linkedin"
         />
         <img
-          className=""
           src="./src/assets/images/instagram.svg"
-          alt="Logo linkedin"
+          alt="Logo instagram"
         />
         <img
-          className=""
           src="./src/assets/images/twitter.svg"
-          alt="Logo linkedin"
+          alt="Logo twitter"
         />
         <img
-          className=""
           src="./src/assets/images/add.svg"
-          alt="Logo linkedin"
+          alt="Logo add offer"
         />
         <img
-          className=""
           src="./src/assets/images/cv.svg"
-          alt="Logo linkedin"
+          alt="Logo upload"
         />
         <img
-          className=""
           src="./src/assets/images/delete.svg"
-          alt="Logo linkedin"
+          alt="Logo delete"
         />
         <img
-          className=""
           src="./src/assets/images/iconConnect.svg"
-          alt="Logo linkedin"
+          alt="Logo profile connected"
         />
         <img
-          className=""
           src="./src/assets/images/iconDisconnect.svg"
-          alt="Logo linkedin"
+          alt="Logo profile disconnected "
         />
         <img
-          className=""
           src="./src/assets/images/ICONLOC.svg"
-          alt="Logo linkedin"
+          alt="Logo location"
         />
         <img
-          className=""
           src="./src/assets/images/ICONSEARCH.svg"
-          alt="Logo linkedin"
+          alt="Logo search"
         />
         <img
-          className=""
           src="./src/assets/images/ICONSTACK.svg"
-          alt="Logo linkedin"
+          alt="Logo stack"
         />
         <img
-          className=""
           src="./src/assets/images/mail.svg"
-          alt="Logo linkedin"
+          alt="Logo mail"
         />
         <img
-          className=""
           src="./src/assets/images/menuBurger.svg"
-          alt="Logo linkedin"
+          alt="Logo menu burger"
         />
         <img
-          className=""
           src="./src/assets/images/modifier.svg"
           alt="Logo linkedin"
         />
         <img
-          className=""
           src="./src/assets/images/notif.svg"
-          alt="Logo linkedin"
+          alt="Logo notification"
         />
         <img
-          className=""
           src="./src/assets/images/open.svg"
-          alt="Logo linkedin"
+          alt="Logo look cv"
         />
         <img
-          className=""
           src="./src/assets/images/phone.svg"
-          alt="Logo linkedin"
+          alt="Logo phone"
         />
         <img
-          className=""
           src="./src/assets/images/signet.svg"
-          alt="Logo linkedin"
+          alt="Logo signet not selected"
         />
         <img
-          className=""
           src="./src/assets/images/signetFull.svg"
-          alt="Logo linkedin"
+          alt="Logo signet selected"
         />
         <img
-          className=""
           src="./src/assets/images/upload.svg"
-          alt="Logo linkedin"
+          alt="Logo upload cv"
         />
       </footer>
       {/* END */}
