@@ -1,3 +1,15 @@
-export default function App() {
-  return <h1 className="text-[var(--pink-color)] md:text-5xl">Hello world!</h1>;
+import { Outlet } from "react-router-dom";
+import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
+
+function App() {
+  return (
+    <>
+      <Outlet />
+      <ScrollToTop />
+      <Footer />
+    </>
+  );
 }
+
+export default App;
