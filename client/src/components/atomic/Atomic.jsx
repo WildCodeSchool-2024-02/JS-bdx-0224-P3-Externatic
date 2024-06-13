@@ -1,5 +1,6 @@
 import SearchInputCandidat from "./inputCandidat/searchInput/SearchInputCandidat";
 import SearchInputConsultant from "./inputConsultant/searchInput/SearchInputConsultant";
+import FormInputConsultant from "./inputConsultant/formConsultant/FormInputConsultant";
 import ButtonOffer from "./buttons/ButtonOffer";
 import Tag from "./tag/Tag";
 import Card from "./card/Card";
@@ -102,19 +103,18 @@ export default function Atomic() {
               type="text"
             />
           </div>
-          <div className=" w-[34rem] flex flex-col gap-4 max-sm:w-64 max-md:w-96">
-            <label
-              className="text-[var(--primary-color)] font-medium max-md:text-sm max-md:font-normal"
-              htmlFor="champ"
-            >
-              DÉTAILS DU POSTE
-            </label>
-            <input
-              className="min-h-72 border-2 outline-[var(--primary-color)] rounded-s"
-              id="champ"
+          <form>
+            <FormInputConsultant
+              id="champ1"
+              label="TITRE DE L'OFFRE"
               type="text"
             />
-          </div>
+            <FormInputConsultant
+              id="champ2"
+              label="DÉTAILS DU POSTE"
+              type="textarea"
+            />
+          </form>
         </hgroup>
         {/* END */}
 
