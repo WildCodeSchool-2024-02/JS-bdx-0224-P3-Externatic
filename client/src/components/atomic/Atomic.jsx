@@ -90,19 +90,6 @@ export default function Atomic() {
               iconSrc="./src/assets/images/ICONSEARCH.svg"
             />
           </form>
-          <div className="w-[34rem] flex flex-col gap-4 max-sm:w-64 max-md:w-96">
-            <label
-              className="text-[var(--primary-color)] font-medium max-md:text-sm max-md:font-normal"
-              htmlFor="champ"
-            >
-              TITRE DE L'OFFRE
-            </label>
-            <input
-              className=" h-12 border-2 outline-[var(--primary-color)] rounded-s "
-              id="champ"
-              type="text"
-            />
-          </div>
           <form>
             <FormInputConsultant
               id="champ1"
