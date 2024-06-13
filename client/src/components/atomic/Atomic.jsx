@@ -30,7 +30,7 @@ export default function Atomic() {
 
       <main className=" p-4">
         {/* TITLE */}
-        <hgroup className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4">
+        <section className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4">
           <h1 className=" max-md:text-2xl">Title-1 </h1>
           <h1 className="text-[var(--primary-color)] max-md:text-2xl">
             Title-1{" "}
@@ -43,11 +43,11 @@ export default function Atomic() {
           <h3 className="text-[var(--primary-color)] max-md:text-lg">
             Title-3{" "}
           </h3>
-        </hgroup>
+        </section>
         {/* END */}
 
         {/* PARAGRAPHE */}
-        <hgroup className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4">
+        <section className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4">
           <p className="max-md:text-sm">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam
             perspiciatis officia consequuntur expedita, sequi doloremque dolor,
@@ -60,11 +60,11 @@ export default function Atomic() {
             aut quasi exercitationem doloribus dicta, facere ipsum rerum ratione
             cumque. Aperiam debitis sit eaque.
           </p>
-        </hgroup>
+        </section>
         {/* END */}
 
         {/* INPUT */}
-        <section className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4 flex flex-col gap-4 items-center">
+        <section className="border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 mb-4 flex flex-col gap-4 items-center">
         
           <form>
             <FormInputCandidat id="champPrenom" label="PRÉNOM" type="text" />
@@ -82,6 +82,7 @@ export default function Atomic() {
               id="searchJob"
               placeholder="Rechercher un poste ..."
               iconSrc="./src/assets/images/ICONSEARCH.svg"
+              alt="logo recherche"
             />
           </form>
           <form >
@@ -155,83 +156,83 @@ export default function Atomic() {
       <footer className=" bg-slate-400 flex flex-wrap gap-4 p-4">
         <img
           src="./src/assets/images/linkedin.svg"
-          alt="Logo linkedin"
+          alt="logo linkedin"
         />
         <img
           src="./src/assets/images/instagram.svg"
-          alt="Logo instagram"
+          alt="logo instagram"
         />
         <img
           src="./src/assets/images/twitter.svg"
-          alt="Logo twitter"
+          alt="logo twitter"
         />
         <img
           src="./src/assets/images/add.svg"
-          alt="Logo add offer"
+          alt="logo ajouter offre"
         />
         <img
           src="./src/assets/images/cv.svg"
-          alt="Logo upload"
+          alt="logo voir cv"
         />
         <img
           src="./src/assets/images/delete.svg"
-          alt="Logo delete"
+          alt="logo supprimer"
         />
         <img
           src="./src/assets/images/iconConnect.svg"
-          alt="Logo profile connected"
+          alt="logo profil connecté"
         />
         <img
           src="./src/assets/images/iconDisconnect.svg"
-          alt="Logo profile disconnected "
+          alt="logo profil déconnecté "
         />
         <img
           src="./src/assets/images/ICONLOC.svg"
-          alt="Logo location"
+          alt="logo localisation"
         />
         <img
           src="./src/assets/images/ICONSEARCH.svg"
-          alt="Logo search"
+          alt="logo recherche"
         />
         <img
           src="./src/assets/images/ICONSTACK.svg"
-          alt="Logo stack"
+          alt="logo compétences"
         />
         <img
           src="./src/assets/images/mail.svg"
-          alt="Logo mail"
+          alt="logo mail"
         />
         <img
           src="./src/assets/images/menuBurger.svg"
-          alt="Logo menu burger"
+          alt="logo menu burger"
         />
         <img
           src="./src/assets/images/modifier.svg"
-          alt="Logo linkedin"
+          alt="logo modifier"
         />
         <img
           src="./src/assets/images/notif.svg"
-          alt="Logo notification"
+          alt="logo notification"
         />
         <img
           src="./src/assets/images/open.svg"
-          alt="Logo look cv"
+          alt="logo voir offre"
         />
         <img
           src="./src/assets/images/phone.svg"
-          alt="Logo phone"
+          alt="logo téléphone"
         />
         <img
           src="./src/assets/images/signet.svg"
-          alt="Logo signet not selected"
+          alt="logo favori non séléectionné"
         />
         <img
           src="./src/assets/images/signetFull.svg"
-          alt="Logo signet selected"
+          alt="logo favori sélectionné"
         />
         <img
           src="./src/assets/images/upload.svg"
-          alt="Logo upload cv"
+          alt="logo télécharger cv"
         />
       </footer>
       {/* END */}
