@@ -1,19 +1,16 @@
-import SearchInputCandidat from "./inputCandidat/searchInput/SearchInputCandidat";
-import SearchInputConsultant from "./inputConsultant/searchInput/SearchInputConsultant";
-import FormInputCandidat from "./inputCandidat/formCandidat/FormInputCandidat";
-import FormInputConsultant from "./inputConsultant/formConsultant/FormInputConsultant";
-import ButtonOffer from "./buttons/ButtonOffer";
-import Tag from "./tag/Tag";
-import Card from "./card/Card";
-import TagNotSelect from "./tag/TagNotSelect";
-import TagStatusGreen from "./tag/TagStatusGreen";
-import TagStatusOrange from "./tag/TagStatusOrange";
-import TagStatusRed from "./tag/TagStatusRed";
-import ButtonDeleteSmall from "./buttons/ButtonDeleteSmall";
-import SmallCheckBox from "./checkBox/SmallCheckBox";
-import BigCheckBox from "./checkBox/BigCheckBox";
-import ButtonPostuler from "./buttons/ButtonPostuler";
 import ButtonDelete from "./buttons/ButtonDelete";
+import ButtonOffer from "./buttons/ButtonOffer";
+import ButtonPostuler from "./buttons/ButtonPostuler";
+import ButtonSmall from "./buttons/ButtonSmall";
+import Card from "./card/Card";
+import BigCheckBox from "./checkBox/BigCheckBox";
+import SmallCheckBox from "./checkBox/SmallCheckBox";
+import FormInputCandidat from "./inputCandidat/formCandidat/FormInputCandidat";
+import SearchInputCandidat from "./inputCandidat/searchInput/SearchInputCandidat";
+import FormInputConsultant from "./inputConsultant/formConsultant/FormInputConsultant";
+import SearchInputConsultant from "./inputConsultant/searchInput/SearchInputConsultant";
+import Tag from "./tag/Tag";
+import TagStatus from "./tag/TagStatus";
 
 export default function Atomic() {
   return (
@@ -65,7 +62,6 @@ export default function Atomic() {
 
         {/* INPUT */}
         <section className="border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 mb-4 flex flex-col gap-4 items-center">
-        
           <form>
             <FormInputCandidat id="champPrenom" label="PRÉNOM" type="text" />
             <FormInputCandidat id="champNom" label="NOM" type="text" />
@@ -85,7 +81,7 @@ export default function Atomic() {
               alt="logo recherche"
             />
           </form>
-          <form >
+          <form>
             <FormInputConsultant
               id="champOffre"
               label="TITRE DE L'OFFRE"
@@ -111,40 +107,47 @@ export default function Atomic() {
         <section className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4 flex flex-wrap gap-4 items-center">
           <ButtonOffer />
           <Tag tag="REACT " />
-          <TagNotSelect tag="JAVA" />
-          <TagStatusGreen />
-          <TagStatusOrange />
-          <TagStatusRed />
-          <ButtonDeleteSmall
+          <TagStatus
+            text="DISPONIBLE"
+            textColor="text-[var(--validation-color-ok)]"
+            borderColor="border-[var(--validation-color-ok)]"
+          />
+          <TagStatus
+            text="EN COURS"
+            textColor="text-[var(--validation-color-in-progress)]"
+            borderColor="border-[var(--validation-color-in-progress)]"
+          />
+          <TagStatus
+            text="REFUSE"
+            textColor="text-[var(--validation-color-no)]"
+            borderColor="border-[var(--validation-color-no)]"
+          />
+          <ButtonSmall
             name="Supprimer"
             img="/src/assets/images/delete.svg"
             alt="supprimer"
           />
-          <ButtonDeleteSmall
+          <ButtonSmall
             name="Modifier"
             img="/src/assets/images/modifier.svg"
             alt="modifier"
           />
-          <ButtonDeleteSmall
+          <ButtonSmall
             name="Voir"
             img="/src/assets/images/open.svg"
             alt="voir"
           />
-          <ButtonDeleteSmall
+          <ButtonSmall
             name="Téléphone"
             img="/src/assets/images/phone.svg"
             alt="téléphone"
           />
-          <ButtonDeleteSmall
+          <ButtonSmall
             name="Email"
             img="/src/assets/images/mail.svg"
             alt="Email"
           />
-          <ButtonDeleteSmall
-            name="CV"
-            img="/src/assets/images/cv.svg"
-            alt="cv"
-          />
+          <ButtonSmall name="CV" img="/src/assets/images/cv.svg" alt="cv" />
           <SmallCheckBox />
           <BigCheckBox />
           <ButtonPostuler />
@@ -154,30 +157,12 @@ export default function Atomic() {
       </main>
       {/* LOGO SVG */}
       <footer className=" bg-slate-400 flex flex-wrap gap-4 p-4">
-        <img
-          src="./src/assets/images/linkedin.svg"
-          alt="logo linkedin"
-        />
-        <img
-          src="./src/assets/images/instagram.svg"
-          alt="logo instagram"
-        />
-        <img
-          src="./src/assets/images/twitter.svg"
-          alt="logo twitter"
-        />
-        <img
-          src="./src/assets/images/add.svg"
-          alt="logo ajouter offre"
-        />
-        <img
-          src="./src/assets/images/cv.svg"
-          alt="logo voir cv"
-        />
-        <img
-          src="./src/assets/images/delete.svg"
-          alt="logo supprimer"
-        />
+        <img src="./src/assets/images/linkedin.svg" alt="logo linkedin" />
+        <img src="./src/assets/images/instagram.svg" alt="logo instagram" />
+        <img src="./src/assets/images/twitter.svg" alt="logo twitter" />
+        <img src="./src/assets/images/add.svg" alt="logo ajouter offre" />
+        <img src="./src/assets/images/cv.svg" alt="logo voir cv" />
+        <img src="./src/assets/images/delete.svg" alt="logo supprimer" />
         <img
           src="./src/assets/images/iconConnect.svg"
           alt="logo profil connecté"
@@ -186,42 +171,15 @@ export default function Atomic() {
           src="./src/assets/images/iconDisconnect.svg"
           alt="logo profil déconnecté "
         />
-        <img
-          src="./src/assets/images/ICONLOC.svg"
-          alt="logo localisation"
-        />
-        <img
-          src="./src/assets/images/ICONSEARCH.svg"
-          alt="logo recherche"
-        />
-        <img
-          src="./src/assets/images/ICONSTACK.svg"
-          alt="logo compétences"
-        />
-        <img
-          src="./src/assets/images/mail.svg"
-          alt="logo mail"
-        />
-        <img
-          src="./src/assets/images/menuBurger.svg"
-          alt="logo menu burger"
-        />
-        <img
-          src="./src/assets/images/modifier.svg"
-          alt="logo modifier"
-        />
-        <img
-          src="./src/assets/images/notif.svg"
-          alt="logo notification"
-        />
-        <img
-          src="./src/assets/images/open.svg"
-          alt="logo voir offre"
-        />
-        <img
-          src="./src/assets/images/phone.svg"
-          alt="logo téléphone"
-        />
+        <img src="./src/assets/images/ICONLOC.svg" alt="logo localisation" />
+        <img src="./src/assets/images/ICONSEARCH.svg" alt="logo recherche" />
+        <img src="./src/assets/images/ICONSTACK.svg" alt="logo compétences" />
+        <img src="./src/assets/images/mail.svg" alt="logo mail" />
+        <img src="./src/assets/images/menuBurger.svg" alt="logo menu burger" />
+        <img src="./src/assets/images/modifier.svg" alt="logo modifier" />
+        <img src="./src/assets/images/notif.svg" alt="logo notification" />
+        <img src="./src/assets/images/open.svg" alt="logo voir offre" />
+        <img src="./src/assets/images/phone.svg" alt="logo téléphone" />
         <img
           src="./src/assets/images/signet.svg"
           alt="logo favori non séléectionné"
@@ -230,10 +188,7 @@ export default function Atomic() {
           src="./src/assets/images/signetFull.svg"
           alt="logo favori sélectionné"
         />
-        <img
-          src="./src/assets/images/upload.svg"
-          alt="logo télécharger cv"
-        />
+        <img src="./src/assets/images/upload.svg" alt="logo télécharger cv" />
       </footer>
       {/* END */}
     </>
