@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 export default function FormInputConsultant({ id, label, type }) {
   return (
-    <section className="w-[34rem] flex flex-col gap-4 max-sm:w-64 max-md:w-96">
+    <section className="w-[34rem] flex flex-col mb-4 gap-4 max-sm:w-64 max-md:w-96">
       <label
         className="text-[var(--primary-color)] font-medium max-md:text-sm max-md:font-normal"
         htmlFor={id}

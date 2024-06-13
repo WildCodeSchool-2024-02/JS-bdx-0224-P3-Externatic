@@ -1,5 +1,6 @@
 import SearchInputCandidat from "./inputCandidat/searchInput/SearchInputCandidat";
 import SearchInputConsultant from "./inputConsultant/searchInput/SearchInputConsultant";
+import FormInputCandidat from "./inputCandidat/formCandidat/FormInputCandidat";
 import FormInputConsultant from "./inputConsultant/formConsultant/FormInputConsultant";
 import ButtonOffer from "./buttons/ButtonOffer";
 import Tag from "./tag/Tag";
@@ -63,20 +64,13 @@ export default function Atomic() {
         {/* END */}
 
         {/* INPUT */}
-        <hgroup className="border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 mb-4 flex flex-col gap-4 items-center">
-          <div className=" w-72 flex flex-col gap-4 max-sm:w-64">
-            <label
-              className="text-[var(--primary-color)] font-medium max-md:text-sm max-md:font-normal"
-              htmlFor="champ"
-            >
-              PRÉNOM
-            </label>
-            <input
-              className="  h-10 border-2 outline-[var(--primary-color)] rounded-s"
-              id="champ"
-              type="text"
-            />
-          </div>
+        <section className="border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 mb-4 flex flex-col gap-4 items-center">
+        
+          <form>
+            <FormInputCandidat id="champPrenom" label="PRÉNOM" type="text" />
+            <FormInputCandidat id="champNom" label="NOM" type="text" />
+            <FormInputCandidat id="champEmail" label="EMAIL" type="email" />
+          </form>
           <form>
             <SearchInputConsultant
               id="searchCandidate"
@@ -90,19 +84,19 @@ export default function Atomic() {
               iconSrc="./src/assets/images/ICONSEARCH.svg"
             />
           </form>
-          <form>
+          <form >
             <FormInputConsultant
-              id="champ1"
+              id="champOffre"
               label="TITRE DE L'OFFRE"
               type="text"
             />
             <FormInputConsultant
-              id="champ2"
+              id="champPoste"
               label="DÉTAILS DU POSTE"
               type="textarea"
             />
           </form>
-        </hgroup>
+        </section>
         {/* END */}
 
         {/* CARD */}
@@ -113,7 +107,7 @@ export default function Atomic() {
         {/* END */}
 
         {/* CTA / SKILL / DISPONIBILITÉ */}
-        <hgroup className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4 flex flex-wrap gap-4 items-center">
+        <section className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4 flex flex-wrap gap-4 items-center">
           <ButtonOffer />
           <Tag tag="REACT " />
           <TagNotSelect tag="JAVA" />
@@ -154,110 +148,90 @@ export default function Atomic() {
           <BigCheckBox />
           <ButtonPostuler />
           <ButtonDelete />
-        </hgroup>
+        </section>
         {/* END */}
       </main>
       {/* LOGO SVG */}
       <footer className=" bg-slate-400 flex flex-wrap gap-4 p-4">
         <img
-          className=""
           src="./src/assets/images/linkedin.svg"
           alt="Logo linkedin"
         />
         <img
-          className=""
           src="./src/assets/images/instagram.svg"
-          alt="Logo linkedin"
+          alt="Logo instagram"
         />
         <img
-          className=""
           src="./src/assets/images/twitter.svg"
-          alt="Logo linkedin"
+          alt="Logo twitter"
         />
         <img
-          className=""
           src="./src/assets/images/add.svg"
-          alt="Logo linkedin"
+          alt="Logo add offer"
         />
         <img
-          className=""
           src="./src/assets/images/cv.svg"
-          alt="Logo linkedin"
+          alt="Logo upload"
         />
         <img
-          className=""
           src="./src/assets/images/delete.svg"
-          alt="Logo linkedin"
+          alt="Logo delete"
         />
         <img
-          className=""
           src="./src/assets/images/iconConnect.svg"
-          alt="Logo linkedin"
+          alt="Logo profile connected"
         />
         <img
-          className=""
           src="./src/assets/images/iconDisconnect.svg"
-          alt="Logo linkedin"
+          alt="Logo profile disconnected "
         />
         <img
-          className=""
           src="./src/assets/images/ICONLOC.svg"
-          alt="Logo linkedin"
+          alt="Logo location"
         />
         <img
-          className=""
           src="./src/assets/images/ICONSEARCH.svg"
-          alt="Logo linkedin"
+          alt="Logo search"
         />
         <img
-          className=""
           src="./src/assets/images/ICONSTACK.svg"
-          alt="Logo linkedin"
+          alt="Logo stack"
         />
         <img
-          className=""
           src="./src/assets/images/mail.svg"
-          alt="Logo linkedin"
+          alt="Logo mail"
         />
         <img
-          className=""
           src="./src/assets/images/menuBurger.svg"
-          alt="Logo linkedin"
+          alt="Logo menu burger"
         />
         <img
-          className=""
           src="./src/assets/images/modifier.svg"
           alt="Logo linkedin"
         />
         <img
-          className=""
           src="./src/assets/images/notif.svg"
-          alt="Logo linkedin"
+          alt="Logo notification"
         />
         <img
-          className=""
           src="./src/assets/images/open.svg"
-          alt="Logo linkedin"
+          alt="Logo look cv"
         />
         <img
-          className=""
           src="./src/assets/images/phone.svg"
-          alt="Logo linkedin"
+          alt="Logo phone"
         />
         <img
-          className=""
           src="./src/assets/images/signet.svg"
-          alt="Logo linkedin"
+          alt="Logo signet not selected"
         />
         <img
-          className=""
           src="./src/assets/images/signetFull.svg"
-          alt="Logo linkedin"
+          alt="Logo signet selected"
         />
         <img
-          className=""
           src="./src/assets/images/upload.svg"
-          alt="Logo linkedin"
+          alt="Logo upload cv"
         />
       </footer>
       {/* END */}
