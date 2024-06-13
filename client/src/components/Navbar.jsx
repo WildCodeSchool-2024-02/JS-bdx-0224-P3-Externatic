@@ -1,9 +1,11 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import NavAccess from "../services/NavAccess";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const menuRef = useRef(null);
 
   const handleChange = () => {
     setIsVisible(true);
@@ -17,36 +19,7 @@ function Navbar() {
     }, 1);
   };
 
-  const menuRef = useRef(null);
-
-  useEffect(() => {
-    const menuRefCurrent = menuRef.current;
-    const focusableElementsString = "a, button";
-    const menuLinks = menuRef.current.querySelectorAll(focusableElementsString);
-    const firstElement = menuLinks[0];
-    const lastElement = menuLinks[menuLinks.length - 1];
-
-    const handleTabKey = (e) => {
-      if (e.key === "Tab") {
-        if (e.shiftKey) {
-          if (document.activeElement === firstElement) {
-            e.preventDefault();
-            lastElement.focus();
-          }
-        }
-        if (document.activeElement === lastElement) {
-          e.preventDefault();
-          firstElement.focus();
-        }
-      }
-    };
-
-    menuRefCurrent.addEventListener("keydown", handleTabKey);
-
-    return () => {
-      menuRefCurrent.removeEventListener("keydown", handleTabKey);
-    };
-  }, []);
+  NavAccess(menuRef);
 
   return (
     <>
