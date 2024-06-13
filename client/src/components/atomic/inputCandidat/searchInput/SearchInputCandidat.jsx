@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-export default function SearchInputCandidat({ id, placeholder, iconSrc }) {
+export default function SearchInputCandidat({ id, placeholder, iconSrc, alt }) {
   return (
     <section className="relative flex items-center w-96 h-20 max-sm:w-64 max-sm:h-14">
       <label className="hidden" htmlFor={id}>
@@ -14,7 +14,7 @@ export default function SearchInputCandidat({ id, placeholder, iconSrc }) {
       />
       <img
         src={iconSrc}
-        alt="Search Icon"
+        alt={alt}
         className="absolute left-4 w-6 h-6"
       />
     </section>
@@ -25,4 +25,5 @@ SearchInputCandidat.propTypes = {
   id: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   iconSrc: PropTypes.string.isRequired,
+  alt : PropTypes.string.isRequired,
 };

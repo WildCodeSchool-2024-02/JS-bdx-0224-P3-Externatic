@@ -14,7 +14,7 @@ export default function SearchInputConsultant({ id, placeholder }) {
       />
       <img
         src="./src/assets/images/ICONSEARCH.svg"
-        alt="Search Icon"
+        alt="logo recherche"
         className="absolute left-4 w-6 h-6"
       />
     </section>
