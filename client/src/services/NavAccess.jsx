@@ -1,5 +1,5 @@
 // src/hooks/useKeyboardNavigation.js
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 const NavAccess = (menuRef) => {
   useEffect(() => {
@@ -17,10 +17,9 @@ const NavAccess = (menuRef) => {
             lastElement.focus();
           }
         } else {
-          if (document.activeElement === lastElement) {
-            e.preventDefault();
-            firstElement.focus();
-          }
+          document.activeElement === lastElement;
+          e.preventDefault();
+          firstElement.focus();
         }
       }
     };
