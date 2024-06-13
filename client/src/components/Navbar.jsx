@@ -54,9 +54,9 @@ function Navbar() {
         type="button"
         className="block absolute left-4 top-4 md:hidden"
         onClick={handleChange}
-        aria-label="Open menu"
+        aria-label="Ouvrir le menu"
       >
-        <img src="/src/assets/images/menuBurger.svg" alt="" />
+        <img src="/src/assets/images/menuBurger.svg" alt="icone menu burger" />
       </button>
       <nav
         ref={menuRef}
@@ -73,34 +73,35 @@ function Navbar() {
         <img
           className="hidden md:block md:min-w-1 md:max-w-10 md:ml-6"
           src="/src/assets/Externatic.svg"
-          alt=""
+          alt="logo externatic"
         />
+        <button
+          type="button"
+          className="block absolute right-5 top-2 w-10 md:hidden"
+          onClick={handleChange}
+          aria-label="Fermer le menu"
+        >
+          <img
+            src="/src/assets/images/cross-svgrepo-com.svg"
+            alt="icone fermeture menu"
+          />
+        </button>
         <ul
           className="text-[var(--primary-background-color)] flex flex-col gap-8 text-center 
-        md:flex-row md:gap-10 md:self-center md:justify-end md:ml-auto md:mr-6 md:text-[var(--text-color)]"
+        md:flex-row md:gap-10 md:self-center md:justify-end md:ml-auto md:mr-6 md:text-[var(--text-color)] mt-24"
         >
-          <li className="self-end mr-2 mt-2">
-            <button
-              type="button"
-              className="block w-10 md:hidden"
-              onClick={handleChange}
-              aria-label="Close menu"
-            >
-              <img src="/src/assets/images/cross-svgrepo-com.svg" alt="" />
-            </button>
+          <li>
+            <Link to="/">Accueil</Link>
           </li>
           <li>
-            <Link to="null">Accueil</Link>
+            <Link to="/">Rechercher</Link>
           </li>
           <li>
-            <Link to="null">Rechercher</Link>
-          </li>
-          <li>
-            <Link to="null">Profil</Link>
+            <Link to="/">Profil</Link>
           </li>
           <li>
             <Link
-              to="null"
+              to="/"
               className="bg-[var(--secondary-background-color)] pt-1 pb-1 pr-2 pl-2 rounded-md text-[var(--primary-color)] font-medium 
               md:bg-[var(--primary-color)] md:text-[var(--primary-background-color)] md:-mr-8"
             >
@@ -108,12 +109,12 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="null">Se connecter</Link>
+            <Link to="/">Se connecter</Link>
           </li>
           <li className="self-center max-w-7">
             <img
               src="/src/assets/images/iconDisconnect.svg"
-              alt="disconnected icon"
+              alt="icone profil non connecté"
             />
           </li>
         </ul>
