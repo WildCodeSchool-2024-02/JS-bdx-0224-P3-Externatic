@@ -92,8 +92,6 @@ function Navbar({
 
 Navbar.propTypes = {
   handleChange: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  isVisible: PropTypes.bool.isRequired,
   navOpen: PropTypes.string.isRequired,
   navVisible: PropTypes.string.isRequired,
 };
