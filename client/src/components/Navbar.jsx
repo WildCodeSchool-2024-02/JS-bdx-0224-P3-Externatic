@@ -5,12 +5,8 @@ import NavAccess from "../services/NavAccess";
 
 function Navbar({
   handleChange,
-  isOpen,
-  isVisible,
   navOpen,
-  navNotOpen,
   navVisible,
-  navNotVisible,
 }) {
   const menuRef = useRef(null);
 
@@ -38,11 +34,8 @@ function Navbar({
       </button>
       <nav
         ref={menuRef}
-        className={`
-          ${isOpen ? navOpen : navNotOpen} 
-              ${
-                isVisible ? navVisible : navNotVisible
-              } md:min-h-16 md:min-w-full md:bg-[var(--secondary-background-color)] md:translate-x-0 md:flex `}
+        className={`${navOpen} ${navVisible}
+           md:min-h-16 md:min-w-full md:bg-[var(--secondary-background-color)] md:translate-x-0 md:flex`}
       >
         <img
           className="hidden md:block md:min-w-1 md:max-w-10 md:ml-6"
@@ -102,9 +95,7 @@ Navbar.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   isVisible: PropTypes.bool.isRequired,
   navOpen: PropTypes.string.isRequired,
-  navNotOpen: PropTypes.string.isRequired,
   navVisible: PropTypes.string.isRequired,
-  navNotVisible: PropTypes.string.isRequired,
 };
 
 export default Navbar;

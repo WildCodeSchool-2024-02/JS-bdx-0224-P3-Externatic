@@ -5,13 +5,6 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
-  const navOpen =
-    "block bg-[var(--primary-color)] min-h-screen min-w-56 absolute translate-x-0 top-0 delay-75 duration-500 text-[var(--text-content-size)] text-[var(--primary-background-color)]";
-  const navNotOpen =
-    "block duration-500 bg-[var(--primary-color)] min-h-screen min-w-56 absolute -translate-x-56 top-0 text-[var(--text-content-size)] text-[var(--primary-background-color)]";
-  const navVisible = "block";
-  const navNotVisible = "hidden";
-
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const handleChange = () => {
@@ -25,6 +18,11 @@ function App() {
       setIsOpen(!isOpen);
     }, 1);
   };
+  const navOpen = isOpen
+    ? "block bg-[var(--primary-color)] min-h-screen min-w-56 absolute translate-x-0 top-0 delay-75 duration-500 text-[var(--text-content-size)] text-[var(--primary-background-color)]"
+    : "block duration-500 bg-[var(--primary-color)] min-h-screen min-w-56 absolute -translate-x-56 top-0 text-[var(--text-content-size)] text-[var(--primary-background-color)]";
+
+  const navVisible = isVisible ? "block" : "hidden";
   return (
     <>
       <Navbar
@@ -32,9 +30,7 @@ function App() {
         isOpen={isOpen}
         isVisible={isVisible}
         navOpen={navOpen}
-        navNotOpen={navNotOpen}
         navVisible={navVisible}
-        navNotVisible={navNotVisible}
       />
       <Outlet />
       <ScrollToTop />
