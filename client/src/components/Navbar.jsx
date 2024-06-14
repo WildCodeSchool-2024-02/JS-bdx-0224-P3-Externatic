@@ -68,10 +68,10 @@ function Navbar({
             <Link to="/">Accueil</Link>
           </li>
           <li>
-            <Link to="/">Rechercher</Link>
+            <Link to="/offer">Rechercher</Link>
           </li>
           <li>
-            <Link to="/">Profil</Link>
+            <Link to="/dashboard/:id">Profil</Link>
           </li>
           <li>
             <Link
