@@ -100,7 +100,7 @@ export default function Atomic() {
         {/* CARD */}
         <section className="flex gap-4 max-md:flex-col max-md:items-center max-md:justify-center">
           <Card />
-          <CardConsultant />
+          <CardConsultant  />
         </section>
         {/* END */}
 
