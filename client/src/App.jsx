@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const navOpen =
@@ -34,9 +36,9 @@ function App() {
         navVisible={navVisible}
         navNotVisible={navNotVisible}
       />
-      <main>
-        <Outlet />
-      </main>
+      <Outlet />
+      <ScrollToTop />
+      <Footer />
     </>
   );
 }
