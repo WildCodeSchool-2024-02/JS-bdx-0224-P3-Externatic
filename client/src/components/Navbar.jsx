@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import NavAccess from "../services/NavAccess.jsx";
+import NavAccess from "../services/NavAccess";
 
 function Navbar({
   handleChange,
@@ -23,6 +23,7 @@ function Navbar({
         navAccessKeyboard.removeEventListener();
       };
     }
+    return () => {};
   }, [menuRef]);
 
   return (
