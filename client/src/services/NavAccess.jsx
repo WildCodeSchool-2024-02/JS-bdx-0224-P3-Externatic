@@ -1,35 +1,39 @@
-// src/hooks/useKeyboardNavigation.js
-import { useEffect } from "react";
+class NavAccess {
+  constructor(menuRef) {
+    this.menuRef = menuRef;
+    this.focusableElementsString = "a, button";
+  }
 
-const NavAccess = (menuRef) => {
-  useEffect(() => {
-    const menuRefCurrent = menuRef.current;
-    const focusableElementsString = "a, button";
-    const menuLinks = menuRefCurrent.querySelectorAll(focusableElementsString);
+  handleTabKey = (e) => {
+    const menuRefCurrent = this.menuRef.current;
+    if (!menuRefCurrent) return;
+
+    const menuLinks = menuRefCurrent.querySelectorAll(this.focusableElementsString);
     const firstElement = menuLinks[0];
     const lastElement = menuLinks[menuLinks.length - 1];
 
-    const handleTabKey = (e) => {
-      if (e.key === "Tab") {
-        if (e.shiftKey) {
-          if (document.activeElement === firstElement) {
-            e.preventDefault();
-            lastElement.focus();
-          }
-        }
-        if (document.activeElement === lastElement) {
-          e.preventDefault();
-          firstElement.focus();
-        }
+    if (e.key === "Tab") {
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement.focus();
+      } if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement.focus();
       }
-    };
+    }
+  };
 
-    menuRefCurrent.addEventListener("keydown", handleTabKey);
+  addEventListener() {
+    const menuRefCurrent = this.menuRef.current;
+    if (!menuRefCurrent) return;
+    menuRefCurrent.addEventListener("keydown", this.handleTabKey);
+  }
 
-    return () => {
-      menuRefCurrent.removeEventListener("keydown", handleTabKey);
-    };
-  }, [menuRef]);
-};
+  removeEventListener() {
+    const menuRefCurrent = this.menuRef.current;
+    if (!menuRefCurrent) return;
+    menuRefCurrent.removeEventListener("keydown", this.handleTabKey);
+  }
+}
 
 export default NavAccess;

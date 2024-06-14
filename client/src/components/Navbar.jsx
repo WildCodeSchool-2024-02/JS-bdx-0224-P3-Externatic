@@ -1,25 +1,29 @@
-import { useState, useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import NavAccess from "../services/NavAccess";
+import PropTypes from "prop-types";
+import NavAccess from "../services/NavAccess.jsx";
 
-function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+function Navbar({
+  handleChange,
+  isOpen,
+  isVisible,
+  navOpen,
+  navNotOpen,
+  navVisible,
+  navNotVisible,
+}) {
   const menuRef = useRef(null);
 
-  const handleChange = () => {
-    setIsVisible(true);
-    if (isVisible) {
-      setTimeout(() => {
-        setIsVisible(false);
-      }, 500);
-    }
-    setTimeout(() => {
-      setIsOpen(!isOpen);
-    }, 1);
-  };
+  useEffect(() => {
+    if (menuRef.current) {
+      const navAccessKeyboard = new NavAccess(menuRef);
+      navAccessKeyboard.addEventListener();
 
-  NavAccess(menuRef);
+      return () => {
+        navAccessKeyboard.removeEventListener();
+      };
+    }
+  }, [menuRef]);
 
   return (
     <>
@@ -34,13 +38,9 @@ function Navbar() {
       <nav
         ref={menuRef}
         className={`
-          ${
-            isOpen
-              ? "block bg-[var(--primary-color)] min-h-screen min-w-56 absolute translate-x-0 top-0 delay-75 duration-500 text-[var(--text-content-size)] text-[var(--primary-background-color)]"
-              : "block duration-500 bg-[var(--primary-color)] min-h-screen min-w-56 absolute -translate-x-56 top-0 text-[var(--text-content-size)] text-[var(--primary-background-color)]"
-          } 
+          ${isOpen ? navOpen : navNotOpen} 
               ${
-                isVisible ? "block" : "hidden"
+                isVisible ? navVisible : navNotVisible
               } md:min-h-16 md:min-w-full md:bg-[var(--secondary-background-color)] md:translate-x-0 md:flex `}
       >
         <img
@@ -95,5 +95,15 @@ function Navbar() {
     </>
   );
 }
+
+Navbar.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  isVisible: PropTypes.bool.isRequired,
+  navOpen: PropTypes.string.isRequired,
+  navNotOpen: PropTypes.string.isRequired,
+  navVisible: PropTypes.string.isRequired,
+  navNotVisible: PropTypes.string.isRequired,
+};
 
 export default Navbar;
