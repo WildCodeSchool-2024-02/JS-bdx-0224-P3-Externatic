@@ -3,13 +3,13 @@ import Tag from "../tag/Tag";
 
 export default function Card() {
   return (
-    <article className=" max-w-xl border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 bg-[var(--secondary-background-color)] mb-4 max-md:max-w-96 ">
+    <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate max-w-xl border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 bg-[var(--secondary-background-color)] mb-4 max-md:max-w-96 ">
       <header className="flex justify-between items-center mb-4">
         <h3 className="text-[var(--primary-color)] max-md:text-lg">Title-3 </h3>
         <label className="peer text-[0] cursor-pointer">favoris
           <input type="checkbox" className="peer hidden"/>
         <svg
-          className=" peer-checked:fill-[var(--primary-color)]"
+          className=" peer-checked:fill-[var(--primary-color)] peer-checked:animate-jump animate-once animate-duration-500 animate-ease-in-out animate-alternate"
           width="23"
           height="29"
           viewBox="0 0 13 19"
