@@ -9,7 +9,7 @@ export default function Card() {
         <label className="peer text-[0] cursor-pointer">favoris
           <input type="checkbox" className="peer hidden"/>
         <svg
-          className=" peer-checked:fill-[var(--primary-color)]"
+          className=" peer-checked:fill-[var(--primary-color)] animate-wiggle"
           width="23"
           height="29"
           viewBox="0 0 13 19"
