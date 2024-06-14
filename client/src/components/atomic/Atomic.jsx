@@ -11,6 +11,7 @@ import FormInputConsultant from "./inputConsultant/formConsultant/FormInputConsu
 import SearchInputConsultant from "./inputConsultant/searchInput/SearchInputConsultant";
 import Tag from "./tag/Tag";
 import TagStatus from "./tag/TagStatus";
+import CardConsultant from "./card/CardConsultant";
 
 export default function Atomic() {
   return (
@@ -99,7 +100,7 @@ export default function Atomic() {
         {/* CARD */}
         <section className="flex gap-4 max-md:flex-col max-md:items-center max-md:justify-center">
           <Card />
-          <Card />
+          <CardConsultant  />
         </section>
         {/* END */}
 
