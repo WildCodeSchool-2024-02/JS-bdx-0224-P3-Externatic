@@ -28,7 +28,8 @@ class OfferSeeder extends AbstractSeeder {
 
       // Insert the fakeOffer data into the 'offer' table
       this.insert(fakeOffer); // insert into offer
-    }
+     
+    } 
   }
 }
 

@@ -11,7 +11,7 @@ class ConsultantSeeder extends AbstractSeeder {
 
   run() {
     // Generate and insert fake data into the 'consultant' table
-    for (let i = 0; i < 3; i += 1) {
+    for (let i = 0; i < 10; i += 1) {
       // Generate fake consultant data
       const fakeConsultant = {
         user_id: this.getRef(`user_${i}`).insertId,

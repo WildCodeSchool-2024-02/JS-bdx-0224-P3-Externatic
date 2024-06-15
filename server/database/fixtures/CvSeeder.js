@@ -15,7 +15,7 @@ class CvSeeder extends AbstractSeeder {
       // Generate fake cv data
       const fakeCv = {
         path: this.faker.image.urlPlaceholder(),
-        name: this.candidate.name(),
+        name: this.faker.person.lastName(),
         candidate_id: this.getRef(`candidate_${i}`).insertId,
         refName: `cv_${i}`, // Create a reference name for the cv
       };

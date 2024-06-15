@@ -13,7 +13,7 @@ class TechnoSeeder extends AbstractSeeder {
     for (let i = 0; i < 10; i += 1) {
       // Generate fake techno data
       const fakeTechno = {
-        name: this.faker.helpers.arrayElement("Javascript", "HTML", "CSS", "React.js", "Node.js", "Python", "Figma", "Java", "Angular", "Svelte", "MySQL", "NoSQL", "Spring", "Express"),
+        name: this.faker.helpers.arrayElement(["Javascript", "HTML", "CSS", "React.js", "Node.js", "Python", "Figma", "Java", "Angular", "Svelte", "MySQL", "NoSQL", "Spring", "Express"]),
         refName: `techno_${i}`, // Create a reference name for the techno
       };
 
