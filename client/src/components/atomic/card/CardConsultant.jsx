@@ -1,12 +1,13 @@
+import PropTypes from "prop-types";
 import ButtonSmall from "../buttons/ButtonSmall";
 import Tag from "../tag/Tag";
 import TagStatus from "../tag/TagStatus";
 
-export default function Card() {
+export default function CardConsultant({ name="Nom Prénom", textContent="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam perspiciatis officia consequuntur expedita, sequi doloremque dolor, aut quasi exercitationem doloribus dicta, facere ipsum rerum ratione cumque.Aperiam debitis sit eaque."}) {
   return (
     <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate max-w-xl border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 bg-[var(--secondary-background-color)] mb-4 max-md:max-w-96 ">
       <header className="flex justify-between items-center mb-4">
-        <h3 className="text-[var(--primary-color)] max-md:text-lg">Prénom Nom</h3>
+        <h3 className="text-[var(--primary-color)] max-md:text-lg">{name}</h3>
         <TagStatus
           text="DISPONIBLE"
           textColor="text-[var(--validation-color-ok)]"
@@ -14,16 +15,18 @@ export default function Card() {
         />
       </header>
       <ul className="flex gap-1 relative mb-4">
-        <Tag tag="REACT" />
-        <Tag tag="JAVA" />
-        <Tag tag="CSS" />
+        <li>
+          <Tag tag="REACT" />
+        </li>
+        <li>
+          <Tag tag="JAVA" />
+        </li>
+        <li>
+          <Tag tag="CSS" />
+        </li>
       </ul>
       <p className="text-content mb-4 max-md:text-sm">
-        {" "}
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam
-        perspiciatis officia consequuntur expedita, sequi doloremque dolor, aut
-        quasi exercitationem doloribus dicta, facere ipsum rerum ratione cumque.
-        Aperiam debitis sit eaque.
+        {textContent}
       </p>
       <footer className="flex justify-center gap-4">
         <ButtonSmall
@@ -41,3 +44,8 @@ export default function Card() {
     </article>
   );
 }
+
+CardConsultant.propTypes = {
+  name: PropTypes.string.isRequired,
+  textContent: PropTypes.string.isRequired,
+};
