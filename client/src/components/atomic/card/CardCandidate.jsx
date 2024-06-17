@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
-import ButtonOffer from "../buttons/ButtonOffer";
+import ButtonMedium from "../buttons/ButtonMedium";
 import Tag from "../tag/Tag";
 
-
-export default function CardCandidate({name="Titre", textContent="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam perspiciatis officia consequuntur expedita, sequi doloremque dolor, aut quasi exercitationem doloribus dicta, facere ipsum rerum ratione cumque.Aperiam debitis sit eaque."}) {
+export default function CardCandidate({
+  name = "Titre",
+  textContent = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam perspiciatis officia consequuntur expedita, sequi doloremque dolor, aut quasi exercitationem doloribus dicta, facere ipsum rerum ratione cumque.Aperiam debitis sit eaque.",
+}) {
   return (
     <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate max-w-xl border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 bg-[var(--secondary-background-color)] mb-4 max-md:max-w-96 ">
       <header className="flex justify-between items-center mb-4">
@@ -39,12 +41,9 @@ export default function CardCandidate({name="Titre", textContent="Lorem ipsum do
           <Tag tag="CSS" />
         </li>
       </ul>
-      <p className="text-content mb-4 max-md:text-sm">
-        {" "}
-        {textContent}
-      </p>
+      <p className="text-content mb-4 max-md:text-sm"> {textContent}</p>
       <footer className="flex justify-center">
-        <ButtonOffer />
+        <ButtonMedium name="VOIR L'OFFRE" />
       </footer>
     </article>
   );
@@ -53,5 +52,4 @@ export default function CardCandidate({name="Titre", textContent="Lorem ipsum do
 CardCandidate.propTypes = {
   name: PropTypes.string.isRequired,
   textContent: PropTypes.string.isRequired,
-
 };
