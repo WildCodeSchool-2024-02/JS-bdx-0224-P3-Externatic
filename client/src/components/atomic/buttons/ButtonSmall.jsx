@@ -7,7 +7,7 @@ function ButtonSmall({ name, img, alt }) {
       type="button"
     >
       {name}
-      <img src={img} alt={alt} className="w-6"/>
+      <img src={img} alt={alt} className="w-6 max-md:w-4"/>
     </button>
   );
 }
