@@ -1,5 +1,5 @@
 import ButtonDelete from "./buttons/ButtonDelete";
-import ButtonOffer from "./buttons/ButtonOffer";
+import ButtonMedium from "./buttons/ButtonMedium";
 import ButtonPostuler from "./buttons/ButtonPostuler";
 import ButtonSmall from "./buttons/ButtonSmall";
 import Card from "./card/Card";
@@ -106,7 +106,7 @@ export default function Atomic() {
 
         {/* CTA / SKILL / DISPONIBILITÉ */}
         <section className="border border-[var(--primary-color)] rounded-md shadow-lg shadow-slate-300 min-h-44 p-4 mb-4 flex flex-wrap gap-4 items-center">
-          <ButtonOffer />
+          <ButtonMedium />
           <Tag tag="REACT " />
           <TagStatus
             text="DISPONIBLE"
