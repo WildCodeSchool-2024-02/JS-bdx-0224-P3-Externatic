@@ -111,6 +111,7 @@ export default function Atomic() {
           <Tag tag="REACT " />
           <TagStatus
             text="DISPONIBLE"
+            
             textColor="text-[var(--validation-color-ok)]"
             borderColor="border-[var(--validation-color-ok)]"
           />
