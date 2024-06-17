@@ -3,11 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import NavAccess from "../services/NavAccess";
 
-function Navbar({
-  handleChange,
-  navOpen,
-  navVisible,
-}) {
+function Navbar({ handleChange, navOpen, navVisible }) {
   const menuRef = useRef(null);
 
   useEffect(() => {
@@ -35,7 +31,7 @@ function Navbar({
       <nav
         ref={menuRef}
         className={`${navOpen} ${navVisible}
-           md:min-h-16 md:min-w-full md:bg-[var(--secondary-background-color)] md:translate-x-0 md:flex`}
+          md:min-h-20 md:min-w-full md:bg-[var(--secondary-background-color)] md:translate-x-0 md:flex`}
       >
         <img
           className="hidden md:block md:min-w-1 md:max-w-10 md:ml-6"
@@ -55,7 +51,7 @@ function Navbar({
         </button>
         <ul
           className="text-[var(--primary-background-color)] flex flex-col gap-8 text-center 
-        md:flex-row md:gap-10 md:self-center md:justify-end md:ml-auto md:mr-6 md:text-[var(--text-color)] mt-24"
+        md:flex-row md:gap-10 md:ml-auto md:mr-6 md:text-[var(--text-color)] md:self-center"
         >
           <li>
             <Link to="/">Accueil</Link>
