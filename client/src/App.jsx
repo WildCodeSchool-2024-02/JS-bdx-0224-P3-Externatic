@@ -27,8 +27,6 @@ function App() {
     <>
       <Navbar
         handleChange={handleChange}
-        isOpen={isOpen}
-        isVisible={isVisible}
         navOpen={navOpen}
         navVisible={navVisible}
       />
