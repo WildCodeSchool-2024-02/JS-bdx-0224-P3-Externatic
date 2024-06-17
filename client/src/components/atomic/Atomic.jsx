@@ -2,7 +2,7 @@ import ButtonDelete from "./buttons/ButtonDelete";
 import ButtonOffer from "./buttons/ButtonOffer";
 import ButtonPostuler from "./buttons/ButtonPostuler";
 import ButtonSmall from "./buttons/ButtonSmall";
-import Card from "./card/Card";
+import CardCandidate from "./card/CardCandidate";
 import BigCheckBox from "./checkBox/BigCheckBox";
 import SmallCheckBox from "./checkBox/SmallCheckBox";
 import FormInputCandidat from "./inputCandidat/formCandidat/FormInputCandidat";
@@ -99,7 +99,7 @@ export default function Atomic() {
 
         {/* CARD */}
         <section className="flex gap-4 max-md:flex-col max-md:items-center max-md:justify-center">
-          <Card />
+          <CardCandidate />
           <CardConsultant  />
         </section>
         {/* END */}
