@@ -6,36 +6,41 @@ class NavAccess {
 
   handleTabKey = (e) => {
     const menuRefCurrent = this.menuRef.current;
-    if (!menuRefCurrent) return;
+    if (menuRefCurrent) {
+      const menuLinks = menuRefCurrent.querySelectorAll(
+        this.focusableElementsString
+      );
+      const firstElement = menuLinks[0];
+      const lastElement = menuLinks[menuLinks.length - 1];
 
-    const menuLinks = menuRefCurrent.querySelectorAll(
-      this.focusableElementsString
-    );
-    const firstElement = menuLinks[0];
-    const lastElement = menuLinks[menuLinks.length - 1];
-
-    if (e.key === "Tab") {
-      if (e.shiftKey && document.activeElement === firstElement) {
-        e.preventDefault();
-        lastElement.focus();
-      }
-      if (!e.shiftKey && document.activeElement === lastElement) {
-        e.preventDefault();
-        firstElement.focus();
+      if (e.key === "Tab") {
+        if (e.shiftKey && document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+        if (!e.shiftKey && document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
       }
     }
   };
+  return;
 
   addEventListener() {
     const menuRefCurrent = this.menuRef.current;
-    if (!menuRefCurrent) return;
-    menuRefCurrent.addEventListener("keydown", this.handleTabKey);
+    if (menuRefCurrent) {
+      menuRefCurrent.addEventListener("keydown", this.handleTabKey);
+    }
+    return;
   }
 
   removeEventListener() {
     const menuRefCurrent = this.menuRef.current;
-    if (!menuRefCurrent) return;
-    menuRefCurrent.removeEventListener("keydown", this.handleTabKey);
+    if (menuRefCurrent) {
+      menuRefCurrent.removeEventListener("keydown", this.handleTabKey);
+    }
+    return;
   }
 }
 

@@ -50,8 +50,8 @@ function Navbar({ handleChange, navOpen, navVisible }) {
           />
         </button>
         <ul
-          className="text-[var(--primary-background-color)] flex flex-col gap-8 text-center 
-        md:flex-row md:gap-10 md:ml-auto md:mr-6 md:text-[var(--text-color)] md:self-center"
+          className="text-[var(--primary-background-color)] flex flex-col gap-8 text-center mt-20
+        md:flex-row md:gap-10 md:ml-auto md:mr-6 md:text-[var(--text-color)] md:self-center md:mt-0"
         >
           <li>
             <Link to="/">Accueil</Link>
