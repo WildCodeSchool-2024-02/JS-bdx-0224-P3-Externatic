@@ -24,7 +24,6 @@ class NavAccess {
         }
       }
     }
-    return;
   };
 
   addEventListener() {
