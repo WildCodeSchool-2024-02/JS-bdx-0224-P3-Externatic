@@ -7,7 +7,7 @@ export default function FormInputCandidat({ id, label, type }) {
         {label}
       </label>
       <input
-        className=" h-10 border-2 outline-[var(--primary-color)] rounded-s"
+        className=" h-10 border-2 outline-[var(--primary-color)] rounded-s px-2"
         id={id}
         type={type}
       />

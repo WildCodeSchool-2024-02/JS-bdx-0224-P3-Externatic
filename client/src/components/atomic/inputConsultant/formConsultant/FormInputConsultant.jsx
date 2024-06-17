@@ -11,12 +11,12 @@ export default function FormInputConsultant({ id, label, type }) {
       </label>
       {type === "textarea" ? (
         <textarea
-          className="h-72 border-2 outline-[var(--primary-color)] rounded-s"
+          className="h-72 border-2 outline-[var(--primary-color)] rounded-s px-2 py-2"
           id={id}
         />
       ) : (
         <input
-          className="h-12 border-2 outline-[var(--primary-color)] rounded-s"
+          className="h-12 border-2 outline-[var(--primary-color)] rounded-s px-2"
           id={id}
           type={type}
         />
