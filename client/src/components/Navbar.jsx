@@ -54,17 +54,24 @@ function Navbar({ handleChange, navOpen, navVisible }) {
         md:flex-row md:gap-10 md:ml-auto md:mr-6 md:text-[var(--text-color)] md:self-center md:mt-0"
         >
           <li>
-            <Link to="/">Accueil</Link>
+            <Link to="/" onClick={handleChange}>
+              Accueil
+            </Link>
           </li>
           <li>
-            <Link to="/offer">Rechercher</Link>
+            <Link to="/offer" onClick={handleChange}>
+              Rechercher
+            </Link>
           </li>
           <li>
-            <Link to="/dashboard/:id">Profil</Link>
+            <Link to="/dashboard/:id" onClick={handleChange}>
+              Profil
+            </Link>
           </li>
           <li>
             <Link
               to="/"
+              onClick={handleChange}
               className="bg-[var(--secondary-background-color)] pt-1 pb-1 pr-2 pl-2 rounded-md text-[var(--primary-color)] font-medium 
               md:bg-[var(--primary-color)] md:text-[var(--primary-background-color)] md:-mr-8"
             >
@@ -72,7 +79,9 @@ function Navbar({ handleChange, navOpen, navVisible }) {
             </Link>
           </li>
           <li>
-            <Link to="/">Se connecter</Link>
+            <Link to="/" onClick={handleChange}>
+              Se connecter
+            </Link>
           </li>
           <li className="self-center max-w-7">
             <img

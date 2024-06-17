@@ -24,15 +24,14 @@ class NavAccess {
         }
       }
     }
+    return;
   };
-  return;
 
   addEventListener() {
     const menuRefCurrent = this.menuRef.current;
     if (menuRefCurrent) {
       menuRefCurrent.addEventListener("keydown", this.handleTabKey);
     }
-    return;
   }
 
   removeEventListener() {
@@ -40,7 +39,6 @@ class NavAccess {
     if (menuRefCurrent) {
       menuRefCurrent.removeEventListener("keydown", this.handleTabKey);
     }
-    return;
   }
 }
 
