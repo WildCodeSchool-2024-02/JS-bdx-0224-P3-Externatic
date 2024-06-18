@@ -11,9 +11,14 @@ function Button({ name, img, alt, apply }) {
 
 Button.propTypes = {
   name: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  img: PropTypes.string,
+  alt: PropTypes.string,
   apply: PropTypes.string.isRequired,
+};
+
+Button.defaultProps = {
+  img: '',
+  alt: 'default alt text',
 };
 
 export default Button;
