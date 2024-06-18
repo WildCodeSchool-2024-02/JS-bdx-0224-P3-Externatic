@@ -83,7 +83,7 @@ function Navbar({ handleChange, navOpen, navVisible }) {
               Se connecter
             </Link>
           </li>
-          <li className="self-center max-w-7">
+          <li className="hidden self-center max-w-7">
             <img
               src="/src/assets/images/iconDisconnect.svg"
               alt="icone profil non connecté"
