@@ -121,7 +121,6 @@ CREATE TABLE offer (
 CREATE TABLE techno_offer (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   techno_id INT UNSIGNED NOT NULL,
-
   offer_id INT UNSIGNED NOT NULL,
     CONSTRAINT fk_techno_offer_techno
     FOREIGN KEY (techno_id)
