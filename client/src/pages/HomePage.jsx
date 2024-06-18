@@ -1,8 +1,9 @@
+import Presentation from "../components/Presentation";
+
 function HomePage() {
-    return (
-      <h1>Externatic</h1>
-    )
-  }
-  
-  export default HomePage;
-  
+  return (
+      <Presentation />
+  );
+}
+
+export default HomePage;
