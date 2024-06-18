@@ -10,11 +10,10 @@ function Footer() {
         <li>
           <a
             href="https://www.linkedin.com/company/externatic/"
-            aria-label="lien vers la page linkedin de externatic"
             target="_blank"
             rel="noreferrer"
           >
-            <img src="/src/assets/images/linkedin.svg" alt="" />
+            <img src="/src/assets/images/linkedin.svg" alt="lien vers la page linkedin de externatic" />
           </a>
         </li>
         <li>
@@ -22,19 +21,13 @@ function Footer() {
             href="https://www.instagram.com/externatic/"
             target="_blank"
             rel="noreferrer"
-            aria-level="lien vers la page instagram de externatic"
           >
-            <img src="/src/assets/images/instagram.svg" alt="" />
+            <img src="/src/assets/images/instagram.svg" alt="lien vers la page instagram de externatic" />
           </a>
         </li>
         <li>
-          <a
-            href="https://x.com/Externatic"
-            target="_blank"
-            rel="noreferrer"
-            aria-level="lien vers la page X de externatic"
-          >
-            <img src="/src/assets/images/twitter.svg" alt="" />
+          <a href="https://x.com/Externatic" target="_blank" rel="noreferrer">
+            <img src="/src/assets/images/twitter.svg" alt="lien vers la page X de externatic" />
           </a>
         </li>
       </ul>
