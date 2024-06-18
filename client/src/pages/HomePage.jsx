@@ -3,8 +3,10 @@ import Values from "../components/Values";
 
 function HomePage() {
   return (
-    <Presentation />
-    <Values />
+    <>
+      <Presentation />
+      <Values />
+    </>
   );
 }
 
