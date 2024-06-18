@@ -2,15 +2,7 @@ export default function Values() {
   return (
     <section className=" p-4 m-4 mt-24 gap-8 bg-[var(--secondary-background-color)] border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow grid grid-cols-2">
       <h2 className="  col-span-2">
-        La réussite de notre{" "}
-        <span className=" font-semibold text-[var(--primary-color)] grid-rows-1">
-          cabinet
-        </span>{" "}
-        de{" "}
-        <span className=" font-semibold text-[var(--primary-color)] grid-rows-1">
-          recrutement informatique
-        </span>{" "}
-        ?
+        La réussite de notre cabinet recrutement informatique ?
       </h2>
       <img
         src="./src/assets/images/hand.svg"
