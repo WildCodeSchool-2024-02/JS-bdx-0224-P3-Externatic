@@ -1,6 +1,6 @@
 export default function Values() {
   return (
-    <article className=" p-4 m-4 mt-24 gap-8 bg-[var(--secondary-background-color)] border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow grid grid-cols-2">
+    <article className=" p-4 m-4 mt-24 gap-4 gap-x-8 bg-[var(--secondary-background-color)] border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow grid grid-cols-2">
       <h2 className="  col-span-2">
         La réussite de notre cabinet recrutement informatique ?
       </h2>
