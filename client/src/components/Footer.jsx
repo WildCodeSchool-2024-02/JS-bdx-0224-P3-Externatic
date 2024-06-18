@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer
-      className="absolute z-10 bottom-0 bg-[var(--secondary-color)] min-w-full flex flex-col gap-5 text-center text-[var(--primary-background-color)] pb-6
+      className="relative z-10 mt-6 bottom-0 bg-[var(--secondary-color)] min-w-full flex flex-col gap-5 text-center text-[var(--primary-background-color)] pb-6
     md:flex-row md:min-h-20 md:pb-0 md:justify-between"
     >
       <ul className="flex flex-row self-center mt-6 gap-4 md:mt-0 md:ml-10">
@@ -18,12 +18,22 @@ function Footer() {
           </a>
         </li>
         <li>
-          <a href="https://www.instagram.com/externatic/" target="_blank" rel="noreferrer" aria-level="lien vers la page instagram de externatic">
+          <a
+            href="https://www.instagram.com/externatic/"
+            target="_blank"
+            rel="noreferrer"
+            aria-level="lien vers la page instagram de externatic"
+          >
             <img src="/src/assets/images/instagram.svg" alt="" />
           </a>
         </li>
         <li>
-          <a href="https://x.com/Externatic" target="_blank" rel="noreferrer" aria-level="lien vers la page X de externatic">
+          <a
+            href="https://x.com/Externatic"
+            target="_blank"
+            rel="noreferrer"
+            aria-level="lien vers la page X de externatic"
+          >
             <img src="/src/assets/images/twitter.svg" alt="" />
           </a>
         </li>
