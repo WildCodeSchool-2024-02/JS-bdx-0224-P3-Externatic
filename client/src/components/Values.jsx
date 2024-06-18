@@ -1,7 +1,7 @@
 export default function Values() {
   return (
     <article className=" p-4 m-4 mt-24 gap-4 gap-x-8 bg-[var(--secondary-background-color)] border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow grid grid-cols-2">
-      <h2 className="  col-span-2">
+      <h2 className=" text-[var(--primary-color)] col-span-2">
         La réussite de notre cabinet recrutement informatique ?
       </h2>
       <img
@@ -9,7 +9,7 @@ export default function Values() {
         alt=""
         className=" w-13 max-md:w-13  row-start-2 col-start-1 sm:justify-self-center my-4 "
       />
-      <h3 className=" text-xl text-[var(--primary-color)] row-start-3 col-start-1">
+      <h3 className=" text-xl font-semibold row-start-3 col-start-1">
         Notre proximité
       </h3>
       <p className=" text-sm  row-start-4 col-start-1">
@@ -23,7 +23,7 @@ export default function Values() {
         alt=""
         className=" w-13 max-md:w-13  row-start-2 col-start-2 sm:justify-self-center my-4"
       />
-      <h3 className=" text-xl text-[var(--primary-color)] row-start-3 col-start-2">
+      <h3 className=" text-xl font-semibold row-start-3 col-start-2">
         Notre durabilité
       </h3>
       <p className=" text-sm  row-start-4 col-start-2">
@@ -38,7 +38,7 @@ export default function Values() {
         alt=""
         className=" w-13 max-md:w-13  row-start-5 col-start-1 sm:justify-self-center my-4"
       />
-      <h3 className=" text-xl text-[var(--primary-color)] row-start-6 col-start-1">
+      <h3 className=" text-xl font-semibold row-start-6 col-start-1">
         Notre performance
       </h3>
       <p className=" text-sm  row-start-7 col-start-1">
@@ -51,7 +51,7 @@ export default function Values() {
         alt=""
         className=" w-13 max-md:w-13  row-start-5 col-start-2 sm:justify-self-center my-4"
       />
-      <h3 className=" text-xl text-[var(--primary-color)] row-start-6 col-start-2">
+      <h3 className=" text-xl font-semibold row-start-6 col-start-2">
         Nos Événements
       </h3>
       <p className=" text-sm row-start-7 col-start-2">MEETUP AFUP Nantes</p>
