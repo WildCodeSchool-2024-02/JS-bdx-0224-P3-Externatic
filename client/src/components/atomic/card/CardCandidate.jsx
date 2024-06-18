@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import ButtonMedium from "../buttons/ButtonMedium";
+import Button from "../buttons/Button";
 import Tag from "../tag/Tag";
 
 export default function CardCandidate({
@@ -43,7 +43,7 @@ export default function CardCandidate({
       </ul>
       <p className="text-content mb-4 max-md:text-sm"> {textContent}</p>
       <footer className="flex justify-center">
-        <ButtonMedium name="VOIR L'OFFRE" />
+        <Button apply="medium" name="VOIR L'OFFRE" />
       </footer>
     </article>
   );
