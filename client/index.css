@@ -9,8 +9,8 @@
 
   --primary-color: #ca2061;
   --secondary-color: #851342;
-  --primary-background-color: #ffffff;
-  --text-color: #000000;
+  --primary-background-color: #f5f5f5;
+  --text-color: #010101;
   --secondary-background-color: #f9f9f9;
   --validation-color-ok: #038e00;
   --validation-color-in-progress: #e26c00;
@@ -88,4 +88,8 @@ h3 {
 
 .tagStatusOrange {
   @apply border text-[var(--validation-color-in-progress)] border-[var(--validation-color-in-progress)];
+}
+
+.bigCheckbox {
+  @apply w-5 h-5;
 }
