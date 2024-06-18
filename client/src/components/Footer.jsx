@@ -10,18 +10,20 @@ function Footer() {
         <li>
           <a
             href="https://www.linkedin.com/company/externatic/"
+            aria-label="lien vers la page linkedin de externatic"
             target="_blank"
+            rel="noreferrer"
           >
             <img src="/src/assets/images/linkedin.svg" alt="" />
           </a>
         </li>
         <li>
-          <a href="https://www.instagram.com/externatic/" target="_blank">
+          <a href="https://www.instagram.com/externatic/" target="_blank" rel="noreferrer" aria-level="lien vers la page instagram de externatic">
             <img src="/src/assets/images/instagram.svg" alt="" />
           </a>
         </li>
         <li>
-          <a href="https://x.com/Externatic" target="_blank">
+          <a href="https://x.com/Externatic" target="_blank" rel="noreferrer" aria-level="lien vers la page X de externatic">
             <img src="/src/assets/images/twitter.svg" alt="" />
           </a>
         </li>
