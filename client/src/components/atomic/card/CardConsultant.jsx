@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
-import ButtonSmall from "../buttons/ButtonSmall";
+import Button from "../buttons/Button";
 import Tag from "../tag/Tag";
 import TagStatus from "../tag/TagStatus";
 
-export default function CardConsultant({ name="Nom Prénom", textContent="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam perspiciatis officia consequuntur expedita, sequi doloremque dolor, aut quasi exercitationem doloribus dicta, facere ipsum rerum ratione cumque.Aperiam debitis sit eaque."}) {
+export default function CardConsultant({
+  name = "Nom Prénom",
+  textContent = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam perspiciatis officia consequuntur expedita, sequi doloremque dolor, aut quasi exercitationem doloribus dicta, facere ipsum rerum ratione cumque.Aperiam debitis sit eaque.",
+}) {
   return (
     <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate max-w-xl border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 bg-[var(--secondary-background-color)] mb-4 max-md:max-w-96 ">
       <header className="flex justify-between items-center mb-4">
@@ -25,21 +28,26 @@ export default function CardConsultant({ name="Nom Prénom", textContent="Lorem 
           <Tag tag="CSS" />
         </li>
       </ul>
-      <p className="text-content mb-4 max-md:text-sm">
-        {textContent}
-      </p>
+      <p className="text-content mb-4 max-md:text-sm">{textContent}</p>
       <footer className="flex justify-center gap-4">
-        <ButtonSmall
+        <Button
           name="Téléphone"
           img="/src/assets/images/phone.svg"
           alt="téléphone"
+          apply="small"
         />
-        <ButtonSmall
+        <Button
           name="Email"
           img="/src/assets/images/mail.svg"
           alt="Email"
+          apply="small"
         />
-        <ButtonSmall name="CV" img="/src/assets/images/cv.svg" alt="cv" />
+        <Button
+          name="CV"
+          img="/src/assets/images/cv.svg"
+          alt="cv"
+          apply="small"
+        />
       </footer>
     </article>
   );
