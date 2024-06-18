@@ -1,6 +1,6 @@
 export default function Values() {
   return (
-    <section className=" p-4 m-4 mt-24 gap-8 bg-[var(--secondary-background-color)] border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow grid grid-cols-2">
+    <article className=" p-4 m-4 mt-24 gap-8 bg-[var(--secondary-background-color)] border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow grid grid-cols-2">
       <h2 className="  col-span-2">
         La réussite de notre cabinet recrutement informatique ?
       </h2>
@@ -61,6 +61,6 @@ export default function Values() {
       <p className="text-sm mt-24 row-start-7 col-start-2 sm:mt-12">
         📍 UmanIT au 13 place Sophie Trébuchet 44000 Nantesé
       </p>
-    </section>
+    </article>
   );
 }
