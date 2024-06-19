@@ -2,7 +2,7 @@ CREATE TABLE user (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   firstname VARCHAR(80) NOT NULL,
   lastname VARCHAR(80) NOT NULL,
-  email VARCHAR(80) NOT NULL,
+  email VARCHAR(80) UNIQUE NOT NULL,
   phone VARCHAR(80),
   password VARCHAR(80) NOT NULL,
   role VARCHAR(80) NOT NULL
@@ -103,7 +103,7 @@ CREATE TABLE offer (
   title VARCHAR(80) NOT NULL,
   details TEXT NOT NULL,
   advantages TEXT,
-  salary INT,
+  salary INT UNSIGNED,
   consultant_id INT UNSIGNED NOT NULL,
   job_id INT UNSIGNED NOT NULL,
   company_id INT UNSIGNED NOT NULL,
