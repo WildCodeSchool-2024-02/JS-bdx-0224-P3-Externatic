@@ -33,13 +33,6 @@ function Navbar({ handleChange, navOpen, navVisible }) {
         className={`${navOpen} ${navVisible}
           md:min-h-20 md:min-w-full md:bg-[var(--secondary-background-color)] md:translate-x-0 md:flex`}
       >
-        <Link to="/" className="hidden md:min-w-1 md:max-w-10 md:ml-6 md:flex md:items-center">
-          <img
-            className=""
-            src="/src/assets/Externatic.svg"
-            alt="logo externatic"
-          />
-        </Link>
         <button
           type="button"
           className="block absolute right-5 top-2 w-10 md:hidden"
@@ -51,6 +44,13 @@ function Navbar({ handleChange, navOpen, navVisible }) {
             alt="icone fermeture menu"
           />
         </button>
+        <Link to="/" className="hidden md:min-w-1 md:max-w-10 md:ml-6 md:flex md:items-center">
+          <img
+            className=""
+            src="/src/assets/Externatic.svg"
+            alt="logo externatic"
+          />
+        </Link>
         <ul
           className="text-[var(--primary-background-color)] flex flex-col gap-8 text-center mt-20
         md:flex-row md:gap-10 md:ml-auto md:mr-6 md:text-[var(--text-color)] md:self-center md:mt-0"
