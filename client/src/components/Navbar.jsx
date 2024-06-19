@@ -33,11 +33,13 @@ function Navbar({ handleChange, navOpen, navVisible }) {
         className={`${navOpen} ${navVisible}
           md:min-h-20 md:min-w-full md:bg-[var(--secondary-background-color)] md:translate-x-0 md:flex`}
       >
-        <img
-          className="hidden md:block md:min-w-1 md:max-w-10 md:ml-6"
-          src="/src/assets/Externatic.svg"
-          alt="logo externatic"
-        />
+        <a href="/" className="hidden md:min-w-1 md:max-w-10 md:ml-6 md:flex md:items-center">
+          <img
+            className=""
+            src="/src/assets/Externatic.svg"
+            alt="logo externatic"
+          />
+        </a>
         <button
           type="button"
           className="block absolute right-5 top-2 w-10 md:hidden"
