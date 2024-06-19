@@ -19,8 +19,8 @@ function App() {
     }, 1);
   };
   const navOpen = isOpen
-    ? "block bg-[var(--primary-color)] min-h-screen min-w-56 absolute translate-x-0 top-0 delay-75 duration-500 text-[var(--text-content-size)] text-[var(--primary-background-color)]"
-    : "block duration-500 bg-[var(--primary-color)] min-h-screen min-w-56 absolute -translate-x-56 top-0 text-[var(--text-content-size)] text-[var(--primary-background-color)]";
+    ? "block bg-[var(--primary-color)] min-h-screen min-w-56 absolute z-20 translate-x-0 top-0 delay-75 duration-500 text-[var(--text-content-size)] text-[var(--primary-background-color)]"
+    : "block duration-500 bg-[var(--primary-color)] min-h-screen min-w-56 absolute z-20 -translate-x-56 top-0 text-[var(--text-content-size)] text-[var(--primary-background-color)]";
 
   const navVisible = isVisible ? "block" : "hidden";
   return (
