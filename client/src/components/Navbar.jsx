@@ -24,9 +24,8 @@ function Navbar({ handleChange, navOpen, navVisible }) {
         type="button"
         className="block absolute left-4 top-4 md:hidden"
         onClick={handleChange}
-        aria-label="Ouvrir le menu"
       >
-        <img src="/src/assets/images/menuBurger.svg" alt="icone menu burger" />
+        <img src="/src/assets/images/menuBurger.svg" alt="icone menu burger" title="ouvrir le menu" />
       </button>
       <nav
         ref={menuRef}
@@ -85,12 +84,11 @@ function Navbar({ handleChange, navOpen, navVisible }) {
               Se connecter
             </Link>
           </li>
-          <li className="hidden self-center max-w-7">
             <img
+            className="hidden self-center max-w-7"
               src="/src/assets/images/iconDisconnect.svg"
               alt="icone profil non connecté"
             />
-          </li>
         </ul>
       </nav>
     </>
