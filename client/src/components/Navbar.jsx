@@ -22,11 +22,17 @@ function Navbar({ handleChange, navOpen, navVisible }) {
     <>
       <button
         type="button"
-        className="block absolute left-4 top-4 md:hidden"
+        className="block absolute left-5 top-5 md:hidden"
         onClick={handleChange}
       >
-        <img src="/src/assets/images/menuBurger.svg" alt="ouvrir le menu"/>
+        <img src="/src/assets/images/menuBurger.svg" alt="ouvrir le menu" />
       </button>
+      <Link
+        to="/"
+        className="absolute min-w-6 max-w-10 top-3 left-1/2 transform -translate-x-1/2 md:z-30 md:left-6 md:top-4 md:min-w-10 md:max-w-24 md:ml-6 md:flex md:items-center"
+      >
+        <img src="/src/assets/Externatic.svg" alt="" />
+      </Link>
       <nav
         ref={menuRef}
         className={`${navOpen} ${navVisible}
@@ -43,12 +49,6 @@ function Navbar({ handleChange, navOpen, navVisible }) {
             alt="fermer le menu"
           />
         </button>
-        <Link to="/" className="hidden md:min-w-1 md:max-w-10 md:ml-6 md:flex md:items-center">
-          <img
-            src="/src/assets/Externatic.svg"
-            alt=""
-          />
-        </Link>
         <ul
           className="text-[var(--primary-background-color)] flex flex-col gap-8 text-center mt-20
         md:flex-row md:gap-10 md:ml-auto md:mr-6 md:text-[var(--text-color)] md:self-center md:mt-0"
@@ -83,11 +83,11 @@ function Navbar({ handleChange, navOpen, navVisible }) {
               Se connecter
             </Link>
           </li>
-            <img
+          <img
             className="hidden self-center max-w-7"
-              src="/src/assets/images/iconDisconnect.svg"
-              alt="profil non connecté"
-            />
+            src="/src/assets/images/iconDisconnect.svg"
+            alt="profil non connecté"
+          />
         </ul>
       </nav>
     </>
