@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import Presentation from "../components/Presentation";
 import Values from "../components/Values";
 
