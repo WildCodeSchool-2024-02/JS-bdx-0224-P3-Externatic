@@ -83,12 +83,12 @@ function Navbar({ handleChange, navOpen, navVisible }) {
               Se connecter
             </Link>
           </li>
-          <img
-            className="hidden self-center max-w-7"
-            src="/src/assets/images/iconDisconnect.svg"
-            alt="profil non connecté"
-          />
         </ul>
+        <img
+          className="hidden self-center max-w-7"
+          src="/src/assets/images/iconDisconnect.svg"
+          alt="profil non connecté"
+        />
       </nav>
     </>
   );
