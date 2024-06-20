@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-font: "Jost", sans-serif;
+
+  --primary-color: #ca2061;
+  --secondary-color: #851342;
+  --primary-background-color: #f5f5f5;
+  --text-color: #010101;
+  --secondary-background-color: #f9f9f9;
+  --validation-color-ok: #038e00;
+  --validation-color-in-progress: #e26c00;
+  --validation-color-no: #851342;
+
+  --text-content-size: 1.125rem;
+  --text-content-weight: 300;
+
+  --box-shadow: 0 0.164375rem 0.289375rem 0 #00000005,
+    0 0.75rem 0.8125rem 0 #0000000a, 0 1.89875rem 2.18rem 0 #0000000d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--primary-font);
+  font-weight: var(--text-content-weight);
+  line-height: 1.5;
+}
+
+html,
+body {
+  @apply h-full;
+}
+
+h1 {
+  @apply text-4xl font-semibold;
+}
+
+h2 {
+  @apply text-3xl font-medium;
+}
+
+h3 {
+  @apply text-2xl font-normal;
+}
+
+@layer utilities {
+  .custom-shadow {
+    box-shadow: var(--box-shadow);
+  }
+}
+
+.small {
+  @apply flex justify-around items-center w-36 h-11 z-30 bg-[var(--primary-color)] rounded-md relative font-semibold text-[var(--primary-background-color)] max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm;
+}
+
+.medium {
+  @apply w-56 h-11 z-30 bg-[var(--primary-color)] rounded-md relative font-semibold text-[var(--primary-background-color)] max-md:w-36 max-md:h-8 max-md:text-sm;
+}
+
+.big {
+  @apply w-80 h-20 z-30 bg-[var(--primary-color)] rounded-md relative font-semibold text-[var(--primary-background-color)] max-md:w-60 max-md:h-11 max-md:text-sm;
+}
+
+.bigDelete {
+  @apply active:animate-wiggle animate-once animate-duration-500 animate-ease-in-out animate-alternate w-80 h-20 z-30 bg-[var(--primary-background-color)] rounded-md relative font-semibold text-[var(--secondary-color)] border border-[var(--secondary-color)] after:-z-20 after:absolute after:h-1 after:w-1 after:bg-[var(--secondary-color)] hover:text-[var(--primary-background-color)] after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-300 after:transition-all after:duration-300 transition-all duration-700 max-md:w-60 max-md:h-11 max-md:text-sm;
+}
+
+.buttonAnimate {
+  @apply active:animate-wiggle animate-once animate-duration-500 animate-ease-in-out animate-alternate after:-z-20 after:absolute after:h-1 after:w-1 after:bg-[var(--secondary-color)]  after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-300 after:transition-all after:duration-300 transition-all duration-300;
+}
+
+.tag {
+  @apply bg-[var(--secondary-color)] text-[var(--primary-background-color)];
+}
+
+.tagStatusGreen {
+  @apply border text-[var(--validation-color-ok)] border-[var(--green-color)];
+}
+
+.tagStatusRed {
+  @apply border border-[var(--validation-color-no)] text-[var(--validation-color-no)];
+}
+
+.tagStatusOrange {
+  @apply border text-[var(--validation-color-in-progress)] border-[var(--validation-color-in-progress)];
+}
+
+.bigCheckbox {
+  @apply w-5 h-5;
+}
