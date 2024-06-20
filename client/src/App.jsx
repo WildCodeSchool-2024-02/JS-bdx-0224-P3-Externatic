@@ -25,11 +25,13 @@ function App() {
   const navVisible = isVisible ? "block" : "hidden";
   return (
     <>
-      <Navbar
-        handleChange={handleChange}
-        navOpen={navOpen}
-        navVisible={navVisible}
-      />
+      <header className="bg-[var(--secondary-background-color)] w-full h-16">
+        <Navbar
+          handleChange={handleChange}
+          navOpen={navOpen}
+          navVisible={navVisible}
+        />
+      </header>
       <Outlet />
       <ScrollToTop />
       <Footer />
