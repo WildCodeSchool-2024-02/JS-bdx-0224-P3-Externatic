@@ -2,10 +2,13 @@ import PropTypes from "prop-types";
 
 function CheckBox({ apply }) {
   return (
-    <input
-      type="checkbox"
-      className={` ${apply} accent-[var(--primary-color)] hover:accent-[var(--primary-color)]`}
-    />
+    <label className="text-[0]">
+      Checkbox
+      <input
+        type="checkbox"
+        className={` ${apply} accent-[var(--primary-color)] hover:accent-[var(--primary-color)]`}
+      />
+    </label>
   );
 }
 
