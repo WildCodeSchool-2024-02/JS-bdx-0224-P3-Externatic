@@ -39,105 +39,105 @@ export default function Slider() {
         <SwiperSlide>
           <img
             src="./src/assets/images/company/Akeneo.png"
-            alt=""
+            alt="Akeneo"
             className=" max-md:w-52 pb-5"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="./src/assets/images/company/Decath.png"
-            alt=""
+            alt="Decathlon"
             className="max-md:w-52"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="./src/assets/images/company/Allovoisins.png"
-            alt=""
+            alt="Allovoisins"
             className="max-md:w-52"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="./src/assets/images/company/GIE.png"
-            alt=""
+            alt="GIE"
             className="max-md:w-52"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="./src/assets/images/company/Nickel.png"
-            alt=""
+            alt="Nickel"
             className="max-md:w-52"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="./src/assets/images/company/Lucca.png"
-            alt=""
+            alt="Lucca"
             className="max-md:w-52"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="./src/assets/images/company/Groupama.jpg"
-            alt=""
+            alt="Groupama"
             className="max-md:w-52"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="./src/assets/images/company/Maincare.jpg"
-            alt=""
+            alt="Maincare"
             className="max-md:w-52"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="./src/assets/images/company/IAdvize.png"
-            alt=""
+            alt="IAdvize"
             className="max-md:w-52"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="./src/assets/images/company/Automotive.jpg"
-            alt=""
+            alt="Automotive"
             className="max-md:w-52"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="./src/assets/images/company/Lengow.png"
-            alt=""
+            alt="Lengow"
             className="max-md:w-52"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="./src/assets/images/company/Manitou.png"
-            alt=""
+            alt="Manitou"
             className="max-md:w-52"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="./src/assets/images/company/IKKS.png"
-            alt=""
+            alt="IKKS"
             className="max-md:w-52"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="./src/assets/images/company/Showroom .png"
-            alt=""
+            alt="Showroomprivé"
             className="max-md:w-52"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src="./src/assets/images/company/mdm.png"
-            alt=""
+            alt="Maison du monde"
             className="max-md:w-52"
           />
         </SwiperSlide>
