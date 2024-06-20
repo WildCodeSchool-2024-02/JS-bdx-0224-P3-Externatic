@@ -5,7 +5,6 @@ import Values from "../components/Values";
 function HomePage() {
   return (
     <>
-      <Navbar/>
       <Presentation />
       <Values />
     </>
