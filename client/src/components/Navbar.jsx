@@ -25,7 +25,7 @@ function Navbar({ handleChange, navOpen, navVisible }) {
         className="block absolute left-4 top-4 md:hidden"
         onClick={handleChange}
       >
-        <img src="/src/assets/images/menuBurger.svg" alt="icone menu burger" title="ouvrir le menu" />
+        <img src="/src/assets/images/menuBurger.svg" alt="ouvrir le menu"/>
       </button>
       <nav
         ref={menuRef}
@@ -45,7 +45,6 @@ function Navbar({ handleChange, navOpen, navVisible }) {
         </button>
         <Link to="/" className="hidden md:min-w-1 md:max-w-10 md:ml-6 md:flex md:items-center">
           <img
-            className=""
             src="/src/assets/Externatic.svg"
             alt="logo externatic"
           />
