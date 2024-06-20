@@ -31,7 +31,7 @@ function Navbar({ handleChange, navOpen, navVisible }) {
         to="/"
         className="absolute min-w-6 max-w-10 top-3 left-1/2 transform -translate-x-1/2 md:z-30 md:left-6 md:top-4 md:min-w-10 md:max-w-24 md:ml-6 md:flex md:items-center"
       >
-        <img src="/src/assets/Externatic.svg" alt="" />
+        <img src="/src/assets/Externatic.svg" alt="retourner à la page d'accueil" />
       </Link>
       <nav
         ref={menuRef}
@@ -42,7 +42,6 @@ function Navbar({ handleChange, navOpen, navVisible }) {
           type="button"
           className="block absolute right-5 top-2 w-10 md:hidden"
           onClick={handleChange}
-          aria-label="Fermer le menu"
         >
           <img
             src="/src/assets/images/cross-svgrepo-com.svg"
