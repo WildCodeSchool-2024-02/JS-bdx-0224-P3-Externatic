@@ -32,13 +32,13 @@ export default function CardCandidate({
       </header>
       <ul className="flex gap-1 relative mb-4">
         <li>
-          <Tag tag="REACT" />
+          <Tag text="REACT" apply="tag" />
         </li>
         <li>
-          <Tag tag="JAVA" />
+          <Tag text="JAVA" apply="tag" />
         </li>
         <li>
-          <Tag tag="CSS" />
+          <Tag text="CSS" apply="tag" />
         </li>
       </ul>
       <p className="text-content mb-4 max-md:text-sm"> {textContent}</p>
