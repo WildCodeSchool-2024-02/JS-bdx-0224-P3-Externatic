@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +32,6 @@ function App() {
         />
       </header>
       <Outlet />
-      <ScrollToTop />
       <Footer />
     </>
   );
