@@ -40,13 +40,13 @@ function Navbar({ handleChange, navOpen, navVisible }) {
         >
           <img
             src="/src/assets/images/cross-svgrepo-com.svg"
-            alt="icone fermeture menu"
+            alt="fermer le menu"
           />
         </button>
         <Link to="/" className="hidden md:min-w-1 md:max-w-10 md:ml-6 md:flex md:items-center">
           <img
             src="/src/assets/Externatic.svg"
-            alt="logo externatic"
+            alt=""
           />
         </Link>
         <ul
@@ -86,7 +86,7 @@ function Navbar({ handleChange, navOpen, navVisible }) {
             <img
             className="hidden self-center max-w-7"
               src="/src/assets/images/iconDisconnect.svg"
-              alt="icone profil non connecté"
+              alt="profil non connecté"
             />
         </ul>
       </nav>
