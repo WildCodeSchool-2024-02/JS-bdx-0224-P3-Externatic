@@ -1,10 +1,10 @@
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import externatic from "../assets/Externatic.svg";
 import menuBurger from "../assets/images/menuBurger.svg";
 import cross from "../assets/images/cross-svgrepo-com.svg";
 import disconnected from "../assets/images/iconDisconnect.svg";
-import PropTypes from "prop-types";
 import NavAccess from "../services/NavAccess";
 
 function Navbar({ handleChange, navOpen, navVisible }) {
