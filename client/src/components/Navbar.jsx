@@ -1,5 +1,9 @@
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import externatic from "../assets/Externatic.svg";
+import menuBurger from "../assets/images/menuBurger.svg";
+import cross from "../assets/images/cross-svgrepo-com.svg";
+import disconnected from "../assets/images/iconDisconnect.svg";
 import PropTypes from "prop-types";
 import NavAccess from "../services/NavAccess";
 
@@ -25,13 +29,13 @@ function Navbar({ handleChange, navOpen, navVisible }) {
         className="block absolute left-5 top-5 md:hidden"
         onClick={handleChange}
       >
-        <img src="/src/assets/images/menuBurger.svg" alt="ouvrir le menu" />
+        <img src={menuBurger} alt="ouvrir le menu" />
       </button>
       <Link
         to="/"
         className="absolute min-w-6 max-w-10 top-3 left-1/2 transform -translate-x-1/2 md:z-30 md:left-6 md:top-4 md:min-w-10 md:max-w-24 md:ml-6 md:flex md:items-center"
       >
-        <img src="/src/assets/Externatic.svg" alt="retourner à la page d'accueil" />
+        <img src={externatic} alt="retourner à la page d'accueil" />
       </Link>
       <nav
         ref={menuRef}
@@ -44,7 +48,7 @@ function Navbar({ handleChange, navOpen, navVisible }) {
           onClick={handleChange}
         >
           <img
-            src="/src/assets/images/cross-svgrepo-com.svg"
+            src={cross}
             alt="fermer le menu"
           />
         </button>
@@ -85,7 +89,7 @@ function Navbar({ handleChange, navOpen, navVisible }) {
         </ul>
         <img
           className="hidden self-center max-w-7"
-          src="/src/assets/images/iconDisconnect.svg"
+          src={disconnected}
           alt="profil non connecté"
         />
       </nav>
