@@ -1,5 +1,5 @@
 import Presentation from "../components/Presentation";
-import Slider from "../components/atomic/slider/Slider";
+import Slider from "../components/Slider";
 import Values from "../components/Values";
 
 function HomePage() {
