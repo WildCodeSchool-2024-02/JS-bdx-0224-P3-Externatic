@@ -10,6 +10,7 @@ function Presentation() {
         Ton prochain job à portée de clicks
       </h2>
       <p className="max-w-prose mx-8 md:mx-0 md:text-lg md:ml-28 mb-10 md:mb-10 md:self-start md:animate-fade-left md:animate-once md:animate-duration-700 md:animate-delay-300">
+
         Externatic est un cabinet dédié au recrutement de profils d’experts,
         ingénieurs et managers dans le domaine de l’informatique. Les
         entreprises nous font confiance et ça booste votre candidature. Faire

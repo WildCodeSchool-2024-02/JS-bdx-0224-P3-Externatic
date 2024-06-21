@@ -1,3 +1,8 @@
+import hand from "../assets/images/hand.svg";
+import hourglass from "../assets/images/hourglass.svg";
+import rocket from "../assets/images/rocket.svg";
+import calendar from "../assets/images/calendar.svg";
+
 export default function Values() {
   return (
     <article className=" p-4 m-4 max-w-screen-md mt-32 gap-4 gap-x-8 bg-[var(--secondary-background-color)] border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow grid grid-cols-2 md:mx-auto md:max-w-7xl">
@@ -5,7 +10,7 @@ export default function Values() {
         La réussite de notre cabinet recrutement informatique ?
       </h2>
       <img
-        src="./src/assets/images/hand.svg"
+        src={hand}
         alt=""
         className=" w-13 max-md:w-13  row-start-2 col-start-1 justify-self-center my-4 "
       />
@@ -19,7 +24,7 @@ export default function Values() {
         envies et les projets.
       </p>
       <img
-        src="./src/assets/images/hourglass.svg"
+        src={hourglass}
         alt=""
         className=" w-13 max-md:w-13 row-start-2 col-start-2 justify-self-center my-4"
       />
@@ -34,7 +39,7 @@ export default function Values() {
         notre politique RSE.
       </p>
       <img
-        src="./src/assets/images/rocket.svg"
+        src={rocket}
         alt=""
         className=" w-13 max-md:w-13 row-start-5 col-start-1 justify-self-center my-4"
       />
@@ -47,7 +52,7 @@ export default function Values() {
         et de ceux qui la rejoignent.
       </p>
       <img
-        src="./src/assets/images/calendar.svg"
+        src={calendar}
         alt=""
         className=" w-13 max-md:w-13 row-start-5 col-start-2 justify-self-center my-4"
       />

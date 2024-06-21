@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import linkedin from "../assets/images/linkedin.svg";
+import instagram from "../assets/images/instagram.svg";
+import x from "../assets/images/twitter.svg";
 
 function Footer() {
   return (
@@ -13,7 +16,10 @@ function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            <img src="/src/assets/images/linkedin.svg" alt="lien vers la page linkedin de externatic" />
+            <img
+              src={linkedin}
+              alt="lien vers la page linkedin de externatic"
+            />
           </a>
         </li>
         <li>
@@ -22,18 +28,23 @@ function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            <img src="/src/assets/images/instagram.svg" alt="lien vers la page instagram de externatic" />
+            <img
+              src={instagram}
+              alt="lien vers la page instagram de externatic"
+            />
           </a>
         </li>
         <li>
           <a href="https://x.com/Externatic" target="_blank" rel="noreferrer">
-            <img src="/src/assets/images/twitter.svg" alt="lien vers la page X de externatic" />
+            <img src={x} alt="lien vers la page X de externatic" />
           </a>
         </li>
+        <li>
+          <Link to="/" className="md:self-center ml-10">
+            Nous contacter
+          </Link>
+        </li>
       </ul>
-      <Link to="/" className="md:self-center">
-        Nous contacter
-      </Link>
       <ul className=" md:flex md:flex-row md:gap-6 md:self-center md:mr-10">
         <li>
           <Link to="/">CGU</Link>
