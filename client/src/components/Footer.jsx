@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import linkedin from "../assets/images/linkedin.svg";
+import instagram from "../assets/images/instagram.svg";
+import x from "../assets/images/twitter.svg";
 
 function Footer() {
   return (
@@ -14,7 +17,7 @@ function Footer() {
             rel="noreferrer"
           >
             <img
-              src="/src/assets/images/linkedin.svg"
+              src={linkedin}
               alt="lien vers la page linkedin de externatic"
             />
           </a>
@@ -26,17 +29,14 @@ function Footer() {
             rel="noreferrer"
           >
             <img
-              src="/src/assets/images/instagram.svg"
+              src={instagram}
               alt="lien vers la page instagram de externatic"
             />
           </a>
         </li>
         <li>
           <a href="https://x.com/Externatic" target="_blank" rel="noreferrer">
-            <img
-              src="/src/assets/images/twitter.svg"
-              alt="lien vers la page X de externatic"
-            />
+            <img src={x} alt="lien vers la page X de externatic" />
           </a>
         </li>
         <li>
