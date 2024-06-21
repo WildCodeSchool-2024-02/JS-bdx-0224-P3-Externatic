@@ -6,10 +6,10 @@ function Presentation() {
       <h1 className="mt-6 text-center text-[var(--secondary-color)] md:mt-16 md:text-6xl">
         Externatic
       </h1>
-      <h2 className="flex-none my-10 mx-4 text-[var(--primary-color)] md:self-start md:mr-[20%] md:mx-6 md:mt-20">
+      <h2 className="flex-none my-10 mx-6 text-[var(--primary-color)] md:text-4xl md:self-start md:ml-28 md:mt-20">
         Ton prochain job à portée de clicks
       </h2>
-      <p className="mx-4 mb-10 md:ml-6  md:mb-20 md:mr-[20%] md:mx-6 md:animate-fade-left md:animate-once md:animate-duration-700 md:animate-delay-300">
+      <p className="max-w-prose md:text-lg md:ml-28 mb-10 md:mb-10 md:self-start md:animate-fade-left md:animate-once md:animate-duration-700 md:animate-delay-300">
         Externatic est un cabinet dédié au recrutement de profils d’experts,
         ingénieurs et managers dans le domaine de l’informatique. Les
         entreprises nous font confiance et ça booste votre candidature. Faire
@@ -19,10 +19,10 @@ function Presentation() {
         startup à la DSI en passant par les éditeurs de logiciels, agence web,
         PME…
       </p>
-      <h2 className="my-10 mx-4 text-[var(--primary-color)] md:ml-[20%] md:mr-20">
+      <h2 className="flex-none my-10 text-[var(--primary-color)] md:text-4xl md:self-end md:mr-28 md:mt-20">
         Plus qu’un cabinet de recrutement informatique
       </h2>
-      <p className="mx-4 mb-10 md:mb-20 md:ml-[20%] md:text-left md:mx-6 md:animate-fade-right md:animate-once md:animate-duration-700 md:animate-delay-300">
+      <p className="max-w-prose md:text-lg md:self-end md:mr-44 mx-6 mb-10 md:mb-20 md:text-left md:mx-0 md:animate-fade-right md:animate-once md:animate-duration-700 md:animate-delay-300">
         Externatic, c’est avant tout une équipe d’experts IT, tous animés par la
         même passion des relations humaines. L’intelligence émotionnelle et
         l’éducation cognitive ne peuvent être remplacées par des algorithmes.
