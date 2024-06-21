@@ -1,6 +1,6 @@
 export default function Values() {
   return (
-    <article className=" p-4 m-4 max-w-screen-md mt-24 gap-4 gap-x-8 bg-[var(--secondary-background-color)] border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow grid grid-cols-2 md:mx-auto md:max-w-7xl">
+    <article className=" p-4 m-4 max-w-screen-md mt-32 gap-4 gap-x-8 bg-[var(--secondary-background-color)] border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow grid grid-cols-2 md:mx-auto md:max-w-7xl">
       <h2 className=" text-[var(--primary-color)] col-span-2 text-center mb-10">
         La réussite de notre cabinet recrutement informatique ?
       </h2>
