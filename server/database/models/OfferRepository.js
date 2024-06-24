@@ -22,37 +22,23 @@ class OfferRepository extends AbstractRepository {
     return result.insertId;
   }
 
-  // async read(id) {
-  //   const [rows] = await this.database.query(
-  //     `select * from ${this.table} where id = ?`,
-  //     [id]
-  //   );
-
-  //   return rows[0];
-  // }
-
   async readAll() {
     const [rows] = await this.database.query(`
       SELECT
-      offer.*,
+      offer.title,
+      offer.details,
       JSON_ARRAYAGG(
         JSON_OBJECT(
-          "id", company.id,
-          "name", company.name,
-          "banner", company.banner,
-          "logo", company.logo,
-          "description", company.description
+          "name", company.name
         )
       ) AS companies,
       JSON_ARRAYAGG(
         JSON_OBJECT(
-          "id", techno.id,
           "name", techno.name
         )
       ) AS technos,
       JSON_ARRAYAGG(
         JSON_OBJECT(
-          "id", region.id,
           "name", region.name
         )
       ) AS regions
@@ -63,68 +49,9 @@ class OfferRepository extends AbstractRepository {
     LEFT JOIN consultant ON offer.consultant_id = consultant.id
     LEFT JOIN region ON consultant.id = region.consultant_id
     GROUP BY offer.id
-    `);
+  `);
 
     return rows;
-    // (`
-    //   SELECT
-    //     offer.*,
-    //     JSON_OBJECT(
-    //       'id', company.id,
-    //       'name', company.name,
-    //       'banner', company.banner,
-    //       'logo', company.logo,
-    //       'description', company.description
-    //     ) AS company
-    //   FROM ${this.table} AS offer
-    //   LEFT JOIN company ON offer.company_id = company.id
-    // `);
-
-    // const offers = rows.map((row) => ({
-    //   id: row.id,
-    //   title: row.title,
-    //   details: row.details,
-    //   advantages: row.advantages,
-    //   salary: row.salary,
-    //   consultant_id: row.consultant_id,
-    //   job_id: row.job_id,
-    //   company: JSON.parse(row.company)
-    // }));
-
-    // return offers;
-
-    // (`
-    //   SELECT offer.*,
-    //     company.*,
-    //     techno_offer.*
-    //   FROM ${this.table} AS offer
-    //   LEFT JOIN company ON offer.company_id = company.id
-    //       LEFT JOIN techno_offer ON offer.id = techno_offer.offer_id
-
-    // `);
-    // return rows;
-
-    // const offers = rows.map((row) => ({
-    //   id: row.id,
-    //   title: row.title,
-    //   details: row.details,
-    //   advantages: row.advantages,
-    //   salary: row.salary,
-    //   consultant_id: row.consultant_id,
-    //   job_id: row.job_id,
-    //   company: {
-    //     id: row.company_id,
-    //     name: row.name,
-    //     banner: row.banner,
-    //     logo: row.logo,
-    //     description: row.description,
-    //   },
-    //   technologies: {
-    //     id: row.techno_id,
-    //   },
-    // }));
-
-    //   return offers;
   }
 }
 
