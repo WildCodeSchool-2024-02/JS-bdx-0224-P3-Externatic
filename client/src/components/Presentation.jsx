@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-
 import Button from "./atomic/buttons/Button";
 
 function Presentation({handleChange}) {
@@ -31,7 +30,7 @@ function Presentation({handleChange}) {
         Notre cabinet de recrutement s’appuie sur des méthodes authentiques, où
         l’humain est tout simplement indispensable.
       </p>
-      <Button type="button" apply="medium" name="S'inscrire" className="" onClick={handleChange} />
+      <Button type="button" apply="medium" name="S'inscrire" className="" handleChange={handleChange} />
     </main>
   );
 };
