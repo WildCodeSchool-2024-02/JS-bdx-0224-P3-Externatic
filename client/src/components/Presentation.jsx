@@ -3,13 +3,13 @@ import Button from "./atomic/buttons/Button";
 function Presentation() {
   return (
     <main className="flex flex-col items-center">
-      <h1 className="mt-6 text-center text-[var(--secondary-color)] md:mt-16 md:text-6xl">
+      <h1 className="mt-6 text-center text-[var(--secondary-color)] md:mt-16">
         Externatic
       </h1>
-      <h2 className="flex-none my-10 mx-8 md:mx-0 text-[var(--primary-color)] md:text-4xl md:self-start md:ml-28 md:mt-20">
+      <h2 className="flex-none my-10 mx-8 md:mx-0 text-[var(--primary-color)] md:self-start md:ml-28 md:mt-20">
         Ton prochain job à portée de clicks
       </h2>
-      <p className="max-w-prose mx-8 md:mx-0 md:text-lg md:ml-28 mb-10 md:mb-10 md:self-start md:animate-fade-left md:animate-once md:animate-duration-700 md:animate-delay-300">
+      <p className="max-w-prose mx-8 md:mx-0 md:ml-28 mb-10 md:mb-10 md:self-start md:animate-fade-left md:animate-once md:animate-duration-700 md:animate-delay-300">
 
         Externatic est un cabinet dédié au recrutement de profils d’experts,
         ingénieurs et managers dans le domaine de l’informatique. Les
@@ -20,10 +20,10 @@ function Presentation() {
         startup à la DSI en passant par les éditeurs de logiciels, agence web,
         PME…
       </p>
-      <h2 className="flex-none mx-8 md:mx-8 my-10 text-[var(--primary-color)] md:text-4xl md:self-end md:mr-28 md:mt-20">
+      <h2 className="flex-none mx-8 md:mx-8 my-10 text-[var(--primary-color)] md:self-end md:mr-28 md:mt-20">
         Plus qu’un cabinet de recrutement informatique
       </h2>
-      <p className="max-w-prose md:text-lg md:self-end md:mr-44 mx-8 mb-20 md:mb-32 md:text-left md:mx-0 md:animate-fade-right md:animate-once md:animate-duration-700 md:animate-delay-300">
+      <p className="max-w-prose md:self-end md:mr-44 mx-8 mb-20 md:mb-32 md:text-left md:mx-0 md:animate-fade-right md:animate-once md:animate-duration-700 md:animate-delay-300">
         Externatic, c’est avant tout une équipe d’experts IT, tous animés par la
         même passion des relations humaines. L’intelligence émotionnelle et
         l’éducation cognitive ne peuvent être remplacées par des algorithmes.
