@@ -47,13 +47,10 @@ function Navbar({ handleChange, navOpen, navVisible }) {
           className="block absolute right-5 top-2 w-10 md:hidden"
           onClick={handleChange}
         >
-          <img
-            src={cross}
-            alt="fermer le menu"
-          />
+          <img src={cross} alt="fermer le menu" />
         </button>
         <ul
-          className="text-[var(--primary-background-color)] flex flex-col gap-8 text-center mt-20
+          className="text-[var(--primary-background-color)] text-lg flex flex-col gap-8 text-center mt-20
         md:flex-row md:gap-10 md:ml-auto md:mr-6 md:text-[var(--text-color)] md:self-center md:mt-0"
         >
           <li>
