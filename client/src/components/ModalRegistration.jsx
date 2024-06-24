@@ -25,7 +25,7 @@ function ModalRegistration({ handleChange }) {
   return (
     <section
       ref={menuRef}
-      className="flex relative flex-col items-center mt-6 border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow max-w-screen-md mx-4"
+      className="flex relative flex-col items-center mt-6 border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow max-w-screen-md mx-auto pb-20"
     >
       <header className="mb-10">
         <button
@@ -60,19 +60,31 @@ function ModalRegistration({ handleChange }) {
           type="password"
         />
       </form>
-      <footer className="flex-none grid grid-cols-5 grid-rows-2 mt-10 mx-4">
-        <CheckBox id="CGU" apply="bigCheckbox" className="col-start-2" />
-        <label htmlFor="CGU" className="col-start-3 col-span-2">
-          J’ai lu et j’accepte les
-          <Link to="/" target="_blank" className="text-[var(--primary-color)] ">
-            {" "}
-            CGU
-          </Link>{" "}
-          et la{" "}
-          <Link to="/" target="_blank" className="text-[var(--primary-color)]">
-            politique de protection des données
-          </Link>
-        </label>
+      <footer className="mt-10 mx-4 flex flex-col gap-10 items-center">
+        <CheckBox
+          id="CGU"
+          apply="bigCheckbox"
+          labelContent={
+            <>
+              J’ai lu et j’accepte les{" "}
+              <Link
+                to="/"
+                target="_blank"
+                className="text-[var(--primary-color)]"
+              >
+                CGU
+              </Link>{" "}
+              et la{" "}
+              <Link
+                to="/"
+                target="_blank"
+                className="text-[var(--primary-color)]"
+              >
+                politique de protection des données
+              </Link>
+            </>
+          }
+        />
         <Button
           form="registration"
           name="Valider mon inscription"
@@ -80,7 +92,6 @@ function ModalRegistration({ handleChange }) {
           apply="big"
           type="submit"
           onClick={handleChange}
-          className="row-end-3 col-start-2 col-span-3"
         />
       </footer>
     </section>
