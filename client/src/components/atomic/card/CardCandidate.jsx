@@ -1,20 +1,25 @@
 import PropTypes from "prop-types";
-import Button from "../buttons/Button";
-import Tag from "../tag/Tag";
+import { Link } from "react-router-dom";
 
-export default function CardCandidate({
-  name = "Titre",
-  textContent = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam perspiciatis officia consequuntur expedita, sequi doloremque dolor, aut quasi exercitationem doloribus dicta, facere ipsum rerum ratione cumque.Aperiam debitis sit eaque.",
-}) {
+import Tag from "../tag/Tag"
+import Button from "../buttons/Button";
+
+export default function CardCandidate({ offer }) {
+
+  const company = offer.companies[0]
+  const techno = offer.technos[0]
+  const region = offer.regions[0]
   return (
-    <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate max-w-xl border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 bg-[var(--secondary-background-color)] mb-4 max-md:max-w-96 ">
+    <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 bg-[var(--secondary-background-color)] mb-4 max-w-md min-w-72">
       <header className="flex justify-between items-center mb-4">
-        <h3 className="text-[var(--primary-color)] max-md:text-lg">{name} </h3>
+        <h3 className="text-[var(--primary-color)] max-md:text-lg">
+          {offer.title}
+        </h3>
         <label className="peer text-[0] cursor-pointer">
           favoris
           <input type="checkbox" className="peer hidden" />
           <svg
-            className=" peer-checked:fill-[var(--primary-color)] peer-checked:animate-jump animate-once animate-duration-500 animate-ease-in-out animate-alternate"
+            className="peer-checked:fill-[var(--primary-color)] peer-checked:animate-jump animate-once animate-duration-500 animate-ease-in-out animate-alternate"
             width="23"
             height="29"
             viewBox="0 0 13 19"
@@ -32,24 +37,37 @@ export default function CardCandidate({
       </header>
       <ul className="flex gap-1 relative mb-4">
         <li>
-          <Tag text="REACT" apply="tag" />
+          <Tag text={techno.name} apply="tag" />
         </li>
-        <li>
-          <Tag text="JAVA" apply="tag" />
-        </li>
-        <li>
-          <Tag text="CSS" apply="tag" />
+        <li className=" absolute right-1">
+          <Tag text={region.name} apply="tag" />
         </li>
       </ul>
-      <p className="text-content mb-4 max-md:text-sm"> {textContent}</p>
+      <p>{company.name}</p>
+      <p className="text-content mb-4 max-md:text-sm"> {offer.details}</p>
       <footer className="flex justify-center">
-        <Button apply="medium" name="VOIR L'OFFRE" />
+        <Link to={`/offer/${offer.id}`}>
+          <Button apply="medium" name="VOIR L'OFFRE" />
+        </Link>
       </footer>
     </article>
   );
 }
 
 CardCandidate.propTypes = {
-  name: PropTypes.string.isRequired,
-  textContent: PropTypes.string.isRequired,
+  offer: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    details: PropTypes.string.isRequired,
+    salary : PropTypes.number.isRequired,
+    companies: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+    technos: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+    regions: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
