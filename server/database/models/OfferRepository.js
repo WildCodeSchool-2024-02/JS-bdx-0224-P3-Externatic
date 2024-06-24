@@ -43,11 +43,11 @@ class OfferRepository extends AbstractRepository {
         )
       ) AS regions
     FROM ${this.table} AS offer
-    LEFT JOIN company ON offer.company_id = company.id
-    LEFT JOIN techno_offer ON offer.id = techno_offer.offer_id
-    LEFT JOIN techno ON techno_offer.techno_id = techno.id
-    LEFT JOIN consultant ON offer.consultant_id = consultant.id
-    LEFT JOIN region ON consultant.id = region.consultant_id
+    INNER JOIN company ON offer.company_id = company.id
+    INNER JOIN techno_offer ON offer.id = techno_offer.offer_id
+    INNER JOIN techno ON techno_offer.techno_id = techno.id
+    INNER JOIN consultant ON offer.consultant_id = consultant.id
+    INNER JOIN region ON consultant.id = region.consultant_id
     GROUP BY offer.id
   `);
 
