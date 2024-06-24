@@ -6,26 +6,26 @@ import Values from "../components/Values";
 import ModalRegistration from "../components/ModalRegistration";
 
 function HomePage() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isModalOpen, setModalIsOpen] = useState(false);
+  const [isModalVisible, setModalIsVisible] = useState(false);
 
   const handleChange = () => {
-    setIsVisible(true);
-    if (isVisible) {
+    setModalIsVisible(true);
+    if (isModalVisible) {
       setTimeout(() => {
-        setIsVisible(false);
+        setModalIsVisible(false);
       }, 500);
     }
     setTimeout(() => {
-      setIsOpen(!isOpen);
+      setModalIsOpen(!isModalOpen);
     }, 1);
   };
 
-  const modalOpen = isOpen
+  const modalOpen = isModalOpen
     ? "absolute opacity-100 delay-75 duration-500 top-96 md:top-56 bg-[var(--primary-background-color)] z-50 pb-16 flex flex-col items-center mt-6 border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow mx-4 md:mx-0"
     : "absolute duration-500 opacity-0 top-1/2 md:top-96 bg-[var(--primary-background-color)] z-50 pb-16 flex flex-col items-center mt-6 border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow mx-4 md:mx-0";
 
-  const modalVisible = isVisible ? "block" : "hidden";
+  const modalVisible = isModalVisible ? "block" : "hidden";
 
   return (
     <main className="relative">
