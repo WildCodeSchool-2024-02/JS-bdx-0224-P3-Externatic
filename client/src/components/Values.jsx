@@ -51,10 +51,10 @@ export default function Values() {
           </h3>
           <p className="row-start-7 col-start-2 md:mx-10">MEETUP AFUP Nantes</p>
           <p className="mt-12 row-start-7 col-start-2 sm:mt-6 md:mx-10">
-            📆 Mardi 25 juin à partir de 18h30
+            📆 Mardi 25 août à partir de 18h30
           </p>
           <p className="mt-24 row-start-7 col-start-2 sm:mt-12 md:mx-10">
-            📍 UmanIT au 13 place Sophie Trébuchet 44000 Nantesé
+            📍 UmanIT au 13 place Sophie Trébuchet 44000 Nantes
           </p>
         </article>
       </article>
