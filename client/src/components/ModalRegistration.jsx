@@ -1,14 +1,16 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import { useModal } from "../contexts/ModalContext";
 
 import NavAccess from "../services/NavAccess";
 import FormInputCandidat from "./atomic/inputCandidat/formCandidat/FormInputCandidat";
 import CheckBox from "./atomic/checkBox/CheckBox";
 import Button from "./atomic/buttons/Button";
 
-function ModalRegistration({ handleChange, modalOpen, modalVisible }) {
+function ModalRegistration() {
   const modalRef = useRef(null);
+
+  const {handleChangeModal, modalOpen, modalVisible} = useModal()
 
   useEffect(() => {
     if (modalRef.current) {
@@ -31,7 +33,7 @@ function ModalRegistration({ handleChange, modalOpen, modalVisible }) {
         <button
           type="button"
           className="w-10 block absolute right-1 top-1 mr-5"
-          onClick={handleChange}
+          onClick={handleChangeModal}
         >
           <svg
             width="50px"
@@ -110,17 +112,11 @@ function ModalRegistration({ handleChange, modalOpen, modalVisible }) {
           img=""
           apply="big"
           type="submit"
-          onClick={handleChange}
+          onClick={handleChangeModal}
         />
       </footer>
     </section>
   );
 }
-
-ModalRegistration.propTypes = {
-  handleChange: PropTypes.func.isRequired,
-  modalOpen: PropTypes.func.isRequired,
-  modalVisible: PropTypes.func.isRequired,
-};
 
 export default ModalRegistration;

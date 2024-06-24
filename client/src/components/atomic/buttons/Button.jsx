@@ -17,7 +17,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  img: "",
+  img: ''
 };
 
 export default Button;

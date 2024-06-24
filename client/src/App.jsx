@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
+import { ModalProvider } from "./contexts/ModalContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -22,8 +23,10 @@ function App() {
     : "block duration-500 bg-[var(--primary-color)] min-h-screen min-w-56 absolute z-20 -translate-x-56 top-0 text-[var(--text-content-size)] text-[var(--primary-background-color)]";
 
   const navVisible = isVisible ? "block" : "hidden";
+
+  
   return (
-    <>
+    <ModalProvider>
       <header className="bg-[var(--secondary-background-color)] w-full h-16">
         <Navbar
           handleChange={handleChange}
@@ -33,7 +36,7 @@ function App() {
       </header>
       <Outlet />
       <Footer />
-    </>
+      </ModalProvider>
   );
 }
 
