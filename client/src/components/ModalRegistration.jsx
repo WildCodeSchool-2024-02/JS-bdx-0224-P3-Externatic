@@ -25,7 +25,7 @@ function ModalRegistration({ handleChange, modalOpen, modalVisible }) {
   return (
     <section
       ref={modalRef}
-      className={` ${modalOpen} ${modalVisible} flex relative flex-col items-center mt-6 border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow max-w-screen-md mx-4`}
+      className={` ${modalOpen} ${modalVisible} md:left-1/2 md:transform md:-translate-x-1/2`}
     >
       <header className="mb-10">
         <button
@@ -58,13 +58,13 @@ function ModalRegistration({ handleChange, modalOpen, modalVisible }) {
             </g>
           </svg>
         </button>
-        <h3 className="my-10 text-center text-[var(--primary-color)] font-semibold">
+        <h3 className="mt-16 mb-10 mx-4 text-center text-[var(--primary-color)] md:text-xl text-lg font-semibold">
           INSCRIVEZ-VOUS EN UN CLIC !
         </h3>
-        <h4 className="inline font-medium text-[var(--secondary-color)] mx-4">
+        <h4 className="font-medium text-center mb-4 md:inline md:text text-[var(--secondary-color)] mx-4">
           SE CONNECTER
         </h4>
-        <h4 className="inline font-medium text-[var(--secondary-color)] mx-4 underline">
+        <h4 className="font-medium text-center md:inline text-[var(--secondary-color)] mx-4 underline">
           CRÉER UN COMPTE
         </h4>
       </header>

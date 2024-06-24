@@ -22,20 +22,26 @@ function HomePage() {
   };
 
   const modalOpen = isOpen
-    ? "z-30"
-    : "";
+    ? "absolute opacity-100 delay-75 duration-500 top-96 md:top-56 bg-[var(--primary-background-color)] z-50 pb-16 flex flex-col items-center mt-6 border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow mx-4 md:mx-0"
+    : "absolute duration-500 opacity-0 top-1/2 md:top-96 bg-[var(--primary-background-color)] z-50 pb-16 flex flex-col items-center mt-6 border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow mx-4 md:mx-0";
 
   const modalVisible = isVisible ? "block" : "hidden";
 
   return (
-    <>
-      <Presentation handleChange={handleChange} modalOpen={modalOpen} modalVisible={modalVisible}/>
+    <main className="relative">
+      <Presentation
+        handleChange={handleChange}
+        modalOpen={modalOpen}
+        modalVisible={modalVisible}
+      />
       <ModalRegistration
-        handleChange={handleChange} modalOpen={modalOpen} modalVisible={modalVisible}
+        handleChange={handleChange}
+        modalOpen={modalOpen}
+        modalVisible={modalVisible}
       />
       <Values />
       <Slider />
-    </>
+    </main>
   );
 }
 
