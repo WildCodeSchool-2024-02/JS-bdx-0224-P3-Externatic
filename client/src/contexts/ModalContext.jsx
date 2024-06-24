@@ -19,10 +19,14 @@ export function ModalProvider({ children }) {
       setIsModalOpen(!isModalOpen);
     }, 1);
   }, [isModalVisible, isModalOpen]);
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 
   const modalOpen = isModalOpen
-    ? "absolute opacity-100 delay-75 duration-500 top-96 md:top-56 bg-[var(--primary-background-color)] z-50 pb-16 flex flex-col items-center mt-6 border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow mx-4 md:mx-0"
-    : "absolute duration-500 opacity-0 top-1/2 md:top-96 bg-[var(--primary-background-color)] z-50 pb-16 flex flex-col items-center mt-6 border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow mx-4 md:mx-0";
+    ? "absolute opacity-100 delay-75 duration-500 top-0 bg-[var(--primary-background-color)] z-50 pb-16 flex flex-col items-center mt-6 border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow mx-4 md:mx-0"
+    : "absolute duration-500 opacity-0 top-0 bg-[var(--primary-background-color)] z-50 pb-16 flex flex-col items-center mt-6 border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow mx-4 md:mx-0";
 
   const modalVisible = isModalVisible ? "block" : "hidden";
 
