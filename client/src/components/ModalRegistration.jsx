@@ -25,7 +25,7 @@ function ModalRegistration({ handleChange, modalOpen, modalVisible }) {
   return (
     <section
       ref={modalRef}
-      className={` ${modalOpen} ${modalVisible} md:left-1/2 md:transform md:-translate-x-1/2`}
+      className={` ${modalOpen} ${modalVisible} mx-auto left-1/2 transform -translate-x-1/2`}
     >
       <header className="mb-10">
         <button
