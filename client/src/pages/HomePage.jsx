@@ -7,10 +7,7 @@ function HomePage() {
 
   return (
     <main className="relative">
-      <Presentation
-      />
-      <ModalRegistration
-      />
+      <Presentation />
       <Values />
       <Slider />
     </main>

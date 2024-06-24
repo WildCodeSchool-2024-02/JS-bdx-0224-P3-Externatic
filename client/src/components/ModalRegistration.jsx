@@ -10,7 +10,7 @@ import Button from "./atomic/buttons/Button";
 function ModalRegistration() {
   const modalRef = useRef(null);
 
-  const {handleChangeModal, modalOpen, modalVisible} = useModal()
+  const { handleChangeModal, isModalOpen, isModalVisible } = useModal();
 
   useEffect(() => {
     if (modalRef.current) {
@@ -27,7 +27,7 @@ function ModalRegistration() {
   return (
     <section
       ref={modalRef}
-      className={` ${modalOpen} ${modalVisible} mx-auto left-1/2 transform -translate-x-1/2`}
+      className={` ${isModalOpen} ${isModalVisible} mx-auto left-1/2 transform -translate-x-1/2`}
     >
       <header className="mb-10">
         <button
