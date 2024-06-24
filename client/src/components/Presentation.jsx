@@ -31,7 +31,7 @@ function Presentation({handleChange}) {
         Notre cabinet de recrutement s’appuie sur des méthodes authentiques, où
         l’humain est tout simplement indispensable.
       </p>
-      <Button type="button" apply="medium" name="S'inscrire" className="" handleChange={handleChange} />
+      <Button type="button" apply="medium" name="S'inscrire" handleChange={handleChange} />
     </main>
   );
 };
