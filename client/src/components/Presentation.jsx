@@ -1,6 +1,8 @@
+import PropTypes from "prop-types";
+
 import Button from "./atomic/buttons/Button";
 
-function Presentation() {
+function Presentation({handleChange}) {
   return (
     <main className="flex flex-col items-center">
       <h1 className="mt-6 text-center text-[var(--secondary-color)] md:mt-16 md:text-6xl">
@@ -29,9 +31,13 @@ function Presentation() {
         Notre cabinet de recrutement s’appuie sur des méthodes authentiques, où
         l’humain est tout simplement indispensable.
       </p>
-      <Button apply="medium" name="S'inscrire" />
+      <Button type="button" apply="medium" name="S'inscrire" className="" onClick={handleChange} />
     </main>
   );
-}
+};
+
+Presentation.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+};
 
 export default Presentation;
