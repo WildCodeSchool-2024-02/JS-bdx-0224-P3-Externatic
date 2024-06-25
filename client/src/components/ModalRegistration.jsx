@@ -25,7 +25,7 @@ function ModalRegistration() {
   }, [modalRef]);
 
   return (
-    <section
+    <dialog
       ref={modalRef}
       className={` ${isModalOpen} ${isModalVisible} mx-auto left-1/2 transform -translate-x-1/2`}
     >
@@ -60,15 +60,15 @@ function ModalRegistration() {
             </g>
           </svg>
         </button>
-        <h3 className="mt-16 mb-10 mx-4 text-center text-[var(--primary-color)] md:text-xl text-lg font-semibold">
+        <h1 className="mt-16 mb-10 mx-4 text-center text-[var(--primary-color)] md:text-4xl text-xl font-semibold">
           INSCRIVEZ-VOUS EN UN CLIC !
-        </h3>
-        <h4 className="font-medium text-center mb-4 md:inline md:text text-[var(--secondary-color)] mx-4">
+        </h1>
+        <h2 className="font-medium md:text-xl text-center text-lg mb-4 text-[var(--secondary-color)]">
           SE CONNECTER
-        </h4>
-        <h4 className="font-medium text-center md:inline text-[var(--secondary-color)] mx-4 underline">
+        </h2>
+        <h2 className="font-medium md:text-xl text-lg text-center text-[var(--secondary-color)] underline">
           CRÉER UN COMPTE
-        </h4>
+        </h2>
       </header>
       <form id="registration" method="post">
         <FormInputCandidat id="firstName" label="Prénom" type="text" />
@@ -89,17 +89,17 @@ function ModalRegistration() {
             <>
               J’ai lu et j’accepte les{" "}
               <Link
-                to="/"
-                target="_blank"
+                to="/CGU"
+                onClick={handleChangeModal}
                 className="text-[var(--primary-color)]"
               >
                 CGU
               </Link>{" "}
               et la{" "}
               <Link
-                to="/"
-                target="_blank"
+                to="/protectionDataPolicy"
                 className="text-[var(--primary-color)]"
+                onClick={handleChangeModal}
               >
                 politique de protection des données
               </Link>
@@ -115,7 +115,7 @@ function ModalRegistration() {
           onClick={handleChangeModal}
         />
       </footer>
-    </section>
+    </dialog>
   );
 }
 
