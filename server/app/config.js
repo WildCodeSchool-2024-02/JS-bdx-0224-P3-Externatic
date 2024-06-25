@@ -31,8 +31,6 @@ app.use(
   cors({
     origin: [
       process.env.CLIENT_URL, // keep this one, after checking the value in `server/.env`
-      "http://mysite.com",
-      "http://another-domain.com",
     ]
   })
 );
@@ -81,7 +79,7 @@ app.use(
 // const username = req.cookies.username;
 
 /* ************************************************************************* */
-
+const path = require("path");
 // Import the API router
 const apiRouter = require("./routers/api/router");
 
@@ -106,24 +104,24 @@ app.use("/api", apiRouter);
 // 2. Ensure that the `reactBuildPath` points to the correct directory where your client's build artifacts are located.
 
 
-// const path = require("path");
 
-// const reactBuildPath = path.join(__dirname, "/../../client/dist");
-// const publicFolderPath = path.join(__dirname, "/../public");
+
+const reactBuildPath = path.join(__dirname, "/../../client/dist");
+const publicFolderPath = path.join(__dirname, "/../public");
 
 // Serve react resources
 
-// app.use(express.static(reactBuildPath));
+app.use(express.static(reactBuildPath));
 
 // Serve server resources
 
-// app.get("*.*", express.static(publicFolderPath, { maxAge: "1y" }));
+app.get("*.*", express.static(publicFolderPath, { maxAge: "1y" }));
 
 // Redirect unhandled requests to the react index file
 
-// app.get("*", (_, res) => {
-//   res.sendFile(path.join(reactBuildPath, "/index.html"));
-// });
+app.get("*", (_, res) => {
+  res.sendFile(path.join(reactBuildPath, "/index.html"));
+});
 
 
 /* ************************************************************************* */
