@@ -59,6 +59,14 @@ p {
   }
 }
 
+.modalOpen {
+  @apply absolute opacity-100 delay-75 duration-500 top-0 bg-[var(--primary-background-color)] z-50 pb-16 flex flex-col items-center mt-6 border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow mx-4 md:mx-0;
+}
+
+.modalNotOpen {
+  @apply absolute duration-500 opacity-0 top-0 bg-[var(--primary-background-color)] z-50 pb-16 flex flex-col items-center mt-6 border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow mx-4 md:mx-0;
+}
+
 .small {
   @apply flex justify-around items-center w-36 h-11 z-30 bg-[var(--primary-color)] rounded-md relative font-semibold text-[var(--primary-background-color)] max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm;
 }
