@@ -30,7 +30,6 @@ function OfferPage() {
       <section className="gap-4 flex flex-col items-center md:flex-row md:flex-wrap md:justify-center">
         {offers.map((offer) => (
           <CardCandidate key={offer.id} offer={offer}/>
-          
         ))}
       </section>
     </main>

@@ -1,8 +1,7 @@
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import Tag from "../tag/Tag";
-import Button from "../buttons/Button";
 
 export default function CardCandidate({ offer }) {
   const company = offer.companies[0];
@@ -44,14 +43,11 @@ export default function CardCandidate({ offer }) {
         </li>
       </ul>
       <p className=" font-medium">{company.name}</p>
-      <p className="mb-4 max-md:text-sm line-clamp-2 overflow-hidden...">
-        {" "}
+      <p className="mb-4 max-md:text-sm overflow-hidden...">
         {offer.details}
       </p>
       <footer className="flex justify-center">
-        <Link to={`/offer/${offer.id}`}>
-          <Button apply="medium" name="VOIR L'OFFRE" />
-        </Link>
+        <Link to="/offer/id">coucou</Link>
       </footer>
     </article>
   );
