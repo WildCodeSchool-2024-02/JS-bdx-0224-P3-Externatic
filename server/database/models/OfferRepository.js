@@ -25,30 +25,21 @@ class OfferRepository extends AbstractRepository {
   async readAll() {
     const [rows] = await this.database.query(`
       SELECT
-      offer.title,
-      offer.details,
-      JSON_ARRAYAGG(
-        JSON_OBJECT(
-          "name", company.name
-        )
-      ) AS companies,
-      JSON_ARRAYAGG(
-        JSON_OBJECT(
-          "name", techno.name
-        )
-      ) AS technos,
-      JSON_ARRAYAGG(
-        JSON_OBJECT(
-          "name", region.name
-        )
-      ) AS regions
-    FROM ${this.table} AS offer
-    INNER JOIN company ON offer.company_id = company.id
-    INNER JOIN techno_offer ON offer.id = techno_offer.offer_id
+  offer.title,
+  offer.details,
+  offer.city,
+  (
+    SELECT JSON_ARRAYAGG(JSON_OBJECT("name", company.name))
+    FROM company
+    WHERE offer.company_id = company.id
+  ) AS companies,
+  (
+    SELECT JSON_ARRAYAGG(JSON_OBJECT("name", techno.name))
+    FROM techno_offer
     INNER JOIN techno ON techno_offer.techno_id = techno.id
-    INNER JOIN consultant ON offer.consultant_id = consultant.id
-    INNER JOIN region ON consultant.id = region.consultant_id
-    GROUP BY offer.id
+    WHERE techno_offer.offer_id = offer.id
+  ) AS technos
+FROM ${this.table} AS offer
   `);
 
     return rows;
