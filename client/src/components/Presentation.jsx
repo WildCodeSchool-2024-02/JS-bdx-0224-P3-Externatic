@@ -1,6 +1,9 @@
 import Button from "./atomic/buttons/Button";
+import { useModal } from "../contexts/ModalContext";
 
 function Presentation() {
+  const {handleChangeModal} = useModal()
+
   return (
     <main className="flex flex-col items-center">
       <h1 className="mt-6 text-center text-[var(--secondary-color)] md:mt-16">
@@ -30,9 +33,9 @@ function Presentation() {
         Notre cabinet de recrutement s’appuie sur des méthodes authentiques, où
         l’humain est tout simplement indispensable.
       </p>
-      <Button apply="medium" name="S'inscrire" />
+      <Button type="button" apply="medium" name="S'inscrire" handleChange={handleChangeModal} />
     </main>
   );
-}
+};
 
 export default Presentation;
