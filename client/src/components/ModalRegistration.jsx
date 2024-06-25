@@ -97,7 +97,7 @@ function ModalRegistration() {
               </Link>{" "}
               et la{" "}
               <Link
-                to="/protectionDataPolitics"
+                to="/protectionDataPolicy"
                 className="text-[var(--primary-color)]"
                 onClick={handleChangeModal}
               >

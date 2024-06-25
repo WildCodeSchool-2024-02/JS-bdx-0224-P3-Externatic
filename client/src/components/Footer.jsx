@@ -50,7 +50,7 @@ function Footer() {
           <Link to="/CGU">CGU</Link>
         </li>
         <li>
-          <Link to="/protectionDataPolitics">Politique de confidentialité</Link>
+          <Link to="/protectionDataPolicy">Politique de confidentialité</Link>
         </li>
         <li>
           <Link to="/legalMentions">Mentions légales</Link>

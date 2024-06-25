@@ -10,7 +10,7 @@ import OfferPage from "./pages/OfferPage";
 import OfferDetails from "./pages/OfferDetails";
 import Dashboard from "./pages/Dashboard";
 import CGU from "./pages/CGU";
-import ProtectionDataPolitics from "./pages/ProtectionDataPolitics";
+import ProtectionDataPolicy from "./pages/ProtectionDataPolicy";
 import LegalMentions from "./pages/LegalMentions";
 import Contact from "./pages/Contact";
 
@@ -39,8 +39,8 @@ const router = createBrowserRouter([
         element: <CGU />,
       },
       {
-        path: "/protectionDataPolitics",
-        element: <ProtectionDataPolitics />,
+        path: "/protectionDataPolicy",
+        element: <ProtectionDataPolicy />,
       },
       {
         path: "/legalMentions",
