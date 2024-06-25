@@ -17,7 +17,7 @@
   --validation-color-no: #851342;
 
   --text-content-size: 1.125rem;
-  --text-content-weight: 300;
+  --text-content-weight: 400;
 
   --box-shadow: 0 0.164375rem 0.289375rem 0 #00000005,
     0 0.75rem 0.8125rem 0 #0000000a, 0 1.89875rem 2.18rem 0 #0000000d;
@@ -38,15 +38,19 @@ body {
 }
 
 h1 {
-  @apply text-4xl font-semibold;
+  @apply text-6xl font-semibold;
 }
 
 h2 {
-  @apply text-3xl font-medium;
+  @apply text-4xl font-medium;
 }
 
 h3 {
   @apply text-2xl font-normal;
+}
+
+p {
+  @apply text-lg;
 }
 
 @layer utilities {
@@ -57,6 +61,9 @@ h3 {
 
 .small {
   @apply flex justify-around items-center w-36 h-11 z-30 bg-[var(--primary-color)] rounded-md relative font-semibold text-[var(--primary-background-color)] max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm;
+}
+.register {
+  @apply relative bg-[var(--secondary-background-color)] pt-1 pb-1 pr-2 pl-2 rounded-md text-[var(--primary-color)] font-medium md:bg-[var(--primary-color)] md:text-[var(--primary-background-color)] md:-mr-8;
 }
 
 .medium {

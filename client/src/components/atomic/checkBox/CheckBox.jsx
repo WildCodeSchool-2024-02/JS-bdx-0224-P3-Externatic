@@ -1,19 +1,20 @@
 import PropTypes from "prop-types";
 
-function CheckBox({ apply }) {
+function CheckBox({ apply, labelContent }) {
   return (
-    <label className="text-[0]">
-      Checkbox
+    <label>
       <input
         type="checkbox"
-        className={` ${apply} accent-[var(--primary-color)] hover:accent-[var(--primary-color)]`}
+        className={` ${apply} accent-[var(--primary-color)] hover:accent-[var(--primary-color)] mr-4 align-middle`}
       />
+      {labelContent}
     </label>
   );
 }
 
 CheckBox.propTypes = {
   apply: PropTypes.string.isRequired,
+  labelContent: PropTypes.string.isRequired,
 };
 
 export default CheckBox;
