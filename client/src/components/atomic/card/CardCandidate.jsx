@@ -44,7 +44,10 @@ export default function CardCandidate({ offer }) {
         </li>
       </ul>
       <p className=" font-medium">{company.name}</p>
-      <p className="mb-4 max-md:text-sm line-clamp-2 overflow-hidden..."> {offer.details}</p>
+      <p className="mb-4 max-md:text-sm line-clamp-2 overflow-hidden...">
+        {" "}
+        {offer.details}
+      </p>
       <footer className="flex justify-center">
         <Link to={`/offer/${offer.id}`}>
           <Button apply="medium" name="VOIR L'OFFRE" />
@@ -61,11 +64,9 @@ CardCandidate.propTypes = {
     details: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
     salary: PropTypes.number.isRequired,
-    companies: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-      })
-    ).isRequired,
+    companies: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }).isRequired,
     technos: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
