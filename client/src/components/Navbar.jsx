@@ -9,7 +9,7 @@ import disconnected from "../assets/images/iconDisconnect.svg";
 import NavAccess from "../services/NavAccess";
 import Button from "./atomic/buttons/Button";
 
-function Navbar({ handleChange, navOpen, navVisible }) {
+function Navbar({ handleChange, isNavOpen, isNavVisible }) {
   const menuRef = useRef(null);
   const { handleChangeModal } = useModal();
   const handleClick = () => {
@@ -46,7 +46,7 @@ function Navbar({ handleChange, navOpen, navVisible }) {
       </Link>
       <nav
         ref={menuRef}
-        className={`${navOpen} ${navVisible}
+        className={`${isNavOpen} ${isNavVisible}
           md:min-h-20 md:min-w-full md:bg-[var(--secondary-background-color)] md:translate-x-0 md:flex`}
       >
         <button
@@ -96,8 +96,8 @@ function Navbar({ handleChange, navOpen, navVisible }) {
 
 Navbar.propTypes = {
   handleChange: PropTypes.func.isRequired,
-  navOpen: PropTypes.string.isRequired,
-  navVisible: PropTypes.string.isRequired,
+  isNavOpen: PropTypes.string.isRequired,
+  isNavVisible: PropTypes.string.isRequired,
 };
 
 export default Navbar;

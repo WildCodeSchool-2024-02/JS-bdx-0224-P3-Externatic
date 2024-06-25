@@ -31,8 +31,8 @@ function App() {
         <header className="bg-[var(--secondary-background-color)] w-full h-16">
           <Navbar
             handleChange={handleChange}
-            navOpen={isNavOpen}
-            navVisible={isNavVisible}
+            isNavOpen={isNavOpen}
+            isNavVisible={isNavVisible}
           />
           <ModalRegistration />
         </header>
