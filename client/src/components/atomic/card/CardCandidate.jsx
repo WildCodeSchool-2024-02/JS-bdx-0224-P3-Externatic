@@ -1,14 +1,12 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import Tag from "../tag/Tag"
+import Tag from "../tag/Tag";
 import Button from "../buttons/Button";
 
 export default function CardCandidate({ offer }) {
-
-  const company = offer.companies[0]
-  const techno = offer.technos[0]
-  const region = offer.regions[0]
+  const company = offer.companies[0];
+  const region = offer.regions[0];
   return (
     <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 bg-[var(--secondary-background-color)] mb-4 max-w-md min-w-72">
       <header className="flex justify-between items-center mb-4">
@@ -36,15 +34,20 @@ export default function CardCandidate({ offer }) {
         </label>
       </header>
       <ul className="flex gap-1 relative mb-4">
-        <li>
-          <Tag text={techno.name} apply="tag" />
-        </li>
+        {offer.technos.map((techno) => (
+          <li key={techno.id}>
+            <Tag text={techno.name} apply="tag" />
+          </li>
+        ))}
         <li className=" absolute right-1">
           <Tag text={region.name} apply="tag" />
         </li>
       </ul>
       <p>{company.name}</p>
-      <p className="text-content mb-4 max-md:text-sm"> {offer.details}</p>
+      <p className="mb-4 max-md:text-sm line-clamp-2 overflow-hidden...">
+        {" "}
+        {offer.details}
+      </p>
       <footer className="flex justify-center">
         <Link to={`/offer/${offer.id}`}>
           <Button apply="medium" name="VOIR L'OFFRE" />
@@ -59,15 +62,21 @@ CardCandidate.propTypes = {
     title: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     details: PropTypes.string.isRequired,
-    salary : PropTypes.number.isRequired,
-    companies: PropTypes.shape({
+    salary: PropTypes.number.isRequired,
+    companies: PropTypes.arrayOf(
+      PropTypes.shape({
       name: PropTypes.string.isRequired,
-    }).isRequired,
-    technos: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-    regions: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }).isRequired,
+    })
+  ).isRequired,
+    technos: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+    regions: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      })
+    ).isRequired,
   }).isRequired,
 };
