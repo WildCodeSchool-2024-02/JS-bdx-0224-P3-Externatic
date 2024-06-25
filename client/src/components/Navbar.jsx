@@ -1,14 +1,21 @@
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useModal } from "../contexts/ModalContext";
 import externatic from "../assets/Externatic.svg";
 import menuBurger from "../assets/images/menuBurger.svg";
 import cross from "../assets/images/cross-svgrepo-com.svg";
 import disconnected from "../assets/images/iconDisconnect.svg";
 import NavAccess from "../services/NavAccess";
+import Button from "./atomic/buttons/Button";
 
-function Navbar({ handleChange, navOpen, navVisible }) {
+function Navbar({ handleChange, isNavOpen, isNavVisible }) {
   const menuRef = useRef(null);
+  const { handleChangeModal } = useModal();
+  const handleClick = () => {
+    handleChange();
+    handleChangeModal();
+  }
 
   useEffect(() => {
     if (menuRef.current) {
@@ -39,7 +46,7 @@ function Navbar({ handleChange, navOpen, navVisible }) {
       </Link>
       <nav
         ref={menuRef}
-        className={`${navOpen} ${navVisible}
+        className={`${isNavOpen} ${isNavVisible}
           md:min-h-20 md:min-w-full md:bg-[var(--secondary-background-color)] md:translate-x-0 md:flex`}
       >
         <button
@@ -47,14 +54,11 @@ function Navbar({ handleChange, navOpen, navVisible }) {
           className="block absolute right-5 top-2 w-10 md:hidden"
           onClick={handleChange}
         >
-          <img
-            src={cross}
-            alt="fermer le menu"
-          />
+          <img src={cross} alt="fermer le menu" />
         </button>
         <ul
-          className="text-[var(--primary-background-color)] flex flex-col gap-8 text-center mt-20
-        md:flex-row md:gap-10 md:ml-auto md:mr-6 md:text-[var(--text-color)] md:self-center md:mt-0"
+          className="text-[var(--primary-background-color)] text-lg flex flex-col gap-8 text-center mt-20
+        md:flex-row md:gap-10 md:ml-auto md:mr-6 md:text-[var(--text-color)] md:self-center md:mt-0 items-center"
         >
           <li>
             <Link to="/" onClick={handleChange}>
@@ -72,14 +76,7 @@ function Navbar({ handleChange, navOpen, navVisible }) {
             </Link>
           </li>
           <li>
-            <Link
-              to="/"
-              onClick={handleChange}
-              className="bg-[var(--secondary-background-color)] pt-1 pb-1 pr-2 pl-2 rounded-md text-[var(--primary-color)] font-medium 
-              md:bg-[var(--primary-color)] md:text-[var(--primary-background-color)] md:-mr-8"
-            >
-              S'inscrire
-            </Link>
+            <Button type="button" apply="register" name="S'inscrire" handleChange={handleClick}/>
           </li>
           <li>
             <Link to="/" onClick={handleChange}>
@@ -99,8 +96,8 @@ function Navbar({ handleChange, navOpen, navVisible }) {
 
 Navbar.propTypes = {
   handleChange: PropTypes.func.isRequired,
-  navOpen: PropTypes.string.isRequired,
-  navVisible: PropTypes.string.isRequired,
+  isNavOpen: PropTypes.string.isRequired,
+  isNavVisible: PropTypes.string.isRequired,
 };
 
 export default Navbar;
