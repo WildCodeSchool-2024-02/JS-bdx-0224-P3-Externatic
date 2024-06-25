@@ -9,6 +9,10 @@ import HomePage from "./pages/HomePage";
 import OfferPage from "./pages/OfferPage";
 import OfferDetails from "./pages/OfferDetails";
 import Dashboard from "./pages/Dashboard";
+import CGU from "./pages/CGU";
+import ProtectionDataPolitics from "./pages/ProtectionDataPolitics";
+import LegalMentions from "./pages/LegalMentions";
+import Contact from "./pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -16,24 +20,39 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />
+        element: <HomePage />,
       },
       {
         path: "/offer",
-        element: <OfferPage />
+        element: <OfferPage />,
       },
       {
         path: "/offer/:id",
-        element: <OfferDetails />
+        element: <OfferDetails />,
       },
       {
         path: "/dashboard/:id",
-        element: <Dashboard />
-      }
-    ]
+        element: <Dashboard />,
+      },
+      {
+        path: "/CGU",
+        element: <CGU />,
+      },
+      {
+        path: "/protectionDataPolitics",
+        element: <ProtectionDataPolitics />,
+      },
+      {
+        path: "/legalMentions",
+        element: <LegalMentions />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
   },
 ]);
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
