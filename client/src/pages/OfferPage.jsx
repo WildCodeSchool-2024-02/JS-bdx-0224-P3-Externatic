@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 
-import CardCandidate from "../components/atomic/card/CardCandidate";
+import CardOfferForCandidate from "../components/atomic/card/CardOfferForCandidate";
 import SearchInputCandidat from "../components/atomic/inputCandidat/searchInput/SearchInputCandidat";
 
 function OfferPage() {
@@ -29,7 +29,7 @@ function OfferPage() {
       </section>
       <section className="gap-4 flex flex-col items-center md:flex-row md:flex-wrap md:justify-center">
         {offers.map((offer) => (
-          <CardCandidate key={offer.id} offer={offer}/>
+          <CardOfferForCandidate key={offer.id} offer={offer}/>
         ))}
       </section>
     </main>

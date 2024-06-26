@@ -28,18 +28,15 @@ class OfferRepository extends AbstractRepository {
   offer.title,
   offer.details,
   offer.city,
+  company.name AS company_name,
   (
-    SELECT JSON_ARRAYAGG(JSON_OBJECT("name", company.name))
-    FROM company
-    WHERE offer.company_id = company.id
-  ) AS companies,
-  (
-    SELECT JSON_ARRAYAGG(JSON_OBJECT("name", techno.name))
+    SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
     FROM techno_offer
     INNER JOIN techno ON techno_offer.techno_id = techno.id
     WHERE techno_offer.offer_id = offer.id
   ) AS technos
 FROM ${this.table} AS offer
+INNER JOIN company ON offer.company_id = company.id
   `);
 
     return rows;

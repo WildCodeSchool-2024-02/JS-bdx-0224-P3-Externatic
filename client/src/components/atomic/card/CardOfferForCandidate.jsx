@@ -3,9 +3,7 @@ import PropTypes from "prop-types";
 
 import Tag from "../tag/Tag";
 
-export default function CardCandidate({ offer }) {
-  const company = offer.companies[0];
-
+export default function CardOfferForCandidate({ offer }) {
   return (
     <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-56 p-4 bg-[var(--secondary-background-color)] mb-4 max-w-md min-w-72">
       <header className="flex justify-between items-center mb-4">
@@ -34,7 +32,7 @@ export default function CardCandidate({ offer }) {
       </header>
       <ul className="flex gap-1 relative mb-4">
         {offer.technos.map((techno) => (
-          <li key={techno.id}>
+          <li key={techno.name}>
             <Tag text={techno.name} apply="tag" />
           </li>
         ))}
@@ -42,27 +40,25 @@ export default function CardCandidate({ offer }) {
           <Tag text={offer.city} apply="tag" />
         </li>
       </ul>
-      <p className=" font-medium">{company.name}</p>
+      <p className=" font-medium">{offer.company_name}</p>
       <p className="mb-4 max-md:text-sm overflow-hidden...">
         {offer.details}
       </p>
       <footer className="flex justify-center">
-        <Link to="/offer/id">coucou</Link>
+        <Link className="medium text-center content-center"to="/offer/id">VOIR L'OFFRE</Link>
       </footer>
     </article>
   );
 }
 
-CardCandidate.propTypes = {
+CardOfferForCandidate.propTypes = {
   offer: PropTypes.shape({
     title: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     details: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
     salary: PropTypes.number.isRequired,
-    companies: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }).isRequired,
+    company_name: PropTypes.string.isRequired,
     technos: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
