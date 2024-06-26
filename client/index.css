@@ -79,7 +79,7 @@ p {
 }
 
 .buttonAnimate {
-  @apply active:animate-wiggle animate-once animate-duration-500 animate-ease-in-out animate-alternate after:-z-20 after:absolute after:h-1 after:w-1 after:bg-[var(--secondary-color)]  after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-300 after:transition-all after:duration-300 transition-all duration-300;
+  @apply block mx-auto active:animate-wiggle animate-once animate-duration-500 animate-ease-in-out animate-alternate after:-z-20 after:absolute after:h-1 after:w-1 after:bg-[var(--secondary-color)]  after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-300 after:transition-all after:duration-300 transition-all duration-300;
 }
 
 .tag {
