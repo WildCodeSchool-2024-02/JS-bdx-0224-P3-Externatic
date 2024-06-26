@@ -25,19 +25,16 @@ const app = express();
 // 4. Be sure to only have URLs in the array with domains from which you want to allow requests.
 // For example: ["http://mysite.com", "http://another-domain.com"]
 
-/*
 const cors = require("cors");
 
 app.use(
   cors({
     origin: [
       process.env.CLIENT_URL, // keep this one, after checking the value in `server/.env`
-      "http://mysite.com",
-      "http://another-domain.com",
     ]
   })
 );
-*/
+
 
 /* ************************************************************************* */
 
@@ -83,7 +80,7 @@ app.use(
 // const username = req.cookies.username;
 
 /* ************************************************************************* */
-
+const path = require("path");
 // Import the API router
 const apiRouter = require("./routers/api/router");
 
@@ -108,7 +105,7 @@ app.use("/api", apiRouter);
 // 2. Ensure that the `reactBuildPath` points to the correct directory where your client's build artifacts are located.
 
 
-const path = require("path");
+
 
 const reactBuildPath = path.join(__dirname, "/../../client/dist");
 const publicFolderPath = path.join(__dirname, "/../public");

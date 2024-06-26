@@ -1,11 +1,15 @@
+import { useLoaderData } from "react-router-dom";
 import Tag from "../components/atomic/tag/Tag";
 
+
 function OfferDetails() {
+const offerData = useLoaderData();
+
   return (
     <main>
       <article>
         <header>
-          <h1>TITRE OFFRE</h1>
+          <h1 className="text-center my-16">{offerData.title}</h1>
           <label className="peer text-[0] cursor-pointer">
             favoris
             <input type="checkbox" className="peer hidden" />

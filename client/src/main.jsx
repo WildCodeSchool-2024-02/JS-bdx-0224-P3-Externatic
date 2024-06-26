@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import fetchApi from "./services/fetchApi";
 import "../index.css";
 import App from "./App";
 import HomePage from "./pages/HomePage";
@@ -10,21 +11,24 @@ import OfferPage from "./pages/OfferPage";
 import OfferDetails from "./pages/OfferDetails";
 import Dashboard from "./pages/Dashboard";
 
+const offersUrl = "/api/offers";
+
 const router = createBrowserRouter([
   {
     element: <App />,
     children: [
       {
         path: "/",
-        element: <HomePage />
+        element: <HomePage />,
       },
       {
-        path: "/offer",
-        element: <OfferPage />
+        path: "/offers",
+        element: <OfferPage />,
       },
       {
-        path: "/offer/:id",
-        element: <OfferDetails />
+        path: "/offers/:id",
+        element: <OfferDetails />,
+        loader : ({ params }) => fetchApi(`${offersUrl}/${params.id}`),
       },
       {
         path: "/dashboard/:id",
