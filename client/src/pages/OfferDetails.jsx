@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import Tag from "../components/atomic/tag/Tag";
+import ReturnButton from "../components/atomic/buttons/ReturnButton";
 
 
 function OfferDetails() {
@@ -7,6 +8,7 @@ const offerData = useLoaderData();
 
   return (
     <main>
+      <ReturnButton source="/offers"/>
       <article>
         <header>
           <h1 className="text-center my-16">{offerData.title}</h1>
