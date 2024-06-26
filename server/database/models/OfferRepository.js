@@ -25,7 +25,10 @@ class OfferRepository extends AbstractRepository {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific offer by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
+      `SELECT offer.*, company.* 
+      FROM ${this.table} AS offer 
+      INNER JOIN company ON offer.company_id=company.id
+      WHERE offer.id = ?`,
       [id]
     );
 
