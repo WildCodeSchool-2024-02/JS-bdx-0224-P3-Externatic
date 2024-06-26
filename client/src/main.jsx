@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import fetchApi from "./services/fetchApi";
 
 import "../index.css";
 import App from "./App";
@@ -14,6 +15,8 @@ import ProtectionDataPolicy from "./pages/ProtectionDataPolicy";
 import LegalMentions from "./pages/LegalMentions";
 import Contact from "./pages/Contact";
 
+const offersUrl = "/api/offers";
+
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -25,6 +28,7 @@ const router = createBrowserRouter([
       {
         path: "/offer",
         element: <OfferPage />,
+        loader: async () => fetchApi(offersUrl),
       },
       {
         path: "/offer/:id",
