@@ -1,8 +1,9 @@
 function Dashboard() {
-    return (
+  return (
+    <main className="h-[calc(100vh-6vh)]">
       <h1>Mon espace personnel</h1>
-    )
-  }
-  
-  export default Dashboard;
-  
+    </main>
+  );
+}
+
+export default Dashboard;
