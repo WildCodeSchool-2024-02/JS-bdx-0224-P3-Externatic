@@ -6,7 +6,6 @@ import ModalRegistration from "../components/ModalRegistration";
 function HomePage() {
   return (
     <main className="relative">
-      <ModalRegistration />
       <Presentation />
       <Values />
       <Slider />

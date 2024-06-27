@@ -2,13 +2,11 @@ import { useLoaderData } from "react-router-dom";
 
 import CardOfferForCandidate from "../components/atomic/card/CardOfferForCandidate";
 import SearchInputCandidat from "../components/atomic/inputCandidat/searchInput/SearchInputCandidat";
-import ModalRegistration from "../components/ModalRegistration";
 
 function OfferPage() {
-  const offers = useLoaderData()
+  const offers = useLoaderData();
   return (
     <main className="m-4 mt-12">
-      <ModalRegistration/>
       <section className="my-4 gap-4 flex flex-col items-center md:flex-row md:justify-around">
         <SearchInputCandidat
           id="searchJob"
@@ -31,7 +29,7 @@ function OfferPage() {
       </section>
       <section className="gap-4 flex flex-col items-center md:flex-row md:flex-wrap md:justify-center">
         {offers.map((offer) => (
-          <CardOfferForCandidate key={offer.id} offer={offer}/>
+          <CardOfferForCandidate key={offer.id} offer={offer} />
         ))}
       </section>
     </main>
