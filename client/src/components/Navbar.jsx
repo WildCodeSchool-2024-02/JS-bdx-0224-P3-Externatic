@@ -66,7 +66,7 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
             </Link>
           </li>
           <li>
-            <Link to="/offer" onClick={handleChange}>
+            <Link to="/offers" onClick={handleChange}>
               Rechercher
             </Link>
           </li>
