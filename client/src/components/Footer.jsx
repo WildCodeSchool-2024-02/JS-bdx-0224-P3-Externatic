@@ -40,20 +40,20 @@ function Footer() {
           </a>
         </li>
         <li>
-          <Link to="/" className="md:self-center ml-10">
+          <Link to="/contact" className="md:self-center ml-10">
             Nous contacter
           </Link>
         </li>
       </ul>
       <ul className=" md:flex md:flex-row md:gap-6 md:self-center md:mr-10">
         <li>
-          <Link to="/">CGU</Link>
+          <Link to="/CGU">CGU</Link>
         </li>
         <li>
-          <Link to="/">Politique de confidentialité</Link>
+          <Link to="/protectionDataPolicy">Politique de confidentialité</Link>
         </li>
         <li>
-          <Link to="/">Mentions légales</Link>
+          <Link to="/legalMentions">Mentions légales</Link>
         </li>
       </ul>
     </footer>

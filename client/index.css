@@ -59,6 +59,14 @@ p {
   }
 }
 
+.modalOpen {
+  @apply opacity-100 delay-75 duration-500;
+}
+
+.modalNotOpen {
+  @apply duration-500 opacity-0;
+}
+
 .small {
   @apply flex justify-around items-center w-36 h-11 z-30 bg-[var(--primary-color)] rounded-md relative font-semibold text-[var(--primary-background-color)] max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm;
 }

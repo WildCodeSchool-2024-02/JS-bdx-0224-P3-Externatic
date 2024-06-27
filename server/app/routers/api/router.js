@@ -10,6 +10,10 @@ const offerDetailsRouter = require("./offerDetails/router");
 
 router.use("/offers", offerDetailsRouter);
 
+const offerRouter = require("./offers/router");
+
+router.use("/offers", offerRouter);
+
 /* ************************************************************************* */
 
 module.exports = router;

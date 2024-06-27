@@ -30,9 +30,7 @@ export function ModalProvider({ children }) {
     behavior: "smooth",
   });
 
-  const isModalOpen = isOpen
-    ? "absolute opacity-100 delay-75 duration-500 top-0 bg-[var(--primary-background-color)] z-50 pb-16 flex flex-col items-center mt-6 border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow mx-4 md:mx-0"
-    : "absolute duration-500 opacity-0 top-0 bg-[var(--primary-background-color)] z-50 pb-16 flex flex-col items-center mt-6 border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow mx-4 md:mx-0";
+  const isModalOpen = isOpen ? "modalOpen" : "modalNotOpen";
 
   const isModalVisible = isVisible ? "block" : "hidden";
 

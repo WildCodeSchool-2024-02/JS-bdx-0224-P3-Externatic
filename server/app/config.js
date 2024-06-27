@@ -31,10 +31,9 @@ app.use(
   cors({
     origin: [
       process.env.CLIENT_URL, // keep this one, after checking the value in `server/.env`
-    ]
+    ],
   })
 );
-
 
 /* ************************************************************************* */
 
@@ -123,7 +122,6 @@ app.get("*.*", express.static(publicFolderPath, { maxAge: "1y" }));
 app.get("*", (_, res) => {
   res.sendFile(path.join(reactBuildPath, "/index.html"));
 });
-
 
 /* ************************************************************************* */
 
