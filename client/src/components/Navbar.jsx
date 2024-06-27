@@ -1,6 +1,6 @@
+import PropTypes from "prop-types";
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 import { useModal } from "../contexts/ModalContext";
 import externatic from "../assets/Externatic.svg";
 import menuBurger from "../assets/images/menuBurger.svg";
@@ -8,6 +8,7 @@ import cross from "../assets/images/cross-svgrepo-com.svg";
 import disconnected from "../assets/images/iconDisconnect.svg";
 import NavAccess from "../services/NavAccess";
 import Button from "./atomic/buttons/Button";
+import ModalRegistration from "./ModalRegistration";
 
 function Navbar({ handleChange, isNavOpen, isNavVisible }) {
   const menuRef = useRef(null);
@@ -20,7 +21,9 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
 
   const handleClickConnexion = () => {
     handleChangeModal();
-    setIsClicked(true);
+    setTimeout(() => {
+      setIsClicked(true);
+    }, 1);
   };
 
   useEffect(() => {
@@ -37,6 +40,7 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
 
   return (
     <>
+      <ModalRegistration />
       <button
         type="button"
         className="block absolute left-5 top-5 md:hidden"
@@ -72,7 +76,7 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
             </Link>
           </li>
           <li>
-            <Link to="/offer" onClick={handleChange}>
+            <Link to="/offers" onClick={handleChange}>
               Rechercher
             </Link>
           </li>
