@@ -3,7 +3,6 @@ import { useState } from "react";
 import { ModalProvider } from "./contexts/ModalContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import ModalRegistration from "./components/ModalRegistration";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +33,6 @@ function App() {
             isNavOpen={isNavOpen}
             isNavVisible={isNavVisible}
           />
-          <ModalRegistration />
         </header>
         <Outlet />
       </ModalProvider>

@@ -15,7 +15,7 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
   const handleClick = () => {
     handleChange();
     handleChangeModal();
-  }
+  };
 
   useEffect(() => {
     if (menuRef.current) {
@@ -66,7 +66,7 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
             </Link>
           </li>
           <li>
-            <Link to="/offer" onClick={handleChange}>
+            <Link to="/offers" onClick={handleChange}>
               Rechercher
             </Link>
           </li>
@@ -76,7 +76,12 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
             </Link>
           </li>
           <li>
-            <Button type="button" apply="register" name="S'inscrire" handleChange={handleClick}/>
+            <Button
+              type="button"
+              apply="register"
+              name="S'inscrire"
+              handleChange={handleClick}
+            />
           </li>
           <li>
             <Link to="/" onClick={handleChange}>

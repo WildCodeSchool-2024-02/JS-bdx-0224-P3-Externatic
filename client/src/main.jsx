@@ -26,12 +26,12 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/offer",
+        path: "/offers",
         element: <OfferPage />,
         loader: async () => fetchApi(offersUrl),
       },
       {
-        path: "/offer/:id",
+        path: "/offers/:id",
         element: <OfferDetails />,
       },
       {
