@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Tag from "../tag/Tag";
 
-export default function CardOfferForCandidate({ offer }) {
+export default function CardOfferForCandidate({ offer, id }) {
   return (
     <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-56 p-4 bg-[var(--secondary-background-color)] mb-4 max-w-md min-w-72">
       <header className="flex justify-between items-center mb-4">
@@ -45,13 +45,19 @@ export default function CardOfferForCandidate({ offer }) {
         {offer.details}
       </p>
       <footer className="flex justify-center">
-        <Link className="medium text-center content-center"to="/offers/:id">VOIR L'OFFRE</Link>
+        <Link
+          className="medium text-center content-center"
+          to={`/offers/${id}`}
+        >
+          VOIR L'OFFRE
+        </Link>
       </footer>
     </article>
   );
 }
 
 CardOfferForCandidate.propTypes = {
+  id: PropTypes.string.isRequired,
   offer: PropTypes.shape({
     title: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,

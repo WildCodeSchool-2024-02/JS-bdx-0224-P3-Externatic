@@ -57,7 +57,6 @@ class OfferRepository extends AbstractRepository {
   // async delete(id) {
   //   ...
   // }
-  
 
   async create(offer) {
     const [result] = await this.database.query(
@@ -79,6 +78,7 @@ class OfferRepository extends AbstractRepository {
   async readAll() {
     const [rows] = await this.database.query(`
       SELECT
+      offer.id,
   offer.title,
   offer.details,
   offer.city,
