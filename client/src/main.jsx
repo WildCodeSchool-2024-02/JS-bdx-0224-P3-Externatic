@@ -10,6 +10,10 @@ import HomePage from "./pages/HomePage";
 import OfferPage from "./pages/OfferPage";
 import OfferDetails from "./pages/OfferDetails";
 import Dashboard from "./pages/Dashboard";
+import CGU from "./pages/CGU";
+import ProtectionDataPolicy from "./pages/ProtectionDataPolicy";
+import LegalMentions from "./pages/LegalMentions";
+import Contact from "./pages/Contact";
 
 const offersUrl = "/api/offers";
 
@@ -24,20 +28,36 @@ const router = createBrowserRouter([
       {
         path: "/offers",
         element: <OfferPage />,
+        loader: async () => fetchApi(offersUrl),
       },
       {
         path: "/offers/:id",
         element: <OfferDetails />,
-        loader : ({ params }) => fetchApi(`${offersUrl}/${params.id}`),
+        loader : ({ params }) => fetchApi(`${offersUrl}/${params.id}`),        
       },
       {
         path: "/dashboard/:id",
-        element: <Dashboard />
-      }
-    ]
+        element: <Dashboard />,
+      },
+      {
+        path: "/CGU",
+        element: <CGU />,
+      },
+      {
+        path: "/protectionDataPolicy",
+        element: <ProtectionDataPolicy />,
+      },
+      {
+        path: "/legalMentions",
+        element: <LegalMentions />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
   },
 ]);
-
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
