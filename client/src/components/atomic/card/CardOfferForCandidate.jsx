@@ -41,11 +41,11 @@ export default function CardOfferForCandidate({ offer }) {
         </li>
       </ul>
       <p className=" font-medium">{offer.company_name}</p>
-      <p className="mb-4 max-md:text-sm overflow-hidden...">
+      <p className="mb-4 max-md:text-sm line-clamp-2 overflow-hidden...">
         {offer.details}
       </p>
       <footer className="flex justify-center">
-        <Link className="medium text-center content-center"to="/offer/id">VOIR L'OFFRE</Link>
+        <Link className="medium text-center content-center"to="/offers/:id">VOIR L'OFFRE</Link>
       </footer>
     </article>
   );
