@@ -11,11 +11,17 @@ import Button from "./atomic/buttons/Button";
 
 function Navbar({ handleChange, isNavOpen, isNavVisible }) {
   const menuRef = useRef(null);
-  const { handleChangeModal } = useModal();
+  const { handleChangeModal, setIsClicked } = useModal();
+
   const handleClick = () => {
     handleChange();
     handleChangeModal();
-  }
+  };
+
+  const handleClickConnexion = () => {
+    handleChangeModal();
+    setIsClicked(true);
+  };
 
   useEffect(() => {
     if (menuRef.current) {
@@ -76,12 +82,17 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
             </Link>
           </li>
           <li>
-            <Button type="button" apply="register" name="S'inscrire" handleChange={handleClick}/>
+            <Button
+              type="button"
+              apply="register"
+              name="S'inscrire"
+              handleChange={handleClick}
+            />
           </li>
           <li>
-            <Link to="/" onClick={handleChange}>
+            <button type="button" onClick={handleClickConnexion}>
               Se connecter
-            </Link>
+            </button>
           </li>
         </ul>
         <img

@@ -13,6 +13,7 @@ export const Modal = createContext();
 export function ModalProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   const handleChangeModal = useCallback(() => {
     setIsVisible(true);
@@ -23,11 +24,16 @@ export function ModalProvider({ children }) {
     }
     setTimeout(() => {
       setIsOpen(!isOpen);
+      setIsClicked(false);
     }, 1);
   }, [isVisible, isOpen]);
   window.scrollTo({
     top: 0,
     behavior: "smooth",
+  });
+
+  const handleClickModal = useCallback(() => {
+    setIsClicked(!isClicked);
   });
 
   const isModalOpen = isOpen ? "modalOpen" : "modalNotOpen";
@@ -43,8 +49,20 @@ export function ModalProvider({ children }) {
       isModalOpen,
       isModalVisible,
       handleChangeModal,
+      handleClickModal,
+      isClicked,
+      setIsClicked,
     }),
-    [isVisible, isOpen, isModalOpen, isModalVisible, handleChangeModal]
+    [
+      isVisible,
+      isOpen,
+      isModalOpen,
+      isModalVisible,
+      handleChangeModal,
+      handleClickModal,
+      isClicked,
+      setIsClicked,
+    ]
   );
   return <Modal.Provider value={contextValue}>{children}</Modal.Provider>;
 }
