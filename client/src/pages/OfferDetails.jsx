@@ -15,7 +15,7 @@ function OfferDetails() {
         <img
           src={offerData.banner}
           alt=""
-          className="mt-10 w-full h-80 mx-auto "
+          className="mt-10 w-full h-80 mx-auto object-cover"
         />
         <img
           src={offerData.logo}
