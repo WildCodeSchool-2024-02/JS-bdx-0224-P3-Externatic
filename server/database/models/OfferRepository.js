@@ -36,14 +36,6 @@ class OfferRepository extends AbstractRepository {
     return rows[0];
   }
 
-  // async readAll() {
-  //   // Execute the SQL SELECT query to retrieve all offers from the "offer" table
-  //   const [rows] = await this.database.query(`select * from ${this.table}`);
-
-  //   // Return the array of offers
-  //   return rows;
-  // }
-
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing offer
 
@@ -79,19 +71,18 @@ class OfferRepository extends AbstractRepository {
     const [rows] = await this.database.query(`
       SELECT
       offer.id,
-  offer.title,
-  offer.details,
-  offer.city,
-  company.name AS company_name,
-  (
-    SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
-    FROM techno_offer
-    INNER JOIN techno ON techno_offer.techno_id = techno.id
-    WHERE techno_offer.offer_id = offer.id
-  ) AS technos
-FROM ${this.table} AS offer
-INNER JOIN company ON offer.company_id = company.id
-  `);
+      offer.title,
+      offer.details,
+      offer.city,
+      company.name AS company_name,
+    (
+      SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
+      FROM techno_offer
+      INNER JOIN techno ON techno_offer.techno_id = techno.id
+      WHERE techno_offer.offer_id = offer.id
+    ) AS technos
+      FROM ${this.table} AS offer
+      INNER JOIN company ON offer.company_id = company.id`);
 
     return rows;
   }
