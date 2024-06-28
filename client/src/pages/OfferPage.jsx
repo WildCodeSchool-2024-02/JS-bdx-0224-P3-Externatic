@@ -27,9 +27,9 @@ function OfferPage() {
           alt="logo recherche"
         />
       </section>
-      <section className="gap-8 flex flex-col items-center md:flex-row md:flex-wrap md:justify-center">
+      <section className="gap-5 flex flex-col items-center md:flex-row md:flex-wrap md:justify-center">
         {offers.map((offer) => (
-          <CardOfferForCandidate key={offer.id} offer={offer}/>
+          <CardOfferForCandidate key={offer.id} offer={offer} />
         ))}
       </section>
     </main>
