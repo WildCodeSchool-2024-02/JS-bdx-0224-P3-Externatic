@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import fetchApi from "./services/fetchApi";
 
+import fetchApi from "./services/fetchApi";
 import "../index.css";
 import App from "./App";
 import HomePage from "./pages/HomePage";
@@ -27,13 +27,14 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/offer",
+        path: "/offers",
         element: <OfferPage />,
         loader: async () => fetchApi(offersUrl),
       },
       {
-        path: "/offer/:id",
+        path: "/offers/:id",
         element: <OfferDetails />,
+        loader : ({ params }) => fetchApi(`${offersUrl}/${params.id}`),        
       },
       {
         path: "/dashboard/:id",
