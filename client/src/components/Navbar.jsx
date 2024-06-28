@@ -1,6 +1,6 @@
+import PropTypes from "prop-types";
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 import { useModal } from "../contexts/ModalContext";
 import externatic from "../assets/Externatic.svg";
 import menuBurger from "../assets/images/menuBurger.svg";
@@ -10,12 +10,21 @@ import NavAccess from "../services/NavAccess";
 import Button from "./atomic/buttons/Button";
 import ModalRegistration from "./ModalRegistration";
 
-function Navbar({ handleChange, isNavOpen, isNavVisible }) {
+function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
   const menuRef = useRef(null);
-  const { handleChangeModal } = useModal();
+  const { handleChangeModal, setIsClicked } = useModal();
+
   const handleClick = () => {
-    handleChange();
+    handleChangeNav();
     handleChangeModal();
+  };
+
+  const handleClickConnexion = () => {
+    handleChangeNav();
+    handleChangeModal();
+    setTimeout(() => {
+      setIsClicked(true);
+    }, 1);
   };
 
   useEffect(() => {
@@ -32,11 +41,11 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
 
   return (
     <>
-    <ModalRegistration/>
+      <ModalRegistration />
       <button
         type="button"
         className="block absolute left-5 top-5 md:hidden"
-        onClick={handleChange}
+        onClick={handleChangeNav}
       >
         <img src={menuBurger} alt="ouvrir le menu" />
       </button>
@@ -54,7 +63,7 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
         <button
           type="button"
           className="block absolute right-5 top-2 w-10 md:hidden"
-          onClick={handleChange}
+          onClick={handleChangeNav}
         >
           <img src={cross} alt="fermer le menu" />
         </button>
@@ -63,17 +72,17 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
         md:flex-row md:gap-10 md:ml-auto md:mr-6 md:text-[var(--text-color)] md:self-center md:mt-0 items-center"
         >
           <li>
-            <Link to="/" onClick={handleChange}>
+            <Link to="/" onClick={handleChangeNav}>
               Accueil
             </Link>
           </li>
           <li>
-            <Link to="/offers" onClick={handleChange}>
+            <Link to="/offers" onClick={handleChangeNav}>
               Rechercher
             </Link>
           </li>
           <li>
-            <Link to="/dashboard/:id" onClick={handleChange}>
+            <Link to="/dashboard/:id" onClick={handleChangeNav}>
               Profil
             </Link>
           </li>
@@ -86,9 +95,9 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
             />
           </li>
           <li>
-            <Link to="/" onClick={handleChange}>
+            <button type="button" onClick={handleClickConnexion}>
               Se connecter
-            </Link>
+            </button>
           </li>
         </ul>
         <img
@@ -102,7 +111,7 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
 }
 
 Navbar.propTypes = {
-  handleChange: PropTypes.func.isRequired,
+  handleChangeNav: PropTypes.func.isRequired,
   isNavOpen: PropTypes.string.isRequired,
   isNavVisible: PropTypes.string.isRequired,
 };
