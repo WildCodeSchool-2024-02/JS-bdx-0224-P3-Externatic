@@ -16,6 +16,7 @@ import LegalMentions from "./pages/LegalMentions";
 import Contact from "./pages/Contact";
 
 const offersUrl = "/api/offers";
+const usersUrl = "/api/users"
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,7 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
     ],
+    loader: async () => fetchApi(usersUrl),
   },
 ]);
 
