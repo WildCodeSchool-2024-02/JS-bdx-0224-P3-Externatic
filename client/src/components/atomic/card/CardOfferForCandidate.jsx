@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Tag from "../tag/Tag";
 import ScrollToTop from "../../../services/scrollToTop";
 
-export default function CardOfferForCandidate({ offer, id }) {
+export default function CardOfferForCandidate({ offer }) {
   const scrollToTop = ScrollToTop();
   return (
     <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-56 p-4 bg-[var(--secondary-background-color)] mb-4 max-w-md min-w-72">
@@ -49,7 +49,7 @@ export default function CardOfferForCandidate({ offer, id }) {
       <footer className="flex justify-center">
         <Link
           className="medium text-center content-center"
-          to={`/offers/${id}`}
+          to={`/offers/${offer.id}`}
           onClick={scrollToTop}
         >
           VOIR L'OFFRE
@@ -60,7 +60,6 @@ export default function CardOfferForCandidate({ offer, id }) {
 }
 
 CardOfferForCandidate.propTypes = {
-  id: PropTypes.string.isRequired,
   offer: PropTypes.shape({
     title: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,

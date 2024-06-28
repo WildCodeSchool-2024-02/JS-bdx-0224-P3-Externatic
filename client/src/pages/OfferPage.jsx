@@ -29,7 +29,7 @@ function OfferPage() {
       </section>
       <section className="gap-8 flex flex-col items-center md:flex-row md:flex-wrap md:justify-center">
         {offers.map((offer) => (
-          <CardOfferForCandidate key={offer.id} offer={offer} id={offer.id}/>
+          <CardOfferForCandidate key={offer.id} offer={offer}/>
         ))}
       </section>
     </main>
