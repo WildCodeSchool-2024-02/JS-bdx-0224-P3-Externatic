@@ -34,6 +34,7 @@ const router = createBrowserRouter([
       {
         path: "/offers/:id",
         element: <OfferDetails />,
+        loader: ({ params }) => fetchApi(`${offersUrl}/${params.id}`)
       },
       {
         path: "/dashboard/:id",
