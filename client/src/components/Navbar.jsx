@@ -94,7 +94,7 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
               handleChange={handleClick}
             />
           </li>
-          <li>
+          <li className="md:-ml-8">
             <button type="button" onClick={handleClickConnexion}>
               Se connecter
             </button>
