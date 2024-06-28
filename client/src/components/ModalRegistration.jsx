@@ -76,23 +76,33 @@ function ModalRegistration() {
           </h2>
         )}
       </header>
-      <form id="registration" method="post">
-        {!isClicked && (
+
+      {isClicked ? (
+        <form id="connexion" method="post">
+          <FormInputCandidat id="email" label="E-mail" type="email" />
+          <FormInputCandidat
+            id="password"
+            label="Mot de passe"
+            type="password"
+          />
+        </form>
+      ) : (
+        <form id="registration" method="post">
           <FormInputCandidat id="firstName" label="Prénom" type="text" />
-        )}
-        {!isClicked && (
           <FormInputCandidat id="lastName" label="Nom" type="text" />
-        )}
-        <FormInputCandidat id="email" label="E-mail" type="email" />
-        <FormInputCandidat id="password" label="Mot de passe" type="password" />
-        {!isClicked && (
+          <FormInputCandidat id="email" label="E-mail" type="email" />
+          <FormInputCandidat
+            id="password"
+            label="Mot de passe"
+            type="password"
+          />
           <FormInputCandidat
             id="confirmPassword"
             label="Confirmer votre mot de passe"
             type="password"
           />
-        )}
-      </form>
+        </form>
+      )}
       <footer className="mt-10 mx-4 flex flex-col gap-10 items-center">
         {!isClicked && (
           <CheckBox
@@ -147,7 +157,6 @@ function ModalRegistration() {
           <Button
             form="connexion"
             name="Connexion"
-            img=""
             apply="big"
             type="submit"
             onClick={handleChangeModal}
@@ -156,7 +165,6 @@ function ModalRegistration() {
           <Button
             form="registration"
             name="Valider mon inscription"
-            img=""
             apply="big"
             type="submit"
             onClick={handleChangeModal}
