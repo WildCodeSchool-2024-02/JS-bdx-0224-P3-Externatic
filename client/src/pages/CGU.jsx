@@ -1,7 +1,8 @@
 
 function CGU() {
-  return (
-<h1>En construction</h1>
+  return( <main className="flex flex-col h-screen">
+<h1 className="mt-10">En construction</h1>
+</main>
   )
 }
 

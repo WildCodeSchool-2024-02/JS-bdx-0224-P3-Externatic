@@ -6,7 +6,7 @@ import x from "../assets/images/twitter.svg";
 function Footer() {
   return (
     <footer
-      className="relative z-10 mt-6 bottom-0 bg-[var(--secondary-color)] min-w-full flex flex-col gap-5 text-center text-[var(--primary-background-color)] pb-6
+      className="mt-auto bg-[var(--secondary-color)] min-w-full flex flex-col gap-5 text-center text-[var(--primary-background-color)] pb-6
     md:flex-row md:min-h-20 md:pb-0 md:justify-between"
     >
       <ul className="flex flex-row self-center mt-6 gap-4 md:mt-0 md:ml-10">
