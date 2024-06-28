@@ -34,7 +34,7 @@ export function ModalProvider({ children }) {
 
   const handleClickModal = useCallback(() => {
     setIsClicked(!isClicked);
-  });
+  }, [isClicked]);
 
   const isModalOpen = isOpen ? "modalOpen" : "modalNotOpen";
 

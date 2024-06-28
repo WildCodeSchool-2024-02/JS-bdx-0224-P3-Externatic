@@ -134,6 +134,7 @@ function ModalRegistration() {
             <button
               className="underline text-[var(--primary-color)]"
               onClick={handleClickModal}
+              type="button"
             >
               Inscrivez-vous
             </button>
@@ -144,6 +145,7 @@ function ModalRegistration() {
             <button
               className="underline text-[var(--primary-color)]"
               onClick={handleClickModal}
+              type="button"
             >
               Se connecter
             </button>
