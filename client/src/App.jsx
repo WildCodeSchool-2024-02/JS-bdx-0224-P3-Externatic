@@ -29,7 +29,7 @@ function App() {
       <ModalProvider>
         <header className="bg-[var(--secondary-background-color)] w-full h-16">
           <Navbar
-            handleChange={handleChangeNav}
+            handleChangeNav={handleChangeNav}
             isNavOpen={isNavOpen}
             isNavVisible={isNavVisible}
           />
