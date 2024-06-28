@@ -4,7 +4,7 @@ import CardOfferForCandidate from "../components/atomic/card/CardOfferForCandida
 import SearchInputCandidat from "../components/atomic/inputCandidat/searchInput/SearchInputCandidat";
 
 function OfferPage() {
-  const offers = useLoaderData()
+  const offers = useLoaderData();
   return (
     <main className="m-4 mt-12">
       <section className="my-4 gap-4 flex flex-col items-center md:flex-row md:justify-around">

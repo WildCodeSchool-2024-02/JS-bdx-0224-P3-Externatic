@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import Tag from "../tag/Tag";
+import ScrollToTop from "../../../services/scrollToTop";
 
 export default function CardOfferForCandidate({ offer, id }) {
+  const scrollToTop = ScrollToTop();
   return (
     <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-56 p-4 bg-[var(--secondary-background-color)] mb-4 max-w-md min-w-72">
       <header className="flex justify-between items-center mb-4">
@@ -48,6 +50,7 @@ export default function CardOfferForCandidate({ offer, id }) {
         <Link
           className="medium text-center content-center"
           to={`/offers/${id}`}
+          onClick={scrollToTop}
         >
           VOIR L'OFFRE
         </Link>

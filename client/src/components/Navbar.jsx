@@ -8,6 +8,7 @@ import cross from "../assets/images/cross-svgrepo-com.svg";
 import disconnected from "../assets/images/iconDisconnect.svg";
 import NavAccess from "../services/NavAccess";
 import Button from "./atomic/buttons/Button";
+import ModalRegistration from "./ModalRegistration";
 
 function Navbar({ handleChange, isNavOpen, isNavVisible }) {
   const menuRef = useRef(null);
@@ -15,7 +16,7 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
   const handleClick = () => {
     handleChange();
     handleChangeModal();
-  }
+  };
 
   useEffect(() => {
     if (menuRef.current) {
@@ -31,6 +32,7 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
 
   return (
     <>
+    <ModalRegistration/>
       <button
         type="button"
         className="block absolute left-5 top-5 md:hidden"
@@ -76,7 +78,12 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
             </Link>
           </li>
           <li>
-            <Button type="button" apply="register" name="S'inscrire" handleChange={handleClick}/>
+            <Button
+              type="button"
+              apply="register"
+              name="S'inscrire"
+              handleChange={handleClick}
+            />
           </li>
           <li>
             <Link to="/" onClick={handleChange}>
