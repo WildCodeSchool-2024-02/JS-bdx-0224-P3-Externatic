@@ -77,21 +77,15 @@ function ModalRegistration() {
         )}
       </header>
       <form id="registration" method="post">
-        {isClicked ? (
-          ""
-        ) : (
+        {!isClicked && (
           <FormInputCandidat id="firstName" label="Prénom" type="text" />
         )}
-        {isClicked ? (
-          ""
-        ) : (
+        {!isClicked && (
           <FormInputCandidat id="lastName" label="Nom" type="text" />
         )}
         <FormInputCandidat id="email" label="E-mail" type="email" />
         <FormInputCandidat id="password" label="Mot de passe" type="password" />
-        {isClicked ? (
-          ""
-        ) : (
+        {!isClicked && (
           <FormInputCandidat
             id="confirmPassword"
             label="Confirmer votre mot de passe"
@@ -100,9 +94,7 @@ function ModalRegistration() {
         )}
       </form>
       <footer className="mt-10 mx-4 flex flex-col gap-10 items-center">
-        {isClicked ? (
-          ""
-        ) : (
+        {!isClicked && (
           <CheckBox
             id="CGU"
             apply="bigCheckbox"
