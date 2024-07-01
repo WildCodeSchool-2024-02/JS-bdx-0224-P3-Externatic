@@ -6,7 +6,11 @@ const JobSeeder = require("./JobSeeder");
 class OfferSeeder extends AbstractSeeder {
   constructor() {
     // Call the constructor of the parent class (AbstractSeeder) with appropriate options
-    super({ table: "offer", truncate: true, dependencies: [ConsultantSeeder, CompanySeeder, JobSeeder] });
+    super({
+      table: "offer",
+      truncate: true,
+      dependencies: [ConsultantSeeder, CompanySeeder, JobSeeder],
+    });
   }
 
   // The run method - Populate the 'offer' table with fake data
@@ -16,8 +20,33 @@ class OfferSeeder extends AbstractSeeder {
     for (let i = 0; i < 10; i += 1) {
       // Generate fake offer data
       const fakeOffer = {
-        title: this.faker.helpers.arrayElement(["Développeur web", "Développeur fullstack", "Développeur front-end", "Développeur back-end"]),
+        title: this.faker.helpers.arrayElement([
+          "Développeur web",
+          "Développeur fullstack",
+          "Développeur front-end",
+          "Développeur back-end",
+        ]),
         details: this.faker.lorem.paragraph(),
+        city: this.faker.helpers.arrayElement([
+          "Paris",
+          "Marseille",
+          "Lyon",
+          "Toulouse",
+          "Nice",
+          "Nantes",
+          "Strasbourg",
+          "Montpellier",
+          "Bordeaux",
+          "Lille",
+          "Rennes",
+          "Reims",
+          "Le Havre",
+          "Saint-Étienne",
+          "Toulon",
+          "Grenoble",
+          "Dijon",
+          "Angers",
+        ]),
         advantages: this.faker.lorem.paragraph(),
         salary: this.faker.number.int({ min: 10000, max: 100000 }),
         consultant_id: this.getRef(`consultant_${i}`).insertId,
@@ -28,8 +57,7 @@ class OfferSeeder extends AbstractSeeder {
 
       // Insert the fakeOffer data into the 'offer' table
       this.insert(fakeOffer); // insert into offer
-     
-    } 
+    }
   }
 }
 
