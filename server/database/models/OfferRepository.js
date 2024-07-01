@@ -25,7 +25,8 @@ class OfferRepository extends AbstractRepository {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific offer by its ID
     const [rows] = await this.database.query(
-      `SELECT offer.*, company.*
+      `
+      SELECT offer.*, company.*
       FROM ${this.table} AS offer 
       INNER JOIN company ON offer.company_id=company.id
       WHERE offer.id = ?`,
@@ -52,7 +53,9 @@ class OfferRepository extends AbstractRepository {
 
   async create(offer) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (title, details, advantages, salary, consultant_id, job_id, id) values(?, ?, ?, ?, ?, ?, ?)`,
+      `
+      INSERT INTO ${this.table} (title, details, advantages, salary, consultant_id, job_id)
+      VALUES (?, ?, ?, ?, ?, ?, ?)`,
       [
         offer.title,
         offer.details,
@@ -68,21 +71,24 @@ class OfferRepository extends AbstractRepository {
   }
 
   async readAll() {
-    const [rows] = await this.database.query(`
-      SELECT
-      offer.id,
-      offer.title,
-      offer.details,
-      offer.city,
-      company.name AS company_name,
-    (
-      SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
-      FROM techno_offer
-      INNER JOIN techno ON techno_offer.techno_id = techno.id
-      WHERE techno_offer.offer_id = offer.id
-    ) AS technos
+
+    const [rows] = await this.database.query(
+      `
+      SELECT  offer.id,
+              offer.title,
+              offer.details,
+              offer.city,
+              company.name AS company_name,
+              (
+                SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
+                FROM techno_offer
+                INNER JOIN techno ON techno_offer.techno_id = techno.id
+                WHERE techno_offer.offer_id = offer.id
+              ) AS technos
       FROM ${this.table} AS offer
-      INNER JOIN company ON offer.company_id = company.id`);
+      INNER JOIN company ON offer.company_id = company.id
+      `);
+
 
     return rows;
   }
