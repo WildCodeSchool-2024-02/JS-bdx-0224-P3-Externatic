@@ -6,7 +6,7 @@ import SearchInputCandidat from "../components/atomic/inputCandidat/searchInput/
 function OfferPage() {
   const offers = useLoaderData();
   return (
-    <main className="m-4 mt-12">
+    <main className="m-4 mt-12 flex flex-col min-h-screen">
       <section className="my-4 gap-4 flex flex-col items-center md:flex-row md:justify-around">
         <SearchInputCandidat
           id="searchJob"
