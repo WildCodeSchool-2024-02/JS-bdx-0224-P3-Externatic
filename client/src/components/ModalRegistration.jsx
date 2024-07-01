@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useModal } from "../contexts/ModalContext";
 
 import NavAccess from "../services/NavAccess";
-import TitleModale from "./atomic/modalElements/TitleModale";
+import TitleModal from "./atomic/modalElements/TitleModal";
 import FormModal from "./atomic/modalElements/FormModal";
 import UserAgreements from "./atomic/modalElements/UserAgreements";
 import ChangeRegisterConnexion from "./atomic/modalElements/ChangeRegisterConnexion";
@@ -11,11 +11,7 @@ import ButtonRegisterConnexion from "./atomic/modalElements/ButtonRegisterConnex
 function ModalRegistration() {
   const modalRef = useRef(null);
 
-  const {
-    handleChangeModal,
-    isModalOpen,
-    isModalVisible,
-  } = useModal();
+  const { handleChangeModal, isModalOpen, isModalVisible } = useModal();
 
   useEffect(() => {
     if (modalRef.current) {
@@ -64,13 +60,13 @@ function ModalRegistration() {
             </g>
           </svg>
         </button>
-        <TitleModale />
+        <TitleModal />
       </header>
       <FormModal />
       <footer className="mt-10 mx-4 flex flex-col gap-10 items-center">
         <UserAgreements />
         <ChangeRegisterConnexion />
-        <ButtonRegisterConnexion />
+        <ButtonRegisterConnexion type="submit" />
       </footer>
     </dialog>
   );

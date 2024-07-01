@@ -48,7 +48,7 @@ export default function CardOfferForCandidate({ offer }) {
       </p>
       <footer className="flex justify-center">
         <Link
-          className="medium text-center content-center"
+          className="medium buttonAnimate text-center content-center"
           to={`/offers/${offer.id}`}
           onClick={scrollToTop}
         >
