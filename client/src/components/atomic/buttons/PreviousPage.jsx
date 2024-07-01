@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-function ReturnButton({ source }) {
+function PreviousPage({ source }) {
   return (
       <Link to={source} className="ml-10 flex mt-10 gap-2 content-center font-medium text-[var(--secondary-color)] text-xl hover:text-[var(--primary-color)] duration-300 group">
         <svg
@@ -23,8 +23,8 @@ function ReturnButton({ source }) {
   );
 }
 
-ReturnButton.propTypes = {
+PreviousPage.propTypes = {
   source: PropTypes.string.isRequired,
 };
 
-export default ReturnButton;
+export default PreviousPage;

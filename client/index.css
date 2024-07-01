@@ -70,6 +70,19 @@ p {
 .small {
   @apply flex justify-around items-center w-36 h-11 z-30 bg-[var(--primary-color)] rounded-md relative font-semibold text-[var(--primary-background-color)] max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm;
 }
+
+.basic {
+  @apply md:text-[var(--secondary-color)] md:hover:text-[var(--primary-color)];
+}
+
+.navBurger {
+  @apply block absolute left-5 top-5 md:hidden;
+}
+
+.navCross {
+  @apply block absolute right-5 top-2 w-10 md:hidden;
+}
+
 .register {
   @apply relative bg-[var(--secondary-background-color)] pt-1 pb-1 pr-2 pl-2 rounded-md text-[var(--primary-color)] font-medium md:bg-[var(--primary-color)] md:text-[var(--primary-background-color)] md:-mr-8;
 }

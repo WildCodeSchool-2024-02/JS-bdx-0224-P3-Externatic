@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 
 import Tag from "../components/atomic/tag/Tag";
-import ReturnButton from "../components/atomic/buttons/ReturnButton";
+import PreviousPage from "../components/atomic/buttons/PreviousPage";
 import Button from "../components/atomic/buttons/Button";
 
 function OfferDetails() {
@@ -11,7 +11,7 @@ function OfferDetails() {
     <main>
       <article>
       <header className="my-10 mx-10 relative">
-        <ReturnButton source="/offers" />
+        <PreviousPage source="/offers" />
         <img
           src={offerData.banner}
           alt=""
