@@ -1,6 +1,6 @@
 import { useModal } from "../../../contexts/ModalContext";
 
-function TitleModale() {
+function TitleModal() {
   const { isClicked } = useModal();
   return isClicked ? (
     <h2 className="mt-10 font-medium md:text-xl text-center text-lg mb-4 text-[var(--secondary-color)] underline">
@@ -13,4 +13,4 @@ function TitleModale() {
   );
 }
 
-export default TitleModale;
+export default TitleModal;

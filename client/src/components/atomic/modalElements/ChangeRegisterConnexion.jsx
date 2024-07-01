@@ -15,7 +15,7 @@ function ChangeRegisterConnexion() {
     </p>
   ) : (
     <p className="flex flex-col">
-      Vous avez déjà un compte ?{" "}
+      Vous avez déjà un compte ?
       <button
         className="underline text-[var(--primary-color)]"
         onClick={handleClickModal}
