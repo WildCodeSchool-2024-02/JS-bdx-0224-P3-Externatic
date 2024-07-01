@@ -3,12 +3,11 @@ import { useState } from "react";
 import { ModalProvider } from "./contexts/ModalContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import ModalRegistration from "./components/ModalRegistration";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const handleChange = () => {
+  const handleChangeNav = () => {
     setIsVisible(true);
     if (isVisible) {
       setTimeout(() => {
@@ -30,11 +29,10 @@ function App() {
       <ModalProvider>
         <header className="bg-[var(--secondary-background-color)] w-full h-16">
           <Navbar
-            handleChange={handleChange}
+            handleChangeNav={handleChangeNav}
             isNavOpen={isNavOpen}
             isNavVisible={isNavVisible}
           />
-          <ModalRegistration />
         </header>
         <Outlet />
       </ModalProvider>

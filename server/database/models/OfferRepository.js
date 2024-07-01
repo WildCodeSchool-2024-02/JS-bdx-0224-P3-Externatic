@@ -37,14 +37,6 @@ class OfferRepository extends AbstractRepository {
     return rows[0];
   }
 
-  // async readAll() {
-  //   // Execute the SQL SELECT query to retrieve all offers from the "offer" table
-  //   const [rows] = await this.database.query(`select * from ${this.table}`);
-
-  //   // Return the array of offers
-  //   return rows;
-  // }
-
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing offer
 
@@ -79,6 +71,7 @@ class OfferRepository extends AbstractRepository {
   }
 
   async readAll() {
+
     const [rows] = await this.database.query(
       `
       SELECT  offer.id,
@@ -95,6 +88,7 @@ class OfferRepository extends AbstractRepository {
       FROM ${this.table} AS offer
       INNER JOIN company ON offer.company_id = company.id
       `);
+
 
     return rows;
   }
