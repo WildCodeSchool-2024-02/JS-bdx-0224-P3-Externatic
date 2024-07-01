@@ -42,13 +42,12 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
   return (
     <>
       <ModalRegistration />
-      <button
-        type="button"
-        className="block absolute left-5 top-5 md:hidden"
-        onClick={handleChangeNav}
-      >
-        <img src={menuBurger} alt="ouvrir le menu" />
-      </button>
+      <Button
+        name={<img src={menuBurger} alt="ouvrir le menu" />}
+        apply="navBurger"
+        buttonAnimate={false}
+        handleChange={handleChangeNav}
+      />
       <Link
         to="/"
         className="absolute min-w-6 max-w-10 top-3 left-1/2 transform -translate-x-1/2 md:z-30 md:left-6 md:top-4 md:min-w-10 md:max-w-24 md:ml-6 md:flex md:items-center"
@@ -60,13 +59,12 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
         className={`${isNavOpen} ${isNavVisible}
           md:min-h-20 md:min-w-full md:bg-[var(--secondary-background-color)] md:translate-x-0 md:flex`}
       >
-        <button
-          type="button"
-          className="block absolute right-5 top-2 w-10 md:hidden"
-          onClick={handleChangeNav}
-        >
-          <img src={cross} alt="fermer le menu" />
-        </button>
+        <Button
+          name={<img src={cross} alt="fermer le menu" />}
+          buttonAnimate={false}
+          apply="navCross"
+          handleChange={handleChangeNav}
+        />
         <ul
           className="text-[var(--primary-background-color)] text-lg flex flex-col gap-8 text-center mt-20
         md:flex-row md:gap-10 md:ml-auto md:mr-6 md:text-[var(--text-color)] md:self-center md:mt-0 items-center"
@@ -95,9 +93,13 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
             />
           </li>
           <li className="md:-ml-8">
-            <button type="button" onClick={handleClickConnexion}>
-              Se connecter
-            </button>
+            <Button
+              type="button"
+              name="Se connecter"
+              apply="basic"
+              buttonAnimate={false}
+              handleChange={handleClickConnexion}
+            />
           </li>
         </ul>
         <img

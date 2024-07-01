@@ -1,22 +1,17 @@
 import { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 import { useModal } from "../contexts/ModalContext";
 
 import NavAccess from "../services/NavAccess";
-import FormInputCandidat from "./atomic/inputCandidat/formCandidat/FormInputCandidat";
-import CheckBox from "./atomic/checkBox/CheckBox";
-import Button from "./atomic/buttons/Button";
+import TitleModal from "./atomic/modalElements/TitleModal";
+import FormModal from "./atomic/modalElements/FormModal";
+import UserAgreements from "./atomic/modalElements/UserAgreements";
+import ChangeRegisterConnexion from "./atomic/modalElements/ChangeRegisterConnexion";
+import ButtonRegisterConnexion from "./atomic/modalElements/ButtonRegisterConnexion";
 
 function ModalRegistration() {
   const modalRef = useRef(null);
 
-  const {
-    handleChangeModal,
-    isModalOpen,
-    isModalVisible,
-    handleClickModal,
-    isClicked,
-  } = useModal();
+  const { handleChangeModal, isModalOpen, isModalVisible } = useModal();
 
   useEffect(() => {
     if (modalRef.current) {
@@ -65,111 +60,13 @@ function ModalRegistration() {
             </g>
           </svg>
         </button>
-
-        {isClicked ? (
-          <h2 className="mt-10 font-medium md:text-xl text-center text-lg mb-4 text-[var(--secondary-color)] underline">
-            SE CONNECTER
-          </h2>
-        ) : (
-          <h2 className="mt-10 font-medium md:text-xl text-lg text-center text-[var(--secondary-color)] underline">
-            CRÉER UN COMPTE
-          </h2>
-        )}
+        <TitleModal />
       </header>
-
-      {isClicked ? (
-        <form id="connexion" method="post">
-          <FormInputCandidat id="email" label="E-mail" type="email" />
-          <FormInputCandidat
-            id="password"
-            label="Mot de passe"
-            type="password"
-          />
-        </form>
-      ) : (
-        <form id="registration" method="post">
-          <FormInputCandidat id="firstName" label="Prénom" type="text" />
-          <FormInputCandidat id="lastName" label="Nom" type="text" />
-          <FormInputCandidat id="email" label="E-mail" type="email" />
-          <FormInputCandidat
-            id="password"
-            label="Mot de passe"
-            type="password"
-          />
-          <FormInputCandidat
-            id="confirmPassword"
-            label="Confirmer votre mot de passe"
-            type="password"
-          />
-        </form>
-      )}
+      <FormModal />
       <footer className="mt-10 mx-4 flex flex-col gap-10 items-center">
-        {!isClicked && (
-          <CheckBox
-            id="CGU"
-            apply="bigCheckbox"
-            labelContent={
-              <>
-                J’ai lu et j’accepte les{" "}
-                <Link
-                  to="/CGU"
-                  onClick={handleChangeModal}
-                  className="text-[var(--primary-color)]"
-                >
-                  CGU
-                </Link>{" "}
-                et la{" "}
-                <Link
-                  to="/protectionDataPolicy"
-                  className="text-[var(--primary-color)]"
-                  onClick={handleChangeModal}
-                >
-                  politique de protection des données
-                </Link>
-              </>
-            }
-          />
-        )}
-        {isClicked ? (
-          <p className="flex flex-col">
-            Vous n'avez pas de compte ?{" "}
-            <button
-              className="underline text-[var(--primary-color)]"
-              onClick={handleClickModal}
-              type="button"
-            >
-              Inscrivez-vous
-            </button>
-          </p>
-        ) : (
-          <p className="flex flex-col">
-            Vous avez déjà un compte ?{" "}
-            <button
-              className="underline text-[var(--primary-color)]"
-              onClick={handleClickModal}
-              type="button"
-            >
-              Se connecter
-            </button>
-          </p>
-        )}
-        {isClicked ? (
-          <Button
-            form="connexion"
-            name="Connexion"
-            apply="big"
-            type="submit"
-            onClick={handleChangeModal}
-          />
-        ) : (
-          <Button
-            form="registration"
-            name="Valider mon inscription"
-            apply="big"
-            type="submit"
-            onClick={handleChangeModal}
-          />
-        )}
+        <UserAgreements />
+        <ChangeRegisterConnexion />
+        <ButtonRegisterConnexion type="submit" />
       </footer>
     </dialog>
   );
