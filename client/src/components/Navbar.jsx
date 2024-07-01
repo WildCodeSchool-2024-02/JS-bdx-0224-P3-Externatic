@@ -45,7 +45,7 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
       <Button
         name={<img src={menuBurger} alt="ouvrir le menu" />}
         apply="navBurger"
-        buttonAnimate=""
+        buttonAnimate={false}
         handleChange={handleChangeNav}
       />
       <Link
@@ -61,7 +61,7 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
       >
         <Button
           name={<img src={cross} alt="fermer le menu" />}
-          buttonAnimate=""
+          buttonAnimate={false}
           apply="navCross"
           handleChange={handleChangeNav}
         />
@@ -97,7 +97,7 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
               type="button"
               name="Se connecter"
               apply="basic"
-              buttonAnimate=""
+              buttonAnimate={false}
               handleChange={handleClickConnexion}
             />
           </li>
