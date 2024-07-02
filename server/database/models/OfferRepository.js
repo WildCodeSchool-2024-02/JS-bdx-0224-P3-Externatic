@@ -92,6 +92,7 @@ class OfferRepository extends AbstractRepository {
       `
       SELECT  offer.id,
               offer.title,
+              offer.type,
               offer.details,
               offer.city,
               company.name AS company_name,
