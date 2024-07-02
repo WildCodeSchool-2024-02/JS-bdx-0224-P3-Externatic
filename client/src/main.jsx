@@ -9,11 +9,11 @@ import App from "./App";
 import HomePage from "./pages/HomePage";
 import OfferPage from "./pages/OfferPage";
 import OfferDetails from "./pages/OfferDetails";
-import Dashboard from "./pages/Dashboard";
 import CGU from "./pages/CGU";
 import ProtectionDataPolicy from "./pages/ProtectionDataPolicy";
 import LegalMentions from "./pages/LegalMentions";
 import Contact from "./pages/Contact";
+import DashboardCandidate from "./pages/DashboardCandidate";
 
 const offersUrl = "/api/offers";
 
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/:id",
-        element: <Dashboard />,
+        element: <DashboardCandidate />,
       },
       {
         path: "/CGU",
