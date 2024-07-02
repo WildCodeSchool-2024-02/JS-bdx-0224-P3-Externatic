@@ -10,7 +10,7 @@ function OfferDetails() {
   return (
     <main>
       <article>
-        <header className="my-10 mx-10 relative">
+        <header className="my-10 md:mx-10 mx-4 relative">
           <PreviousPage source="/offers" />
           <img
             src={offerData.banner}
@@ -20,17 +20,17 @@ function OfferDetails() {
           <img
             src={offerData.logo}
             alt=""
-            className="w-32 h-32 object-cover z-10 shadow-grey-950 shadow-xl absolute left-10 -bottom-12 border border-[var(--secondary-color)] "
+            className="w-32 h-32 object-cover z-10 shadow-grey-950 shadow-xl absolute left-5 md:left-10 -bottom-12 border border-[var(--secondary-color)] "
           />
         </header>
-        <h1 className="text-3xl mx-10 mt-16 font-bold  text-[var(--primary-color)] inline-block">
+        <h1 className="relative text-3xl ml-4 md:ml-10 md:mx-10 mt-16 font-bold text-[var(--primary-color)] inline-block">
           {offerData.title}
         </h1>
         <label className="peer text-[0] cursor-pointer">
           favoris
           <input type="checkbox" className="peer hidden" />
           <svg
-            className=" peer-checked:fill-[var(--primary-color)] peer-checked:animate-jump animate-once animate-duration-500 animate-ease-in-out animate-alternate inline-block -mt-4"
+            className="md:ml-0 ml-3 w-4 md:w-5 peer-checked:fill-[var(--primary-color)] peer-checked:animate-jump animate-once animate-duration-500 animate-ease-in-out animate-alternate inline-block -mt-4"
             width="23"
             height="29"
             viewBox="0 0 13 19"
@@ -45,14 +45,14 @@ function OfferDetails() {
             />
           </svg>
         </label>
-        <ul className=" ml-10 gap-4 flex flex-row mt-4">
+        <ul className="ml-4 md:ml-10 gap-4 flex flex-row mt-4">
           {offerData.technos.map((techno) => (
             <li key={techno.name}>
               <Tag text={techno.name} apply="tag" />
             </li>
           ))}
         </ul>
-        <ul className="mt-6 flex gap-4 ml-10">
+        <ul className="mt-6 flex gap-4 ml-4 md:ml-10">
           <li>
             <Tag text={offerData.city} apply="tag" />
           </li>
@@ -60,22 +60,22 @@ function OfferDetails() {
             <Tag text={offerData.type} apply="tag" />
           </li>
         </ul>
-        <h2 className="text-3xl ml-10 my-16 semi-bold text-[var(--primary-color)]">
+        <h2 className="text-3xl ml-4 md:ml-10 my-16 semi-bold text-[var(--primary-color)]">
           Description du poste
         </h2>
-        <p className="mx-10">{offerData.details}</p>
-        <h2 className="text-3xl ml-10 my-16 semi-bold text-[var(--primary-color)]">
+        <p className="md:mx-10 mx-4">{offerData.details}</p>
+        <h2 className="text-3xl ml-4 md:ml-10 my-16 semi-bold text-[var(--primary-color)]">
           Détais de l'entreprise
         </h2>
-        <p className="mx-10">{offerData.description}</p>
-        <h2 className="text-3xl ml-10 my-16 semi-bold text-[var(--primary-color)]">
+        <p className="md:mx-10 mx-4">{offerData.description}</p>
+        <h2 className="text-3xl ml-4 md:ml-10 my-16 semi-bold text-[var(--primary-color)]">
           Avantages
         </h2>
-        <p className="mx-10">{offerData.advantages}</p>
-        <h2 className="text-3xl ml-10 my-16 semi-bold text-[var(--primary-color)]">
+        <p className="md:mx-10 mx-4">{offerData.advantages}</p>
+        <h2 className="text-3xl ml-4 md:ml-10 my-16 semi-bold text-[var(--primary-color)]">
           Salaire
         </h2>
-        <p className="mx-10 mb-20">{offerData.salary} Euro/an.</p>
+        <p className="md:mx-10 mx-4 mb-20">{offerData.salary} Euro/an.</p>
         <footer className="mb-20">
           <Button apply="big" name="POSTULER" />
         </footer>
