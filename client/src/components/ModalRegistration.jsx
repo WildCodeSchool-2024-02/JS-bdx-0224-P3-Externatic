@@ -1,13 +1,19 @@
+import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useModal } from "../contexts/ModalContext";
 
 import NavAccess from "../services/NavAccess";
-import FormInputCandidat from "./atomic/inputCandidat/formCandidat/FormInputCandidat";
+import ButtonSubmit from "./atomic/buttons/ButtonSubmit";
 import CheckBox from "./atomic/checkBox/CheckBox";
-import Button from "./atomic/buttons/Button";
+import FormInputCandidat from "./atomic/inputCandidat/formCandidat/FormInputCandidat";
 
-function ModalRegistration() {
+function ModalRegistration({
+  formData,
+  handleChange,
+  handleSubmitRegistration,
+  handleSubmitLogin,
+}) {
   const modalRef = useRef(null);
 
   const {
@@ -78,33 +84,68 @@ function ModalRegistration() {
       </header>
 
       {isClicked ? (
-        <form id="connexion" method="post">
-          <FormInputCandidat id="email" label="E-mail" type="email" />
+        <form id="connexion" method="POST" onSubmit={handleSubmitLogin}>
+          <FormInputCandidat
+            id="email"
+            label="E-mail"
+            name="email"
+            type="email"
+            value={formData.email}
+            handleChange={handleChange}
+          />
           <FormInputCandidat
             id="password"
             label="Mot de passe"
+            name="password"
             type="password"
+            value={formData.password}
+            handleChange={handleChange}
           />
+          <ButtonSubmit form="connexion" name="Connexion" apply="big" />
         </form>
       ) : (
-        <form id="registration" method="post">
-          <FormInputCandidat id="firstName" label="Prénom" type="text" />
-          <FormInputCandidat id="lastName" label="Nom" type="text" />
-          <FormInputCandidat id="email" label="E-mail" type="email" />
+        <form
+          id="registration"
+          method="POST"
+          onSubmit={handleSubmitRegistration}
+        >
+          <FormInputCandidat
+            id="firstname"
+            label="Prénom"
+            name="firstname"
+            type="text"
+            value={formData.firstname}
+            handleChange={handleChange}
+          />
+          <FormInputCandidat
+            id="lastname"
+            label="Nom"
+            name="lastname"
+            type="text"
+            value={formData.lastname}
+            handleChange={handleChange}
+          />
+          <FormInputCandidat
+            id="email"
+            label="E-mail"
+            name="email"
+            type="email"
+            value={formData.email}
+            handleChange={handleChange}
+          />
           <FormInputCandidat
             id="password"
             label="Mot de passe"
+            name="password"
             type="password"
+            value={formData.password}
+            handleChange={handleChange}
           />
-          <FormInputCandidat
-            id="confirmPassword"
-            label="Confirmer votre mot de passe"
-            type="password"
+          <ButtonSubmit
+            form="registration"
+            name="Valider mon inscription"
+            apply="big"
           />
-        </form>
-      )}
-      <footer className="mt-10 mx-4 flex flex-col gap-10 items-center">
-        {!isClicked && (
           <CheckBox
             id="CGU"
             apply="bigCheckbox"
@@ -129,7 +170,9 @@ function ModalRegistration() {
               </>
             }
           />
-        )}
+        </form>
+      )}
+      <footer className="mt-10 mx-4 flex flex-col gap-10 items-center">
         {isClicked ? (
           <p className="flex flex-col">
             Vous n'avez pas de compte ?{" "}
@@ -153,26 +196,21 @@ function ModalRegistration() {
             </button>
           </p>
         )}
-        {isClicked ? (
-          <Button
-            form="connexion"
-            name="Connexion"
-            apply="big"
-            type="submit"
-            onClick={handleChangeModal}
-          />
-        ) : (
-          <Button
-            form="registration"
-            name="Valider mon inscription"
-            apply="big"
-            type="submit"
-            onClick={handleChangeModal}
-          />
-        )}
       </footer>
     </dialog>
   );
 }
+
+ModalRegistration.propTypes = {
+  formData: PropTypes.shape({
+    firstname: PropTypes.string,
+    lastname: PropTypes.string,
+    email: PropTypes.string,
+    password: PropTypes.string,
+  }).isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleSubmitRegistration: PropTypes.func.isRequired,
+  handleSubmitLogin: PropTypes.func.isRequired,
+};
 
 export default ModalRegistration;

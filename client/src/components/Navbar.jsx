@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { sendUser } from "../services/fetchApi";
 import { useModal } from "../contexts/ModalContext";
 import externatic from "../assets/Externatic.svg";
 import menuBurger from "../assets/images/menuBurger.svg";
@@ -13,6 +14,56 @@ import ModalRegistration from "./ModalRegistration";
 function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
   const menuRef = useRef(null);
   const { handleChangeModal, setIsClicked } = useModal();
+
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+  });
+
+  const usersUrl = "/api/users";
+  const loginUrl = "/api/login";
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    // console.log(name, value);
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmitRegistration = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await sendUser(usersUrl, formData, "POST");
+      const data = await response.json();
+      return data;
+    } catch (err) {
+      console.error("Erreur lors de la soumission du formulaire :", err);
+      return null;
+    }
+  };
+
+  const handleSubmitLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await sendUser(loginUrl, formData, "POST");
+
+      if (response && response.status === 200) {
+        const userData = await response.json();
+        return userData;
+        // console.log(userData);
+      }
+      return response;
+    } catch (err) {
+      console.error(err);
+      return null
+    }
+  };
 
   const handleClick = () => {
     handleChangeNav();
@@ -41,7 +92,12 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
 
   return (
     <>
-      <ModalRegistration />
+      <ModalRegistration
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmitRegistration={handleSubmitRegistration}
+        handleSubmitLogin={handleSubmitLogin}
+      />
       <button
         type="button"
         className="block absolute left-5 top-5 md:hidden"

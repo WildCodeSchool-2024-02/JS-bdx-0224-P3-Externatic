@@ -1,7 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import fetchApi from "./services/fetchApi";
 
 import "../index.css";
@@ -16,7 +19,7 @@ import LegalMentions from "./pages/LegalMentions";
 import Contact from "./pages/Contact";
 
 const offersUrl = "/api/offers";
-const usersUrl = "/api/users"
+const usersUrl = "/api/users";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +37,7 @@ const router = createBrowserRouter([
       {
         path: "/offers/:id",
         element: <OfferDetails />,
-        loader: ({ params }) => fetchApi(`${offersUrl}/${params.id}`)
+        loader: ({ params }) => fetchApi(`${offersUrl}/${params.id}`),
       },
       {
         path: "/dashboard/:id",

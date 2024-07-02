@@ -2,14 +2,14 @@ import PropTypes from "prop-types";
 
 function Button({ name, img, apply, handleChange }) {
   return (
-    <button
-      onClick={handleChange}
-      className={`${apply} buttonAnimate`}
-      type="button"
-    >
-      {name}
-      {img && <img src={img} alt="" className="w-6 max-md:w-4" />}
-    </button>
+      <button
+        onClick={handleChange}
+        className={`${apply} buttonAnimate`}
+        type="submit"
+      >
+        {name}
+        {img && <img src={img} alt="" className="w-6 max-md:w-4" />}
+      </button>
   );
 }
 Button.propTypes = {
