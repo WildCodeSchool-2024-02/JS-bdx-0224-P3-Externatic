@@ -1,6 +1,13 @@
 import PropTypes from "prop-types";
 
-export default function FormInputCandidat({ id, label, type, handleChange, name }) {
+export default function FormInputCandidat({
+  id,
+  label,
+  type,
+  handleChange,
+  name,
+  value,
+}) {
   return (
     <label
       className="text-[var(--primary-color)] font-medium max-md:text-sm max-md:font-normal w-72 flex flex-col mb-4 gap-4 max-sm:w-64"
@@ -13,6 +20,7 @@ export default function FormInputCandidat({ id, label, type, handleChange, name 
         type={type}
         onChange={handleChange}
         name={name}
+        value={value}
       />
     </label>
   );
@@ -24,4 +32,9 @@ FormInputCandidat.propTypes = {
   type: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.bool,
+  ]).isRequired,
 };

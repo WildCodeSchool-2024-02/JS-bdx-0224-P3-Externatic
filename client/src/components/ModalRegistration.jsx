@@ -13,6 +13,7 @@ function ModalRegistration({
   formData,
   handleSubmitRegistration,
   handleSubmitLogin,
+  handleChange,
 }) {
   const modalRef = useRef(null);
 
@@ -67,11 +68,15 @@ function ModalRegistration({
         </button>
         <TitleModal />
       </header>
-      <FormModal formData={formData} />
+      <FormModal formData={formData} handleChange={handleChange} />
       <footer className="mt-10 mx-4 flex flex-col gap-10 items-center">
         <UserAgreements />
         <ChangeRegisterConnexion />
-        <ButtonSubmit handleSubmitRegistration={handleSubmitRegistration} handleSubmitLogin={handleSubmitLogin}  apply="big"/>
+        <ButtonSubmit
+          handleSubmitRegistration={handleSubmitRegistration}
+          handleSubmitLogin={handleSubmitLogin}
+          apply="big"
+        />
       </footer>
     </dialog>
   );
@@ -86,6 +91,7 @@ ModalRegistration.propTypes = {
   }).isRequired,
   handleSubmitRegistration: PropTypes.func.isRequired,
   handleSubmitLogin: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default ModalRegistration;

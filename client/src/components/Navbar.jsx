@@ -8,7 +8,7 @@ import menuBurger from "../assets/images/menuBurger.svg";
 import cross from "../assets/images/cross-svgrepo-com.svg";
 import disconnected from "../assets/images/iconDisconnect.svg";
 import NavAccess from "../services/NavAccess";
-import Button from "./atomic/buttons/Button"
+import Button from "./atomic/buttons/Button";
 import ModalRegistration from "./ModalRegistration";
 
 function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
@@ -27,7 +27,6 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // console.log(name, value);
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -51,17 +50,22 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
     e.preventDefault();
 
     try {
-      const response = await sendUser(loginUrl, formData, "POST");
+      const loginData = {
+        email: formData.email,
+        password: formData.password,
+      };
+      const response = await sendUser(loginUrl, loginData, "POST");
 
       if (response && response.status === 200) {
         const userData = await response.json();
+
         return userData;
         // console.log(userData);
       }
       return response;
     } catch (err) {
       console.error(err);
-      return null
+      return null;
     }
   };
 
