@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 
-function Button({ name, img, apply, handleChange }) {
+function Button({ name, img, apply, handleChange, buttonAnimate }) {
   return (
     <button
       onClick={handleChange}
-      className={`${apply} buttonAnimate`}
+      className={`${apply} ${buttonAnimate && "buttonAnimate"}`}
       type="button"
     >
       {name}
@@ -16,10 +16,11 @@ Button.propTypes = {
   name: PropTypes.string.isRequired,
   img: PropTypes.string,
   apply: PropTypes.string.isRequired,
-  handleChange: PropTypes.func,
+  handleChange: PropTypes.func.isRequired,
+  buttonAnimate: PropTypes.bool,
 };
 Button.defaultProps = {
-  img: "",
-  handleChange: null,
+  buttonAnimate: true,
+  img: null,
 };
 export default Button;

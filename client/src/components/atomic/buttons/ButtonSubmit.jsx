@@ -1,25 +1,41 @@
 import PropTypes from "prop-types";
+import { useModal } from "../../../contexts/ModalContext";
 
-function Button({ name, img, apply, handleChange }) {
-  return (
-      <button
-        onClick={handleChange}
-        className={`${apply} buttonAnimate`}
-        type="submit"
-      >
-        {name}
-        {img && <img src={img} alt="" className="w-6 max-md:w-4" />}
-      </button>
+function ButtonSubmit({
+  apply,
+  handleSubmitRegistration,
+  handleSubmitLogin,
+}) {
+  const { isClicked } = useModal();
+
+  return isClicked ? (
+    <button
+      className={`${apply} buttonAnimate`}
+      type="submit"
+      onClick={handleSubmitLogin}
+    >
+      Connexion
+    </button>
+  ) : (
+    <button
+      className={`${apply} buttonAnimate`}
+      type="submit"
+      onClick={handleSubmitRegistration}
+    >
+      {" "}
+      Valider mon inscription
+    </button>
   );
 }
-Button.propTypes = {
-  name: PropTypes.string.isRequired,
-  img: PropTypes.string,
+
+ButtonSubmit.propTypes = {
   apply: PropTypes.string.isRequired,
-  handleChange: PropTypes.func,
+  handleSubmitRegistration: PropTypes.func,
+  handleSubmitLogin: PropTypes.func,
 };
-Button.defaultProps = {
-  img: "",
-  handleChange: null,
+
+ButtonSubmit.defaultProps = {
+  handleSubmitRegistration: null,
+  handleSubmitLogin: null,
 };
-export default Button;
+export default ButtonSubmit;

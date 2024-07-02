@@ -7,7 +7,7 @@ function OfferPage() {
   const offers = useLoaderData();
   return (
     <main className="m-4 mt-12">
-      <section className="my-4 gap-4 flex flex-col items-center md:flex-row md:justify-around">
+      <section title="Page d'offres" className="my-4 gap-4 flex flex-col items-center md:flex-row md:justify-around">
         <SearchInputCandidat
           id="searchJob"
           placeholder="Rechercher un poste ..."

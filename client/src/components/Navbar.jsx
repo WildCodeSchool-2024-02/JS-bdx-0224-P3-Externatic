@@ -8,7 +8,7 @@ import menuBurger from "../assets/images/menuBurger.svg";
 import cross from "../assets/images/cross-svgrepo-com.svg";
 import disconnected from "../assets/images/iconDisconnect.svg";
 import NavAccess from "../services/NavAccess";
-import Button from "./atomic/buttons/Button";
+import Button from "./atomic/buttons/Button"
 import ModalRegistration from "./ModalRegistration";
 
 function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
@@ -116,13 +116,12 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
         className={`${isNavOpen} ${isNavVisible}
           md:min-h-20 md:min-w-full md:bg-[var(--secondary-background-color)] md:translate-x-0 md:flex`}
       >
-        <button
-          type="button"
-          className="block absolute right-5 top-2 w-10 md:hidden"
-          onClick={handleChangeNav}
-        >
-          <img src={cross} alt="fermer le menu" />
-        </button>
+        <Button
+          name={<img src={cross} alt="fermer le menu" />}
+          buttonAnimate={false}
+          apply="navCross"
+          handleChange={handleChangeNav}
+        />
         <ul
           className="text-[var(--primary-background-color)] text-lg flex flex-col gap-8 text-center mt-20
         md:flex-row md:gap-10 md:ml-auto md:mr-6 md:text-[var(--text-color)] md:self-center md:mt-0 items-center"
@@ -151,9 +150,13 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
             />
           </li>
           <li className="md:-ml-8">
-            <button type="button" onClick={handleClickConnexion}>
-              Se connecter
-            </button>
+            <Button
+              type="button"
+              name="Se connecter"
+              apply="basic"
+              buttonAnimate={false}
+              handleChange={handleClickConnexion}
+            />
           </li>
         </ul>
         <img

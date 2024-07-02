@@ -1,28 +1,22 @@
 import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 import { useModal } from "../contexts/ModalContext";
 
 import NavAccess from "../services/NavAccess";
+import TitleModal from "./atomic/modalElements/TitleModal";
+import FormModal from "./atomic/modalElements/FormModal";
+import UserAgreements from "./atomic/modalElements/UserAgreements";
+import ChangeRegisterConnexion from "./atomic/modalElements/ChangeRegisterConnexion";
 import ButtonSubmit from "./atomic/buttons/ButtonSubmit";
-import CheckBox from "./atomic/checkBox/CheckBox";
-import FormInputCandidat from "./atomic/inputCandidat/formCandidat/FormInputCandidat";
 
 function ModalRegistration({
   formData,
-  handleChange,
   handleSubmitRegistration,
   handleSubmitLogin,
 }) {
   const modalRef = useRef(null);
 
-  const {
-    handleChangeModal,
-    isModalOpen,
-    isModalVisible,
-    handleClickModal,
-    isClicked,
-  } = useModal();
+  const { handleChangeModal, isModalOpen, isModalVisible } = useModal();
 
   useEffect(() => {
     if (modalRef.current) {
@@ -71,131 +65,13 @@ function ModalRegistration({
             </g>
           </svg>
         </button>
-
-        {isClicked ? (
-          <h2 className="mt-10 font-medium md:text-xl text-center text-lg mb-4 text-[var(--secondary-color)] underline">
-            SE CONNECTER
-          </h2>
-        ) : (
-          <h2 className="mt-10 font-medium md:text-xl text-lg text-center text-[var(--secondary-color)] underline">
-            CRÉER UN COMPTE
-          </h2>
-        )}
+        <TitleModal />
       </header>
-
-      {isClicked ? (
-        <form id="connexion" method="POST" onSubmit={handleSubmitLogin}>
-          <FormInputCandidat
-            id="email"
-            label="E-mail"
-            name="email"
-            type="email"
-            value={formData.email}
-            handleChange={handleChange}
-          />
-          <FormInputCandidat
-            id="password"
-            label="Mot de passe"
-            name="password"
-            type="password"
-            value={formData.password}
-            handleChange={handleChange}
-          />
-          <ButtonSubmit form="connexion" name="Connexion" apply="big" />
-        </form>
-      ) : (
-        <form
-          id="registration"
-          method="POST"
-          onSubmit={handleSubmitRegistration}
-        >
-          <FormInputCandidat
-            id="firstname"
-            label="Prénom"
-            name="firstname"
-            type="text"
-            value={formData.firstname}
-            handleChange={handleChange}
-          />
-          <FormInputCandidat
-            id="lastname"
-            label="Nom"
-            name="lastname"
-            type="text"
-            value={formData.lastname}
-            handleChange={handleChange}
-          />
-          <FormInputCandidat
-            id="email"
-            label="E-mail"
-            name="email"
-            type="email"
-            value={formData.email}
-            handleChange={handleChange}
-          />
-          <FormInputCandidat
-            id="password"
-            label="Mot de passe"
-            name="password"
-            type="password"
-            value={formData.password}
-            handleChange={handleChange}
-          />
-          <ButtonSubmit
-            form="registration"
-            name="Valider mon inscription"
-            apply="big"
-          />
-          <CheckBox
-            id="CGU"
-            apply="bigCheckbox"
-            labelContent={
-              <>
-                J’ai lu et j’accepte les{" "}
-                <Link
-                  to="/CGU"
-                  onClick={handleChangeModal}
-                  className="text-[var(--primary-color)]"
-                >
-                  CGU
-                </Link>{" "}
-                et la{" "}
-                <Link
-                  to="/protectionDataPolicy"
-                  className="text-[var(--primary-color)]"
-                  onClick={handleChangeModal}
-                >
-                  politique de protection des données
-                </Link>
-              </>
-            }
-          />
-        </form>
-      )}
+      <FormModal formData={formData} />
       <footer className="mt-10 mx-4 flex flex-col gap-10 items-center">
-        {isClicked ? (
-          <p className="flex flex-col">
-            Vous n'avez pas de compte ?{" "}
-            <button
-              className="underline text-[var(--primary-color)]"
-              onClick={handleClickModal}
-              type="button"
-            >
-              Inscrivez-vous
-            </button>
-          </p>
-        ) : (
-          <p className="flex flex-col">
-            Vous avez déjà un compte ?{" "}
-            <button
-              className="underline text-[var(--primary-color)]"
-              onClick={handleClickModal}
-              type="button"
-            >
-              Se connecter
-            </button>
-          </p>
-        )}
+        <UserAgreements />
+        <ChangeRegisterConnexion />
+        <ButtonSubmit handleSubmitRegistration={handleSubmitRegistration} handleSubmitLogin={handleSubmitLogin}  apply="big"/>
       </footer>
     </dialog>
   );
@@ -208,7 +84,6 @@ ModalRegistration.propTypes = {
     email: PropTypes.string,
     password: PropTypes.string,
   }).isRequired,
-  handleChange: PropTypes.func.isRequired,
   handleSubmitRegistration: PropTypes.func.isRequired,
   handleSubmitLogin: PropTypes.func.isRequired,
 };
