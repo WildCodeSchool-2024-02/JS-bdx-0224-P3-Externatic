@@ -45,19 +45,27 @@ function OfferDetails() {
             />
           </svg>
         </label>
-        <ul className="flex flex-row mt-4">
-          <li className="ml-10">
-            <Tag text="REACT" apply="tag" />
+        <ul className=" ml-10 gap-4 flex flex-row mt-4">
+          {offerData.technos.map((techno) => (
+            <li key={techno.name}>
+              <Tag text={techno.name} apply="tag" />
+            </li>
+          ))}
+        </ul>
+        <ul className="mt-6 flex gap-4 ml-10">
+          <li>
+            <Tag text={offerData.city} apply="tag" />
           </li>
-          <li className="ml-5">
-            <Tag text="REACT" apply="tag" />
-          </li>
-          <li className="ml-5">
-            <Tag text="REACT" apply="tag" />
+          <li>
+            <Tag text={offerData.type} apply="tag" />
           </li>
         </ul>
         <h2 className="text-3xl ml-10 my-16 semi-bold text-[var(--primary-color)]">
           Description du poste
+        </h2>
+        <p className="mx-10">{offerData.details}</p>
+        <h2 className="text-3xl ml-10 my-16 semi-bold text-[var(--primary-color)]">
+          Détais de l'entreprise
         </h2>
         <p className="mx-10">{offerData.description}</p>
         <h2 className="text-3xl ml-10 my-16 semi-bold text-[var(--primary-color)]">

@@ -13,17 +13,17 @@ class TechnoOfferSeeder extends AbstractSeeder {
 
   run() {
     // Assume there are 10 offers and 14 technos from the seeders
-    const numberOfOffers = 10;
-    const numberOfTechnos = 14;
+    const NUMBER_OF_OFFERS = 10;
+    const NUMBER_OF_TECHNOS = 14;
 
-    for (let i = 0; i < numberOfOffers; i += 1) {
+    for (let i = 0; i < NUMBER_OF_OFFERS; i += 1) {
       // Determine a random number of technologies to associate with the offer
       const numTechnos = Math.floor(Math.random() * 3) + 1; // between 1 and 5 technos
       const selectedTechnos = new Set();
 
       // Randomly select unique technos
       while (selectedTechnos.size < numTechnos) {
-        const technoId = Math.floor(Math.random() * numberOfTechnos);
+        const technoId = Math.floor(Math.random() * NUMBER_OF_TECHNOS);
         selectedTechnos.add(technoId);
       }
 
