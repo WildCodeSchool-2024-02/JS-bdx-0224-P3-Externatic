@@ -59,6 +59,10 @@ function OfferDetails() {
         <h2 className="text-3xl ml-10 my-16 semi-bold text-[var(--primary-color)]">
           Description du poste
         </h2>
+        <p className="mx-10">{offerData.details}</p>
+        <h2 className="text-3xl ml-10 my-16 semi-bold text-[var(--primary-color)]">
+          Détais de l'entreprise
+        </h2>
         <p className="mx-10">{offerData.description}</p>
         <h2 className="text-3xl ml-10 my-16 semi-bold text-[var(--primary-color)]">
           Avantages
