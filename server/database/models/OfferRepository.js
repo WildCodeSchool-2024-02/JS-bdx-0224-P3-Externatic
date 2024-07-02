@@ -29,6 +29,7 @@ class OfferRepository extends AbstractRepository {
       SELECT 
         offer.id, 
         offer.title, 
+        offer.type,
         offer.details, 
         offer.city, 
         offer.advantages, 
@@ -49,12 +50,9 @@ class OfferRepository extends AbstractRepository {
       `,
       [id]
     );
-  
+
     return rows[0];
   }
-  
-
-  
 
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing offer

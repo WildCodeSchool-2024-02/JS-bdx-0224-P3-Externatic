@@ -47,6 +47,8 @@ class OfferSeeder extends AbstractSeeder {
           "Dijon",
           "Angers",
         ]),
+
+        type: this.faker.helpers.arrayElement(["CDI", "CDD", "Alternance"]),
         advantages: this.faker.lorem.paragraph(),
         salary: this.faker.number.int({ min: 10000, max: 100000 }),
         consultant_id: this.getRef(`consultant_${i}`).insertId,

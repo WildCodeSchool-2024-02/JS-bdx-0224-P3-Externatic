@@ -52,9 +52,12 @@ function OfferDetails() {
             </li>
           ))}
         </ul>
-        <ul className="mt-10 ml-10">
+        <ul className="mt-6 flex gap-4 ml-10">
           <li>
             <Tag text={offerData.city} apply="tag" />
+          </li>
+          <li>
+            <Tag text={offerData.type} apply="tag" />
           </li>
         </ul>
         <h2 className="text-3xl ml-10 my-16 semi-bold text-[var(--primary-color)]">
