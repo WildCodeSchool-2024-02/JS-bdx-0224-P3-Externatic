@@ -14,8 +14,10 @@ import CGU from "./pages/CGU";
 import ProtectionDataPolicy from "./pages/ProtectionDataPolicy";
 import LegalMentions from "./pages/LegalMentions";
 import Contact from "./pages/Contact";
+import ConsultantProfil from "./pages/ConsultantProfil";
 
 const offersUrl = "/api/offers";
+const usersUrl = "/api/users";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +35,7 @@ const router = createBrowserRouter([
       {
         path: "/offers/:id",
         element: <OfferDetails />,
-        loader : ({ params }) => fetchApi(`${offersUrl}/${params.id}`),        
+        loader: ({ params }) => fetchApi(`${offersUrl}/${params.id}`),
       },
       {
         path: "/dashboard/:id",
@@ -54,6 +56,11 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/consultantProfil/:id",
+        element: <ConsultantProfil />,
+        loader: ({ params }) => fetchApi(`${usersUrl}/${params.id}`),
       },
     ],
   },
