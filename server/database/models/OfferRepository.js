@@ -102,6 +102,7 @@ class OfferRepository extends AbstractRepository {
                   INNER JOIN techno ON techno_offer.techno_id = techno.id
                   WHERE techno_offer.offer_id = offer.id
                 ) AS technos
+                FROM ${this.table} AS offer
                 INNER JOIN company ON offer.company_id = company.id
       `
     );

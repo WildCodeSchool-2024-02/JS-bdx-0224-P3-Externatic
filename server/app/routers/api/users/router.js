@@ -1,11 +1,21 @@
-const express = require("express")
+const express = require("express");
 
-const router = express.Router()
+const router = express.Router();
 
-const {browse, read} = require("../../../controllers/userActions");
+const {
+  browse,
+  add,
+  read,
+  readConsultantCandidates,
+} = require("../../../controllers/userActions");
+const { hashPassword } = require("../../../services/hashPassword");
 
-router.get("/", browse)
+router.get("/", browse);
 
 router.get("/:id", read);
 
-module.exports = router
+router.get("/consultants/:id", readConsultantCandidates);
+
+router.post("/", hashPassword, add);
+
+module.exports = router;

@@ -21,30 +21,77 @@ class UserRepository extends AbstractRepository {
     return rows;
   }
 
-  async readByEmailWithPassword(email) {
+  async read(id) {
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
-      [email]
+      `select firstname, lastname, role from ${this.table} where id = ?`,
+      [id]
     );
     return rows[0];
   }
 
-  async read(id) {
-    // Execute the SQL SELECT query to retrieve a specific user by its role and ID
+  // async readConsultantCandidates(consultantId) {
+  //   const [rows] = await this.database.query(
+  //     `select JSON_ARRAYAGG(JSON_OBJECT("firstname", u.firstname,
+  //      "lastname", u.lastname,
+  //      "phone", u.phone,
+  //      "email", u.email,
+  //      "role", u.role,
+  //      "technos", JSON_ARRAYAGG(JSON_OBJECT('name', t.name))))
+  //      FROM user AS u
+  //      JOIN candidate AS c ON u.id = c.user_id
+  //      JOIN candidacy AS cd ON c.id = cd.candidate_id
+  //      JOIN offer AS o ON cd.offer_id = o.id
+  //      JOIN techno_candidate AS tc ON tc.techno.id = tc.candidate_id
+  //      join techno as t on t.id = tc.techno_id
+  //      WHERE o.consultant_id = ?`,
+  //     [consultantId]
+  //   );
+  //   return rows;
+  // }
+  async readConsultantCandidates(consultantId) {
     const [rows] = await this.database.query(
-      `
-      SELECT 
-        user.id, 
-        user.firstname, 
-        user.lastname,
-        user.role
-      FROM ${this.table} AS user
-      WHERE user.role = 'consultant' AND user.id = 0
-      `,
-      [id]
+      `SELECT JSON_ARRAYAGG(
+            JSON_OBJECT(
+                'firstname', technos_array.firstname,
+                'lastname', technos_array.lastname,
+                'phone', technos_array.phone,
+                'email', technos_array.email,
+                'role', technos_array.role,
+                'technos', technos_array.technos
+            )
+        ) AS candidates
+        FROM (
+            SELECT 
+                u.firstname, 
+                u.lastname, 
+                u.phone, 
+                u.email, 
+                u.role,
+                c.id AS candidate_id,
+                (SELECT JSON_ARRAYAGG(
+                    JSON_OBJECT('name', t.name)
+                )
+                FROM techno AS t
+                JOIN techno_candidate AS tc ON t.id = tc.techno_id
+                WHERE tc.candidate_id = c.id) AS technos
+            FROM user AS u
+            JOIN candidate AS c ON u.id = c.user_id
+            JOIN candidacy AS cd ON c.id = cd.candidate_id
+            JOIN offer AS o ON cd.offer_id = o.id
+            WHERE o.consultant_id = ?
+        ) AS technos_array`,
+      [consultantId]
+    );
+    return rows;
+  }
+
+  async readByEmailWithPassword(email) {
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where email = ?`,
+      [email]
     );
     return rows[0];
-  }  
+  }
 }
 
 module.exports = UserRepository;
