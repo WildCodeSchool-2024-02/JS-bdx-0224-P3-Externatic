@@ -12,7 +12,6 @@ function Button({ name, img, apply, handleChange, buttonAnimate }) {
     </button>
   );
 }
-
 Button.propTypes = {
   name: PropTypes.string.isRequired,
   img: PropTypes.string,
@@ -20,10 +19,8 @@ Button.propTypes = {
   handleChange: PropTypes.func.isRequired,
   buttonAnimate: PropTypes.bool,
 };
-
 Button.defaultProps = {
   buttonAnimate: true,
   img: null,
 };
-
 export default Button;

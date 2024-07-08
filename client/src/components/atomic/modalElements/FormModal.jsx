@@ -1,27 +1,41 @@
+import PropTypes from "prop-types";
 import { useModal } from "../../../contexts/ModalContext";
-import FormInputCandidat from "../inputCandidat/formCandidat/FormInputCandidat";
+import FormRegistration from "../formCandidat/FormRegistration";
+import FormConnexion from "../formCandidat/FormConnexion";
 
-function FormModal() {
+function FormModal({
+  handleChange,
+  formData,
+  handleSubmitLogin,
+  handleSubmitRegistration,
+}) {
   const { isClicked } = useModal();
 
   return isClicked ? (
-    <form id="connexion" method="post">
-      <FormInputCandidat id="email" label="E-mail" type="email" />
-      <FormInputCandidat id="password" label="Mot de passe" type="password" />
-    </form>
+    <FormConnexion
+      handleChange={handleChange}
+      formData={formData}
+      handleSubmitLogin={handleSubmitLogin}
+    />
   ) : (
-    <form id="registration" method="post">
-      <FormInputCandidat id="firstName" label="Prénom" type="text" />
-      <FormInputCandidat id="lastName" label="Nom" type="text" />
-      <FormInputCandidat id="email" label="E-mail" type="email" />
-      <FormInputCandidat id="password" label="Mot de passe" type="password" />
-      <FormInputCandidat
-        id="confirmPassword"
-        label="Confirmer votre mot de passe"
-        type="password"
-      />
-    </form>
+    <FormRegistration
+      handleChange={handleChange}
+      formData={formData}
+      handleSubmitRegistration={handleSubmitRegistration}
+    />
   );
 }
+
+FormModal.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  handleSubmitLogin: PropTypes.func.isRequired,
+  handleSubmitRegistration: PropTypes.func.isRequired,
+  formData: PropTypes.shape({
+    firstname: PropTypes.string.isRequired,
+    lastname: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default FormModal;
