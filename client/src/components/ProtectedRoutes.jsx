@@ -10,10 +10,10 @@ function ProtectedRoute({ element, roles }) {
     <Navigate to="/" replace />
   );
 }
-
 ProtectedRoute.propTypes = {
   element: PropTypes.elementType.isRequired,
   roles: PropTypes.string.isRequired,
 };
+
 
 export default ProtectedRoute;
