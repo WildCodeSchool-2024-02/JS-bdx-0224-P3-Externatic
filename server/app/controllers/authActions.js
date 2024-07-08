@@ -1,4 +1,4 @@
-const { verifyPassword } = require("../services/auth");
+const { verifyPassword } = require("../middlewares/passwordVerification");
 
 const login = async (req, res, next) => {
   try {

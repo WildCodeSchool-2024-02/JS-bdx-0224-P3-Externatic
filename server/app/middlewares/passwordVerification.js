@@ -10,11 +10,7 @@ const verifyPassword = async (email, password) => {
 
   const verified = await argon2.verify(user.hashed_password, password);
 
-  if (verified) {
-    delete user.hashed_password;
-    return { verified: true, user };
-  }
-  return { verified: false };
+  return { verified, user };
 };
 
 module.exports = { verifyPassword };

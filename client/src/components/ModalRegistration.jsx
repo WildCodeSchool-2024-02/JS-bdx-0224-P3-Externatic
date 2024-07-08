@@ -5,9 +5,6 @@ import { useModal } from "../contexts/ModalContext";
 import NavAccess from "../services/NavAccess";
 import TitleModal from "./atomic/modalElements/TitleModal";
 import FormModal from "./atomic/modalElements/FormModal";
-import UserAgreements from "./atomic/modalElements/UserAgreements";
-import ChangeRegisterConnexion from "./atomic/modalElements/ChangeRegisterConnexion";
-import ButtonSubmit from "./atomic/buttons/ButtonSubmit";
 
 function ModalRegistration({
   formData,
@@ -68,26 +65,22 @@ function ModalRegistration({
         </button>
         <TitleModal />
       </header>
-      <FormModal formData={formData} handleChange={handleChange} />
-      <footer className="mt-10 mx-4 flex flex-col gap-10 items-center">
-        <UserAgreements />
-        <ChangeRegisterConnexion />
-        <ButtonSubmit
-          handleSubmitRegistration={handleSubmitRegistration}
-          handleSubmitLogin={handleSubmitLogin}
-          apply="big"
-        />
-      </footer>
+      <FormModal
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmitLogin={handleSubmitLogin}
+        handleSubmitRegistration={handleSubmitRegistration}
+      />
     </dialog>
   );
 }
 
 ModalRegistration.propTypes = {
   formData: PropTypes.shape({
-    firstname: PropTypes.string,
-    lastname: PropTypes.string,
-    email: PropTypes.string,
-    password: PropTypes.string,
+    firstname: PropTypes.string.isRequired,
+    lastname: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
   }).isRequired,
   handleSubmitRegistration: PropTypes.func.isRequired,
   handleSubmitLogin: PropTypes.func.isRequired,

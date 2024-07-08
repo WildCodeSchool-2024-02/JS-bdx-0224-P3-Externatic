@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { sendUser } from "../services/fetchApi";
+import useLogicForm from "../services/useLogicForm";
 import { useModal } from "../contexts/ModalContext";
 import externatic from "../assets/Externatic.svg";
 import menuBurger from "../assets/images/menuBurger.svg";
@@ -14,60 +14,7 @@ import ModalRegistration from "./ModalRegistration";
 function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
   const menuRef = useRef(null);
   const { handleChangeModal, setIsClicked } = useModal();
-
-  const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    password: "",
-  });
-
-  const usersUrl = "/api/users";
-  const loginUrl = "/api/login";
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmitRegistration = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await sendUser(usersUrl, formData, "POST");
-      const data = await response.json();
-      return data;
-    } catch (err) {
-      console.error("Erreur lors de la soumission du formulaire :", err);
-      return null;
-    }
-  };
-
-  const handleSubmitLogin = async (e) => {
-    e.preventDefault();
-
-    try {
-      const loginData = {
-        email: formData.email,
-        password: formData.password,
-      };
-      const response = await sendUser(loginUrl, loginData, "POST");
-
-      if (response && response.status === 200) {
-        const userData = await response.json();
-
-        return userData;
-        // console.log(userData);
-      }
-      return response;
-    } catch (err) {
-      console.error(err);
-      return null;
-    }
-  };
+  const { formData, handleChange, handleSubmitRegistration, handleSubmitLogin } = useLogicForm();
 
   const handleClick = () => {
     handleChangeNav();

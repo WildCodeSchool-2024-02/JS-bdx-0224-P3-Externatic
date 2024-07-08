@@ -9,7 +9,7 @@ class UserRepository extends AbstractRepository {
     const [result] = await this.database.query(
       `insert into ${this.table} (firstname, lastname, email, hashed_password) values(?, ?, ?, ?)`,
       [user.firstname, user.lastname, user.email, user.hashedPassword]
-    );
+    ); 
 
     return result.insertId;
   }
@@ -23,7 +23,7 @@ class UserRepository extends AbstractRepository {
 
   async readByEmailWithPassword(email) {
     const [rows] = await this.database.query(
-      `select * from ${this.table} where email = ?`,
+      `select email, hashed_password from ${this.table} where email = ?`,
       [email]
     );
     return rows[0];

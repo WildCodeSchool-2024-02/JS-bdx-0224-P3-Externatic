@@ -1,41 +1,21 @@
 import PropTypes from "prop-types";
-import { useModal } from "../../../contexts/ModalContext";
 
-function ButtonSubmit({
-  apply,
-  handleSubmitRegistration,
-  handleSubmitLogin,
-}) {
-  const { isClicked } = useModal();
-
-  return isClicked ? (
+function ButtonSubmit({ apply, name, onClick }) {
+  return (
     <button
       className={`${apply} buttonAnimate`}
       type="submit"
-      onClick={handleSubmitLogin}
+      onClick={onClick}
     >
-      Connexion
-    </button>
-  ) : (
-    <button
-      className={`${apply} buttonAnimate`}
-      type="submit"
-      onClick={handleSubmitRegistration}
-    >
-      {" "}
-      Valider mon inscription
+      {name}
     </button>
   );
 }
 
 ButtonSubmit.propTypes = {
   apply: PropTypes.string.isRequired,
-  handleSubmitRegistration: PropTypes.func,
-  handleSubmitLogin: PropTypes.func,
+  name: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
-ButtonSubmit.defaultProps = {
-  handleSubmitRegistration: null,
-  handleSubmitLogin: null,
-};
 export default ButtonSubmit;
