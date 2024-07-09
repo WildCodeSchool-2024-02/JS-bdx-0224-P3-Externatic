@@ -12,7 +12,10 @@ export default function AuthProvider({ children }) {
     if (token) {
       try {
         const decodedToken = jwtDecode(token);
-        setAuth({ role: decodedToken.role, email: decodedToken.email });
+        setAuth({
+          role: decodedToken.role,
+          email: decodedToken.email,
+        });
       } catch (error) {
         console.error("Invalid token", error);
       }

@@ -1,7 +1,8 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 function DashboardConsultant() {
-  const userData = useLoaderData();
+  const userData = useAuth();
 
   return (
     <main className="flex flex-col gap-20 items-center min-h-screen">
