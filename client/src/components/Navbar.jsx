@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext"
 import useLogicForm from "../services/useLogicForm";
 import { useModal } from "../contexts/ModalContext";
 import externatic from "../assets/Externatic.svg";
@@ -17,6 +17,7 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
 
   const menuRef = useRef(null);
   const { handleChangeModal, setIsClicked } = useModal();
+
   const {
     formData,
     handleChange,
