@@ -4,8 +4,8 @@ CREATE TABLE user (
   lastname VARCHAR(80) NOT NULL,
   email VARCHAR(80) UNIQUE NOT NULL,
   phone VARCHAR(80),
-  password VARCHAR(80) NOT NULL,
-  role VARCHAR(80) NOT NULL
+  hashed_password VARCHAR(250) NOT NULL,
+  role VARCHAR(80) NOT NULL DEFAULT 'Candidate'
 );
 
 CREATE TABLE consultant (

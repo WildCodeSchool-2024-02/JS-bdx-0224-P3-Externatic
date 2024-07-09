@@ -30,16 +30,8 @@ export default function CardConsultant({
           img="/src/assets/images/phone.svg"
           apply="small"
         />
-        <Button
-          name="Email"
-          img="/src/assets/images/mail.svg"
-          apply="small"
-        />
-        <Button
-          name="CV"
-          img="/src/assets/images/cv.svg"
-          apply="small"
-        />
+        <Button name="Email" img="/src/assets/images/mail.svg" apply="small" />
+        <Button name="CV" img="/src/assets/images/cv.svg" apply="small" />
       </footer>
     </article>
   );

@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import fetchApi from "./services/fetchApi";
+
 import "../index.css";
 import App from "./App";
 import HomePage from "./pages/HomePage";
@@ -16,6 +19,7 @@ import LegalMentions from "./pages/LegalMentions";
 import Contact from "./pages/Contact";
 
 const offersUrl = "/api/offers";
+const usersUrl = "/api/users";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +37,7 @@ const router = createBrowserRouter([
       {
         path: "/offers/:id",
         element: <OfferDetails />,
-        loader : ({ params }) => fetchApi(`${offersUrl}/${params.id}`),        
+        loader: ({ params }) => fetchApi(`${offersUrl}/${params.id}`),
       },
       {
         path: "/dashboard/:id",
@@ -56,6 +60,7 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
     ],
+    loader: async () => fetchApi(usersUrl),
   },
 ]);
 
