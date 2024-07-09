@@ -36,7 +36,7 @@ export default function FileUpload() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-center md:items-start m-5">
+    <form onSubmit={handleSubmit} className="flex flex-col items-center md:items-start mt-8 mb-8">
       <Dropzone
         onDrop={(acceptedFiles) => setFile(acceptedFiles[0])}
         accept="text/pdf"

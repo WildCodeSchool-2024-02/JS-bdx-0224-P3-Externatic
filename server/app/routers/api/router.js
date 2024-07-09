@@ -12,6 +12,7 @@ const offerRouter = require("./offers/router");
 router.use("/offers", offerRouter);
 
 router.use("/upload", uploadRouter);
+
 const userRouter = require("./users/router");
 
 router.use("/users", userRouter);

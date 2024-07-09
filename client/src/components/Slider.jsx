@@ -31,9 +31,6 @@ export default function Slider() {
       keyboard={{
         enabled: true,
       }}
-      pagination={{
-        clickable: true,
-      }}
       breakpoints={{
         640: {
           slidesPerView: 3,
