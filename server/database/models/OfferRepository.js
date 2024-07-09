@@ -9,16 +9,17 @@ class OfferRepository extends AbstractRepository {
 
   // The C of CRUD - Create operation
 
-  // async create(offer) {
-  //   // Execute the SQL INSERT query to add a new offer to the "offer" table
-  //   const [result] = await this.database.query(
-  //     `insert into ${this.table} (title, user_id) values (?, ?)`,
-  //     [offer.title, offer.user_id]
-  //   );
+  async create(offer) {
+    
+    // Execute the SQL INSERT query to add a new offer to the "offer" table
+    const [result] = await this.database.query(
+      `insert into ${this.table} (title, city, salary, details, advantages, type) values (?, ?, ?, ?, ?, ?)`,
+      [offer.title, offer.city, offer.salary, offer.details, offer.advantages, offer.type]
+    );
 
-  //   // Return the ID of the newly inserted offer
-  //   return result.insertId;
-  // }
+    // Return the ID of the newly inserted offer
+    return result.insertId;
+  }
 
   // The Rs of CRUD - Read operations
 
@@ -50,22 +51,20 @@ class OfferRepository extends AbstractRepository {
   //   ...
   // }
 
-  async create(offer) {
-    const [result] = await this.database.query(
-      `insert into ${this.table} (title, details, advantages, salary, consultant_id, job_id, id) values(?, ?, ?, ?, ?, ?, ?)`,
-      [
-        offer.title,
-        offer.details,
-        offer.advantages,
-        offer.salary,
-        offer.consultant_id,
-        offer.job_id,
-        offer.id,
-      ]
-    );
+  // async create(offer) {
+  //   const [result] = await this.database.query(
+  //     `INSERT INTO ${this.table} (title, details, city, advantages, salary) VALUES(?, ?, ?, ?, ?)`,
+  //     [
+  //       offer.title,
+  //       offer.details,
+  //       offer.city,
+  //       offer.advantages,
+  //       offer.salary,
+  //     ]
+  //   );
 
-    return result.insertId;
-  }
+  //   return result.insertId;
+  // }
 
   async readAll() {
     const [rows] = await this.database.query(`

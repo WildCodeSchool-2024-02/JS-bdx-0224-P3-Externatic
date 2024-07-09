@@ -14,6 +14,7 @@ import CGU from "./pages/CGU";
 import ProtectionDataPolicy from "./pages/ProtectionDataPolicy";
 import LegalMentions from "./pages/LegalMentions";
 import Contact from "./pages/Contact";
+import CreateOfferPage from "./pages/CreateOfferPage";
 
 const offersUrl = "/api/offers";
 
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
       {
         path: "/offers/:id",
         element: <OfferDetails />,
-        loader : ({ params }) => fetchApi(`${offersUrl}/${params.id}`),        
+        loader: ({ params }) => fetchApi(`${offersUrl}/${params.id}`),
+      },
+      {
+        path: "/offers/create",
+        element: <CreateOfferPage />,
       },
       {
         path: "/dashboard/:id",
