@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { sendUser } from "./fetchApi";
+import { useModal } from "../contexts/ModalContext";
 
 const useLogicForm = () => {
   const [formData, setFormData] = useState({
@@ -9,8 +11,12 @@ const useLogicForm = () => {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const usersUrl = "/api/users";
   const loginUrl = "/api/login";
+
+  const { setIsClicked, handleChangeModal } = useModal();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,6 +31,7 @@ const useLogicForm = () => {
 
     try {
       const response = await sendUser(usersUrl, formData, "POST");
+      setIsClicked(true);
       const data = await response.json();
       return data;
     } catch (err) {
@@ -41,10 +48,11 @@ const useLogicForm = () => {
         password: formData.password,
       };
       const response = await sendUser(loginUrl, loginData, "POST");
-
-      if (response && response.status === 200) {
-        const userData = await response.json();
-
+      if (response) {
+        const userData = response.token;
+        handleChangeModal();
+        navigate("/offers");
+        localStorage.setItem("token", userData);
         return userData;
       }
       return response;
@@ -58,6 +66,6 @@ const useLogicForm = () => {
     handleSubmitRegistration,
     handleSubmitLogin,
   };
-}
+};
 
 export default useLogicForm;

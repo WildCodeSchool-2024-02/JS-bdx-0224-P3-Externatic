@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
-import { Navigate, useLoaderData } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 function ProtectedRoute({ element, roles }) {
-  const userData = useLoaderData();
-
+  const userData = useAuth();
+  
   return userData && roles.includes(userData.role) ? (
     element
   ) : (

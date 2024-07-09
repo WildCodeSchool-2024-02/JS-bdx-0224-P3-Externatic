@@ -28,6 +28,11 @@ const read = async (req, res, next) => {
 };
 
 const readConsultantCandidates = async (req, res, next) => {
+  if (req.auth.role !== 'consultant') {
+    res.sendStatus(403);
+    return;
+  }
+
   try {
     const candidates = await tables.user.readConsultantCandidates(
       req.params.id
@@ -55,4 +60,4 @@ const add = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, add, read, readConsultantCandidates };
+module.exports = { browse, add, read, readConsultantCandidates };   

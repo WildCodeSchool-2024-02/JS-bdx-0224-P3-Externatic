@@ -11,11 +11,14 @@ const {
 
 const { hashPassword } = require("../../../services/hashPassword");
 
+const { verifyToken } = require("../../../middlewares/verifyToken");
+const { verifyRole } = require("../../../middlewares/verifyRole");
+
 router.get("/", browse);
 
 router.get("/:id", read);
 
-router.get("/consultants/:id", readConsultantCandidates);
+router.get("/consultants/:id", verifyToken, verifyRole, readConsultantCandidates);
 
 router.post("/", hashPassword, add);
 

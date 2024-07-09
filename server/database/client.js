@@ -17,8 +17,6 @@ client.checkConnection = () => {
   client
     .getConnection()
     .then((connection) => {
-      console.info(`Using database ${DB_NAME}`);
-
       connection.release();
     })
     .catch((error) => {

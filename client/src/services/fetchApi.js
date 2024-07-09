@@ -1,6 +1,10 @@
 export default async function fetchApi(url) {
   try {
-    const response = await fetch(import.meta.env.VITE_API_URL + url);
+    const response = await fetch(import.meta.env.VITE_API_URL + url, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
     const data = await response.json();
     return data;
   } catch (err) {
@@ -8,17 +12,17 @@ export default async function fetchApi(url) {
   }
 }
 
-export async function sendUser(url, user, http, auth) {
+
+export async function sendUser(url, user, http) {
   try {
     const response = await fetch(import.meta.env.VITE_API_URL + url, {
       method: http,
       headers: {
         "content-Type": "application/json",
-        Authorization: `Bearer ${auth.token}`,
       },
       body: JSON.stringify(user),
     });
-    return response;
+    return response.json();
   } catch (err) {
     return err;
   }
