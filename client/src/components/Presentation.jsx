@@ -1,5 +1,5 @@
-import Button from "./atomic/buttons/Button";
 import { useModal } from "../contexts/ModalContext";
+import Button from "./atomic/buttons/Button";
 
 function Presentation() {
   const { handleChangeModal } = useModal();
@@ -33,7 +33,6 @@ function Presentation() {
         l’humain est tout simplement indispensable.
       </p>
       <Button
-        type="button"
         apply="medium"
         name="S'inscrire"
         handleChange={handleChangeModal}

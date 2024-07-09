@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useState } from "react";
 import Dropzone from "react-dropzone";
+import ButtonSubmit from "./buttons/ButtonSubmit";
 
 export default function FileUpload() {
   const [file, setFile] = useState(null); // Initialisez le state à null pour indiquer l'absence d'image sélectionnée
@@ -35,7 +36,7 @@ export default function FileUpload() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-center">
+    <form onSubmit={handleSubmit} className="flex flex-col items-center md:items-start m-5">
       <Dropzone
         onDrop={(acceptedFiles) => setFile(acceptedFiles[0])}
         accept="text/pdf"
@@ -82,7 +83,7 @@ export default function FileUpload() {
           </label>
         )}
       </Dropzone>
-      <button type="submit">Envoyer</button>
+      <ButtonSubmit apply="medium" name="Envoyer"/>
     </form>
   );
 }

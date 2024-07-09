@@ -1,14 +1,17 @@
+import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
 import { useModal } from "../contexts/ModalContext";
 
 import NavAccess from "../services/NavAccess";
 import TitleModal from "./atomic/modalElements/TitleModal";
 import FormModal from "./atomic/modalElements/FormModal";
-import UserAgreements from "./atomic/modalElements/UserAgreements";
-import ChangeRegisterConnexion from "./atomic/modalElements/ChangeRegisterConnexion";
-import ButtonRegisterConnexion from "./atomic/modalElements/ButtonRegisterConnexion";
 
-function ModalRegistration() {
+function ModalRegistration({
+  formData,
+  handleSubmitRegistration,
+  handleSubmitLogin,
+  handleChange,
+}) {
   const modalRef = useRef(null);
 
   const { handleChangeModal, isModalOpen, isModalVisible } = useModal();
@@ -62,14 +65,26 @@ function ModalRegistration() {
         </button>
         <TitleModal />
       </header>
-      <FormModal />
-      <footer className="mt-10 mx-4 flex flex-col gap-10 items-center">
-        <UserAgreements />
-        <ChangeRegisterConnexion />
-        <ButtonRegisterConnexion type="submit" />
-      </footer>
+      <FormModal
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmitLogin={handleSubmitLogin}
+        handleSubmitRegistration={handleSubmitRegistration}
+      />
     </dialog>
   );
 }
+
+ModalRegistration.propTypes = {
+  formData: PropTypes.shape({
+    firstname: PropTypes.string.isRequired,
+    lastname: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+  }).isRequired,
+  handleSubmitRegistration: PropTypes.func.isRequired,
+  handleSubmitLogin: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};
 
 export default ModalRegistration;

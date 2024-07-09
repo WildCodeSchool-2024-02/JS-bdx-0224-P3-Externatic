@@ -42,6 +42,11 @@ export default function CardOfferForCandidate({ offer }) {
           <Tag text={offer.city} apply="tag" />
         </li>
       </ul>
+      <ul>
+        <li className="mb-4">
+          <Tag text={offer.type} apply="tag" />
+        </li>
+      </ul>
       <p className=" font-medium">{offer.company_name}</p>
       <p className="mb-4 max-md:text-sm line-clamp-2 overflow-hidden...">
         {offer.details}
@@ -62,6 +67,7 @@ export default function CardOfferForCandidate({ offer }) {
 CardOfferForCandidate.propTypes = {
   offer: PropTypes.shape({
     title: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     details: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,

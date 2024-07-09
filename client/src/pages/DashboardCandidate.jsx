@@ -1,15 +1,17 @@
+import { useLoaderData } from "react-router-dom";
 import FileUpload from "../components/atomic/FileUpload";
 import Tag from "../components/atomic/tag/Tag";
 import Button from "../components/atomic/buttons/Button";
 
 function DashboardCandidate() {
+  const data = useLoaderData()
   return (
     <main>
       <article className="p-5">
         <header className="mt-10 text-md">
-          <h1 className="p-3 text-[var(--primary-color)]">Johnny BeGood</h1>
-          <p>Mail: johnny@gmail.com</p>
-          <p>Tel: 054838292</p>
+          <h1 className=" text-[var(--primary-color)]">{data.firstname} {data.lastname}</h1>
+          <p>Mail: {data.email}</p>
+          <p>Tel: {data.phone}</p>
           <p >Localisation: Bordeaux</p>
         </header>
         <FileUpload />
