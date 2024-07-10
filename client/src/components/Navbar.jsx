@@ -80,8 +80,7 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
             </Link>
           </li>
           <li>
-            <Link to="/dashboard/:id" onClick={handleChangeNav}>
-              Profil
+            <Link to="/dashboard/:id" onClick={handleChangeNav}>              Profil
             </Link>
           </li>
           <li>
