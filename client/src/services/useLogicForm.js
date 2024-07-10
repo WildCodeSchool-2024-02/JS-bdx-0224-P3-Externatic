@@ -7,6 +7,9 @@ const useLogicForm = () => {
     lastname: "",
     email: "",
     password: "",
+    city:"",
+    type: "",
+    technos: ""
   });
 
   const usersUrl = "/api/users";
