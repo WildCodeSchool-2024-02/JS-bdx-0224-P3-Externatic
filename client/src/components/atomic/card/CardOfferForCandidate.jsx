@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -5,6 +6,28 @@ import Tag from "../tag/Tag";
 import ScrollToTop from "../../../services/scrollToTop";
 
 export default function CardOfferForCandidate({ offer }) {
+  const [isChecked, setIsChecked] = useState(false);
+  
+  const handleCheckboxChange = async () => {
+    setIsChecked(!isChecked);
+
+    if (!isChecked) {
+      try {
+        const response = await fetch("http://localhost:3310/api/favorites", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ candidateId: 1, offerId: offer.id }), // Remplacez 1 par l'ID du candidat actuel
+        });
+
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      } catch (err) {
+        console.error("Error adding favorite", err);
+      }
+    }
+  };
+
   const scrollToTop = ScrollToTop();
   return (
     <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-56 p-4 bg-[var(--secondary-background-color)] mb-4 max-w-md min-w-72">
@@ -14,7 +37,7 @@ export default function CardOfferForCandidate({ offer }) {
         </h3>
         <label className="peer text-[0] cursor-pointer">
           favoris
-          <input type="checkbox" className="peer hidden" />
+          <input type="checkbox" className="peer hidden" onChange={handleCheckboxChange} />
           <svg
             className="peer-checked:fill-[var(--primary-color)] peer-checked:animate-jump animate-once animate-duration-500 animate-ease-in-out animate-alternate"
             width="23"

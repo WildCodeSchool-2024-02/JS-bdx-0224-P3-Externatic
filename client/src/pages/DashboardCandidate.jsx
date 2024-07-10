@@ -5,6 +5,7 @@ import Button from "../components/atomic/buttons/Button";
 
 function DashboardCandidate() {
   const data = useLoaderData();
+
   return (
     <main>
       <article className="p-5 md:pl-40 md:pr-40 flex flex-col">
@@ -30,10 +31,6 @@ function DashboardCandidate() {
           </li>
         ))}
         </ul>
-        <h2 className="text-[var(--primary-color)] pb-2 pt-10">
-          Mes préférences
-        </h2>
-        <Tag text="REACT" apply="tag" />
         <h2 className="text-[var(--primary-color)] pb-3 pt-10">Mes favoris</h2>
       </article>
       <footer className="flex flex-col items-center gap-5 p-5">
