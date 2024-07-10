@@ -10,6 +10,10 @@ const offerRouter = require("./offers/router");
 
 router.use("/offers", offerRouter);
 
+const technoRouter = require("./technos/router");
+
+router.use("/technos", technoRouter);
+
 /* ************************************************************************* */
 
 module.exports = router;

@@ -4,6 +4,7 @@ export default function FormDropDown({
   id,
   label,
   name,
+  multiple,
   options,
   handleChange,
 }) {
@@ -14,13 +15,14 @@ export default function FormDropDown({
     >
       {label}
       <select
-        className="h-12 border-2 outline-[var(--primary-color)] rounded-s px-2 text-[var(--text-color)]"
+        className="h-20 border-2 outline-[var(--primary-color)] rounded-s px-2 text-[var(--text-color)]"
         id={id}
         name={name}
         onChange={handleChange}
+        multiple={multiple}
       >
         {options.map((option) => (
-          <option key={option.id} value={option.name}>
+          <option key={option.name} value={option.name}>
             {option.name}
           </option>
         ))}
@@ -33,6 +35,7 @@ FormDropDown.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  multiple: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({

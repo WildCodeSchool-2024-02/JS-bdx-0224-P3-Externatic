@@ -17,6 +17,7 @@ import Contact from "./pages/Contact";
 import CreateOfferPage from "./pages/CreateOfferPage";
 
 const offersUrl = "/api/offers";
+const technosUrl = "/api/technos";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
       {
         path: "/offers/create",
         element: <CreateOfferPage />,
+        loader: async () => fetchApi(technosUrl),
       },
       {
         path: "/dashboard/:id",

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLoaderData } from "react-router-dom";
 
 import createOffer from "../services/createOffer";
 import ReturnButton from "../components/atomic/buttons/PreviousPage";
@@ -9,6 +9,7 @@ import FormDropDown from "../components/atomic/inputConsultant/formConsultant/Fo
 function CreateOfferPage() {
   const navigate = useNavigate();
   const offersUrl = "/api/offers";
+  const technos = useLoaderData();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -17,17 +18,28 @@ function CreateOfferPage() {
     // region: "",
     city: "",
     details: "",
-    // techno: "",
+    techno: [],
     salary: "",
     advantages: "",
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
+    const { name, value, multiple } = e.target;
+    
+    if (multiple) {
+      const newArray = [...formData.techno];
+      newArray.push(value)
+
+      return setFormData({
+        ...formData,
+        techno: [...newArray],
+      })
+    }
+  
+    return setFormData({
+      ...formData,
       [name]: value,
-    }));
+    });
   };
 
   const handleSubmitOffer = async (e) => {
@@ -64,6 +76,7 @@ function CreateOfferPage() {
           id="type"
           label="Type d'offre"
           name="type"
+          multiple={false}
           handleChange={handleChange}
           options={[
             { name: "CDI", id: 1 },
@@ -98,12 +111,14 @@ function CreateOfferPage() {
           value={formData.details}
           handleChange={handleChange}
         />
-        {/* <FormInputConsultant
+        <FormDropDown
           id="techno"
           label="Principales technologies"
-          value={formData.techno}
+          name="techno"
+          multiple
           handleChange={handleChange}
-        /> */}
+          options={technos}
+        />
         <FormInputConsultant
           id="salary"
           name="salary"
