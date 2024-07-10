@@ -29,25 +29,6 @@ class UserRepository extends AbstractRepository {
     return rows[0];
   }
 
-  // async readConsultantCandidates(consultantId) {
-  //   const [rows] = await this.database.query(
-  //     `select JSON_ARRAYAGG(JSON_OBJECT("firstname", u.firstname,
-  //      "lastname", u.lastname,
-  //      "phone", u.phone,
-  //      "email", u.email,
-  //      "role", u.role,
-  //      "technos", JSON_ARRAYAGG(JSON_OBJECT('name', t.name))))
-  //      FROM user AS u
-  //      JOIN candidate AS c ON u.id = c.user_id
-  //      JOIN candidacy AS cd ON c.id = cd.candidate_id
-  //      JOIN offer AS o ON cd.offer_id = o.id
-  //      JOIN techno_candidate AS tc ON tc.techno.id = tc.candidate_id
-  //      join techno as t on t.id = tc.techno_id
-  //      WHERE o.consultant_id = ?`,
-  //     [consultantId]
-  //   );
-  //   return rows;
-  // }
   async readConsultantCandidates(consultantId) {
     const [rows] = await this.database.query(
       `SELECT JSON_ARRAYAGG(
@@ -87,7 +68,7 @@ class UserRepository extends AbstractRepository {
 
   async readByEmailWithPassword(email) {
     const [rows] = await this.database.query(
-      `select * from ${this.table} where email = ?`,
+      `select email, hashed_password from ${this.table} where email = ?`,
       [email]
     );
     return rows[0];

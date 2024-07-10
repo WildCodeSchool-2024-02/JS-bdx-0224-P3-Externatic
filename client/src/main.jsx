@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import fetchApi from "./services/fetchApi";
+
 import "../index.css";
 import App from "./App";
 import HomePage from "./pages/HomePage";
@@ -84,6 +87,7 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
     ],
+    loader: async () => fetchApi(usersUrl),
   },
 ]);
 

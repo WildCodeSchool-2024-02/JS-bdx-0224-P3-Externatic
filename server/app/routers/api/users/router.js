@@ -8,6 +8,7 @@ const {
   read,
   readConsultantCandidates,
 } = require("../../../controllers/userActions");
+
 const { hashPassword } = require("../../../services/hashPassword");
 
 router.get("/", browse);

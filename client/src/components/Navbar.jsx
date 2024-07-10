@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useLogicForm from "../services/useLogicForm";
 import { useModal } from "../contexts/ModalContext";
 import externatic from "../assets/Externatic.svg";
 import menuBurger from "../assets/images/menuBurger.svg";
@@ -13,6 +14,7 @@ import ModalRegistration from "./ModalRegistration";
 function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
   const menuRef = useRef(null);
   const { handleChangeModal, setIsClicked } = useModal();
+  const { formData, handleChange, handleSubmitRegistration, handleSubmitLogin } = useLogicForm();
 
   const handleClick = () => {
     handleChangeNav();
@@ -41,13 +43,19 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
 
   return (
     <>
-      <ModalRegistration />
-      <Button
-        name={<img src={menuBurger} alt="ouvrir le menu" />}
-        apply="navBurger"
-        buttonAnimate={false}
-        handleChange={handleChangeNav}
+      <ModalRegistration
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmitRegistration={handleSubmitRegistration}
+        handleSubmitLogin={handleSubmitLogin}
       />
+      <button
+        type="button"
+        className="block absolute left-5 top-5 md:hidden"
+        onClick={handleChangeNav}
+      >
+        <img src={menuBurger} alt="ouvrir le menu" />
+      </button>
       <Link
         to="/"
         className="absolute min-w-6 max-w-10 top-3 left-1/2 transform -translate-x-1/2 md:z-30 md:left-6 md:top-4 md:min-w-10 md:max-w-24 md:ml-6 md:flex md:items-center"
