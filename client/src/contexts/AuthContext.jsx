@@ -17,10 +17,11 @@ export default function AuthProvider({ children }) {
           id: decodedToken.id,
         });
       } catch (error) {
+      
         console.error("Invalid token", error);
       }
     }
-  }, []);
+  }, [auth]);
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 }
 

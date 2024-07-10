@@ -6,7 +6,7 @@ const {
   browse,
   add,
   read,
-  readConsultantCandidates,
+  readByCandidates,
 } = require("../../../controllers/userActions");
 
 const { hashPassword } = require("../../../services/hashPassword");
@@ -18,7 +18,7 @@ router.get("/", browse);
 
 router.get("/:id", read);
 
-router.get("/consultants/:id", verifyToken, verifyRole, readConsultantCandidates);
+router.get("/consultants/:id", verifyToken, verifyRole, readByCandidates);
 
 router.post("/", hashPassword, add);
 

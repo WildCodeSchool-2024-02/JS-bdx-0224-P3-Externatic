@@ -21,6 +21,14 @@ class UserRepository extends AbstractRepository {
     return rows;
   }
 
+  async read(id) {
+    const [rows] = await this.database.query(
+      `select id, firstname, lastname, email from ${this.table} where id = ?`,
+      [id]
+    );
+    return rows[0];
+  }
+
   async readByEmailWithPassword(email) {
     const [rows] = await this.database.query(
       `select id, email, hashed_password, role from ${this.table} where email = ?`,
@@ -29,7 +37,7 @@ class UserRepository extends AbstractRepository {
     return rows[0];
   }
 
-  async readConsultantCandidates(consultantId) {
+  async readByCandidates(id) {
     const [rows] = await this.database.query(
       `SELECT JSON_ARRAYAGG(
             JSON_OBJECT(
@@ -61,7 +69,7 @@ class UserRepository extends AbstractRepository {
             JOIN offer AS o ON cd.offer_id = o.id
             WHERE o.consultant_id = ?
         ) AS technos_array`,
-      [consultantId]
+      [id]
     );
     return rows;
   }

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import useLogicForm from "../services/useLogicForm";
@@ -14,6 +14,14 @@ import ModalRegistration from "./ModalRegistration";
 
 function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
   const userData = useAuth();
+
+
+  const [authId, setAuthId] = useState(null);
+
+  useEffect(() => {
+    setAuthId(userData.id);
+  }, [userData]);
+
 
   const menuRef = useRef(null);
   const { handleChangeModal, setIsClicked } = useModal();
@@ -98,7 +106,7 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
           </li>
           <li>
             <Link
-              to={`/dashboardConsultant/${userData.id}`}
+              to={`/dashboardConsultant/${authId}`}
               onClick={handleChangeNav}
             >
               Profil
