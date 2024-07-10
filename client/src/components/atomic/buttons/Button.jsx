@@ -1,23 +1,26 @@
 import PropTypes from "prop-types";
 
-function Button({ name, img, apply, handleChange }) {
+function Button({ name, img, apply, handleChange, buttonAnimate }) {
   return (
-    <button onClick={handleChange} className={`${apply} buttonAnimate`} type="button">
+    <button
+      onClick={handleChange}
+      className={`${apply} ${buttonAnimate && "buttonAnimate"}`}
+      type="button"
+    >
       {name}
-      <img src={img} alt="" className="w-6 max-md:w-4" />
+      {img && <img src={img} alt="" className="w-6 max-md:w-4" />}
     </button>
   );
 }
-
 Button.propTypes = {
   name: PropTypes.string.isRequired,
   img: PropTypes.string,
   apply: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
+  buttonAnimate: PropTypes.bool,
 };
-
 Button.defaultProps = {
-  img: ''
+  buttonAnimate: true,
+  img: null,
 };
-
 export default Button;

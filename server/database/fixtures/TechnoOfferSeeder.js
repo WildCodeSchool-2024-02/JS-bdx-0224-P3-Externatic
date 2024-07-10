@@ -12,17 +12,29 @@ class TechnoOfferSeeder extends AbstractSeeder {
   // The run method - Populate the 'techno_offer' table with fake data
 
   run() {
-    // Generate and insert fake data into the 'techno_offer' table
-    for (let i = 0; i < 10; i += 1) {
-      // Generate fake techno_offer data
-      const fakeTechnoOffer = {
-        techno_id: this.getRef(`techno_${i}`).insertId,
-        offer_id: this.getRef(`offer_${i}`).insertId,
-        refName: `techno_offer_${i}`, // Create a reference name for the techno_offer
-      };
+    // Assume there are 10 offers and 14 technos from the seeders
+    const NUMBER_OF_OFFERS = 10;
+    const NUMBER_OF_TECHNOS = 14;
 
-      // Insert the faketechno_offer data into the 'techno_offer' table
-      this.insert(fakeTechnoOffer); // insert into techno_offer
+    for (let i = 0; i < NUMBER_OF_OFFERS; i += 1) {
+      // Determine a random number of technologies to associate with the offer
+      const numTechnos = Math.floor(Math.random() * 3) + 1; // between 1 and 5 technos
+      const selectedTechnos = new Set();
+
+      // Randomly select unique technos
+      while (selectedTechnos.size < numTechnos) {
+        const technoId = Math.floor(Math.random() * NUMBER_OF_TECHNOS);
+        selectedTechnos.add(technoId);
+      }
+
+      // Insert the relations into the offer_techno table
+      selectedTechnos.forEach((technoId) => {
+        const offerTechno = {
+          offer_id: this.getRef(`offer_${i}`).insertId,
+          techno_id: this.getRef(`techno_${technoId}`).insertId,
+        };
+        this.insert(offerTechno);
+      });
     }
   }
 }

@@ -1,6 +1,7 @@
+import PropTypes from "prop-types";
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import useLogicForm from "../services/useLogicForm";
 import { useModal } from "../contexts/ModalContext";
 import externatic from "../assets/Externatic.svg";
 import menuBurger from "../assets/images/menuBurger.svg";
@@ -8,14 +9,25 @@ import cross from "../assets/images/cross-svgrepo-com.svg";
 import disconnected from "../assets/images/iconDisconnect.svg";
 import NavAccess from "../services/NavAccess";
 import Button from "./atomic/buttons/Button";
+import ModalRegistration from "./ModalRegistration";
 
-function Navbar({ handleChange, isNavOpen, isNavVisible }) {
+function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
   const menuRef = useRef(null);
-  const { handleChangeModal } = useModal();
+  const { handleChangeModal, setIsClicked } = useModal();
+  const { formData, handleChange, handleSubmitRegistration, handleSubmitLogin } = useLogicForm();
+
   const handleClick = () => {
-    handleChange();
+    handleChangeNav();
     handleChangeModal();
-  }
+  };
+
+  const handleClickConnexion = () => {
+    handleChangeNav();
+    handleChangeModal();
+    setTimeout(() => {
+      setIsClicked(true);
+    }, 1);
+  };
 
   useEffect(() => {
     if (menuRef.current) {
@@ -31,10 +43,16 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
 
   return (
     <>
+      <ModalRegistration
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmitRegistration={handleSubmitRegistration}
+        handleSubmitLogin={handleSubmitLogin}
+      />
       <button
         type="button"
         className="block absolute left-5 top-5 md:hidden"
-        onClick={handleChange}
+        onClick={handleChangeNav}
       >
         <img src={menuBurger} alt="ouvrir le menu" />
       </button>
@@ -49,39 +67,47 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
         className={`${isNavOpen} ${isNavVisible}
           md:min-h-20 md:min-w-full md:bg-[var(--secondary-background-color)] md:translate-x-0 md:flex`}
       >
-        <button
-          type="button"
-          className="block absolute right-5 top-2 w-10 md:hidden"
-          onClick={handleChange}
-        >
-          <img src={cross} alt="fermer le menu" />
-        </button>
+        <Button
+          name={<img src={cross} alt="fermer le menu" />}
+          buttonAnimate={false}
+          apply="navCross"
+          handleChange={handleChangeNav}
+        />
         <ul
           className="text-[var(--primary-background-color)] text-lg flex flex-col gap-8 text-center mt-20
         md:flex-row md:gap-10 md:ml-auto md:mr-6 md:text-[var(--text-color)] md:self-center md:mt-0 items-center"
         >
           <li>
-            <Link to="/" onClick={handleChange}>
+            <Link to="/" onClick={handleChangeNav}>
               Accueil
             </Link>
           </li>
           <li>
-            <Link to="/offer" onClick={handleChange}>
+            <Link to="/offers" onClick={handleChangeNav}>
               Rechercher
             </Link>
           </li>
           <li>
-            <Link to="/dashboard/:id" onClick={handleChange}>
+            <Link to="/dashboard/:id" onClick={handleChangeNav}>
               Profil
             </Link>
           </li>
           <li>
-            <Button type="button" apply="register" name="S'inscrire" handleChange={handleClick}/>
+            <Button
+              type="button"
+              apply="register"
+              name="S'inscrire"
+              handleChange={handleClick}
+            />
           </li>
-          <li>
-            <Link to="/" onClick={handleChange}>
-              Se connecter
-            </Link>
+          <li className="md:-ml-8">
+            <Button
+              type="button"
+              name="Se connecter"
+              apply="basic"
+              buttonAnimate={false}
+              handleChange={handleClickConnexion}
+            />
           </li>
         </ul>
         <img
@@ -95,7 +121,7 @@ function Navbar({ handleChange, isNavOpen, isNavVisible }) {
 }
 
 Navbar.propTypes = {
-  handleChange: PropTypes.func.isRequired,
+  handleChangeNav: PropTypes.func.isRequired,
   isNavOpen: PropTypes.string.isRequired,
   isNavVisible: PropTypes.string.isRequired,
 };

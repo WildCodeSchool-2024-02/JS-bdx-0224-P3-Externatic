@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
 
 function Tag({ text, apply }) {
-  return <p className={`px-2 text-center max-md:text-xs ${apply}`}>{text}</p>;
+  return (
+    <p className={`px-2 text-center w-max max-md:text-base ${apply}`}>{text}</p>
+  );
 }
 
 Tag.propTypes = {
