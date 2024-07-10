@@ -1,28 +1,24 @@
 const jwt = require("jsonwebtoken");
 
-const { verifyPassword } = require("./passwordVerification");
-
 const genToken = async (req, res, next) => {
+  if (!req.user) {
+    res.status(401).json({ error: "Invalid email or password" });
+    return;
+  }
   try {
-    const { email, password } = req.body;
-    const { verified, user } = await verifyPassword(email, password);
     const token = await jwt.sign(
-      { role: user.role, email: user.email },
+      { role: req.user.role, id: req.user.id },
       process.env.APP_SECRET,
       {
-        expiresIn: "3h",
+        expiresIn: "1h",
       }
     );
-    if (verified) {
-      res.json({
-        token,
-      });
-    } else {
-      res.sendStatus(422);
-    }
+    req.token = token;
+    next();
   } catch (err) {
+    res.sendStatus(422);
     next(err);
   }
 };
 
-export default genToken;
+module.exports = { genToken };

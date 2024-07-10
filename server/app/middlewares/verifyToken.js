@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-export const verifyToken = (req, res, next) => {
+const verifyToken = (req, res, next) => {
   try {
     const authorizationHeader = req.get("Authorization");
 
@@ -17,7 +17,7 @@ export const verifyToken = (req, res, next) => {
     const decodedToken = jwt.verify(token, process.env.APP_SECRET);
     req.auth = {
       role: decodedToken.role,
-      email: decodedToken.email,
+      id: decodedToken.id,
     };
     next();
   } catch (err) {
@@ -26,4 +26,4 @@ export const verifyToken = (req, res, next) => {
   }
 };
 
-export default verifyToken;
+module.exports = { verifyToken };

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
-  const [auth, setAuth] = useState({ role: null, email: null });
+  const [auth, setAuth] = useState({ role: null, id: null });
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -14,14 +14,13 @@ export default function AuthProvider({ children }) {
         const decodedToken = jwtDecode(token);
         setAuth({
           role: decodedToken.role,
-          email: decodedToken.email,
+          id: decodedToken.id,
         });
       } catch (error) {
         console.error("Invalid token", error);
       }
     }
   }, []);
-
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 }
 

@@ -2,9 +2,10 @@ const express = require("express");
 
 const router = express.Router();
 
+const { verifyAuth} = require("../../../middlewares/verifyAuth");
 const { genToken } = require("../../../middlewares/genToken");
-const { verifyToken } = require("../../../middlewares/verifyToken");
+const { login } = require("../../../controllers/authActions");
 
-router.post("/",  genToken, verifyToken);
+router.post("/", verifyAuth, genToken, login);
 
 module.exports = router;

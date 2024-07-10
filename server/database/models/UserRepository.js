@@ -23,7 +23,7 @@ class UserRepository extends AbstractRepository {
 
   async readByEmailWithPassword(email) {
     const [rows] = await this.database.query(
-      `select email, hashed_password, role from ${this.table} where email = ?`,
+      `select id, email, hashed_password, role from ${this.table} where email = ?`,
       [email]
     );
     return rows[0];
