@@ -9,13 +9,12 @@ import FormDropDown from "../components/atomic/inputConsultant/formConsultant/Fo
 function CreateOfferPage() {
   const navigate = useNavigate();
   const offersUrl = "/api/offers";
-  const technos = useLoaderData();
+  const [technos, jobs, companies] = useLoaderData();
 
   const [formData, setFormData] = useState({
     title: "",
     type: "",
-    // company: "",
-    // region: "",
+    company: "",
     city: "",
     details: "",
     techno: [],
@@ -25,17 +24,17 @@ function CreateOfferPage() {
 
   const handleChange = (e) => {
     const { name, value, multiple } = e.target;
-    
+
     if (multiple) {
       const newArray = [...formData.techno];
-      newArray.push(value)
+      newArray.push(value);
 
       return setFormData({
         ...formData,
         techno: [...newArray],
-      })
+      });
     }
-  
+
     return setFormData({
       ...formData,
       [name]: value,
@@ -64,14 +63,14 @@ function CreateOfferPage() {
         className="flex flex-col my-16 items-center"
         onSubmit={handleSubmitOffer}
       >
-        <FormInputConsultant
+        <FormDropDown
           id="title"
           name="title"
           label="Titre de l'offre"
-          value={formData.title}
+          multiple={false}
           handleChange={handleChange}
+          options={jobs}
         />
-
         <FormDropDown
           id="type"
           label="Type d'offre"
@@ -84,33 +83,6 @@ function CreateOfferPage() {
             { name: "Alternance", id: 3 },
           ]}
         />
-        {/* <FormInputConsultant
-          id="company"
-          label="Nom de l'entreprise"
-          value={formData.company}
-          handleChange={handleChange}
-        /> */}
-        {/* <FormInputConsultant
-          id="region"
-          label="Région"
-          value={formData.region}
-          handleChange={handleChange}
-        /> */}
-        <FormInputConsultant
-          id="city"
-          name="city"
-          label="Ville"
-          value={formData.city}
-          handleChange={handleChange}
-        />
-        <FormInputConsultant
-          id="details"
-          name="details"
-          label="Description du poste"
-          type="textarea"
-          value={formData.details}
-          handleChange={handleChange}
-        />
         <FormDropDown
           id="techno"
           label="Principales technologies"
@@ -118,6 +90,30 @@ function CreateOfferPage() {
           multiple
           handleChange={handleChange}
           options={technos}
+        />
+        <FormInputConsultant
+          id="city"
+          name="city"
+          label="Ville"
+          value={formData.city}
+          handleChange={handleChange}
+        />
+        <FormDropDown
+          id="company"
+          label="Nom de l'entreprise"
+          name="company"
+          multiple={false}
+          handleChange={handleChange}
+          options={companies}
+        />
+        
+        <FormInputConsultant
+          id="details"
+          name="details"
+          label="Description du poste"
+          type="textarea"
+          value={formData.details}
+          handleChange={handleChange}
         />
         <FormInputConsultant
           id="salary"

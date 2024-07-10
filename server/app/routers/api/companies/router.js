@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const { browse } = require("../../../controllers/technoActions");
+const { browse } = require("../../../controllers/companyActions");
 
 router.get("/", browse);
 

@@ -101,14 +101,14 @@ CREATE TABLE company (
 CREATE TABLE offer (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   title VARCHAR(80) NOT NULL,
-  type VARCHAR(80) NOT NULL DEFAULT "CDI",
+  type VARCHAR(80) NOT NULL,
   details TEXT NOT NULL,
   city VARCHAR(255) NOT NULL,
   advantages TEXT,
   salary INT UNSIGNED,
-  consultant_id INT UNSIGNED NOT NULL DEFAULT 1,
-  job_id INT UNSIGNED NOT NULL DEFAULT 10,
-  company_id INT UNSIGNED NOT NULL DEFAULT 2,
+  consultant_id INT UNSIGNED NOT NULL,
+  job_id INT UNSIGNED NOT NULL,
+  company_id INT UNSIGNED NOT NULL,
     CONSTRAINT fk_offer_consultant
     FOREIGN KEY (consultant_id)
     REFERENCES consultant(id),

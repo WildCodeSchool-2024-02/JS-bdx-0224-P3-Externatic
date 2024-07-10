@@ -15,7 +15,7 @@ export default function FormDropDown({
     >
       {label}
       <select
-        className="h-20 border-2 outline-[var(--primary-color)] rounded-s px-2 text-[var(--text-color)]"
+        className="h-12 border-2 outline-[var(--primary-color)] rounded-s px-2 text-[var(--text-color)]"
         id={id}
         name={name}
         onChange={handleChange}

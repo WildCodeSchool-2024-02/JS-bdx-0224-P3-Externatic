@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import fetchApi from "./services/fetchApi";
+import fetchMultipleApis from "./services/fetchMultipleApi";
 import "../index.css";
 import App from "./App";
 import HomePage from "./pages/HomePage";
@@ -18,6 +19,9 @@ import CreateOfferPage from "./pages/CreateOfferPage";
 
 const offersUrl = "/api/offers";
 const technosUrl = "/api/technos";
+const jobsUrl = "/api/jobs";
+const companiesUrl = "/api/companies";
+const urls = [technosUrl, jobsUrl, companiesUrl];
 
 const router = createBrowserRouter([
   {
@@ -40,7 +44,7 @@ const router = createBrowserRouter([
       {
         path: "/offers/create",
         element: <CreateOfferPage />,
-        loader: async () => fetchApi(technosUrl),
+        loader: async () => fetchMultipleApis(urls),
       },
       {
         path: "/dashboard/:id",
