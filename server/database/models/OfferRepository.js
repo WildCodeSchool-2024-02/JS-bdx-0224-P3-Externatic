@@ -26,62 +26,54 @@ class OfferRepository extends AbstractRepository {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific offer by its ID
     const [rows] = await this.database.query(
-      `SELECT offer.*, company.*
-      FROM ${this.table} AS offer 
-      INNER JOIN company ON offer.company_id=company.id
-      WHERE offer.id = ?`,
+      `
+      SELECT 
+        offer.id, 
+        offer.title, 
+        offer.type,
+        offer.details, 
+        offer.city, 
+        offer.advantages, 
+        offer.salary, 
+        company.name, 
+        company.banner, 
+        company.logo, 
+        company.description, 
+        (
+          SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
+          FROM techno_offer
+          INNER JOIN techno ON techno_offer.techno_id = techno.id
+          WHERE techno_offer.offer_id = offer.id
+        ) AS technos
+      FROM ${this.table} AS offer
+      INNER JOIN company ON offer.company_id = company.id
+      WHERE offer.id = ?
+      `,
       [id]
     );
 
-    // Return the first row of the result, which represents the offer
     return rows[0];
   }
 
-  // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing offer
-
-  // async update(offer) {
-  //   ...
-  // }
-
-  // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an offer by its ID
-
-  // async delete(id) {
-  //   ...
-  // }
-
-  // async create(offer) {
-  //   const [result] = await this.database.query(
-  //     `INSERT INTO ${this.table} (title, details, city, advantages, salary) VALUES(?, ?, ?, ?, ?)`,
-  //     [
-  //       offer.title,
-  //       offer.details,
-  //       offer.city,
-  //       offer.advantages,
-  //       offer.salary,
-  //     ]
-  //   );
-
-  //   return result.insertId;
-  // }
-
   async readAll() {
-    const [rows] = await this.database.query(`
-      SELECT
-      offer.id,
-      offer.title,
-      offer.details,
-      offer.city,
-      company.name AS company_name,
-    (
-      SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
-      FROM techno_offer
-      INNER JOIN techno ON techno_offer.techno_id = techno.id
-      WHERE techno_offer.offer_id = offer.id
-    ) AS technos
+    const [rows] = await this.database.query(
+      `
+      SELECT  offer.id,
+              offer.title,
+              offer.type,
+              offer.details,
+              offer.city,
+              company.name AS company_name,
+              (
+                SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
+                FROM techno_offer
+                INNER JOIN techno ON techno_offer.techno_id = techno.id
+                WHERE techno_offer.offer_id = offer.id
+              ) AS technos
       FROM ${this.table} AS offer
-      INNER JOIN company ON offer.company_id = company.id`);
+      INNER JOIN company ON offer.company_id = company.id
+      `
+    );
 
     return rows;
   }

@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import fetchApi from "./services/fetchApi";
 import fetchMultipleApis from "./services/fetchMultipleApi";
+
 import "../index.css";
 import App from "./App";
 import HomePage from "./pages/HomePage";
@@ -22,6 +25,7 @@ const technosUrl = "/api/technos";
 const jobsUrl = "/api/jobs";
 const companiesUrl = "/api/companies";
 const urls = [technosUrl, jobsUrl, companiesUrl];
+const usersUrl = "/api/users";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +71,7 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
     ],
+    loader: async () => fetchApi(usersUrl),
   },
 ]);
 
