@@ -19,8 +19,10 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
   const [authId, setAuthId] = useState(null);
 
   useEffect(() => {
-    setAuthId(userData.id);
-  }, [userData]);
+    if (userData.id !== authId) {
+      setAuthId(userData.id);
+    }
+  }, [userData, authId]);
 
 
   const menuRef = useRef(null);
