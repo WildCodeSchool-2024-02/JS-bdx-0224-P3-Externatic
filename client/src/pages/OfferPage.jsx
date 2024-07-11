@@ -2,6 +2,9 @@ import { useLoaderData } from "react-router-dom";
 import useLogicForm from "../services/useLogicForm";
 import CardOfferForCandidate from "../components/atomic/card/CardOfferForCandidate";
 import SearchInputCandidat from "../components/atomic/inputCandidat/searchInput/SearchInputCandidat";
+import ICONSEARCH from "../assets/images/ICONSEARCH.svg";
+import ICONLOC from "../assets/images/ICONLOC.svg";
+import ICONSTACK from "../assets/images/ICONSTACK.svg"; 
 
 function OfferPage() {
   const offers = useLoaderData();
@@ -17,7 +20,7 @@ function OfferPage() {
           id="type"
           name="type"
           placeholder="Rechercher un poste ..."
-          iconSrc="./src/assets/images/ICONSEARCH.svg"
+          iconSrc={ICONSEARCH}
           alt="logo recherche"
           value={formData.type}
           handleChange={handleChange}
@@ -25,8 +28,8 @@ function OfferPage() {
         <SearchInputCandidat
           id="city"
           name="city"
-          placeholder="Ville, région ou Pays"
-          iconSrc="./src/assets/images/ICONLOC.svg"
+          placeholder="Rechercher une Ville ..."
+          iconSrc={ICONLOC}
           alt="logo recherche"
           value={formData.city}
           handleChange={handleChange}
@@ -34,8 +37,8 @@ function OfferPage() {
         <SearchInputCandidat
           id="technos"
           name="technos"
-          placeholder="Compétences, Stack"
-          iconSrc="./src/assets/images/ICONSTACK.svg"
+          placeholder="Rechercher une techno ..."
+          iconSrc={ICONSTACK}
           alt="logo recherche"
           value={formData.technos}
           handleChange={handleChange}

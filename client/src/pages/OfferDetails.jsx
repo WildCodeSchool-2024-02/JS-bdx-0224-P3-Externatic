@@ -4,6 +4,8 @@ import Tag from "../components/atomic/tag/Tag";
 import PreviousPage from "../components/atomic/buttons/PreviousPage";
 import Button from "../components/atomic/buttons/Button";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 function OfferDetails() {
   const offerData = useLoaderData();
 
@@ -13,12 +15,12 @@ function OfferDetails() {
         <header className="my-10 md:mx-10 mx-4 relative">
           <PreviousPage source="/offers" />
           <img
-            src={offerData.banner}
+            src={`${BASE_URL}/${offerData.banner}`}
             alt=""
             className="mt-10 w-full h-80 mx-auto object-cover"
           />
           <img
-            src={offerData.logo}
+            src={`${BASE_URL}/${offerData.logo}`}
             alt=""
             className="w-32 h-32 object-cover z-10 shadow-grey-950 shadow-xl absolute left-5 md:left-10 -bottom-12 border border-[var(--secondary-color)] "
           />
