@@ -4,7 +4,7 @@ function Button({ name, img, apply, handleChange, buttonAnimate }) {
   return (
     <button
       onClick={handleChange}
-      className={`${apply} ${buttonAnimate && "buttonAnimate"}`}
+      className={`${apply} ${buttonAnimate}`}
       type="button"
     >
       {name}
