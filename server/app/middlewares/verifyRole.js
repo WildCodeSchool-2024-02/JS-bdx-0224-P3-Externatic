@@ -7,6 +7,7 @@ const verifyRole = (req, res, next) => {
   } catch (error) {
     res.sendStatus(403);
   }
+  
 };
 
 module.exports = { verifyRole };
