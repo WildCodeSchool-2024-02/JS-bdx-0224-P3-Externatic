@@ -1,12 +1,11 @@
 const verifyRole = (req, res, next) => {
   try {
-    const isConsultant = req.auth.role === "consultant";
-    if (!isConsultant) {
-      return res.sendStatus(403);
+    if (req.auth.role !== "consultant") {
+      throw new Error("Forbidden: Insufficient role");
     }
-    return next();
+    next();
   } catch (error) {
-    return next(error); // Passe l'erreur au middleware de gestion des erreurs
+    res.sendStatus(403);
   }
 };
 
