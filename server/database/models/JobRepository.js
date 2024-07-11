@@ -68,8 +68,13 @@ class JobRepository extends AbstractRepository {
 
   async readAll() {
     const [rows] = await this.database.query(`
-      SELECT DISTINCT name
-      FROM ${this.table}
+      SELECT name
+      FROM (
+        SELECT DISTINCT name
+        FROM ${this.table}
+      ) AS distinct_jobs
+      ORDER BY name ASC
+      LIMIT 4;
     `);
 
     return rows;

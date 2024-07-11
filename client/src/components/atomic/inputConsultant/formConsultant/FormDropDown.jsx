@@ -21,6 +21,11 @@ export default function FormDropDown({
         onChange={handleChange}
         multiple={multiple}
       >
+        {!multiple ? (
+        <option value={null}>Choisissez une option</option>
+      ) : (
+        <option value={null}>Choisissez vos options</option>
+      )}
         {options.map((option) => (
           <option key={option.name} value={option.name}>
             {option.name}
