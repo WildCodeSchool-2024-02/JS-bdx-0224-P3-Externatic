@@ -17,8 +17,7 @@ export default function AuthProvider({ children }) {
           id: decodedToken.id,
         });
       } catch (error) {
-      
-        console.error("Invalid token", error);
+        throw new Error("Invalid token");
       }
     }
   }, [auth]);

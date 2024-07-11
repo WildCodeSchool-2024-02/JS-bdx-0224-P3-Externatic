@@ -21,7 +21,6 @@ const verifyToken = (req, res, next) => {
     };
     next();
   } catch (err) {
-    console.error(err);
     res.sendStatus(401);
   }
 };

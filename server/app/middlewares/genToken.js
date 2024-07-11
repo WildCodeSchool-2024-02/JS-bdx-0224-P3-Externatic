@@ -13,7 +13,6 @@ const genToken = async (req, res, next) => {
     next();
   } catch (err) {
     res.sendStatus(422);
-    next(err);
   }
 };
 
