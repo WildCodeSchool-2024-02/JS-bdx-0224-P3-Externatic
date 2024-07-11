@@ -1,10 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import fetchApi from "./services/fetchApi";
 
 import "../index.css";
@@ -44,12 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboardConsultant/:id",
-        element: (
-          <ProtectedRoute
-            element={<DashboardConsultant />}
-            roles={["consultant"]}
-          />
-        ),
+        element: <DashboardConsultant />,
         loader: ({ params }) => fetchApi(`${usersUrl}/${params.id}`),
       },
       {
@@ -64,9 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/candidateManagement/:id",
-        element: (
-          <ProtectedRoute element={<CandidateManagement />} roles={["consultant"]} />
-        ),
+        element: <CandidateManagement />,
         loader: ({ params }) =>
           fetchApi(`${usersUrl}/consultants/${params.id}`),
       },

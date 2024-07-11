@@ -3,7 +3,7 @@ import SearchInputConsultant from "../components/atomic/inputConsultant/searchIn
 import CardConsultant from "../components/atomic/card/CardConsultant";
 
 function CandidateManagement() {
-  const userData = useLoaderData();
+  const candidatesData = useLoaderData();
 
   return (
     <main className="flex flex-col gap-10 min-h-screen">
@@ -14,8 +14,10 @@ function CandidateManagement() {
         <SearchInputConsultant placeholder="Rechercher des candidats..." />
         <SearchInputConsultant placeholder="Rechercher des disponibilités..." />
       </form>
-      <section className="mx-4">
-        <CardConsultant name={userData.firstname} tag={userData.name} />
+      <section className="mx-4 gap-5 flex flex-col items-center md:flex-row md:flex-wrap md:justify-center">
+        {candidatesData.map((candidate) => (
+          <CardConsultant key={candidate.id} user={candidate} />
+        ))}
       </section>
     </main>
   );

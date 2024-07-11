@@ -8,7 +8,7 @@ function Button({ name, img, apply, handleChange, buttonAnimate }) {
       type="button"
     >
       {name}
-      {img && <img src={img} alt="" className="w-6 max-md:w-4" />}
+      {img && <img src={img} alt="" className="w-4" />}
     </button>
   );
 }
