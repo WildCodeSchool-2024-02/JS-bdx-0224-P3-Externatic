@@ -107,12 +107,25 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
             </Link>
           </li>
           <li>
+          {userData.auth.role === "consultant" && (
             <Link
               to={`/dashboardConsultant/${authId}`}
               onClick={handleChangeNav}
             >
+              Gestion
+            </Link>
+          )}
+          {userData.auth.role === "candidat" && (
+            <Link
+              to={`/dashboardCandidate/${authId}`}
+              onClick={handleChangeNav}
+            >
               Profil
             </Link>
+          )}
+          {!["consultant", "candidat"].includes(userData.auth.role) && (
+            <button type="button" onClick={handleClick}>Profil</button>
+          )}
           </li>
           <li>
             <Button

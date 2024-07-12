@@ -24,20 +24,15 @@ const read = async (req, res, next) => {
 };
 
 const readByCandidates = async (req, res, next) => {
-  if (req.auth.role === 'candidat') {
-    res.sendStatus(403);
-    return;
-  }
-
   try {
     const candidates = await tables.user.readByCandidates(
       req.params.id
     );
 
-    if (candidates === null) {
+    if (!candidates || candidates.length === 0) {
       res.sendStatus(404);
     } else {
-      res.json(candidates);
+      res.json(candidates); 
     }
   } catch (err) {
     next(err);
@@ -56,4 +51,4 @@ const add = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, add, read, readByCandidates };   
+module.exports = { browse, add, read, readByCandidates };
