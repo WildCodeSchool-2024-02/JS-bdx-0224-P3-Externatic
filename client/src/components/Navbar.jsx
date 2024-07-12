@@ -14,7 +14,12 @@ import ModalRegistration from "./ModalRegistration";
 function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
   const menuRef = useRef(null);
   const { handleChangeModal, setIsClicked } = useModal();
-  const { formData, handleChange, handleSubmitRegistration, handleSubmitLogin } = useLogicForm();
+  const {
+    formData,
+    handleChange,
+    handleSubmitRegistration,
+    handleSubmitLogin,
+  } = useLogicForm();
 
   const handleClick = () => {
     handleChangeNav();
@@ -88,7 +93,8 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
             </Link>
           </li>
           <li>
-            <Link to="/dashboard/:id" onClick={handleChangeNav}>              Profil
+            <Link to="/dashboard/:id" onClick={handleChangeNav}>
+              Profil
             </Link>
           </li>
           <li>
