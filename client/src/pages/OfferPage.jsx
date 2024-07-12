@@ -1,10 +1,23 @@
+import { useContext, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 
 import useLogicForm from "../services/useLogicForm";
 import CardOfferForCandidate from "../components/atomic/card/CardOfferForCandidate";
 import SearchInputCandidat from "../components/atomic/inputCandidat/searchInput/SearchInputCandidat";
+import { AuthContext } from "../contexts/AuthContext";
+import decodeToken from "../services/decodedToken";
 
 function OfferPage() {
+  const { setAuth } = useContext(AuthContext);
+  
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const userData = decodeToken(token);
+      setAuth(userData);
+    }
+  },);
+
   const offers = useLoaderData();
   const { formData, handleChange } = useLogicForm();
   return (
