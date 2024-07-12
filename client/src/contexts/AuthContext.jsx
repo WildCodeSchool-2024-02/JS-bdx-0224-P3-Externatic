@@ -12,15 +12,18 @@ export default function AuthProvider({ children }) {
     if (token) {
       try {
         const decodedToken = jwtDecode(token);
-        setAuth({
-          role: decodedToken.role,
-          id: decodedToken.id,
-        });
+        if (decodedToken.role !== auth.role || decodedToken.id !== auth.id) {
+          setAuth({
+            role: decodedToken.role,
+            id: decodedToken.id,
+          });
+        }
       } catch (error) {
         throw new Error("Invalid token");
       }
     }
   }, [auth]);
+
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 }
 
