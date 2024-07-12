@@ -1,10 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import fetchApi from "./services/fetchApi";
 
 import "../index.css";
@@ -16,7 +14,10 @@ import CGU from "./pages/CGU";
 import ProtectionDataPolicy from "./pages/ProtectionDataPolicy";
 import LegalMentions from "./pages/LegalMentions";
 import Contact from "./pages/Contact";
+import ProtectedRoute from "./components/ProtectedRoutes";
+import DashboardConsultant from "./pages/DashboardConsultant";
 import DashboardCandidate from "./pages/DashboardCandidate";
+import CandidateManagement from "./pages/CandidateManagement";
 
 const offersUrl = "/api/offers";
 const usersUrl = "/api/users";
@@ -40,9 +41,30 @@ const router = createBrowserRouter([
         loader: ({ params }) => fetchApi(`${offersUrl}/${params.id}`),
       },
       {
-        path: "/dashboard/:id",
+        path: "/dashboardConsultant/:id",
+        element: (
+          <ProtectedRoute
+            element={<DashboardConsultant />}
+            roles={["consultant"]}
+          />
+        ),
+        loader: ({ params }) => fetchApi(`${usersUrl}/${params.id}`),
+      },
+      {
+        path: "/dashboardCandidate/:id",
         element: <DashboardCandidate />,
-        loader: async ({ params }) => fetchApi(`${usersUrl}/${params.id}`)
+        loader: ({ params }) => fetchApi(`${usersUrl}/${params.id}`),
+      },
+      {
+        path: "/candidateManagement/:id",
+        element: (
+          <ProtectedRoute
+            element={<CandidateManagement />}
+            roles={["consultant"]}
+          />
+        ),
+        loader: ({ params }) =>
+          fetchApi(`${usersUrl}/consultants/${params.id}`),
       },
       {
         path: "/CGU",

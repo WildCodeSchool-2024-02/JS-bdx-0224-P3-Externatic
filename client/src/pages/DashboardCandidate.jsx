@@ -5,7 +5,6 @@ import Button from "../components/atomic/buttons/Button";
 
 function DashboardCandidate() {
   const data = useLoaderData();
-
   return (
     <main>
       <article className="p-5 md:pl-40 md:pr-40 flex flex-col">
@@ -25,7 +24,7 @@ function DashboardCandidate() {
         <FileUpload/>
         <h2 className="text-[var(--primary-color)] pb-3">Mes compétences</h2>
         <ul className="flex flex-wrap gap-5">
-        {data.technos.map((techno) => (
+        {data?.technos.map((techno) => (
           <li className="list-none" key={techno.id}>
             <Tag text={techno.name} apply="tag" />
           </li>

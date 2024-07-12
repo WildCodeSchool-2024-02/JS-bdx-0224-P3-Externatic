@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -6,25 +5,33 @@ import Tag from "../tag/Tag";
 import ScrollToTop from "../../../services/scrollToTop";
 
 export default function CardOfferForCandidate({ offer }) {
-  const [isChecked, setIsChecked] = useState(false);
-  
-  const handleCheckboxChange = async () => {
-    setIsChecked(!isChecked);
+  const handleCheckboxChange = async (e) => {
+    const isChecked = e.target.checked;
+    const url = "http://localhost:3310/api/favorites";
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    const body = JSON.stringify({ candidateId: 1, offerId: offer.id }); // Remplacez 1 par l'ID du candidat actuel
 
-    if (!isChecked) {
-      try {
-        const response = await fetch("http://localhost:3310/api/favorites", {
+    try {
+      let response;
+      if (isChecked) {
+        response = await fetch(url, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ candidateId: 1, offerId: offer.id }), // Remplacez 1 par l'ID du candidat actuel
+          headers,
+          body,
         });
-
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      } catch (err) {
-        console.error("Error adding favorite", err);
+      } else {
+        response = await fetch(url, {
+          method: "DELETE",
+          headers,
+          body,
+        });
       }
+
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    } catch (err) {
+      console.error("Error handling favorite", err);
     }
   };
 

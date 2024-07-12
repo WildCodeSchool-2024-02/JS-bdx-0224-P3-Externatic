@@ -8,10 +8,20 @@ class FavoriteRepository extends AbstractRepository {
   async create(favorite) {
     const [result] = await this.database.query(
       `INSERT INTO ${this.table} (candidate_id, offer_id) VALUES (?, ?)`,
-      [favorite.candidate_id, favorite.offer_id]
+      [favorite.candidateId, favorite.offerId]
     );
     return result.insertId;
   }
-}
+
+  async delete(favorite) {
+    const [result] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE candidate_id = ? AND offer_id = ?`,
+      [favorite.candidateId, favorite.offerId]
+    );
+    return result.affectedRows;
+  }
+  }
+
+
 
 module.exports = FavoriteRepository;
