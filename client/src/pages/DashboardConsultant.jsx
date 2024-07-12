@@ -1,16 +1,12 @@
-import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../contexts/AuthContext";
+import { Link, useLoaderData } from "react-router-dom";
 
 function DashboardConsultant() {
-  const {auth} = useContext(AuthContext);
-  useEffect(() => {
-  }, [auth]);
+const consultantData = useLoaderData();
 
   return (
     <main className="flex flex-col gap-20 items-center min-h-screen">
       <h1 className="mt-10 text-2xl text-[var(--primary-color)]">
-        Bonjour, {auth.id}
+        Bonjour, {consultantData.firstname} {consultantData.lastname}
       </h1>
       <Link
         to="/candidateManagement/:id"
