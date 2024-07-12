@@ -8,13 +8,14 @@ import decodeToken from "../services/decodedToken";
 
 function OfferPage() {
   const { setAuth } = useContext(AuthContext);
+  
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       const userData = decodeToken(token);
       setAuth(userData);
     }
-  }, []);
+  },);
 
   const offers = useLoaderData();
   return (
