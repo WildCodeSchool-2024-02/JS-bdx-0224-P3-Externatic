@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { AuthContext } from "../contexts/AuthContext";
 import useLogicForm from "../services/useLogicForm";
 import { useModal } from "../contexts/ModalContext";
 import externatic from "../assets/Externatic.svg";
@@ -13,14 +13,14 @@ import Button from "./atomic/buttons/Button";
 import ModalRegistration from "./ModalRegistration";
 
 function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
-  const userData = useAuth();
+  const userData = useContext(AuthContext);
 
 
   const [authId, setAuthId] = useState(null);
 
   useEffect(() => {
-    if (userData.id !== authId) {
-      setAuthId(userData.id);
+    if (userData.auth.id !== authId) {
+      setAuthId(userData.auth.id);
     }
   }, [userData, authId]);
 

@@ -1,8 +1,8 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { jwtDecode } from "jwt-decode";
+import { createContext, useContext, useEffect, useState, useMemo } from "react";
 import PropTypes from "prop-types";
+import decodeToken from "../services/decodedToken";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   const [auth, setAuth] = useState({ role: null, id: null });
@@ -10,19 +10,17 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      try {
-        const decodedToken = jwtDecode(token);
-        setAuth({
-          role: decodedToken.role,
-          id: decodedToken.id,
-        });
-      } catch (error) {
-        throw new Error("Invalid token");
-      }
+      const userData = decodeToken(token);
+      setAuth(userData);
     }
   }, []);
+  const logout = () => {
+    setAuth(null);
+    localStorage.removeItem("token");
+  };
+  const contextValue = useMemo(() => ({ auth, setAuth, logout }), [auth]);
 
-  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
 }
 
 AuthProvider.propTypes = {
@@ -31,3 +29,10 @@ AuthProvider.propTypes = {
 
 export const useAuth = () => useContext(AuthContext);
 export { AuthProvider };
+
+
+
+
+
+
+
