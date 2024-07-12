@@ -12,9 +12,10 @@ function CandidateManagement() {
       </h1>
       <form className="self-center flex flex-col gap-4">
         <SearchInputConsultant id={1} placeholder="Rechercher des candidats..." />
-        <SearchInputConsultant id={1} placeholder="Rechercher des disponibilités..." />
+        <SearchInputConsultant id={2} placeholder="Rechercher des disponibilités..." />
       </form>
       <section className="mx-4">
+        
         <CardConsultant name={userData.firstname} id={userData.lastname} tag={userData.name} />
       </section>
     </main>

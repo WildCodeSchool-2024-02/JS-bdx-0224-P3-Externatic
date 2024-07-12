@@ -15,7 +15,6 @@ import ModalRegistration from "./ModalRegistration";
 function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
   const userData = useContext(AuthContext);
 
-
   const [authId, setAuthId] = useState(null);
 
   useEffect(() => {
@@ -23,7 +22,6 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
       setAuthId(userData.auth.id);
     }
   }, [userData, authId]);
-
 
   const menuRef = useRef(null);
   const { handleChangeModal, setIsClicked } = useModal();
@@ -107,12 +105,25 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
             </Link>
           </li>
           <li>
-            <Link
-              to={`/dashboardConsultant/${authId}`}
-              onClick={handleChangeNav}
-            >
-              Profil
-            </Link>
+            {userData.auth.role === "consultant" && (
+              <Link
+                to={`/dashboardConsultant/${authId}`}
+                onClick={handleChangeNav}
+              >
+                Gestion
+              </Link>
+            )}
+            {userData.auth.role === "candidat" && (
+              <Link
+                to={`/dashboardCandidate/${authId}`}
+                onClick={handleChangeNav}
+              >
+                Profil
+              </Link>
+            )}
+            {!["consultant", "candidat"].includes(userData.auth.role) && (
+              <button type="button" onClick={handleClick}>Profil</button>
+            )}
           </li>
           <li>
             <Button

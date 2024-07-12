@@ -1,26 +1,24 @@
-import PropTypes from "prop-types";
 import Button from "../buttons/Button";
 import Tag from "../tag/Tag";
 
-export default function CardConsultant({ name, textContent, tag }) {
+export default function CardConsultant( ) {
   return (
     <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate max-w-xl border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 bg-[var(--secondary-background-color)] mb-4 max-md:max-w-96 ">
       <header className="flex justify-between items-center mb-4">
-        <h3 className="text-[var(--primary-color)] max-md:text-lg">{name}</h3>
+        <h3 className="text-[var(--primary-color)] max-md:text-lg">c</h3>
         <Tag text="DISPONIBLE" apply="tagStatusGreen" />
       </header>
       <ul className="flex gap-1 relative mb-4">
         <li>
-          <Tag text={tag} apply="tag" />
+          <Tag apply="tag" />
         </li>
         <li>
-          <Tag text={tag} apply="tag" />
+          <Tag apply="tag" />
         </li>
         <li>
-          <Tag text={tag} apply="tag" />
+          <Tag apply="tag" />
         </li>
       </ul>
-      <p className="text-content mb-4 max-md:text-sm">{textContent}</p>
       <footer className="flex justify-center gap-4">
         <Button
           name="Téléphone"
@@ -33,9 +31,3 @@ export default function CardConsultant({ name, textContent, tag }) {
     </article>
   );
 }
-
-CardConsultant.propTypes = {
-  name: PropTypes.string.isRequired,
-  textContent: PropTypes.string.isRequired,
-  tag: PropTypes.string.isRequired,
-};
