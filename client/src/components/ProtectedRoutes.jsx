@@ -1,15 +1,18 @@
+import { useContext } from "react";
 import PropTypes from "prop-types";
-import { Navigate, useLoaderData } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 
 function ProtectedRoute({ element, roles }) {
-  const userData = useLoaderData();
-
-  return userData && roles.includes(userData.role) ? (
+  const {auth} = useContext(AuthContext);
+  
+  return auth && roles.includes(auth?.role) ? (
     element
   ) : (
     <Navigate to="/" replace />
   );
 }
+
 ProtectedRoute.propTypes = {
   element: PropTypes.elementType.isRequired,
   roles: PropTypes.string.isRequired,

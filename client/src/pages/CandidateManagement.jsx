@@ -11,8 +11,8 @@ function CandidateManagement() {
         Vos Candidats
       </h1>
       <form className="self-center flex flex-col gap-4">
-        <SearchInputConsultant placeholder="Rechercher des candidats..." />
-        <SearchInputConsultant placeholder="Rechercher des disponibilités..." />
+        <SearchInputConsultant id={1} placeholder="Rechercher des candidats..." />
+        <SearchInputConsultant id={1} placeholder="Rechercher des disponibilités..." />
       </form>
       <section className="mx-4 gap-5 flex flex-col items-center md:flex-row md:flex-wrap md:justify-center">
         {candidatesData.map((candidate) => (
