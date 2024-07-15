@@ -47,7 +47,7 @@ const router = createBrowserRouter([
         loader: ({ params }) => fetchApi(`${offersUrl}/${params.id}`),
       },
       {
-        path: "/offers/create",
+        path: "/offersCreate",
         element: <CreateOfferPage />,
         loader: async () => fetchMultipleApis(urls),
       },

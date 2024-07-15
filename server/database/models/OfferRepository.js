@@ -23,7 +23,7 @@ class OfferRepository extends AbstractRepository {
           offer.details,
           offer.advantages,
           offer.type,
-          offer.consultantId,
+          offer.authId,
           parseInt(offer.company, 10),
         ]
       );

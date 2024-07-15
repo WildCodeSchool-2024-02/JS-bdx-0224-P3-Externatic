@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate, useLoaderData } from "react-router-dom";
 
 import createOffer from "../services/createOffer";
 import ReturnButton from "../components/atomic/buttons/PreviousPage";
 import FormInputConsultant from "../components/atomic/inputConsultant/formConsultant/FormInputConsultant";
 import FormDropDown from "../components/atomic/inputConsultant/formConsultant/FormDropDown";
+import { AuthContext } from "../contexts/AuthContext";
 
 function CreateOfferPage() {
+  const userData = useContext(AuthContext);
+  const [authId, setAuthId] = useState(null);
+
+  useEffect(() => {
+    if (userData.auth.id !== authId) {
+      setAuthId(userData.auth.id);
+    }
+  }, [userData, authId]);
+  
   const navigate = useNavigate();
   const offersUrl = "/api/offers";
   const [technos, jobs, companies] = useLoaderData();
@@ -36,7 +46,6 @@ function CreateOfferPage() {
         [name]: selectedValues,
       });
     }
-    
 
     return setFormData({
       ...formData,
@@ -46,14 +55,13 @@ function CreateOfferPage() {
 
   const handleSubmitOffer = async (e) => {
     e.preventDefault();
-    const consultantId = 1; // ID du consultant "en dur"
-    const offerData = { ...formData, consultantId };
+    const offerData = { ...formData, authId };
 
     try {
       const response = await createOffer(offersUrl, offerData, "POST");
       const data = await response.json();
       if (response.ok) {
-        navigate("/");
+        navigate(`/dashboardConsultant/${authId}`);
       }
       return data;
     } catch (err) {
