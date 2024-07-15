@@ -1,38 +1,50 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 import SearchInputConsultant from "../components/atomic/inputConsultant/searchInput/SearchInputConsultant";
 import CardConsultant from "../components/atomic/card/CardConsultant";
+import PreviousPage from "../components/atomic/buttons/PreviousPage";
 
 function CandidateManagement() {
   const candidatesData = useLoaderData();
+  const userData = useContext(AuthContext);
 
-  const [inputContent, setInputContent] = useState("");
-  const filteredGames = Array.isArray(candidatesData)
+
+  const [authId, setAuthId] = useState(null);
+
+  useEffect(() => {
+    if (userData.auth.id !== authId) {
+      setAuthId(userData.auth.id);
+    }
+  }, [userData, authId]);
+
+  const [inputLastnameContent, setInputLastnameContent] = useState("");
+  
+  const filteredCandidatesByLastname = Array.isArray(candidatesData)
     ? candidatesData.filter((candidate) =>
-        candidate.firstname.toLowerCase().includes(inputContent.toLowerCase())
+        candidate.lastname
+          .toLowerCase()
+          .includes(inputLastnameContent.toLowerCase())
       )
     : [];
 
   return (
-    <main className="flex flex-col gap-10 min-h-screen">
-      <h1 className="mt-10 self-center text-3xl text-[var(--primary-color)]">
+    <main className="flex flex-col gap-10">
+      <PreviousPage marginLeft="ml-10" source={`/dashboardConsultant/${authId}`} />
+      <h1 className="self-center text-3xl text-[var(--primary-color)]">
         Vos Candidats
       </h1>
       <form className="self-center flex flex-col gap-4">
         <SearchInputConsultant
-          id={1}
+          id={candidatesData.id}
           placeholder="Rechercher des candidats..."
-          value={inputContent}
-          onChange={(e) => setInputContent(e.target.value)}
-        />
-        <SearchInputConsultant
-          id={2}
-          placeholder="Rechercher des disponibilités..."
+          value={inputLastnameContent}
+          onChange={(e) => setInputLastnameContent(e.target.value)}
         />
       </form>
       <section className="mx-4 gap-5 flex flex-col items-center md:flex-row md:flex-wrap md:justify-center">
         {candidatesData.length > 0 ? (
-          filteredGames.map((candidate) => (
+          filteredCandidatesByLastname.map((candidate) => (
             <CardConsultant key={candidate.id} user={candidate} />
           ))
         ) : (

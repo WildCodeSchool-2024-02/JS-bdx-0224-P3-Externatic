@@ -58,7 +58,7 @@ class UserRepository extends AbstractRepository {
   LEFT JOIN techno_candidate AS tc ON c.id = tc.candidate_id
   LEFT JOIN techno AS t ON tc.techno_id = t.id
   LEFT JOIN cv ON c.id = cv.candidate_id
-  WHERE r.consultant_id = ? AND u.role = 'candidate'
+  WHERE r.consultant_id = ? AND u.role = 'candidat'
   GROUP BY u.id, cv.path`,
       [id]
     );
