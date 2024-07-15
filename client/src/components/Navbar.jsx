@@ -109,7 +109,7 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
           <li>
           {userData.auth.role === "consultant" && (
             <Link
-              to={`/dashboardConsultant/${authId}`}
+              to={`/dashboardCandidate/${authId}`}
               onClick={handleChangeNav}
             >
               Gestion
