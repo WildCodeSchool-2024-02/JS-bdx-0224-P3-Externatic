@@ -11,6 +11,7 @@ import disconnected from "../assets/images/iconDisconnect.svg";
 import NavAccess from "../services/NavAccess";
 import Button from "./atomic/buttons/Button";
 import ModalRegistration from "./ModalRegistration";
+import ProfilCondition from "./ProfilCondition";
 
 function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
   const userData = useContext(AuthContext);
@@ -107,25 +108,7 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
             </Link>
           </li>
           <li>
-          {userData.auth.role === "consultant" && (
-            <Link
-              to={`/dashboardConsultant/${authId}`}
-              onClick={handleChangeNav}
-            >
-              Gestion
-            </Link>
-          )}
-          {userData.auth.role === "candidat" && (
-            <Link
-              to={`/dashboardCandidate/${authId}`}
-              onClick={handleChangeNav}
-            >
-              Profil
-            </Link>
-          )}
-          {!["consultant", "candidat"].includes(userData.auth.role) && (
-            <button type="button" onClick={handleClick}>Profil</button>
-          )}
+            <ProfilCondition handleChangeNav={handleChangeNav} handleClick={handleClick} authId={authId} userData={userData} />
           </li>
           <li>
             <Button
