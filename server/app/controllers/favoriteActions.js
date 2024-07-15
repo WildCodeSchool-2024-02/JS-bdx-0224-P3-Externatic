@@ -20,4 +20,18 @@ const removeFavorite = async (req, res) => {
   }
 };
 
-module.exports = { addFavorite, removeFavorite };
+const readFavorite = async (req, res) => {
+  const { candidateId, offerId } = req.params;
+  try {
+    const favorite = await tables.favorite.read({ candidateId, offerId });
+    if (favorite) {
+      res.status(200).json(favorite);
+    } else {
+      res.status(404).json({ error: "Favorite not found" });
+    }
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+module.exports = { addFavorite, removeFavorite, readFavorite };

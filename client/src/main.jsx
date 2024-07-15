@@ -19,6 +19,7 @@ import DashboardConsultant from "./pages/DashboardConsultant";
 import DashboardCandidate from "./pages/DashboardCandidate";
 import CandidateManagement from "./pages/CandidateManagement";
 
+
 const offersUrl = "/api/offers";
 const usersUrl = "/api/users";
 
@@ -52,12 +53,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboardCandidate/:id",
-        element: (
-          <ProtectedRoute
-            element={<DashboardCandidate />}
-            roles={["candidat"]}
-          />
-        ),
+        element:<DashboardCandidate />,
         loader: ({ params }) => fetchApi(`${usersUrl}/${params.id}`),
       },
       {

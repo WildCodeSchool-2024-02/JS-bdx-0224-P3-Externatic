@@ -9,7 +9,7 @@ const browse = async (req, res, next) => {
       const offers = await tables.offer.readAll();
       res.json(offers);
     }
-  } catch (err) {
+  } catch (err) { 
     console.error("Browse error:", err);
     next(err);
   }
@@ -19,7 +19,7 @@ const read = async (req, res, next) => {
   try {
     // Fetch a specific offer from the database based on the provided ID
     const offer = await tables.offer.read(req.params.id);
-
+   
     // If the offer is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the offer in JSON format
     if (offer == null) {

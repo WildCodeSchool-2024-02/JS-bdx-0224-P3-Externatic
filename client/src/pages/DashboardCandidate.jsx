@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
 import FileUpload from "../components/atomic/FileUpload";
 import Tag from "../components/atomic/tag/Tag";
 import Button from "../components/atomic/buttons/Button";
@@ -6,6 +7,26 @@ import CardOfferForCandidate from "../components/atomic/card/CardOfferForCandida
 
 function DashboardCandidate() {
   const data = useLoaderData();
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const fetchFavorites = async () => {
+      try {
+        const response = await fetch("/api/favorites", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const result = await response.json();
+        setFavorites(result);
+      } catch (err) {
+        console.error("Error fetching favorites", err);
+      }
+    };
+
+    fetchFavorites();
+  }, [data.id]);
 
   return (
     <main>
@@ -26,19 +47,27 @@ function DashboardCandidate() {
         <FileUpload/>
         <h2 className="text-[var(--primary-color)] pb-3">Mes compétences</h2>
         <ul className="flex flex-wrap gap-5">
-        {data.technos?.map((techno) => (
-          <li className="list-none" key={techno.id}>
-            <Tag text={techno.name} apply="tag" />
-          </li>
-        ))}
+          {data.technos && data.technos.length > 0 ? (
+            data.technos.map((techno) => (
+              <li className="list-none" key={techno.id}>
+                <Tag text={techno.name} apply="tag" />
+              </li>
+            ))
+          ) : (
+            <li className="list-none">Pas de compétences sélectionnées</li>
+          )}
         </ul>
         <h2 className="text-[var(--primary-color)] pb-3 pt-10">Mes favoris</h2>
         <ul className="flex flex-wrap gap-5">
-          {data.favorites?.map((offer) => (
-            <li key={offer.id}>
-              <CardOfferForCandidate offer={offer} />
-            </li>
-          ))}
+          {favorites.length > 0 ? (
+            favorites.map((offer) => (
+              <li key={offer.id}>
+                <CardOfferForCandidate offer={offer} />
+              </li>
+            ))
+          ) : (
+            <li className="list-none">Pas de favoris sélectionnés</li>
+          )}
         </ul>
       </article>
       <footer className="flex flex-col items-center gap-5 p-5">

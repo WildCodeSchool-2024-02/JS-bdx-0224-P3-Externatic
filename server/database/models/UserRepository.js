@@ -32,12 +32,12 @@ class UserRepository extends AbstractRepository {
       (
         SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
         FROM techno_candidate
-        INNER JOIN techno ON techno_candidate.techno_id = techno.id
+        left JOIN techno ON techno_candidate.techno_id = techno.id
         WHERE techno_candidate.candidate_id = candidate.id
       ) AS technos
   FROM ${this.table}
-  JOIN candidate ON user.id = candidate.user_id
-  JOIN region ON region.candidate_id = candidate.id
+  left JOIN candidate ON user.id = candidate.user_id
+   left JOIN region ON region.candidate_id = candidate.id
   WHERE user.id = ?
       `,
       [id]

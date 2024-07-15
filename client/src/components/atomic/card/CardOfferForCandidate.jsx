@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -8,13 +8,15 @@ import { AuthContext } from "../../../contexts/AuthContext";
 
 export default function CardOfferForCandidate({ offer }) {
   const { auth } = useContext(AuthContext);
+  const [isFavorite, setIsFavorite] = useState(offer.is_favorite);
+
   const handleCheckboxChange = async (e) => {
     const isChecked = e.target.checked;
     const url = "http://localhost:3310/api/favorites";
     const headers = {
       "Content-Type": "application/json",
     };
-    const body = JSON.stringify({ candidateId: auth.id, offerId: offer.id }); // Remplacez 1 par l'ID du candidat actuel
+    const body = JSON.stringify({ candidateId: auth.id, offerId: offer.id });
 
     try {
       let response;
@@ -33,6 +35,7 @@ export default function CardOfferForCandidate({ offer }) {
       }
 
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      setIsFavorite(isChecked);
     } catch (err) {
       console.error("Error handling favorite", err);
     }
@@ -47,7 +50,7 @@ export default function CardOfferForCandidate({ offer }) {
         </h3>
         {auth?.id && <label className="peer text-[0] cursor-pointer">
           favoris
-          <input type="checkbox" className="peer hidden" onChange={handleCheckboxChange} />
+          <input type="checkbox" className="peer hidden" checked={isFavorite} onChange={handleCheckboxChange} />
           <svg
             className="peer-checked:fill-[var(--primary-color)] peer-checked:animate-jump animate-once animate-duration-500 animate-ease-in-out animate-alternate"
             width="23"
@@ -111,5 +114,6 @@ CardOfferForCandidate.propTypes = {
         name: PropTypes.string.isRequired,
       })
     ).isRequired,
+    is_favorite: PropTypes.bool.isRequired,
   }).isRequired,
 };
