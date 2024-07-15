@@ -31,31 +31,16 @@ const read = async (req, res, next) => {
 const add = async (req, res, next) => {
 
   try {
-    const offer  = req.body;
+    const offer = req.body;
 
-    if(offer == null) {
-      res.status(400).json({ error: "Missing required fields" });
-    }
-    const insertId = await tables.offer.create(offer);
+    const insertId = await tables.offer.create(
+      offer
+    );
     res.status(201).json({ insertId });
   } catch (err) {
     next(err);
   }
 };
-// try {
-//   const { offer, region, job, techno, company } = req.body;
-
-//   // Assurez-vous que les champs requis sont présents
-//   if (!offer || !region || !job || !techno || !company) {
-//     return res.status(400).json({ error: "Missing required fields" });
-//   }
-
-//   const insertId = await tables.offer.create(offer, region, job, techno, company);
-//   res.status(201).json({ insertId });
-// } catch (err) {
-//   next(err);
-// }
-// };
 
 // Ready to export the controller functions
 module.exports = {

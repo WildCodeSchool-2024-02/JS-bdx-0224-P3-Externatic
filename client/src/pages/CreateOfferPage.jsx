@@ -23,17 +23,20 @@ function CreateOfferPage() {
   });
 
   const handleChange = (e) => {
-    const { name, value, multiple } = e.target;
+    const { name, value, multiple, selectedOptions } = e.target;
 
     if (multiple) {
-      const newArray = [...formData.techno];
-      newArray.push(value);
+      const selectedValues = Array.from(
+        selectedOptions,
+        (option) => option.value
+      );
 
       return setFormData({
         ...formData,
-        techno: [...newArray],
+        [name]: selectedValues,
       });
     }
+    
 
     return setFormData({
       ...formData,
@@ -43,14 +46,19 @@ function CreateOfferPage() {
 
   const handleSubmitOffer = async (e) => {
     e.preventDefault();
+    const consultantId = 1; // ID du consultant "en dur"
+    const offerData = { ...formData, consultantId };
+
     try {
-      const response = await createOffer(offersUrl, formData, "POST");
+      const response = await createOffer(offersUrl, offerData, "POST");
       const data = await response.json();
+      if (response.ok) {
+        navigate("/");
+      }
       return data;
     } catch (err) {
-      console.error("Erreur lors de la soumission du formulaire :", err);
+      return err;
     }
-    return navigate(`/`);
   };
 
   return (
@@ -65,8 +73,8 @@ function CreateOfferPage() {
       >
         <FormDropDown
           id="title"
-          name="title"
           label="Titre de l'offre"
+          name="title"
           multiple={false}
           handleChange={handleChange}
           options={jobs}
@@ -78,9 +86,10 @@ function CreateOfferPage() {
           multiple={false}
           handleChange={handleChange}
           options={[
-            { name: "CDI", id: 1 },
-            { name: "CDD", id: 2 },
-            { name: "Alternance", id: 3 },
+            { name: "CDI", id: "CDI" },
+            { name: "CDD", id: "CDD" },
+            { name: "Alternance", id: "Alternance" },
+            { name: "FreeLance", id: "FreeLance" },
           ]}
         />
         <FormDropDown
@@ -106,7 +115,7 @@ function CreateOfferPage() {
           handleChange={handleChange}
           options={companies}
         />
-        
+
         <FormInputConsultant
           id="details"
           name="details"

@@ -51,7 +51,6 @@ class OfferSeeder extends AbstractSeeder {
         advantages: this.faker.lorem.paragraph(),
         salary: this.faker.number.int({ min: 10000, max: 100000 }),
         consultant_id: this.getRef(`consultant_${i}`).insertId,
-        job_id: this.getRef(`job_${i}`).insertId,
         company_id: this.getRef(`company_${i}`).insertId,
         refName: `offer_${i}`, // Create a reference name for the offer
       };

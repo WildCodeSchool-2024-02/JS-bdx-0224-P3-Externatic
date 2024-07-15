@@ -10,15 +10,42 @@ class OfferRepository extends AbstractRepository {
   // The C of CRUD - Create operation
 
   async create(offer) {
-    
-    // Execute the SQL INSERT query to add a new offer to the "offer" table
-    const [result] = await this.database.query(
-      `insert into ${this.table} (title, city, salary, details, advantages, type) values (?, ?, ?, ?, ?, ?)`,
-      [offer.title, offer.city, offer.salary, offer.details, offer.advantages, offer.type]
-    );
+    try {
+      await this.database.query("START TRANSACTION");
 
-    // Return the ID of the newly inserted offer
-    return result.insertId;
+      // Insérer l'offre
+      const [offerResult] = await this.database.query(
+        `INSERT INTO ${this.table} (title, city, salary, details, advantages, type, consultant_id, company_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          offer.title,
+          offer.city,
+          parseInt(offer.salary, 10),
+          offer.details,
+          offer.advantages,
+          offer.type,
+          offer.consultantId,
+          parseInt(offer.company, 10),
+        ]
+      );
+      const offerId = offerResult.insertId;
+
+      // Insérer les technos
+      const technoPromises = offer.techno.map((tech) =>
+        this.database.query(
+          `INSERT INTO techno_offer (offer_id, techno_id) VALUES (?, ?)`,
+          [offerId, tech]
+        )
+      );
+
+      await Promise.all(technoPromises);
+
+      await this.database.query("COMMIT");
+      return offerId;
+    } catch (error) {
+      await this.database.query("ROLLBACK");
+      console.error("Erreur lors de la création de l'offre :", error);
+      throw error;
+    }
   }
 
   // The Rs of CRUD - Read operations
