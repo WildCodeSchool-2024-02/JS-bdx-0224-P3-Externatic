@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
+import { AuthProvider } from "./contexts/AuthContext";
 import { ModalProvider } from "./contexts/ModalContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -25,7 +26,7 @@ function App() {
   const isNavVisible = isVisible ? "block" : "hidden";
 
   return (
-    <>
+    <AuthProvider>
       <ModalProvider>
         <header className="bg-[var(--secondary-background-color)] w-full h-16">
           <Navbar
@@ -37,7 +38,7 @@ function App() {
         <Outlet />
       </ModalProvider>
       <Footer />
-    </>
+    </AuthProvider>
   );
 }
 

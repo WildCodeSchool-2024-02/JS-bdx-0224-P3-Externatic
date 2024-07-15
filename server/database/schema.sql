@@ -5,7 +5,7 @@ CREATE TABLE user (
   email VARCHAR(80) UNIQUE NOT NULL,
   phone VARCHAR(80),
   hashed_password VARCHAR(250) NOT NULL,
-  role VARCHAR(80) NOT NULL DEFAULT 'Candidate'
+  role VARCHAR(80) NOT NULL DEFAULT 'candidat'
 );
 
 CREATE TABLE consultant (

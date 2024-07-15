@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 import useLogicForm from "../services/useLogicForm";
 import { useModal } from "../contexts/ModalContext";
 import externatic from "../assets/Externatic.svg";
@@ -12,9 +13,27 @@ import Button from "./atomic/buttons/Button";
 import ModalRegistration from "./ModalRegistration";
 
 function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
+  const userData = useContext(AuthContext);
+
+
+  const [authId, setAuthId] = useState(null);
+
+  useEffect(() => {
+    if (userData.auth.id !== authId) {
+      setAuthId(userData.auth.id);
+    }
+  }, [userData, authId]);
+
+
   const menuRef = useRef(null);
   const { handleChangeModal, setIsClicked } = useModal();
-  const { formData, handleChange, handleSubmitRegistration, handleSubmitLogin } = useLogicForm();
+
+  const {
+    formData,
+    handleChange,
+    handleSubmitRegistration,
+    handleSubmitLogin,
+  } = useLogicForm();
 
   const handleClick = () => {
     handleChangeNav();
@@ -88,7 +107,10 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
             </Link>
           </li>
           <li>
-            <Link to="/dashboard/:id" onClick={handleChangeNav}>
+            <Link
+              to={`/dashboardCandidate/${authId}`}
+              onClick={handleChangeNav}
+            >
               Profil
             </Link>
           </li>
