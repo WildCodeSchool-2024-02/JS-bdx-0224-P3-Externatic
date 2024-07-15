@@ -108,7 +108,7 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
           </li>
           <li>
             <Link
-              to={`/dashboardConsultant/${authId}`}
+              to={`/dashboardCandidate/${authId}`}
               onClick={handleChangeNav}
             >
               Profil

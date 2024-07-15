@@ -15,7 +15,7 @@ function OfferPage() {
       const userData = decodeToken(token);
       setAuth(userData);
     }
-  },[]);
+  },[setAuth]);
 
   const offers = useLoaderData();
   return (
