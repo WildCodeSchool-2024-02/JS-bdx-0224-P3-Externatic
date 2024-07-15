@@ -24,16 +24,12 @@ function DashboardCandidate() {
         <FileUpload/>
         <h2 className="text-[var(--primary-color)] pb-3">Mes compétences</h2>
         <ul className="flex flex-wrap gap-5">
-        {data.technos.map((techno) => (
+        {data?.technos.map((techno) => (
           <li className="list-none" key={techno.id}>
             <Tag text={techno.name} apply="tag" />
           </li>
         ))}
         </ul>
-        <h2 className="text-[var(--primary-color)] pb-2 pt-10">
-          Mes préférences
-        </h2>
-        <Tag text="REACT" apply="tag" />
         <h2 className="text-[var(--primary-color)] pb-3 pt-10">Mes favoris</h2>
       </article>
       <footer className="flex flex-col items-center gap-5 p-5">

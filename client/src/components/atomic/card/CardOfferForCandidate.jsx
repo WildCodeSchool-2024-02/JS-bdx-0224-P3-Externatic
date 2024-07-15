@@ -1,10 +1,43 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import Tag from "../tag/Tag";
 import ScrollToTop from "../../../services/scrollToTop";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 export default function CardOfferForCandidate({ offer }) {
+  const { auth } = useContext(AuthContext);
+  const handleCheckboxChange = async (e) => {
+    const isChecked = e.target.checked;
+    const url = "http://localhost:3310/api/favorites";
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    const body = JSON.stringify({ candidateId: auth.id, offerId: offer.id }); // Remplacez 1 par l'ID du candidat actuel
+
+    try {
+      let response;
+      if (isChecked) {
+        response = await fetch(url, {
+          method: "POST",
+          headers,
+          body,
+        });
+      } else {
+        response = await fetch(url, {
+          method: "DELETE",
+          headers,
+          body,
+        });
+      }
+
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    } catch (err) {
+      console.error("Error handling favorite", err);
+    }
+  };
+
   const scrollToTop = ScrollToTop();
   return (
     <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-56 p-4 bg-[var(--secondary-background-color)] mb-4 max-w-md min-w-72">
@@ -12,9 +45,9 @@ export default function CardOfferForCandidate({ offer }) {
         <h3 className="text-[var(--primary-color)] max-md:text-lg">
           {offer.title}
         </h3>
-        <label className="peer text-[0] cursor-pointer">
+        {auth?.id && <label className="peer text-[0] cursor-pointer">
           favoris
-          <input type="checkbox" className="peer hidden" />
+          <input type="checkbox" className="peer hidden" onChange={handleCheckboxChange} />
           <svg
             className="peer-checked:fill-[var(--primary-color)] peer-checked:animate-jump animate-once animate-duration-500 animate-ease-in-out animate-alternate"
             width="23"
@@ -30,7 +63,7 @@ export default function CardOfferForCandidate({ offer }) {
               strokeLinejoin="round"
             />
           </svg>
-        </label>
+        </label>}
       </header>
       <ul className="flex gap-1 relative mb-4">
         {offer.technos.map((techno) => (

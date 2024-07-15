@@ -98,6 +98,8 @@ CREATE TABLE company (
   description TEXT
 );
 
+
+
 CREATE TABLE offer (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   title VARCHAR(80) NOT NULL,
@@ -118,6 +120,18 @@ CREATE TABLE offer (
     CONSTRAINT fk_offer_company
     FOREIGN KEY (company_id)
     REFERENCES company(id)
+);
+
+CREATE TABLE favorite (
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  candidate_id INT UNSIGNED NOT NULL,
+  offer_id INT UNSIGNED NOT NULL,
+    CONSTRAINT fk_favorite_candidate
+    FOREIGN KEY (candidate_id)
+    REFERENCES candidate(id),
+    CONSTRAINT fk_favorite_offer
+    FOREIGN KEY (offer_id)
+    REFERENCES offer(id)
 );
 
 CREATE TABLE techno_offer (

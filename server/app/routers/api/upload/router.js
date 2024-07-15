@@ -9,7 +9,7 @@ const upload = multer({ dest: "./public/tmp/" });
 /* ************************************************************************* */
 // Import And Use Routers Here
 /* ************************************************************************* */
-const UploadFile = require("../../../controllers/uploadController")
+const UploadFile = require("../../../controllers/uploadActions")
 
 router.post("/", upload.single("myfile"), UploadFile.upload);
 /* ************************************************************************* */
