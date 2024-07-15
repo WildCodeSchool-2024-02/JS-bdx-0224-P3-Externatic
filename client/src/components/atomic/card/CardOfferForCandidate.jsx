@@ -1,17 +1,20 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import Tag from "../tag/Tag";
 import ScrollToTop from "../../../services/scrollToTop";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 export default function CardOfferForCandidate({ offer }) {
+  const { auth } = useContext(AuthContext);
   const handleCheckboxChange = async (e) => {
     const isChecked = e.target.checked;
     const url = "http://localhost:3310/api/favorites";
     const headers = {
       "Content-Type": "application/json",
     };
-    const body = JSON.stringify({ candidateId: 1, offerId: offer.id }); // Remplacez 1 par l'ID du candidat actuel
+    const body = JSON.stringify({ candidateId: auth.id, offerId: offer.id }); // Remplacez 1 par l'ID du candidat actuel
 
     try {
       let response;
@@ -42,7 +45,7 @@ export default function CardOfferForCandidate({ offer }) {
         <h3 className="text-[var(--primary-color)] max-md:text-lg">
           {offer.title}
         </h3>
-        <label className="peer text-[0] cursor-pointer">
+        {auth?.id && <label className="peer text-[0] cursor-pointer">
           favoris
           <input type="checkbox" className="peer hidden" onChange={handleCheckboxChange} />
           <svg
@@ -60,7 +63,7 @@ export default function CardOfferForCandidate({ offer }) {
               strokeLinejoin="round"
             />
           </svg>
-        </label>
+        </label>}
       </header>
       <ul className="flex gap-1 relative mb-4">
         {offer.technos.map((techno) => (

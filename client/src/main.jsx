@@ -52,7 +52,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboardCandidate/:id",
-        element: <DashboardCandidate />,
+        element: (
+          <ProtectedRoute
+            element={<DashboardCandidate />}
+            roles={["candidat"]}
+          />
+        ),
         loader: ({ params }) => fetchApi(`${usersUrl}/${params.id}`),
       },
       {
