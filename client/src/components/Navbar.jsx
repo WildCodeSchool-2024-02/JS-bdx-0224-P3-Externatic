@@ -16,7 +16,6 @@ import ProfilCondition from "./ProfilCondition";
 function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
   const userData = useContext(AuthContext);
 
-
   const [authId, setAuthId] = useState(null);
 
   useEffect(() => {
@@ -24,7 +23,6 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
       setAuthId(userData.auth.id);
     }
   }, [userData, authId]);
-
 
   const menuRef = useRef(null);
   const { handleChangeModal, setIsClicked } = useModal();
@@ -108,7 +106,12 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
             </Link>
           </li>
           <li>
-            <ProfilCondition handleChangeNav={handleChangeNav} handleClick={handleClick} authId={authId} userData={userData} />
+            <ProfilCondition
+              handleChangeNav={handleChangeNav}
+              handleClick={handleClick}
+              authId={authId}
+              userData={userData}
+            />
           </li>
           <li>
             <Button
