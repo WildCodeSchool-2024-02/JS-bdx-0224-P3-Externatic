@@ -33,10 +33,8 @@ const useLogicForm = () => {
   const handleSubmitRegistration = async (e) => {
     e.preventDefault();
 
-const sendCandidacy = sendUser();
-
     try {
-      const response = await sendCandidacy(usersUrl, formData, "POST");
+      const response = await sendUser(usersUrl, formData, "POST");
       setIsClicked(true);
       const data = await response.json();
       return data;

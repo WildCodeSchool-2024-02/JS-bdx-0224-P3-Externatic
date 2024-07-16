@@ -25,7 +25,7 @@ const useCandidacyForm = () => {
   const handleSubmitCandidacy = async (e) => {
     e.preventDefault();
 
-const sendCandidacy = sendUser;
+    const sendCandidacy = sendUser;
 
     try {
       const response = await sendCandidacy(usersUrl, formData, "POST");
