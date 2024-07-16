@@ -51,12 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboardConsultant/:id",
-        element: (
-          <ProtectedRoute
-            element={<DashboardConsultant />}
-            roles={["consultant"]}
-          />
-        ),
+        element: <DashboardConsultant />,
         loader: ({ params }) => fetchApi(`${usersUrl}/${params.id}`),
       },
       {
@@ -71,12 +66,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/candidateManagement/:id",
-        element: (
-          <ProtectedRoute
-            element={<CandidateManagement />}
-            roles={["consultant"]}
-          />
-        ),
+        element: <CandidateManagement />,
         loader: ({ params }) =>
           fetchApi(`${usersUrl}/consultants/${params.id}`),
       },
