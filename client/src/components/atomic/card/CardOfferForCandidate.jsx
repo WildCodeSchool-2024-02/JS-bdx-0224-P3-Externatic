@@ -37,7 +37,7 @@ const handleCheckboxChange = async (e) => {
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       setIsFavorite(isChecked);
     } catch (err) {
-      console.error("Error handling favorite", err);
+      throw new Error("Error handling favorite", err);
     }
   };
 
