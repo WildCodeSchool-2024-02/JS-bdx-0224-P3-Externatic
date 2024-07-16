@@ -28,24 +28,31 @@ class FavoriteRepository extends AbstractRepository {
     );
     return result.insertId;
   }
-
-  async delete(favorite) {
-    const [result] = await this.database.query(
-      `DELETE FROM ${this.table} WHERE candidate_id = ? AND offer_id = ?`,
-      [favorite.candidateId, favorite.offerId]
-    );
-    return result.affectedRows;
+  
+    async read(candidate) {
+      const [rows] = await this.database.query(
+        `SELECT ${this.table}.*, offer.*,
+        (
+          SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
+          FROM techno_offer
+          INNER JOIN techno ON techno_offer.techno_id = techno.id
+          WHERE techno_offer.offer_id = offer.id
+        ) AS technos
+        FROM ${this.table}
+        INNER JOIN offer ON ${this.table}.offer_id = offer.id
+        WHERE candidate_id = ?`,
+        [candidate]
+      );
+      return rows;
+    }
+    
+    async delete(favorite) {
+      const [result] = await this.database.query(
+        `DELETE FROM ${this.table} WHERE candidate_id = ? AND offer_id = ?`,
+        [favorite.candidateId, favorite.offerId]
+      );
+      return result.affectedRows;
+    }
   }
-
-  async read(favorite) {
-    const [rows] = await this.database.query(
-      `SELECT * FROM ${this.table}
-      INNER JOIN offer on favorite.offer_id = offer.id
-      WHERE candidate_id = ?`,
-      [favorite.candidateId]
-    );
-    return rows;
-  }
-}
-
+    
 module.exports = FavoriteRepository;

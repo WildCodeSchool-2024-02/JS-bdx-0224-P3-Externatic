@@ -21,9 +21,9 @@ const removeFavorite = async (req, res) => {
 };
 
 const readFavorite = async (req, res) => {
-  const { candidateId, offerId } = req.params;
+  const { id } = req.auth;
   try {
-    const favorite = await tables.favorite.read({ candidateId, offerId });
+    const favorite = await tables.favorite.read(id);
     if (favorite) {
       res.status(200).json(favorite);
     } else {

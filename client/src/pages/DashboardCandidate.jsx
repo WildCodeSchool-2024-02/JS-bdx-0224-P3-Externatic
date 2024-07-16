@@ -8,17 +8,16 @@ import CardOfferForCandidate from "../components/atomic/card/CardOfferForCandida
 function DashboardCandidate() {
   const data = useLoaderData();
   const [favorites, setFavorites] = useState([]);
-
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
-        const response = await fetch("/api/favorites", {
+        const response = await fetch("http://localhost:3310/api/favorites", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const result = await response.json();
+        const result = await response.json()
         setFavorites(result);
       } catch (err) {
         console.error("Error fetching favorites", err);

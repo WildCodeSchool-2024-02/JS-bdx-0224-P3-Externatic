@@ -10,7 +10,7 @@ export default function CardOfferForCandidate({ offer }) {
   const { auth } = useContext(AuthContext);
   const [isFavorite, setIsFavorite] = useState(offer.is_favorite);
 
-  const handleCheckboxChange = async (e) => {
+const handleCheckboxChange = async (e) => {
     const isChecked = e.target.checked;
     const url = "http://localhost:3310/api/favorites";
     const headers = {
