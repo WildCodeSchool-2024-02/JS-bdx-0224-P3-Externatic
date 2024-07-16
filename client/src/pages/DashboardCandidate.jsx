@@ -19,7 +19,7 @@ function DashboardCandidate() {
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
-        const response = await fetch("http://localhost:3310/api/favorites", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/favorites`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -29,7 +29,7 @@ function DashboardCandidate() {
         const result = await response.json();
         setFavorites(result);
       } catch (err) {
-        console.error("Error fetching favorites", err);
+        throw new Error("Error fetching favorites", err);
       }
     };
 
@@ -86,15 +86,7 @@ function DashboardCandidate() {
                 640: {
                   slidesPerView: 2,
                   spaceBetween: 30,
-                },
-                768: {
-                  slidesPerView: 2,
-                  spaceBetween: 30,
-                },
-                1024: {
-                  slidesPerView: 2,
-                  spaceBetween: 30,
-                },
+                }
               }}
               pagination={{
                 clickable: true,

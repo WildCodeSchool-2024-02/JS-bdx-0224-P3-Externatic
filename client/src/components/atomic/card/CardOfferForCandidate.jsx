@@ -12,7 +12,7 @@ export default function CardOfferForCandidate({ offer }) {
 
 const handleCheckboxChange = async (e) => {
     const isChecked = e.target.checked;
-    const url = "http://localhost:3310/api/favorites";
+    const url = `${import.meta.env.VITE_API_URL}/api/favorites`;
     const headers = {
       "Content-Type": "application/json",
     };

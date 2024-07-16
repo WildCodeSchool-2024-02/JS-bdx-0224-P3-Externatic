@@ -8,7 +8,6 @@ export default async function fetchApi(url) {
     const data = await response.json();
     return data;
   } catch (err) {
-    console.error("Fetch error:", err);
     return err;
   }
 }

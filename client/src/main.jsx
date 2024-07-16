@@ -5,8 +5,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import fetchApi from "./services/fetchApi";
 import fetchMultipleApis from "./services/fetchMultipleApi";
-
-import "../index.css";
 import App from "./App";
 import HomePage from "./pages/HomePage";
 import OfferPage from "./pages/OfferPage";
@@ -20,7 +18,6 @@ import ProtectedRoute from "./components/ProtectedRoutes";
 import DashboardConsultant from "./pages/DashboardConsultant";
 import DashboardCandidate from "./pages/DashboardCandidate";
 import CandidateManagement from "./pages/CandidateManagement";
-
 
 const offersUrl = "/api/offers";
 const technosUrl = "/api/technos";
@@ -64,7 +61,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboardCandidate/:id",
-        element:<DashboardCandidate />,
+        element: (
+          <ProtectedRoute
+            element={<DashboardCandidate />}
+            roles={["candidat"]}
+          />
+        ),
         loader: ({ params }) => fetchApi(`${usersUrl}/${params.id}`),
       },
       {

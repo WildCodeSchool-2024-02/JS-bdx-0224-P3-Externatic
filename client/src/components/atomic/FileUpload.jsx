@@ -4,35 +4,31 @@ import Dropzone from "react-dropzone";
 import ButtonSubmit from "./buttons/ButtonSubmit";
 
 export default function FileUpload() {
-  const [file, setFile] = useState(null); // Initialisez le state à null pour indiquer l'absence d'image sélectionnée
+  const [file, setFile] = useState(null);
   const [uploadSuccess, setUploadSuccess] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (file) {
-      // Vérifiez si une image a été sélectionnée
       const formData = new FormData();
-      formData.append("myfile", file); // Utilisez le même clé 'image' que celle attendue par le back-end
+      formData.append("myfile", file);
 
       try {
-        const response = await fetch("http://localhost:3310/api/upload", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, {
           method: "POST",
-          body: formData, // Pas besoin d'en-tête 'Content-Type', il est défini automatiquement par le navigateur, autrement il faut gérer des Boundary
+          body: formData,
         });
 
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
 
-        setUploadSuccess(true); // Upload réussi
+        setUploadSuccess(true);
       } catch (err) {
         console.error("Upload error", err);
-        setUploadSuccess(false); // Upload échoué
+        setUploadSuccess(false);
       }
     }
-    // } else {
-    //   console.info("No image selected");
-    // }
   };
 
   return (
