@@ -1,11 +1,21 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 
 import Tag from "../components/atomic/tag/Tag";
 import PreviousPage from "../components/atomic/buttons/PreviousPage";
-import Button from "../components/atomic/buttons/Button";
+import { AuthContext } from "../contexts/AuthContext";
 
 function OfferDetails() {
   const offerData = useLoaderData();
+  const userData = useContext(AuthContext);
+
+  const [authId, setAuthId] = useState(null);
+
+  useEffect(() => {
+    if (userData.auth.id !== authId) {
+      setAuthId(userData.auth.id);
+    }
+  }, [userData, authId]);
 
   return (
     <main>
@@ -76,8 +86,8 @@ function OfferDetails() {
           Salaire
         </h2>
         <p className="md:mx-10 mx-4 mb-20">{offerData.salary} Euro/an.</p>
-        <footer className="mb-20">
-          <Button apply="big" name="POSTULER" />
+        <footer className="mb-20 flex flex-col items-center">
+          <Link to={`/candidacy/${authId}`} className="big text-center content-center">POSTULER</Link>
         </footer>
       </article>
     </main>

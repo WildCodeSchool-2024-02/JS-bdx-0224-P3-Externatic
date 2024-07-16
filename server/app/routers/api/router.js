@@ -15,4 +15,8 @@ const authRouter = require("./auth/router");
 
 router.use("/login", authRouter);
 
+const candidacyRouter = require("./candidacy/router");
+
+router.use("/candidacy", candidacyRouter);
+
 module.exports = router;

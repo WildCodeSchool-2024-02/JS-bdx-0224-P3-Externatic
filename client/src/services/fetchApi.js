@@ -26,3 +26,18 @@ export async function sendUser(url, user, http) {
     return err;
   }
 }
+
+export async function sendCandidacy(url, user, http) {
+  try {
+    const response = await fetch(import.meta.env.VITE_API_URL + url, {
+      method: http,
+      headers: {
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    return response.json();
+  } catch (err) {
+    return err;
+  }
+}
