@@ -29,14 +29,14 @@ function DashboardConsultant() {
         Gestion Candidats
       </Link>
       <Link
-        to="/"
+        to="/offersCreate"
         className="bg-[var(--primary-color)] self-center text-[var(--primary-background-color)] rounded-lg w-64 h-20 text-center content-center"
       >
         Gestion Offres
       </Link>
       <Link
         to="/"
-        className="bg-[var(--primary-color)] self-center text-[var(--primary-background-color)] rounded-lg w-64 h-20 text-center content-center"
+        className="bg-[var(--primary-color)] text-[var(--primary-background-color)] rounded-lg w-64 h-20 text-center content-center"
       >
         Mes Informations
       </Link>
