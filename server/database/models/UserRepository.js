@@ -73,6 +73,19 @@ class UserRepository extends AbstractRepository {
     );
     return rows;
   }
+
+  async readCandidates(id) {
+    const [rows] = await this.database.query(
+      `select firstname, lastname, email, cv.path AS cv_path,
+      cv.name AS cv_name
+    FROM user u
+    JOIN candidate c ON u.id = c.user_id
+    LEFT JOIN cv ON c.id = cv.candidate_id
+    WHERE u.id = ?`,
+      [id]
+    );
+    return rows;
+  }
 }
 
 module.exports = UserRepository;

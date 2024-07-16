@@ -6,9 +6,15 @@ class CandidacyRepository extends AbstractRepository {
   }
 
   async create(candidacy) {
+    const [candidate] = await this.database.query(
+      `SELECT id FROM candidate WHERE user_id = ?`,
+      [candidacy.authId] // Correction ici
+    );
+
+    const candidateId = candidate[0].id;
     const [result] = await this.database.query(
       `insert into ${this.table} (date, status, offer_id, candidate_id) values(?, ?, ?, ?)`,
-      [candidacy.CURDATE(), "en cours", candidacy.offerId, candidacy.candidateId]
+      [candidacy.CURDATE(), "en cours", candidacy.offerId, candidateId]
     );
 
     return result.insertId;

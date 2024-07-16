@@ -24,21 +24,28 @@ const read = async (req, res, next) => {
 };
 
 const readByCandidates = async (req, res, next) => {
-  if (req.auth.role === 'candidat') {
+  if (req.auth.role === "candidat") {
     res.sendStatus(403);
     return;
   }
 
   try {
-    const candidates = await tables.user.readByCandidates(
-      req.params.id
-    );
+    const candidates = await tables.user.readByCandidates(req.params.id);
 
     if (candidates === null) {
       res.sendStatus(404);
     } else {
       res.json(candidates);
     }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const readCandidates = async (req, res, next) => {
+  try {
+    const candidatesData = await tables.user.readCandidates(req.params.id);
+    res.json(candidatesData);
   } catch (err) {
     next(err);
   }
@@ -56,4 +63,4 @@ const add = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, add, read, readByCandidates };   
+module.exports = { browse, add, read, readByCandidates, readCandidates };

@@ -6,4 +6,5 @@ const { add } = require("../../../controllers/candidacyActions");
 
 router.post("/", add);
 
+
 module.exports = router;

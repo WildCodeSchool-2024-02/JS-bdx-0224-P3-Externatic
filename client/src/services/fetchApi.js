@@ -27,14 +27,14 @@ export async function sendUser(url, user, http) {
   }
 }
 
-export async function sendCandidacy(url, user, http) {
+export async function sendCandidacy(url, candidate, http) {
   try {
     const response = await fetch(import.meta.env.VITE_API_URL + url, {
       method: http,
       headers: {
         "content-Type": "application/json",
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(candidate),
     });
     return response.json();
   } catch (err) {

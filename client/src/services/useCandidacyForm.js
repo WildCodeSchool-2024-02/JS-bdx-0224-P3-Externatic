@@ -9,7 +9,7 @@ const useCandidacyForm = () => {
     phone: "",
     technos: "",
     cv: "",
-    motivationLetter: "",
+    letter: "",
   });
 
   const usersUrl = "/api/users";
