@@ -8,6 +8,7 @@ const useLogicForm = () => {
     firstname: "",
     lastname: "",
     email: "",
+    phone: "",
     password: "",
     city:"",
     type: "",

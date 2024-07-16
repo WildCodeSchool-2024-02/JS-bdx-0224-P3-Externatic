@@ -24,7 +24,6 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
     }
   }, [userData, authId]);
 
-
   const menuRef = useRef(null);
   const { handleChangeModal, setIsClicked } = useModal();
 
