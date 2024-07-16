@@ -121,7 +121,7 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
               handleChange={handleClick}
             />
           </li>
-          <li className="md:-ml-8">
+          <li>
             <Button
               type="button"
               name="Se connecter"

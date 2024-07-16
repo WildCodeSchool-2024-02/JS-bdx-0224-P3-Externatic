@@ -10,8 +10,39 @@ class UserRepository extends AbstractRepository {
       `insert into ${this.table} (firstname, lastname, email, hashed_password) values(?, ?, ?, ?)`,
       [user.firstname, user.lastname, user.email, user.hashedPassword]
     );
+    const [candidat] = await this.database.query(
+    `insert into candidate (user_id) values(?)`,
+    [result.insertId]
+  );
+    return candidat.insertId;
+  }
 
-    return result.insertId;
+  async read(id) {
+    // Execute the SQL SELECT query to retrieve a specific offer by its ID
+    const [rows] = await this.database.query(
+      `
+      SELECT 
+      user.id,
+      user.firstname,
+      user.lastname,
+      user.email,
+      user.phone,
+      candidate.picture,
+      region.name,
+      (
+        SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
+        FROM techno_candidate
+        left JOIN techno ON techno_candidate.techno_id = techno.id
+        WHERE techno_candidate.candidate_id = candidate.id
+      ) AS technos
+  FROM ${this.table}
+  left JOIN candidate ON user.id = candidate.user_id
+   left JOIN region ON region.candidate_id = candidate.id
+  WHERE user.id = ?
+      `,
+      [id]
+    );
+    return rows[0];
   }
 
   async readAll() {
@@ -19,14 +50,6 @@ class UserRepository extends AbstractRepository {
       `select id, firstname, lastname, email from ${this.table}`
     );
     return rows;
-  }
-
-  async read(id) {
-    const [rows] = await this.database.query(
-      `select id, firstname, lastname, email from ${this.table} where id = ?`,
-      [id]
-    );
-    return rows[0];
   }
 
   async readByEmailWithPassword(email) {
