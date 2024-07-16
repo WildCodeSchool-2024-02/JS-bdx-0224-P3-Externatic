@@ -107,14 +107,10 @@ CREATE TABLE offer (
   advantages TEXT,
   salary INT UNSIGNED,
   consultant_id INT UNSIGNED NOT NULL,
-  job_id INT UNSIGNED NOT NULL,
   company_id INT UNSIGNED NOT NULL,
     CONSTRAINT fk_offer_consultant
     FOREIGN KEY (consultant_id)
     REFERENCES consultant(id),
-    CONSTRAINT fk_offer_job
-    FOREIGN KEY (job_id)
-    REFERENCES job(id),
     CONSTRAINT fk_offer_company
     FOREIGN KEY (company_id)
     REFERENCES company(id)

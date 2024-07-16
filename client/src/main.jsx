@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import fetchApi from "./services/fetchApi";
+import fetchMultipleApis from "./services/fetchMultipleApi";
 
 import "../index.css";
 import App from "./App";
@@ -14,6 +15,7 @@ import CGU from "./pages/CGU";
 import ProtectionDataPolicy from "./pages/ProtectionDataPolicy";
 import LegalMentions from "./pages/LegalMentions";
 import Contact from "./pages/Contact";
+import CreateOfferPage from "./pages/CreateOfferPage";
 import ProtectedRoute from "./components/ProtectedRoutes";
 import DashboardConsultant from "./pages/DashboardConsultant";
 import DashboardCandidate from "./pages/DashboardCandidate";
@@ -21,6 +23,10 @@ import CandidateManagement from "./pages/CandidateManagement";
 import CandidacyPage from "./pages/CandidacyPage";
 
 const offersUrl = "/api/offers";
+const technosUrl = "/api/technos";
+const jobsUrl = "/api/jobs";
+const companiesUrl = "/api/companies";
+const urls = [technosUrl, jobsUrl, companiesUrl];
 const usersUrl = "/api/users";
 const candidacyUrl = "api/candidacy";
 
@@ -46,6 +52,11 @@ const router = createBrowserRouter([
         path: "/candidacy",
         element: <CandidacyPage />,
         loader: async () => fetchApi(candidacyUrl),
+      },
+      {
+        path: "/offersCreate",
+        element: <CreateOfferPage />,
+        loader: async () => fetchMultipleApis(urls),
       },
       {
         path: "/dashboardConsultant/:id",
