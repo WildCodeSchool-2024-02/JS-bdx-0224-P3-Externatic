@@ -7,13 +7,10 @@ class OfferRepository extends AbstractRepository {
     super({ table: "offer" });
   }
 
-  // The C of CRUD - Create operation
-
   async create(offer) {
     try {
       await this.database.query("START TRANSACTION");
 
-      // Insérer l'offre
       const [offerResult] = await this.database.query(
         `INSERT INTO ${this.table} (title, city, salary, details, advantages, type, consultant_id, company_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
         [
@@ -29,7 +26,6 @@ class OfferRepository extends AbstractRepository {
       );
       const offerId = offerResult.insertId;
 
-      // Insérer les technos
       const technoPromises = offer.techno.map((tech) =>
         this.database.query(
           `INSERT INTO techno_offer (offer_id, techno_id) VALUES (?, ?)`,
@@ -48,10 +44,7 @@ class OfferRepository extends AbstractRepository {
     }
   }
 
-  // The Rs of CRUD - Read operations
-
   async read(id) {
-    // Execute the SQL SELECT query to retrieve a specific offer by its ID
     const [rows] = await this.database.query(
       `
       SELECT 
