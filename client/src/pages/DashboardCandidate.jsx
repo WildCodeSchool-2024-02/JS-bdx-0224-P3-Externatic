@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import { useLoaderData } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Keyboard, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -10,10 +10,12 @@ import FileUpload from "../components/atomic/FileUpload";
 import Tag from "../components/atomic/tag/Tag";
 import Button from "../components/atomic/buttons/Button";
 import CardOfferForCandidate from "../components/atomic/card/CardOfferForCandidate";
+import {AuthContext} from "../contexts/AuthContext";
 
 import "../../index.css";
 
 function DashboardCandidate() {
+  const { logout } = useContext(AuthContext);
   const data = useLoaderData();
   const [favorites, setFavorites] = useState([]);
   useEffect(() => {
@@ -110,9 +112,8 @@ function DashboardCandidate() {
           )}
         </ul>
       </article>
-      <footer className="flex flex-col items-center gap-5 p-5">
-        <Button type="button" apply="big" name="Déconnexion" />
-        <Button type="button" apply="bigDelete" name="Supprimer mon compte" />
+      <footer className="flex flex-col items-center gap-5 p-10">
+        <Button type="button" apply="big" name="Déconnexion" handleChange={logout} />
       </footer>
     </main>
   );
