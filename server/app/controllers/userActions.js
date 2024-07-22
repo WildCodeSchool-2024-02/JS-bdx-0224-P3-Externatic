@@ -23,16 +23,22 @@ const read = async (req, res, next) => {
   }
 };
 
+const readCandidates = async (req, res, next) => {
+  try {
+    const candidatesData = await tables.user.readCandidates(req.params.id);
+    res.json(candidatesData);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const readByCandidates = async (req, res, next) => {
   try {
-    const candidates = await tables.user.readByCandidates(
-      req.params.id
-    );
-
+    const candidates = await tables.user.readByCandidates(req.params.id);
     if (!candidates || candidates.length === 0) {
       res.sendStatus(404);
     } else {
-      res.json(candidates); 
+      res.json(candidates);
     }
   } catch (err) {
     next(err);
@@ -51,4 +57,4 @@ const add = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, add, read, readByCandidates };
+module.exports = { browse, add, read, readByCandidates, readCandidates };

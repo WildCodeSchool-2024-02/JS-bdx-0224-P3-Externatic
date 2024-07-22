@@ -4,8 +4,8 @@ const TechnoRepository = require("./models/TechnoRepository");
 const JobRepository = require("./models/JobRepository");
 const CompanyRepository = require("./models/CompanyRepository");
 const UserRepository = require("./models/UserRepository")
+const CandidacyRepository = require("./models/CandidacyRepository")
 const FavoriteRepository = require("./models/FavoriteRepository");
-
 
 // Create an empty object to hold data repositories for different tables
 const tables = {};
@@ -20,6 +20,7 @@ tables.techno = new TechnoRepository();
 tables.job = new JobRepository();
 tables.company = new CompanyRepository();
 tables.user = new UserRepository();
+tables.candidacy = new CandidacyRepository();
 tables.favorite = new FavoriteRepository();
 
 
