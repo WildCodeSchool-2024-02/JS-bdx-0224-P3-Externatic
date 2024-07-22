@@ -3,6 +3,8 @@ import { useState, useEffect, useContext } from "react";
 
 import Tag from "../components/atomic/tag/Tag";
 import PreviousPage from "../components/atomic/buttons/PreviousPage";
+import ScrollToTop from "../services/scrollToTop";
+
 import { AuthContext } from "../contexts/AuthContext";
 
 function OfferDetails() {
@@ -17,6 +19,7 @@ function OfferDetails() {
     }
   }, [userData, authId]);
 
+  ScrollToTop();
   return (
     <main>
       <article>

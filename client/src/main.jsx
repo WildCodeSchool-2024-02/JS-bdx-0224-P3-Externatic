@@ -18,7 +18,6 @@ import ProtectedRoute from "./components/ProtectedRoutes";
 import DashboardConsultant from "./pages/DashboardConsultant";
 import DashboardCandidate from "./pages/DashboardCandidate";
 import CandidateManagement from "./pages/CandidateManagement";
-import CandidacyPage from "./pages/CandidacyPage";
 
 const offersUrl = "/api/offers";
 const technosUrl = "/api/technos";
@@ -42,22 +41,29 @@ const router = createBrowserRouter([
       },
       {
         path: "/offers/:id",
-        element: <OfferDetails />,
+        element: (
+          <ProtectedRoute element={<OfferDetails />} roles={["candidat"]} />
+        ),
         loader: ({ params }) => fetchApi(`${offersUrl}/${params.id}`),
       },
       {
-        path: "/candidacy/:offerId",
-        element: <CandidacyPage />,
-        loader: async () => fetchApi(usersUrl),
-      },
-      {
         path: "/offersCreate",
-        element: <CreateOfferPage />,
+        element: (
+          <ProtectedRoute
+            element={<CreateOfferPage />}
+            roles={["consultant"]}
+          />
+        ),
         loader: async () => fetchMultipleApis(urls),
       },
       {
         path: "/dashboardConsultant/:id",
-        element: <DashboardConsultant />,
+        element: (
+          <ProtectedRoute
+            element={<DashboardConsultant />}
+            roles={["consultant"]}
+          />
+        ),
         loader: ({ params }) => fetchApi(`${usersUrl}/${params.id}`),
       },
       {
@@ -72,7 +78,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/candidateManagement/:id",
-        element: <CandidateManagement />,
+        element: (
+          <ProtectedRoute
+            element={<CandidateManagement />}
+            roles={["consultant"]}
+          />
+        ),
         loader: ({ params }) =>
           fetchApi(`${usersUrl}/consultants/${params.id}`),
       },

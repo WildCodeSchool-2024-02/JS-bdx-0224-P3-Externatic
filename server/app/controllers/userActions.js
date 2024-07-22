@@ -1,14 +1,5 @@
 const tables = require("../../database/tables");
 
-const browse = async (req, res, next) => {
-  try {
-    const users = await tables.user.readAll();
-    res.json(users);
-  } catch (err) {
-    next(err);
-  }
-};
-
 const read = async (req, res, next) => {
   try {
     const user = await tables.user.read(req.params.id);
@@ -38,7 +29,7 @@ const readByCandidates = async (req, res, next) => {
     if (!candidates || candidates.length === 0) {
       res.sendStatus(404);
     } else {
-      res.json(candidates);
+      res.json(candidates); 
     }
   } catch (err) {
     next(err);
@@ -57,4 +48,4 @@ const add = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, add, read, readByCandidates, readCandidates };
+module.exports = { add, read, readByCandidates, readCandidates };

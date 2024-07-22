@@ -11,9 +11,9 @@ class UserRepository extends AbstractRepository {
       [user.firstname, user.lastname, user.email, user.hashedPassword]
     );
     const [candidat] = await this.database.query(
-      `insert into candidate (user_id) values(?)`,
-      [result.insertId]
-    );
+    `insert into candidate (user_id) values(?)`,
+    [result.insertId]
+  );
     return candidat.insertId;
   }
 
@@ -44,20 +44,13 @@ class UserRepository extends AbstractRepository {
     );
     return rows[0];
   }
-
-  async readAll() {
-    const [rows] = await this.database.query(
-      `select id, firstname, lastname, email from ${this.table}`
-    );
-    return rows;
-  }
-
+  
   async readByEmailWithPassword(email) {
     const [rows] = await this.database.query(
       `select id, email, hashed_password, role from ${this.table} where email = ?`,
       [email]
     );
-    return rows[0];
+    return rows;
   }
 
   async readCandidates(id) {
