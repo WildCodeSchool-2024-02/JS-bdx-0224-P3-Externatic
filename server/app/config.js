@@ -110,7 +110,7 @@ const publicFolderPath = path.join(__dirname, "/../public");
 
 // Serve react resources
 
-// app.use(express.static(reactBuildPath));
+app.use(express.static(reactBuildPath));
 
 // Serve server resources
 
