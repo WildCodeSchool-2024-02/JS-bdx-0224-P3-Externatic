@@ -112,9 +112,8 @@ function DashboardCandidate() {
           )}
         </ul>
       </article>
-      <footer className="flex flex-col items-center gap-5 p-5">
+      <footer className="flex flex-col items-center gap-5 p-10">
         <Button type="button" apply="big" name="Déconnexion" handleChange={logout} />
-        <Button type="button" apply="bigDelete" name="Supprimer mon compte" />
       </footer>
     </main>
   );
