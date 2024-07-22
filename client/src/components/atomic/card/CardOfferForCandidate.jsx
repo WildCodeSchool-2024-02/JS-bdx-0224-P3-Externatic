@@ -43,7 +43,7 @@ const handleCheckboxChange = async (e) => {
 
   const scrollToTop = ScrollToTop();
   return (
-    <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-56 p-4 bg-[var(--secondary-background-color)] mb-4 max-w-md min-w-72">
+    <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-56 p-4 bg-[var(--secondary-background-color)] mb-4 max-w-md min-w-72 md:min-w-md">
       <header className="flex justify-between items-center mb-4">
         <h3 className="text-[var(--primary-color)] max-md:text-lg">
           {offer.title}

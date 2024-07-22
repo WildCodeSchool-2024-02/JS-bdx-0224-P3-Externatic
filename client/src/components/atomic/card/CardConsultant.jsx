@@ -7,7 +7,7 @@ import cv from "../../../assets/images/cv.svg";
 
 export default function CardConsultant({ user }) {
   return (
-    <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate max-w-xl border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 bg-[var(--secondary-background-color)] mb-4 max-md:max-w-96 ">
+    <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-44 p-4 bg-[var(--secondary-background-color)] mb-4 max-w-md min-w-72 md:min-w-md ">
       <header className="flex justify-between items-center mb-4">
         <h3 className="text-[var(--primary-color)] max-md:text-lg">
           {user.firstname} {user.lastname}
