@@ -24,4 +24,6 @@ router.get("/candidates/:id", readCandidates);
 
 router.post("/", hashPassword, add);
 
+router.get("/:id", read);
+
 module.exports = router;

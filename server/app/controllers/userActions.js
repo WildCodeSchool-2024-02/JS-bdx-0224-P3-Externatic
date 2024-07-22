@@ -23,10 +23,17 @@ const read = async (req, res, next) => {
   }
 };
 
-const readCandidates = async (req, res, next) => {
+const readByCandidates = async (req, res, next) => {
   try {
-    const candidatesData = await tables.user.readCandidates(req.params.id);
-    res.json(candidatesData);
+    const candidates = await tables.user.readByCandidates(
+      req.params.id
+    );
+
+    if (!candidates || candidates.length === 0) {
+      res.sendStatus(404);
+    } else {
+      res.json(candidates); 
+    }
   } catch (err) {
     next(err);
   }
@@ -44,4 +51,4 @@ const add = async (req, res, next) => {
   }
 };
 
-module.exports = { browse, add, read, readCandidates };
+module.exports = { browse, add, read, readByCandidates };

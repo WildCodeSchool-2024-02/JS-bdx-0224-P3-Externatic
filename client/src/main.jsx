@@ -5,8 +5,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import fetchApi from "./services/fetchApi";
 import fetchMultipleApis from "./services/fetchMultipleApi";
-
-import "../index.css";
 import App from "./App";
 import HomePage from "./pages/HomePage";
 import OfferPage from "./pages/OfferPage";

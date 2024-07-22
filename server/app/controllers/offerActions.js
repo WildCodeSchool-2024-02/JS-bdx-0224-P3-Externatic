@@ -2,10 +2,14 @@ const tables = require("../../database/tables");
 
 const browse = async (req, res, next) => {
   try {
-    const offers = await tables.offer.readAll();
-
-    res.status(200).json(offers);
-  } catch (err) {
+    if (req.auth && req.auth.id) {
+      const userFavorites = await tables.offer.readAllWithFavorites(req.auth.id);
+      res.json(userFavorites);
+    } else {
+      const offers = await tables.offer.readAll();
+      res.json(offers);
+    }
+  } catch (err) { 
     next(err);
   }
 };

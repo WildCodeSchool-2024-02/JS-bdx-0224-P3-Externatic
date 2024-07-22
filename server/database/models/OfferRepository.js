@@ -108,6 +108,33 @@ class OfferRepository extends AbstractRepository {
 
     return rows;
   }
+
+  async readAllWithFavorites(userId) {
+    const [rows] = await this.database.query(
+      `
+        SELECT  offer.id,
+                offer.title,
+                offer.type,
+                offer.details,
+                offer.city,
+                offer.advantages,
+                offer.salary,
+                company.name AS company_name,
+                IF(f.candidate_id IS NULL, FALSE, TRUE) AS is_favorite,
+                (
+                  SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
+                  FROM techno_offer
+                  INNER JOIN techno ON techno_offer.techno_id = techno.id
+                  WHERE techno_offer.offer_id = offer.id
+                ) AS technos
+        FROM ${this.table} AS offer
+        LEFT JOIN favorite f ON offer.id = f.offer_id AND f.candidate_id = ?
+        INNER JOIN company ON offer.company_id = company.id
+      `,
+      [userId]
+    );
+    return rows;
+  }
 }
 
 module.exports = OfferRepository;
