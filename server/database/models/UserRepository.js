@@ -44,13 +44,13 @@ class UserRepository extends AbstractRepository {
     );
     return rows[0];
   }
-  
+
   async readByEmailWithPassword(email) {
     const [rows] = await this.database.query(
       `select id, email, hashed_password, role from ${this.table} where email = ?`,
       [email]
     );
-    return rows;
+    return rows[0];
   }
 
   async readCandidates(id) {

@@ -2,10 +2,12 @@ import { Link, useLoaderData } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import PreviousPage from "../components/atomic/buttons/PreviousPage";
+import Button from "../components/atomic/buttons/Button";
 
 function DashboardConsultant() {
   const consultantData = useLoaderData();
   const userData = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
 
   const [authId, setAuthId] = useState(null);
 
@@ -14,7 +16,6 @@ function DashboardConsultant() {
       setAuthId(userData.auth.id);
     }
   }, [userData, authId]);
-
 
   return (
     <main className="flex flex-col gap-20 min-h-screen">
@@ -34,6 +35,7 @@ function DashboardConsultant() {
       >
         Gestion Offres
       </Link>
+      <Button apply="big self-center" name="Déconnexion" handleChange={logout} />
     </main>
   );
 }
