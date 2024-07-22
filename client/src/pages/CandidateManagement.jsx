@@ -15,8 +15,14 @@ function CandidateManagement() {
         <SearchInputConsultant id={2} placeholder="Rechercher des disponibilités..." />
       </form>
       <section className="mx-4">
-        
-        <CardConsultant name={userData.firstname} id={userData.lastname} tag={userData.name} />
+        {userData.candidates.map(candidate => (
+          <CardConsultant 
+            key={candidate.id} 
+            name={candidate.firstname} 
+            id={candidate.lastname} 
+            tag={candidate.name} 
+          />
+        ))}
       </section>
     </main>
   );

@@ -49,7 +49,7 @@ const router = createBrowserRouter([
         loader: ({ params }) => fetchApi(`${offersUrl}/${params.id}`),
       },
       {
-        path: "/candidacy",
+        path: "/candidacy/:offerId",
         element: <CandidacyPage />,
         loader: async () => fetchApi(candidacyUrl),
       },

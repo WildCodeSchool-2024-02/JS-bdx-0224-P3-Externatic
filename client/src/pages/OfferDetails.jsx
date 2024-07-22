@@ -87,7 +87,7 @@ function OfferDetails() {
         </h2>
         <p className="md:mx-10 mx-4 mb-20">{offerData.salary} Euro/an.</p>
         <footer className="mb-20 flex flex-col items-center">
-          <Link to={`/candidacy/${authId}`} className="big text-center content-center">POSTULER</Link>
+          <Link to={`/candidacy/${offerData.id}`} className="big text-center content-center">POSTULER</Link>
         </footer>
       </article>
     </main>

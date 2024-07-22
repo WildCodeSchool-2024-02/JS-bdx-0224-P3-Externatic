@@ -6,7 +6,6 @@ const {
   browse,
   add,
   read,
-  readByCandidates,
   readCandidates,
 } = require("../../../controllers/userActions");
 
@@ -19,7 +18,7 @@ router.get("/", browse);
 
 router.get("/:id", read);
 
-router.get("/consultants/:id", verifyToken, verifyRole, readByCandidates);
+router.get("/consultants/:id", verifyToken, verifyRole, readCandidates);
 
 router.get("/candidates/:id", readCandidates);
 

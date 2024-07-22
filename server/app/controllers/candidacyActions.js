@@ -5,7 +5,6 @@ const add = async (req, res, next) => {
 
   try {
     const insertId = await tables.candidacy.create(candidacy);
-
     res.status(201).json({ insertId });
   } catch (err) {
     next(err);

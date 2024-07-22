@@ -1,15 +1,17 @@
 import { useEffect, useContext, useState } from "react";
+import { useParams } from "react-router-dom";
 import FormInputCandidat from "../components/atomic/inputCandidat/formCandidat/FormInputCandidat";
 import useCandidacyForm from "../services/useCandidacyForm";
 import { AuthContext } from "../contexts/AuthContext";
 import ButtonSubmit from "../components/atomic/buttons/ButtonSubmit";
 
 function CandidacyPage() {
+  const { offerId } = useParams();
   const userData = useContext(AuthContext);
 
   const [authId, setAuthId] = useState(null);
 
-  const { formData, setFormData, handleChange, handleSubmitCandidacy } = useCandidacyForm();
+  const { formData, setFormData, handleChange } = useCandidacyForm();
 
   if (userData.auth.id !== authId) {
     setAuthId(userData.auth.id);
@@ -30,13 +32,33 @@ function CandidacyPage() {
         );
       }
     };
-
     fetchUserData();
   }, [setFormData, usersUrl]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const candidacyData = { ...formData, authId, offerId };
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/candidacy/${offerId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(candidacyData),
+        }
+      );
+      return response;
+    } catch (err) {
+      throw new Error("Erreur lors de l'ajout de la candidature:", err);
+    }
+  };
+
   return (
     <main className="flex flex-col min-h-screen">
-      <form>
+      <form onSubmit={handleSubmit}>
         <FormInputCandidat
           id="firstname"
           label="Prénom"
@@ -64,25 +86,7 @@ function CandidacyPage() {
           value={formData.email}
           handleChange={handleChange}
         />
-        <FormInputCandidat
-          id="letter"
-          label="Lettre de motivation"
-          placeholder="Ecrivez votre lettre de motivation ici..."
-          type="textarea"
-          name="letter"
-          value={formData.letter}
-          handleChange={handleChange}
-        />
-        <FormInputCandidat
-          id="cv"
-          label="CV"
-          placeholder="Ajoutez votre CV ici..."
-          type="file"
-          name="cv"
-          value={formData.cv}
-          handleChange={handleChange}
-        />
-        <ButtonSubmit apply="big" name="Postuler" onClick={handleSubmitCandidacy} />
+        <ButtonSubmit apply="big" name="Postuler" />
       </form>
     </main>
   );

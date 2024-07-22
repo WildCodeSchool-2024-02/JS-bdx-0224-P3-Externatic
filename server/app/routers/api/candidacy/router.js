@@ -4,7 +4,7 @@ const router = express.Router();
 
 const { add } = require("../../../controllers/candidacyActions");
 
-router.post("/", add);
+router.post("/:id", add);
 
 
 module.exports = router;
