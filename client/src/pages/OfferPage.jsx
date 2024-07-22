@@ -7,6 +7,9 @@ import SearchInputCandidat from "../components/atomic/inputCandidat/searchInput/
 import { AuthContext } from "../contexts/AuthContext";
 import filterOffers from "../services/filterOffers";
 import decodeToken from "../services/decodedToken";
+import iconSearch from "../assets/images/ICONSEARCH.svg";
+import iconLoc from "../assets/images/ICONLOC.svg";
+import iconStack from "../assets/images/ICONSTACK.svg";
 
 function OfferPage() {
   const { setAuth } = useContext(AuthContext);
@@ -31,7 +34,7 @@ function OfferPage() {
           id="type"
           name="type"
           placeholder="Rechercher un poste ..."
-          iconSrc="./src/assets/images/ICONSEARCH.svg"
+          iconSrc={iconSearch}
           alt="logo recherche"
           value={formData.type}
           handleChange={handleChange}
@@ -40,7 +43,7 @@ function OfferPage() {
           id="city"
           name="city"
           placeholder="Ville, région ou Pays"
-          iconSrc="./src/assets/images/ICONLOC.svg"
+          iconSrc={iconLoc}
           alt="logo recherche"
           value={formData.city}
           handleChange={handleChange}
@@ -49,7 +52,7 @@ function OfferPage() {
           id="technos"
           name="technos"
           placeholder="Compétences, Stack"
-          iconSrc="./src/assets/images/ICONSTACK.svg"
+          iconSrc={iconStack}
           alt="logo recherche"
           value={formData.technos}
           handleChange={handleChange}
