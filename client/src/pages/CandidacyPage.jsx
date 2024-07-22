@@ -1,64 +1,44 @@
 import { useEffect, useContext, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import FormInputCandidat from "../components/atomic/inputCandidat/formCandidat/FormInputCandidat";
 import useCandidacyForm from "../services/useCandidacyForm";
 import { AuthContext } from "../contexts/AuthContext";
 import ButtonSubmit from "../components/atomic/buttons/ButtonSubmit";
+import PreviousPage from "../components/atomic/buttons/PreviousPage";
+import ScrollToTop from "../services/scrollToTop";
 
-function CandidacyPage() {
+function CandidacyPage() {  
+  ScrollToTop();
+
+  const userLoaderData = useLoaderData();
+
   const { offerId } = useParams();
+
   const userData = useContext(AuthContext);
 
   const [authId, setAuthId] = useState(null);
 
-  const { formData, setFormData, handleChange } = useCandidacyForm();
-
-  if (userData.auth.id !== authId) {
-    setAuthId(userData.auth.id);
-  }
-
-  const usersUrl = `/api/users/candidates/${authId}`;
+  const { formData, setFormData, handleChange, handleSubmit } = useCandidacyForm();
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch(import.meta.env.VITE_API_URL + usersUrl);
-        const data = await response.json();
-        setFormData(data[0]);
-      } catch (error) {
-        console.error(
-          "Erreur lors de la récupération des données utilisateur:",
-          error
-        );
-      }
-    };
-    fetchUserData();
-  }, [setFormData, usersUrl]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const candidacyData = { ...formData, authId, offerId };
-
-    try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/candidacy/${offerId}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(candidacyData),
-        }
-      );
-      return response;
-    } catch (err) {
-      throw new Error("Erreur lors de l'ajout de la candidature:", err);
+    if (userData.auth.id !== authId) {
+      setAuthId(userData.auth.id);
     }
-  };
+  }, [userData, authId]);
+
+  useEffect(() => {
+    setFormData(userLoaderData[authId]);
+  }, [setFormData, userLoaderData, authId]); 
+
+  if (!formData) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <main className="flex flex-col min-h-screen">
-      <form onSubmit={handleSubmit}>
+      <PreviousPage source={`/offers/${offerId}`} marginLeft="ml-10" />
+      <form className="flex flex-col gap-5 items-center mt-10" onSubmit={(e) => handleSubmit(e, offerId, authId)}>
+        <h1 className="text-[var(--secondary-color)] mb-10">Postuler à l'offre d'emploi</h1>
         <FormInputCandidat
           id="firstname"
           label="Prénom"

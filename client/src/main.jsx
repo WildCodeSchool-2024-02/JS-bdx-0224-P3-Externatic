@@ -26,7 +26,6 @@ const jobsUrl = "/api/jobs";
 const companiesUrl = "/api/companies";
 const urls = [technosUrl, jobsUrl, companiesUrl];
 const usersUrl = "/api/users";
-const candidacyUrl = "api/candidacy";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +48,7 @@ const router = createBrowserRouter([
       {
         path: "/candidacy/:offerId",
         element: <CandidacyPage />,
-        loader: async () => fetchApi(candidacyUrl),
+        loader: async () => fetchApi(usersUrl),
       },
       {
         path: "/offersCreate",

@@ -34,7 +34,7 @@ function CandidateManagement() {
         marginLeft="ml-10"
         source={`/dashboardConsultant/${authId}`}
       />
-      <h1 className="self-center text-3xl text-[var(--primary-color)]">
+      <h1 className="self-center text-3xl text-[var(--secondary-color)]">
         Vos Candidats
       </h1>
       <form className="self-center flex flex-col gap-4">

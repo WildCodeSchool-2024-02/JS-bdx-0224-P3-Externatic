@@ -15,10 +15,32 @@ const useCandidacyForm = () => {
     }));
   };
 
+  const handleSubmit = async (e, offerId, authId) => {
+    e.preventDefault();
+    const candidacyData = { ...formData, authId, offerId };
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/candidacy/${offerId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(candidacyData),
+        }
+      );
+      return response;
+    } catch (err) {
+      throw new Error("Erreur lors de l'ajout de la candidature:", err);
+    }
+  };
+
   return {
     formData,
     setFormData,
     handleChange,
+    handleSubmit,
   };
 };
 
