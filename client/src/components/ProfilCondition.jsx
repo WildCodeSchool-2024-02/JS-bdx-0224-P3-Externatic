@@ -6,17 +6,17 @@ function ProfilCondition({ handleChangeNav, handleClick, authId, userData }) {
 
   return (
     <>
-      {userData.auth.role === "consultant" && (
+      {userData.auth?.role === "consultant" && (
         <Link to={`/dashboardConsultant/${authId}`} onClick={handleChangeNav}>
           Gestion
         </Link>
       )}
-      {userData.auth.role === "candidat" && (
+      {userData.auth?.role === "candidat" && (
         <Link to={`/dashboardCandidate/${authId}`} onClick={handleChangeNav}>
           Profil
         </Link>
       )}
-      {!["consultant", "candidat"].includes(userData.auth.role) && (
+      {!["consultant", "candidat"].includes(userData.auth?.role) && (
         <Button
           type="button"
           apply="text-[var(--primary-background-color)] md:text-[var(--text-color)]"
@@ -35,9 +35,9 @@ ProfilCondition.propTypes = {
   authId: PropTypes.string.isRequired,
   userData: PropTypes.shape({
     auth: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      role: PropTypes.string.isRequired,
-    }).isRequired,
+      id: PropTypes.string,
+      role: PropTypes.string,
+    }),
   }).isRequired,
 };
 

@@ -19,8 +19,8 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
   const [authId, setAuthId] = useState(null);
 
   useEffect(() => {
-    if (userData.auth.id !== authId) {
-      setAuthId(userData.auth.id);
+    if (userData.auth?.id !== authId) {
+      setAuthId(userData.auth?.id);
     }
   }, [userData, authId]);
 
@@ -113,23 +113,27 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
               userData={userData}
             />
           </li>
-          <li>
-            <Button
-              type="button"
-              apply="register"
-              name="S'inscrire"
-              handleChange={handleClick}
-            />
-          </li>
-          <li>
-            <Button
-              type="button"
-              name="Se connecter"
-              apply="basic"
-              buttonAnimate={false}
-              handleChange={handleClickConnexion}
-            />
-          </li>
+          {!userData.auth && (
+            <>
+              <li>
+                <Button
+                  type="button"
+                  apply="register"
+                  name="S'inscrire"
+                  handleChange={handleClick}
+                />
+              </li>
+              <li>
+                <Button
+                  type="button"
+                  name="Se connecter"
+                  apply="basic"
+                  buttonAnimate={false}
+                  handleChange={handleClickConnexion}
+                />
+              </li>
+            </>
+          )}
         </ul>
         <img
           className="hidden self-center max-w-7"

@@ -55,7 +55,8 @@ const useLogicForm = () => {
       if (response) {
         const userData = response.token;
         handleChangeModal();
-        navigate("/offers");
+        navigate("/");
+        window.location.reload();
         localStorage.setItem("token", userData);
         return userData;
       }
