@@ -7,8 +7,8 @@ import PreviousPage from "../components/atomic/buttons/PreviousPage";
 
 function CandidateManagement() {
   const candidatesData = useLoaderData();
-  const userData = useContext(AuthContext);
 
+  const userData = useContext(AuthContext);
 
   const [authId, setAuthId] = useState(null);
 
@@ -19,7 +19,7 @@ function CandidateManagement() {
   }, [userData, authId]);
 
   const [inputLastnameContent, setInputLastnameContent] = useState("");
-  
+
   const filteredCandidatesByLastname = Array.isArray(candidatesData)
     ? candidatesData.filter((candidate) =>
         candidate.lastname
@@ -30,8 +30,11 @@ function CandidateManagement() {
 
   return (
     <main className="flex flex-col gap-10">
-      <PreviousPage marginLeft="ml-10" source={`/dashboardConsultant/${authId}`} />
-      <h1 className="self-center text-3xl text-[var(--primary-color)]">
+      <PreviousPage
+        marginLeft="ml-10"
+        source={`/dashboardConsultant/${authId}`}
+      />
+      <h1 className="self-center text-3xl text-[var(--secondary-color)]">
         Vos Candidats
       </h1>
       <form className="self-center flex flex-col gap-4">
@@ -43,7 +46,7 @@ function CandidateManagement() {
         />
       </form>
       <section className="mx-4 gap-5 flex flex-col items-center md:flex-row md:flex-wrap md:justify-center">
-        {candidatesData.length > 0 ? (
+        {filteredCandidatesByLastname.length > 0 ? (
           filteredCandidatesByLastname.map((candidate) => (
             <CardConsultant key={candidate.id} user={candidate} />
           ))

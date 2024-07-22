@@ -44,13 +44,26 @@ class UserRepository extends AbstractRepository {
     );
     return rows[0];
   }
-
+  
   async readByEmailWithPassword(email) {
     const [rows] = await this.database.query(
       `select id, email, hashed_password, role from ${this.table} where email = ?`,
       [email]
     );
-    return rows[0];
+    return rows;
+  }
+
+  async readCandidates(id) {
+    const [rows] = await this.database.query(
+      `select firstname, lastname, email, cv.path AS cv_path,
+      cv.name AS cv_name
+    FROM user u
+    JOIN candidate c ON u.id = c.user_id
+    LEFT JOIN cv ON c.id = cv.candidate_id
+    WHERE u.id = ?`,
+      [id]
+    );
+    return rows;
   }
 
   async readByCandidates(id) {
@@ -66,16 +79,17 @@ class UserRepository extends AbstractRepository {
       JSON_ARRAYAGG(
         JSON_OBJECT('name', t.name)
       ) AS technos
-  FROM user AS u
-  JOIN candidate AS c ON u.id = c.user_id
-  JOIN candidacy AS cd ON c.id = cd.candidate_id
-  JOIN offer AS o ON cd.offer_id = o.id
-  JOIN region AS r ON o.consultant_id = r.consultant_id
-  LEFT JOIN techno_candidate AS tc ON c.id = tc.candidate_id
-  LEFT JOIN techno AS t ON tc.techno_id = t.id
-  LEFT JOIN cv ON c.id = cv.candidate_id
-  WHERE r.consultant_id = ? AND u.role = 'candidat'
-  GROUP BY u.id, cv.path`,
+    FROM user AS u
+    JOIN candidate AS c ON u.id = c.user_id
+    JOIN candidacy AS cd ON c.id = cd.candidate_id
+    JOIN offer AS o ON cd.offer_id = o.id
+    JOIN consultant AS con ON o.consultant_id = con.id
+    JOIN user AS con_user ON con.user_id = con_user.id
+    LEFT JOIN techno_candidate AS tc ON c.id = tc.candidate_id
+    LEFT JOIN techno AS t ON tc.techno_id = t.id
+    LEFT JOIN cv ON c.id = cv.candidate_id
+    WHERE con_user.id = ? AND u.role = 'candidat'
+    GROUP BY u.id, u.firstname, u.lastname, u.phone, u.email, u.role, cv.path`,
       [id]
     );
     return rows;
