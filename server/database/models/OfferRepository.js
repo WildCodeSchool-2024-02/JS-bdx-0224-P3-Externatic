@@ -11,6 +11,17 @@ class OfferRepository extends AbstractRepository {
     try {
       await this.database.query("START TRANSACTION");
 
+      const [consultant] = await this.database.query(
+        `SELECT id FROM consultant WHERE user_id = ?`,
+        [offer.authId]
+      );
+
+      if (!consultant.length) {
+        throw new Error(`Consultant with user_id ${offer.authId} does not exist`);
+      }
+
+      const consultantId = consultant[0].id;
+
       const [offerResult] = await this.database.query(
         `INSERT INTO ${this.table} (title, city, salary, details, advantages, type, consultant_id, company_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
         [
@@ -20,7 +31,7 @@ class OfferRepository extends AbstractRepository {
           offer.details,
           offer.advantages,
           offer.type,
-          offer.authId,
+          consultantId,
           parseInt(offer.company, 10),
         ]
       );
