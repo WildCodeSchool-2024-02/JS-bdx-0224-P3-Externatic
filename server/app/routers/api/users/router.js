@@ -3,7 +3,6 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  browse,
   add,
   read,
   readByCandidates,
@@ -13,8 +12,6 @@ const { hashPassword } = require("../../../services/hashPassword");
 
 const { verifyToken } = require("../../../middlewares/verifyToken");
 const { verifyRole } = require("../../../middlewares/verifyRole");
-
-router.get("/", browse);
 
 router.get("/:id", read);
 
