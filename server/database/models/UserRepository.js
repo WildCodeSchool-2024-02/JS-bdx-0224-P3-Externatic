@@ -11,9 +11,9 @@ class UserRepository extends AbstractRepository {
       [user.firstname, user.lastname, user.email, user.hashedPassword]
     );
     const [candidat] = await this.database.query(
-    `insert into candidate (user_id) values(?)`,
-    [result.insertId]
-  );
+      `insert into candidate (user_id) values(?)`,
+      [result.insertId]
+    );
     return candidat.insertId;
   }
 
@@ -68,14 +68,14 @@ class UserRepository extends AbstractRepository {
     JOIN candidate c ON u.id = c.user_id
     LEFT JOIN cv ON c.id = cv.candidate_id
     WHERE u.id = ?`,
-    [id]
-  );
+      [id]
+    );
     return rows;
   }
 
-async readByCandidates(id) {
-  const [rows] = await this.database.query(
-    `SELECT 
+  async readByCandidates(id) {
+    const [rows] = await this.database.query(
+      `SELECT 
       u.id,
       u.firstname, 
       u.lastname, 
@@ -86,16 +86,17 @@ async readByCandidates(id) {
       JSON_ARRAYAGG(
         JSON_OBJECT('name', t.name)
       ) AS technos
-  FROM user AS u
-  JOIN candidate AS c ON u.id = c.user_id
-  JOIN candidacy AS cd ON c.id = cd.candidate_id
-  JOIN offer AS o ON cd.offer_id = o.id
-  JOIN region AS r ON o.consultant_id = r.consultant_id
-  LEFT JOIN techno_candidate AS tc ON c.id = tc.candidate_id
-  LEFT JOIN techno AS t ON tc.techno_id = t.id
-  LEFT JOIN cv ON c.id = cv.candidate_id
-  WHERE r.consultant_id = ? AND u.role = 'candidat'
-  GROUP BY u.id, u.firstname, u.lastname, u.phone, u.email, u.role, cv.path`,
+    FROM user AS u
+    JOIN candidate AS c ON u.id = c.user_id
+    JOIN candidacy AS cd ON c.id = cd.candidate_id
+    JOIN offer AS o ON cd.offer_id = o.id
+    JOIN consultant AS con ON o.consultant_id = con.id
+    JOIN user AS con_user ON con.user_id = con_user.id
+    LEFT JOIN techno_candidate AS tc ON c.id = tc.candidate_id
+    LEFT JOIN techno AS t ON tc.techno_id = t.id
+    LEFT JOIN cv ON c.id = cv.candidate_id
+    WHERE con_user.id = ? AND u.role = 'candidat'
+    GROUP BY u.id, u.firstname, u.lastname, u.phone, u.email, u.role, cv.path`,
       [id]
     );
     return rows;

@@ -35,7 +35,6 @@ const readCandidates = async (req, res, next) => {
 const readByCandidates = async (req, res, next) => {
   try {
     const candidates = await tables.user.readByCandidates(req.params.id);
-
     if (!candidates || candidates.length === 0) {
       res.sendStatus(404);
     } else {

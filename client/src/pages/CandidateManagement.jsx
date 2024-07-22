@@ -7,6 +7,7 @@ import PreviousPage from "../components/atomic/buttons/PreviousPage";
 
 function CandidateManagement() {
   const candidatesData = useLoaderData();
+
   const userData = useContext(AuthContext);
 
   const [authId, setAuthId] = useState(null);
@@ -45,7 +46,7 @@ function CandidateManagement() {
         />
       </form>
       <section className="mx-4 gap-5 flex flex-col items-center md:flex-row md:flex-wrap md:justify-center">
-        {candidatesData.length > 0 ? (
+        {filteredCandidatesByLastname.length > 0 ? (
           filteredCandidatesByLastname.map((candidate) => (
             <CardConsultant key={candidate.id} user={candidate} />
           ))
