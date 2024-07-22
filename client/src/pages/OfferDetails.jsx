@@ -3,11 +3,12 @@ import { useLoaderData } from "react-router-dom";
 import Tag from "../components/atomic/tag/Tag";
 import PreviousPage from "../components/atomic/buttons/PreviousPage";
 import Button from "../components/atomic/buttons/Button";
+import ScrollToTop from "../services/scrollToTop";
 
 function OfferDetails() {
   const offerData = useLoaderData();
-  
 
+  ScrollToTop();
   return (
     <main>
       <article>
