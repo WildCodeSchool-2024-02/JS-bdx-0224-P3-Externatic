@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-function PreviousPage({ source }) {
+function PreviousPage({ source, marginLeft }) {
   return (
     <Link
       to={source}
-      className="flex mt-10 gap-2 content-center font-medium text-[var(--secondary-color)] text-xl hover:text-[var(--primary-color)] duration-300 group"
+      className={`flex mt-10 ${marginLeft} gap-2 content-center font-medium text-[var(--secondary-color)] text-xl hover:text-[var(--primary-color)] duration-300 group`}
     >
       <svg
         className=" self-center"
@@ -28,6 +28,11 @@ function PreviousPage({ source }) {
 
 PreviousPage.propTypes = {
   source: PropTypes.string.isRequired,
+  marginLeft: PropTypes.string,
+};
+
+PreviousPage.defaultProps = {
+  marginLeft: "0",
 };
 
 export default PreviousPage;

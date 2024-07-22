@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import IconSearch from "../../../../assets/images/ICONSEARCH.svg"
 
-export default function SearchInputConsultant({ id, placeholder }) {
+export default function SearchInputConsultant({ id, placeholder, value, onChange }) {
   return (
     <label
       className=" text-[0] relative flex items-center w-[37rem] h-24 max-sm:w-64 max-sm:h-14"
@@ -13,6 +13,8 @@ export default function SearchInputConsultant({ id, placeholder }) {
         id={id}
         type="search"
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
       />
       <img
         src={IconSearch}
@@ -26,4 +28,6 @@ export default function SearchInputConsultant({ id, placeholder }) {
 SearchInputConsultant.propTypes = {
   id: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };

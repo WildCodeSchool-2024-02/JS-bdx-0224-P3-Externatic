@@ -22,4 +22,6 @@ router.get("/consultants/:id", verifyToken, verifyRole, readByCandidates);
 
 router.post("/", hashPassword, add);
 
+router.get("/:id", read);
+
 module.exports = router;

@@ -6,6 +6,7 @@ import Button from "../components/atomic/buttons/Button";
 
 function OfferDetails() {
   const offerData = useLoaderData();
+  
 
   return (
     <main>
