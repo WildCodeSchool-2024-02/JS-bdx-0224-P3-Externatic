@@ -1,16 +1,17 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import Tag from "../tag/Tag";
-import ScrollToTop from "../../../services/scrollToTop";
 import { AuthContext } from "../../../contexts/AuthContext";
+import { useModal } from "../../../contexts/ModalContext";
+import AccessOfferDetailsCondition from "../../AccessOfferDetailsCondition";
 
 export default function CardOfferForCandidate({ offer }) {
   const { auth } = useContext(AuthContext);
+  const { handleChangeModal } = useModal();
   const [isFavorite, setIsFavorite] = useState(offer.is_favorite);
 
-const handleCheckboxChange = async (e) => {
+  const handleCheckboxChange = async (e) => {
     const isChecked = e.target.checked;
     const url = `${import.meta.env.VITE_API_URL}/api/favorites`;
     const headers = {
@@ -34,14 +35,14 @@ const handleCheckboxChange = async (e) => {
         });
       }
 
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok)
+        throw new Error(`HTTP error! status: ${response.status}`);
       setIsFavorite(isChecked);
     } catch (err) {
       throw new Error("Error handling favorite", err);
     }
   };
 
-  const scrollToTop = ScrollToTop();
   return (
     <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-56 p-4 bg-[var(--secondary-background-color)] mb-4 max-w-md min-w-72">
       <header className="flex justify-between items-center mb-4">
@@ -88,13 +89,10 @@ const handleCheckboxChange = async (e) => {
         {offer.details}
       </p>
       <footer className="flex justify-center">
-        <Link
-          className="medium buttonAnimate text-center content-center"
-          to={`/offers/${offer.id}`}
-          onClick={scrollToTop}
-        >
-          VOIR L'OFFRE
-        </Link>
+        <AccessOfferDetailsCondition
+          offerId={offer.id}
+          handleClick={handleChangeModal}
+        />
       </footer>
     </article>
   );

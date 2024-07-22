@@ -5,6 +5,9 @@ import createOffer from "../services/createOffer";
 import ReturnButton from "../components/atomic/buttons/PreviousPage";
 import FormInputConsultant from "../components/atomic/inputConsultant/formConsultant/FormInputConsultant";
 import FormDropDown from "../components/atomic/inputConsultant/formConsultant/FormDropDown";
+
+import ButtonSubmit from "../components/atomic/buttons/ButtonSubmit";
+
 import { AuthContext } from "../contexts/AuthContext";
 
 function CreateOfferPage() {
@@ -71,7 +74,7 @@ function CreateOfferPage() {
 
   return (
     <main className="min-h-screen">
-      <ReturnButton />
+      <ReturnButton source={`/dashboardConsultant/${authId}`} marginLeft="ml-10" />
       <h1 className="my-6 text-center text-[var(--secondary-color)]">
         Ajoutez une offre
       </h1>
@@ -147,9 +150,7 @@ function CreateOfferPage() {
           value={formData.advantages}
           handleChange={handleChange}
         />
-        <button type="submit" label="Publier">
-          Publier
-        </button>
+        <ButtonSubmit onClick={handleSubmitOffer} apply="big" name="Publier"/>
       </form>
     </main>
   );
