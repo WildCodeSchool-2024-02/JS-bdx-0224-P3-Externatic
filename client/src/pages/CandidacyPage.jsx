@@ -17,7 +17,7 @@ function CandidacyPage() {
     setAuthId(userData.auth.id);
   }
 
-  const usersUrl = `/api/users/candidates/3`;
+  const usersUrl = `/api/users/candidates/${authId}`;
 
   useEffect(() => {
     const fetchUserData = async () => {

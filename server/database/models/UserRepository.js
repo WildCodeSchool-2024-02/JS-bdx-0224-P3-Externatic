@@ -11,9 +11,9 @@ class UserRepository extends AbstractRepository {
       [user.firstname, user.lastname, user.email, user.hashedPassword]
     );
     const [candidat] = await this.database.query(
-      `insert into candidate (user_id) values(?)`,
-      [result.insertId]
-    );
+    `insert into candidate (user_id) values(?)`,
+    [result.insertId]
+  );
     return candidat.insertId;
   }
 
@@ -60,9 +60,22 @@ class UserRepository extends AbstractRepository {
     return rows[0];
   }
 
-  async readByCandidates(id) {
+  async readCandidates(id) {
     const [rows] = await this.database.query(
-      `SELECT 
+      `select firstname, lastname, email, cv.path AS cv_path,
+      cv.name AS cv_name
+    FROM user u
+    JOIN candidate c ON u.id = c.user_id
+    LEFT JOIN cv ON c.id = cv.candidate_id
+    WHERE u.id = ?`,
+    [id]
+  );
+    return rows;
+  }
+
+async readByCandidates(id) {
+  const [rows] = await this.database.query(
+    `SELECT 
       u.id,
       u.firstname, 
       u.lastname, 
@@ -82,7 +95,7 @@ class UserRepository extends AbstractRepository {
   LEFT JOIN techno AS t ON tc.techno_id = t.id
   LEFT JOIN cv ON c.id = cv.candidate_id
   WHERE r.consultant_id = ? AND u.role = 'candidat'
-  GROUP BY u.id, cv.path`,
+  GROUP BY u.id, u.firstname, u.lastname, u.phone, u.email, u.role, cv.path`,
       [id]
     );
     return rows;
