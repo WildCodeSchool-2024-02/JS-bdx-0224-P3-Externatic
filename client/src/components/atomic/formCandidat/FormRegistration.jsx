@@ -11,7 +11,11 @@ export default function FormRegistration({
   handleSubmitRegistration,
 }) {
   return (
-    <form id="registration" method="POST" className="flex flex-col items-center">
+    <form
+      id="registration"
+      method="POST"
+      className="flex flex-col items-center"
+    >
       <FormInputCandidat
         handleChange={handleChange}
         value={formData.firstname}

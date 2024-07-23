@@ -11,7 +11,9 @@ export default function Values() {
       </h2>
       <article className="p-4 m-4 md:ml-20 flex flex-col justify-around gap-10 bg-[var(--secondary-background-color)] border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow md:max-w-xl">
         <img src={hand} alt="" className="w-16 md:w-20 self-center" />
-        <h3 className="text-center text-[var(--secondary-color)]">Notre proximité</h3>
+        <h3 className="text-center text-[var(--secondary-color)]">
+          Notre proximité
+        </h3>
         <p className="max-w-prose md:mx-10">
           L’expérience professionnelle est une chose. L’expérience de vie en est
           une autre. Alors nos consultants prennent le temps de faire
@@ -45,7 +47,9 @@ export default function Values() {
       </article>
       <article className="p-4 m-4 md:mr-20 flex flex-col justify-around gap-10 bg-[var(--secondary-background-color)] border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow md:max-w-xl">
         <img src={calendar} alt="" className="w-16 md:w-20 self-center" />
-        <h3 className="row-start-6 col-start-2 text-center text-[var(--secondary-color)]">Nos Événements</h3>
+        <h3 className="row-start-6 col-start-2 text-center text-[var(--secondary-color)]">
+          Nos Événements
+        </h3>
         <p className="row-start-7 col-start-2 md:mx-10">MEETUP AFUP Nantes</p>
         <p className="mt-12 row-start-7 col-start-2 sm:mt-6 md:mx-10">
           📆 Mardi 25 août à partir de 18h30

@@ -58,7 +58,6 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
     return () => {};
   }, [menuRef]);
 
-
   return (
     <>
       <ModalRegistration

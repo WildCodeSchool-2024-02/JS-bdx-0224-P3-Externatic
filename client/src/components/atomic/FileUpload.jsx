@@ -15,10 +15,13 @@ export default function FileUpload() {
       formData.append("myfile", file);
 
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, {
-          method: "POST",
-          body: formData,
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/upload`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
 
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -32,7 +35,10 @@ export default function FileUpload() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-center md:items-start mt-8 mb-8">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col items-center md:items-start mt-8 mb-8"
+    >
       <Dropzone
         onDrop={(acceptedFiles) => setFile(acceptedFiles[0])}
         accept="text/pdf"
@@ -59,14 +65,14 @@ export default function FileUpload() {
             </svg>
             <input {...getInputProps()} />
             {uploadSuccess === null && (
-                <p>Glissez le fichier ici ou cliquez pour le sélectionner</p>
-              )}
-              {uploadSuccess === true && (
-                <p>Le fichier a été téléchargé avec succès! ✅</p>
-              )}
-              {uploadSuccess === false && (
-                <p>Erreur lors du téléchargement du fichier. ❌</p>
-              )}
+              <p>Glissez le fichier ici ou cliquez pour le sélectionner</p>
+            )}
+            {uploadSuccess === true && (
+              <p>Le fichier a été téléchargé avec succès! ✅</p>
+            )}
+            {uploadSuccess === false && (
+              <p>Erreur lors du téléchargement du fichier. ❌</p>
+            )}
             <ul>
               {file && (
                 <ul>
@@ -79,7 +85,7 @@ export default function FileUpload() {
           </label>
         )}
       </Dropzone>
-      <ButtonSubmit apply="medium" name="Envoyer"/>
+      <ButtonSubmit apply="medium" name="Envoyer" />
     </form>
   );
 }

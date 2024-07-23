@@ -10,7 +10,7 @@ import FileUpload from "../components/atomic/FileUpload";
 import Tag from "../components/atomic/tag/Tag";
 import Button from "../components/atomic/buttons/Button";
 import CardOfferForCandidate from "../components/atomic/card/CardOfferForCandidate";
-import {AuthContext} from "../contexts/AuthContext";
+import { AuthContext } from "../contexts/AuthContext";
 
 import "../../index.css";
 
@@ -21,11 +21,14 @@ function DashboardCandidate() {
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/favorites`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/favorites`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
         const result = await response.json();
@@ -88,7 +91,7 @@ function DashboardCandidate() {
                 640: {
                   slidesPerView: 2,
                   spaceBetween: 30,
-                }
+                },
               }}
               pagination={{
                 clickable: true,
@@ -113,7 +116,12 @@ function DashboardCandidate() {
         </ul>
       </article>
       <footer className="flex flex-col items-center gap-5 p-10">
-        <Button type="button" apply="big" name="Déconnexion" handleChange={logout} />
+        <Button
+          type="button"
+          apply="big"
+          name="Déconnexion"
+          handleChange={logout}
+        />
       </footer>
     </main>
   );

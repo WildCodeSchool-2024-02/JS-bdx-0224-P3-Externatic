@@ -6,6 +6,6 @@ export default {
   },
   plugins: [
     // eslint-disable-next-line global-require
-    require('tailwindcss-animated')
+    require("tailwindcss-animated"),
   ],
 };

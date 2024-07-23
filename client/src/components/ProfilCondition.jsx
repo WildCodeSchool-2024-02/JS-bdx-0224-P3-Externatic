@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Button from "./atomic/buttons/Button";
 
 function ProfilCondition({ handleChangeNav, handleClick, authId, userData }) {
-
   return (
     <>
       {userData.auth?.role === "consultant" && (
@@ -40,6 +39,5 @@ ProfilCondition.propTypes = {
     }),
   }).isRequired,
 };
-
 
 export default ProfilCondition;

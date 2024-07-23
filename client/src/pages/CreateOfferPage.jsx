@@ -19,7 +19,7 @@ function CreateOfferPage() {
       setAuthId(userData.auth.id);
     }
   }, [userData, authId]);
-  
+
   const navigate = useNavigate();
   const offersUrl = "/api/offers";
   const [technos, jobs, companies] = useLoaderData();
@@ -74,7 +74,10 @@ function CreateOfferPage() {
 
   return (
     <main className="min-h-screen">
-      <ReturnButton source={`/dashboardConsultant/${authId}`} marginLeft="ml-10" />
+      <ReturnButton
+        source={`/dashboardConsultant/${authId}`}
+        marginLeft="ml-10"
+      />
       <h1 className="my-6 text-center text-[var(--secondary-color)]">
         Ajoutez une offre
       </h1>
@@ -150,7 +153,7 @@ function CreateOfferPage() {
           value={formData.advantages}
           handleChange={handleChange}
         />
-        <ButtonSubmit onClick={handleSubmitOffer} apply="big" name="Publier"/>
+        <ButtonSubmit onClick={handleSubmitOffer} apply="big" name="Publier" />
       </form>
     </main>
   );
