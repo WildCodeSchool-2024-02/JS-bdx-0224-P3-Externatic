@@ -7,21 +7,34 @@ export default function FormInputCandidat({
   handleChange,
   name,
   value,
+  placeholder,
 }) {
   return (
     <label
-      className="text-[var(--primary-color)] font-medium max-md:text-sm max-md:font-normal w-72 flex flex-col mb-4 gap-4 max-sm:w-64"
+      className="w-[34rem] flex flex-col mb-4 gap-4 text-[var(--primary-color)] font-medium max-sm:w-64 max-md:w-96 max-md:text-base max-md:font-normal "
       htmlFor={id}
     >
       {label}
-      <input
-        className=" h-10 border-2 outline-[var(--primary-color)] rounded-s px-2"
-        id={id}
-        type={type}
-        onChange={handleChange}
-        name={name}
-        value={value}
-      />
+      {type === "textarea" ? (
+        <textarea
+          className="h-72 border-2 outline-[var(--primary-color)] rounded-s px-2 py-2 text-[var(--text-color)]"
+          id={id}
+          name={name}
+          onChange={handleChange}
+          value={value}
+          placeholder={placeholder}
+        />
+      ) : (
+        <input
+          className="h-12 border-2 outline-[var(--primary-color)] rounded-s px-2 text-[var(--text-color)]"
+          id={id}
+          name={name}
+          type={type}
+          onChange={handleChange}
+          value={value}
+          placeholder={placeholder}
+        />
+      )}
     </label>
   );
 }
@@ -37,4 +50,9 @@ FormInputCandidat.propTypes = {
     PropTypes.number,
     PropTypes.bool,
   ]).isRequired,
+  placeholder: PropTypes.string,
+};
+
+FormInputCandidat.defaultProps = {
+  placeholder: "",
 };

@@ -1,20 +1,37 @@
 import PropTypes from "prop-types";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 import useLogicForm from "../services/useLogicForm";
 import { useModal } from "../contexts/ModalContext";
 import externatic from "../assets/Externatic.svg";
 import menuBurger from "../assets/images/menuBurger.svg";
 import cross from "../assets/images/cross-svgrepo-com.svg";
-import disconnected from "../assets/images/iconDisconnect.svg";
 import NavAccess from "../services/NavAccess";
 import Button from "./atomic/buttons/Button";
 import ModalRegistration from "./ModalRegistration";
+import ProfilCondition from "./ProfilCondition";
 
 function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
+  const userData = useContext(AuthContext);
+
+  const [authId, setAuthId] = useState(null);
+
+  useEffect(() => {
+    if (userData.auth?.id !== authId) {
+      setAuthId(userData.auth?.id);
+    }
+  }, [userData, authId]);
+
   const menuRef = useRef(null);
   const { handleChangeModal, setIsClicked } = useModal();
-  const { formData, handleChange, handleSubmitRegistration, handleSubmitLogin } = useLogicForm();
+
+  const {
+    formData,
+    handleChange,
+    handleSubmitRegistration,
+    handleSubmitLogin,
+  } = useLogicForm();
 
   const handleClick = () => {
     handleChangeNav();
@@ -40,6 +57,7 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
     }
     return () => {};
   }, [menuRef]);
+
 
   return (
     <>
@@ -88,33 +106,43 @@ function Navbar({ handleChangeNav, isNavOpen, isNavVisible }) {
             </Link>
           </li>
           <li>
-            <Link to="/dashboard/:id" onClick={handleChangeNav}>
-              Profil
-            </Link>
-          </li>
-          <li>
-            <Button
-              type="button"
-              apply="register"
-              name="S'inscrire"
-              handleChange={handleClick}
+            <ProfilCondition
+              handleChangeNav={handleChangeNav}
+              handleClick={handleClick}
+              authId={authId}
+              userData={userData}
             />
           </li>
-          <li className="md:-ml-8">
-            <Button
-              type="button"
-              name="Se connecter"
-              apply="basic"
-              buttonAnimate={false}
-              handleChange={handleClickConnexion}
-            />
-          </li>
+          {userData.auth && userData.auth.id && userData.auth.role ? (
+            <li>
+              <img
+                className="self-center max-w-10 rounded-full"
+                src={userData.auth.picture || "https://picsum.photos/200"}
+                alt="profil connecté"
+              />
+            </li>
+          ) : (
+            <>
+              <li>
+                <Button
+                  type="button"
+                  apply="register"
+                  name="S'inscrire"
+                  handleChange={handleClick}
+                />
+              </li>
+              <li>
+                <Button
+                  type="button"
+                  name="Se connecter"
+                  apply="basic"
+                  buttonAnimate={false}
+                  handleChange={handleClickConnexion}
+                />
+              </li>
+            </>
+          )}
         </ul>
-        <img
-          className="hidden self-center max-w-7"
-          src={disconnected}
-          alt="profil non connecté"
-        />
       </nav>
     </>
   );

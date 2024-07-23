@@ -7,23 +7,55 @@ class OfferRepository extends AbstractRepository {
     super({ table: "offer" });
   }
 
-  // The C of CRUD - Create operation
+  async create(offer) {
+    try {
+      await this.database.query("START TRANSACTION");
 
-  // async create(offer) {
-  //   // Execute the SQL INSERT query to add a new offer to the "offer" table
-  //   const [result] = await this.database.query(
-  //     `insert into ${this.table} (title, user_id) values (?, ?)`,
-  //     [offer.title, offer.user_id]
-  //   );
+      const [consultant] = await this.database.query(
+        `SELECT id FROM consultant WHERE user_id = ?`,
+        [offer.authId]
+      );
 
-  //   // Return the ID of the newly inserted offer
-  //   return result.insertId;
-  // }
+      if (!consultant.length) {
+        throw new Error(`Consultant with user_id ${offer.authId} does not exist`);
+      }
 
-  // The Rs of CRUD - Read operations
+      const consultantId = consultant[0].id;
+
+      const [offerResult] = await this.database.query(
+        `INSERT INTO ${this.table} (title, city, salary, details, advantages, type, consultant_id, company_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          offer.title,
+          offer.city,
+          parseInt(offer.salary, 10),
+          offer.details,
+          offer.advantages,
+          offer.type,
+          consultantId,
+          parseInt(offer.company, 10),
+        ]
+      );
+      const offerId = offerResult.insertId;
+
+      const technoPromises = offer.techno.map((tech) =>
+        this.database.query(
+          `INSERT INTO techno_offer (offer_id, techno_id) VALUES (?, ?)`,
+          [offerId, tech]
+        )
+      );
+
+      await Promise.all(technoPromises);
+
+      await this.database.query("COMMIT");
+      return offerId;
+    } catch (error) {
+      await this.database.query("ROLLBACK");
+      console.error("Erreur lors de la création de l'offre :", error);
+      throw error;
+    }
+  }
 
   async read(id) {
-    // Execute the SQL SELECT query to retrieve a specific offer by its ID
     const [rows] = await this.database.query(
       `
       SELECT 
@@ -54,59 +86,53 @@ class OfferRepository extends AbstractRepository {
     return rows[0];
   }
 
-  // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing offer
-
-  // async update(offer) {
-  //   ...
-  // }
-
-  // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an offer by its ID
-
-  // async delete(id) {
-  //   ...
-  // }
-
-  async create(offer) {
-    const [result] = await this.database.query(
-      `
-      INSERT INTO ${this.table} (title, details, advantages, salary, consultant_id, job_id)
-      VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [
-        offer.title,
-        offer.details,
-        offer.advantages,
-        offer.salary,
-        offer.consultant_id,
-        offer.job_id,
-        offer.id,
-      ]
-    );
-
-    return result.insertId;
-  }
-
   async readAll() {
     const [rows] = await this.database.query(
       `
-      SELECT  offer.id,
-              offer.title,
-              offer.type,
-              offer.details,
-              offer.city,
-              company.name AS company_name,
-              (
-                SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
-                FROM techno_offer
-                INNER JOIN techno ON techno_offer.techno_id = techno.id
-                WHERE techno_offer.offer_id = offer.id
-              ) AS technos
-      FROM ${this.table} AS offer
-      INNER JOIN company ON offer.company_id = company.id
+        SELECT  offer.id,
+                offer.title,
+                offer.type,
+                offer.details,
+                offer.city,
+                company.name AS company_name,
+                (
+                  SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
+                  FROM techno_offer
+                  INNER JOIN techno ON techno_offer.techno_id = techno.id
+                  WHERE techno_offer.offer_id = offer.id
+                ) AS technos
+                FROM ${this.table} AS offer
+                INNER JOIN company ON offer.company_id = company.id
       `
     );
 
+    return rows;
+  }
+
+  async readAllWithFavorites(userId) {
+    const [rows] = await this.database.query(
+      `
+        SELECT  offer.id,
+                offer.title,
+                offer.type,
+                offer.details,
+                offer.city,
+                offer.advantages,
+                offer.salary,
+                company.name AS company_name,
+                IF(f.candidate_id IS NULL, FALSE, TRUE) AS is_favorite,
+                (
+                  SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
+                  FROM techno_offer
+                  INNER JOIN techno ON techno_offer.techno_id = techno.id
+                  WHERE techno_offer.offer_id = offer.id
+                ) AS technos
+        FROM ${this.table} AS offer
+        LEFT JOIN favorite f ON offer.id = f.offer_id AND f.candidate_id = ?
+        INNER JOIN company ON offer.company_id = company.id
+      `,
+      [userId]
+    );
     return rows;
   }
 }

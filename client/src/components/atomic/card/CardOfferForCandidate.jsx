@@ -1,20 +1,57 @@
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
 import PropTypes from "prop-types";
 
 import Tag from "../tag/Tag";
-import ScrollToTop from "../../../services/scrollToTop";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { useModal } from "../../../contexts/ModalContext";
+import AccessOfferDetailsCondition from "../../AccessOfferDetailsCondition";
 
 export default function CardOfferForCandidate({ offer }) {
-  const scrollToTop = ScrollToTop();
+  const { auth } = useContext(AuthContext);
+  const { handleChangeModal } = useModal();
+  const [isFavorite, setIsFavorite] = useState(offer.is_favorite);
+
+  const handleCheckboxChange = async (e) => {
+    const isChecked = e.target.checked;
+    const url = `${import.meta.env.VITE_API_URL}/api/favorites`;
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    const body = JSON.stringify({ candidateId: auth.id, offerId: offer.id });
+
+    try {
+      let response;
+      if (isChecked) {
+        response = await fetch(url, {
+          method: "POST",
+          headers,
+          body,
+        });
+      } else {
+        response = await fetch(url, {
+          method: "DELETE",
+          headers,
+          body,
+        });
+      }
+
+      if (!response.ok)
+        throw new Error(`HTTP error! status: ${response.status}`);
+      setIsFavorite(isChecked);
+    } catch (err) {
+      throw new Error("Error handling favorite", err);
+    }
+  };
+
   return (
-    <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-56 p-4 bg-[var(--secondary-background-color)] mb-4 max-w-md min-w-72">
+    <article className="animate-fade-up animate-once animate-duration-700 animate-delay-200 animate-ease-in-out animate-alternate border border-[var(--primary-color)] rounded-md shadow-lg custom-shadow min-h-56 p-4 bg-[var(--secondary-background-color)] mb-4 max-w-md min-w-72 md:min-w-md">
       <header className="flex justify-between items-center mb-4">
         <h3 className="text-[var(--primary-color)] max-md:text-lg">
           {offer.title}
         </h3>
-        <label className="peer text-[0] cursor-pointer">
+        {auth?.id && <label className="peer text-[0] cursor-pointer">
           favoris
-          <input type="checkbox" className="peer hidden" />
+          <input type="checkbox" className="peer hidden" checked={isFavorite} onChange={handleCheckboxChange} />
           <svg
             className="peer-checked:fill-[var(--primary-color)] peer-checked:animate-jump animate-once animate-duration-500 animate-ease-in-out animate-alternate"
             width="23"
@@ -30,7 +67,7 @@ export default function CardOfferForCandidate({ offer }) {
               strokeLinejoin="round"
             />
           </svg>
-        </label>
+        </label>}
       </header>
       <ul className="flex gap-1 relative mb-4">
         {offer.technos.map((techno) => (
@@ -52,13 +89,10 @@ export default function CardOfferForCandidate({ offer }) {
         {offer.details}
       </p>
       <footer className="flex justify-center">
-        <Link
-          className="medium buttonAnimate text-center content-center"
-          to={`/offers/${offer.id}`}
-          onClick={scrollToTop}
-        >
-          VOIR L'OFFRE
-        </Link>
+        <AccessOfferDetailsCondition
+          offerId={offer.id}
+          handleClick={handleChangeModal}
+        />
       </footer>
     </article>
   );
@@ -78,5 +112,6 @@ CardOfferForCandidate.propTypes = {
         name: PropTypes.string.isRequired,
       })
     ).isRequired,
+    is_favorite: PropTypes.bool.isRequired,
   }).isRequired,
 };

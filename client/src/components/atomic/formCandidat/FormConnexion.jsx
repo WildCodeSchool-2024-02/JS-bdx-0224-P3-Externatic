@@ -9,7 +9,7 @@ export default function FormConnexion({
   handleSubmitLogin,
 }) {
   return (
-    <form id="connexion" method="POST">
+    <form id="connexion" method="POST" className="flex flex-col items-center">
       <FormInputCandidat
         handleChange={handleChange}
         value={formData.email}
