@@ -4,7 +4,7 @@ const multer = require("multer");
 
 const router = express.Router();
 
-const upload = multer({ dest: "./public/tmp/" });
+const upload = multer({ dest: "./public/assets/images" });
 
 /* ************************************************************************* */
 // Import And Use Routers Here
