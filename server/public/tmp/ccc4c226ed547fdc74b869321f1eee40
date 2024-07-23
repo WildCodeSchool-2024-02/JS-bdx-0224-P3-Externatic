@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <!-- head of the document -->
+    <head>
+        <meta charset="UTF-8">
+        <title>Mode - Streetwear | Jordan FR</title>
+    </head>
+     <!-- body of the document -->
+    <body>
+        <h1>JORDAN</h1>
+        <p>air jordan, les plus belles chaussures</p>
+       <!-- liste non ordonné -->
+        <ul>
+            <li>développement web</li>
+            <li>design web</li>
+        </ul> 
+        <!-- liste ordonnée -->
+        <ol>
+            <li>burgers</li>
+            <li>pizzas</li>
+            <li>spaghettis</li>
+        </ol>
+        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcT2-AkFKiQUeeQE1b54ImNmhxh3OHjxvVz7xDErdizGAeDSonnsrOUrLHKkZDU4XLyofNzbIxXDEKzr7hg19uSWVdY_y4C4_22HFEfhpkpYyxo&usqp=CAc" width="300px" />
+        <a href="index.html">visiter la page d'accueil</a>
+    </body>
+</html>

@@ -35,7 +35,11 @@ function DashboardConsultant() {
       >
         Gestion Offres
       </Link>
-      <Button apply="big self-center" name="Déconnexion" handleChange={logout} />
+      <Button
+        apply="medium self-center"
+        name="Déconnexion"
+        handleChange={logout}
+      />
     </main>
   );
 }

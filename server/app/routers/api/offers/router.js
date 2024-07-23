@@ -1,14 +1,14 @@
-const express = require("express")
-const {verifyAuthCurrent} = require("../../../middlewares/verifyAuthCurrent")
+const express = require("express");
+const { verifyAuthCurrent } = require("../../../middlewares/verifyAuthCurrent");
 
-const router = express.Router()
+const router = express.Router();
 
-const {browse, read, add} = require("../../../controllers/offerActions");
+const { browse, read, add } = require("../../../controllers/offerActions");
 
-router.get("/", verifyAuthCurrent, browse)
+router.get("/", verifyAuthCurrent, browse);
 
-router.get("/:id", read);
+router.get("/:id", verifyAuthCurrent, read);
 
-router.post("/", add);
+router.post("/", verifyAuthCurrent, add);
 
-module.exports = router
+module.exports = router;

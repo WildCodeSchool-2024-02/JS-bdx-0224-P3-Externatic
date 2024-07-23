@@ -5,15 +5,22 @@ class UserRepository extends AbstractRepository {
     super({ table: "user" });
   }
 
+  async readAll() {
+    const [rows] = await this.database.query(
+      `select id, firstname, lastname, email from ${this.table}`
+    );
+    return rows;
+  }
+
   async create(user) {
     const [result] = await this.database.query(
       `insert into ${this.table} (firstname, lastname, email, hashed_password) values(?, ?, ?, ?)`,
       [user.firstname, user.lastname, user.email, user.hashedPassword]
     );
     const [candidat] = await this.database.query(
-    `insert into candidate (user_id) values(?)`,
-    [result.insertId]
-  );
+      `insert into candidate (user_id) values(?)`,
+      [result.insertId]
+    );
     return candidat.insertId;
   }
 
@@ -58,7 +65,7 @@ class UserRepository extends AbstractRepository {
       `select firstname, lastname, email, cv.path AS cv_path,
       cv.name AS cv_name
     FROM user u
-    JOIN candidate c ON u.id = c.user_id
+    JOIN candidate AS c ON u.id = c.user_id
     LEFT JOIN cv ON c.id = cv.candidate_id
     WHERE u.id = ?`,
       [id]

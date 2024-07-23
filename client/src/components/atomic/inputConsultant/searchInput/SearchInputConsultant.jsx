@@ -1,7 +1,12 @@
 import PropTypes from "prop-types";
-import IconSearch from "../../../../assets/images/ICONSEARCH.svg"
+import IconSearch from "../../../../assets/images/ICONSEARCH.svg";
 
-export default function SearchInputConsultant({ id, placeholder, value, onChange }) {
+export default function SearchInputConsultant({
+  id,
+  placeholder,
+  value,
+  onChange,
+}) {
   return (
     <label
       className=" text-[0] relative flex items-center w-[37rem] h-24 max-sm:w-64 max-sm:h-14"
