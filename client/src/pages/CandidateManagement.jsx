@@ -29,7 +29,7 @@ function CandidateManagement() {
     : [];
 
   return (
-    <main className="flex flex-col gap-10">
+    <main className="flex flex-col gap-10 min-h-screen">
       <PreviousPage
         marginLeft="ml-10"
         source={`/dashboardConsultant/${authId}`}
