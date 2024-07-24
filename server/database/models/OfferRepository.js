@@ -110,6 +110,17 @@ class OfferRepository extends AbstractRepository {
   }
 
   async readAllWithFavorites(userId) {
+    const [candidateRows] = await this.database.query(
+        `SELECT id FROM candidate WHERE user_id = ?`,
+        [userId]
+    );
+
+    if (candidateRows.length === 0) {
+        throw new Error(`Candidate for user_id ${userId} does not exist`);
+    }
+
+    const candidateId = candidateRows[0].id;
+
     const [rows] = await this.database.query(
       `
         SELECT  offer.id,
@@ -131,7 +142,7 @@ class OfferRepository extends AbstractRepository {
         LEFT JOIN favorite f ON offer.id = f.offer_id AND f.candidate_id = ?
         INNER JOIN company ON offer.company_id = company.id
       `,
-      [userId]
+      [candidateId]
     );
     return rows;
   }
