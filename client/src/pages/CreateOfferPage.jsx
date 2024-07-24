@@ -22,7 +22,7 @@ function CreateOfferPage() {
   
   const navigate = useNavigate();
   const offersUrl = "/api/offers";
-  const [technos, jobs, companies] = useLoaderData();
+  const [technos, companies] = useLoaderData();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -88,7 +88,12 @@ function CreateOfferPage() {
           name="title"
           multiple={false}
           handleChange={handleChange}
-          options={jobs}
+          options={[
+            { name: "Développeur Web", id: "DevWeb" },
+            { name: "Développeur FullStack", id: "DevFull" },
+            { name: "Développeur FrontEnd", id: "DevFront" },
+            { name: "Développeur BackEnd", id: "DevBack" },
+          ]}
         />
         <FormDropDown
           id="type"
