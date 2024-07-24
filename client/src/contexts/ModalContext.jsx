@@ -24,7 +24,7 @@ export function ModalProvider({ children }) {
     }
     setTimeout(() => {
       setIsOpen(!isOpen);
-      setIsClicked(false)
+      setIsClicked(false);
     }, 1);
   }, [isVisible, isOpen]);
   window.scrollTo({

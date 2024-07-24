@@ -10,9 +10,9 @@ const useLogicForm = () => {
     email: "",
     phone: "",
     password: "",
-    city:"",
+    city: "",
     type: "",
-    technos: ""
+    technos: "",
   });
 
   const navigate = useNavigate();

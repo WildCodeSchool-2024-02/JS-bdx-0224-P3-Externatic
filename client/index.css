@@ -125,9 +125,7 @@ p {
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: var(
-    --primary-color
-  ) !important; /* Utilisation de la variable de couleur */
+  color: var(--primary-color) !important;
 }
 
 .swiper-pagination-bullet-active {
@@ -139,5 +137,5 @@ p {
   width: 100% !important;
   padding-top: 5rem !important;
   padding-left: 4.5rem !important;
-  padding-bottom: 5rem !important; /* Ajoutez un rembourrage pour faire de la place aux flèches */
+  padding-bottom: 5rem !important;
 }

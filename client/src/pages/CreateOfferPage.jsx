@@ -89,10 +89,10 @@ function CreateOfferPage() {
           multiple={false}
           handleChange={handleChange}
           options={[
-            { name: "Développeur Web", id: "DevWeb" },
-            { name: "Développeur FullStack", id: "DevFull" },
-            { name: "Développeur FrontEnd", id: "DevFront" },
-            { name: "Développeur BackEnd", id: "DevBack" },
+            { name: "Développeur Web", id: "Développeur Web" },
+            { name: "Développeur FullStack", id: "Développeur FullStack" },
+            { name: "Développeur FrontEnd", id: "Développeur FrontEnd" },
+            { name: "Développeur BackEnd", id: "Développeur BackEnd" },
           ]}
         />
         <FormDropDown
@@ -155,7 +155,7 @@ function CreateOfferPage() {
           value={formData.advantages}
           handleChange={handleChange}
         />
-        <ButtonSubmit onClick={handleSubmitOffer} apply="big" name="Publier"/>
+        <ButtonSubmit apply="big" name="Publier"/>
       </form>
     </main>
   );

@@ -18,6 +18,7 @@ import ProtectedRoute from "./components/ProtectedRoutes";
 import DashboardConsultant from "./pages/DashboardConsultant";
 import DashboardCandidate from "./pages/DashboardCandidate";
 import CandidateManagement from "./pages/CandidateManagement";
+import CandidacyPage from "./pages/CandidacyPage";
 
 const offersUrl = "/api/offers";
 const technosUrl = "/api/technos";
@@ -44,6 +45,13 @@ const router = createBrowserRouter([
           <ProtectedRoute element={<OfferDetails />} roles={["candidat"]} />
         ),
         loader: ({ params }) => fetchApi(`${offersUrl}/${params.id}`),
+      },
+      {
+        path: "candidacy/:offerId",
+        element: (
+          <ProtectedRoute element={<CandidacyPage />} roles={["candidat"]} />
+        ),
+        loader: () => fetchApi(usersUrl),
       },
       {
         path: "/offersCreate",
