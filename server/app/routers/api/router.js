@@ -42,5 +42,9 @@ const favoriteRouter = require("./favorites/router");
 
 router.use("/favorites", favoriteRouter);
 
+const cvRouter = require("./cv/router");
+
+router.use("/cv", cvRouter);
+
 /* ************************************************************************* */
 module.exports = router;

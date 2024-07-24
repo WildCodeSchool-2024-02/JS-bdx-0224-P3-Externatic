@@ -1,22 +1,15 @@
-const fs = require("fs");
+const tables = require("../../database/tables");
 
-class UploadFile {
-  static upload = (req, res) => {
-    fs.rename(
-      req.file.path,
-      `public/images/${req.file.originalname}`,
-      (err) => {
-        if (err) {
-          res.status(400).send("Error while uploading");
-        } else {
-          res.status(203).json({
-            msg: "Upload success",
-            url: `http://localhost:3310/public/images/${req.file.originalname}`,
-          });
-        }
-      }
-    );
-  };
-}
+const add = async (req, res, next) => {
+  const cv = req.body;
+  const userId = req.auth.id; 
 
-module.exports = UploadFile;
+  try {
+    const insertId = await tables.cv.create({ ...cv, userId }); 
+    res.status(201).json({ insertId });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { add };

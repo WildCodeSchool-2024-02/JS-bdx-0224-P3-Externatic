@@ -12,20 +12,20 @@ export default function FileUpload() {
 
     if (file) {
       const formData = new FormData();
-      formData.append("myfile", file);
-
+      formData.append("name", file);
+      
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/upload`,
+          `${import.meta.env.VITE_API_URL}/api/cv/add`,
           {
             method: "POST",
             body: formData,
           }
         );
-
+        
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
-
+        
         setUploadSuccess(true);
       } catch (err) {
         console.error("Upload error", err);

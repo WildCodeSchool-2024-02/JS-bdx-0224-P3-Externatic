@@ -36,7 +36,7 @@ CREATE TABLE candidate (
 CREATE TABLE cv (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   path VARCHAR(255),
-  name VARCHAR(80),
+  name TEXT,
   candidate_id INT UNSIGNED NOT NULL,
     CONSTRAINT fk_cv_candidate
     FOREIGN KEY (candidate_id)
