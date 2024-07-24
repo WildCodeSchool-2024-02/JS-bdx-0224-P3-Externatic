@@ -18,12 +18,12 @@ import ProtectedRoute from "./components/ProtectedRoutes";
 import DashboardConsultant from "./pages/DashboardConsultant";
 import DashboardCandidate from "./pages/DashboardCandidate";
 import CandidateManagement from "./pages/CandidateManagement";
+import CandidacyPage from "./pages/CandidacyPage";
 
 const offersUrl = "/api/offers";
 const technosUrl = "/api/technos";
-const jobsUrl = "/api/jobs";
 const companiesUrl = "/api/companies";
-const urls = [technosUrl, jobsUrl, companiesUrl];
+const urls = [technosUrl, companiesUrl];
 const usersUrl = "/api/users";
 
 const router = createBrowserRouter([
@@ -45,6 +45,13 @@ const router = createBrowserRouter([
           <ProtectedRoute element={<OfferDetails />} roles={["candidat"]} />
         ),
         loader: ({ params }) => fetchApi(`${offersUrl}/${params.id}`),
+      },
+      {
+        path: "candidacy/:offerId",
+        element: (
+          <ProtectedRoute element={<CandidacyPage />} roles={["candidat"]} />
+        ),
+        loader: () => fetchApi(usersUrl),
       },
       {
         path: "/offersCreate",

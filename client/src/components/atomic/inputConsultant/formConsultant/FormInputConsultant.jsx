@@ -1,6 +1,13 @@
 import PropTypes from "prop-types";
 
-export default function FormInputConsultant({ id, label, name, value, type, handleChange }) {
+export default function FormInputConsultant({
+  id,
+  label,
+  name,
+  value,
+  type,
+  handleChange,
+}) {
   return (
     <label
       className="w-[34rem] flex flex-col mb-4 gap-4 text-[var(--primary-color)] font-medium max-sm:w-64 max-md:w-96 max-md:text-base max-md:font-normal "

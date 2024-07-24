@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useParams, useNavigate } from "react-router-dom";
 import FormInputCandidat from "../components/atomic/inputCandidat/formCandidat/FormInputCandidat";
 import useCandidacyForm from "../services/useCandidacyForm";
 import { AuthContext } from "../contexts/AuthContext";
@@ -7,8 +7,10 @@ import ButtonSubmit from "../components/atomic/buttons/ButtonSubmit";
 import PreviousPage from "../components/atomic/buttons/PreviousPage";
 import ScrollToTop from "../services/scrollToTop";
 
-function CandidacyPage() {  
+function CandidacyPage() {
   ScrollToTop();
+
+  const navigate = useNavigate();
 
   const userLoaderData = useLoaderData();
 
@@ -18,7 +20,8 @@ function CandidacyPage() {
 
   const [authId, setAuthId] = useState(null);
 
-  const { formData, setFormData, handleChange, handleSubmit } = useCandidacyForm();
+  const { formData, setFormData, handleChange, handleSubmit } =
+    useCandidacyForm();
 
   useEffect(() => {
     if (userData.auth.id !== authId) {
@@ -27,18 +30,28 @@ function CandidacyPage() {
   }, [userData, authId]);
 
   useEffect(() => {
-    setFormData(userLoaderData[authId]);
-  }, [setFormData, userLoaderData, authId]); 
+    setFormData(userLoaderData[authId - 1]);
+  }, [setFormData, userLoaderData, authId]);
 
   if (!formData) {
     return <p>Loading...</p>;
   }
 
+  const handleFormSubmission = (e) => {
+    handleSubmit(e, offerId, authId);
+    navigate("/offers");
+  };
+
   return (
     <main className="flex flex-col min-h-screen">
       <PreviousPage source={`/offers/${offerId}`} marginLeft="ml-10" />
-      <form className="flex flex-col gap-5 items-center mt-10" onSubmit={(e) => handleSubmit(e, offerId, authId)}>
-        <h1 className="text-[var(--secondary-color)] mb-10">Postuler à l'offre d'emploi</h1>
+      <form
+        className="flex flex-col gap-5 items-center mt-10"
+        onSubmit={handleFormSubmission}
+      >
+        <h1 className="text-[var(--secondary-color)] mb-10">
+          Postuler à l'offre d'emploi
+        </h1>
         <FormInputCandidat
           id="firstname"
           label="Prénom"

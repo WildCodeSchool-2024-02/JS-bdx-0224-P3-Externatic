@@ -22,9 +22,16 @@ export default function FormDropDown({
         multiple={multiple}
       >
         {!multiple ? (
-          <option value={null} className="h-12">Choisissez une option</option>
+          <option value={null} className="h-12">
+            Choisissez une option
+          </option>
         ) : (
-          <option value={null} className="h-8 scrollbar-thumb-[var(--primary-color)] scrollbar-track-[var(--primary-color)]">Choisissez vos options</option>
+          <option
+            value={null}
+            className="h-8 scrollbar-thumb-[var(--primary-color)] scrollbar-track-[var(--primary-color)]"
+          >
+            Choisissez vos options
+          </option>
         )}
         {options.map((option) => (
           <option key={option.id} value={option.id}>

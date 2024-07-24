@@ -10,7 +10,10 @@ function AccessOfferDetailsCondition({ handleClick, offerId }) {
   return (
     <>
       {(auth.role === "candidat" || auth.role === "consultant") && (
-        <Link to={`/offers/${offerId}`} className="medium buttonAnimate text-center content-center">
+        <Link
+          to={`/offers/${offerId}`}
+          className="medium buttonAnimate text-center content-center"
+        >
           VOIR L'OFFRE
         </Link>
       )}
