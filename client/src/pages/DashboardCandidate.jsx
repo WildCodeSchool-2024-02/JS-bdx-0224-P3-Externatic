@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { Keyboard, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,13 +11,23 @@ import Tag from "../components/atomic/tag/Tag";
 import Button from "../components/atomic/buttons/Button";
 import CardOfferForCandidate from "../components/atomic/card/CardOfferForCandidate";
 import { AuthContext } from "../contexts/AuthContext";
+import FormInputCandidat from "../components/atomic/inputCandidat/formCandidat/FormInputCandidat";
+import ButtonSubmit from "../components/atomic/buttons/ButtonSubmit";
 
 import "../../index.css";
 
 function DashboardCandidate() {
   const { logout } = useContext(AuthContext);
   const data = useLoaderData();
+  const navigate = useNavigate();
   const [favorites, setFavorites] = useState([]);
+  const [formData, setFormData] = useState({
+    email: data.email || "",
+    phone: data.phone || "",
+    name: data.name || "",
+  });
+  const [isEditing, setIsEditing] = useState(false);
+
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
@@ -41,19 +51,105 @@ function DashboardCandidate() {
     fetchFavorites();
   }, [data.id]);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/users/${data.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      await response.json();
+    } catch (err) {
+      throw new Error("Error updating user:", err);
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/users/${data.id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      logout();
+      navigate("/");
+    } catch (err) {
+      throw new Error("Error deleting account:", err);
+    }
+  };
+
   return (
     <main>
       <article className="p-5 md:pl-40 md:pr-40 flex flex-col">
         <header className="mt-10 text-md flex flex-col-reverse items-center gap-5 md:flex-row md:gap-16 md:justify-between ">
-          <ul className="flex flex-col gap-2">
+          <ul>
             <li>
               <h1 className=" text-[var(--primary-color)] mb-5">
                 {data.firstname} {data.lastname}
               </h1>
             </li>
-            <li>Mail: {data.email || "Non renseigné"}</li>
-            <li>Tel: {data.phone || "Non renseigné"}</li>
-            <li>Localisation: {data.name || "Non renseigné"}</li>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+              {isEditing ? (
+                <>
+                  <FormInputCandidat
+                    handleChange={handleChange}
+                    value={formData.email}
+                    id="email"
+                    label="Mail"
+                    type="email"
+                    name="email"
+                  />
+                  <FormInputCandidat
+                    handleChange={handleChange}
+                    value={formData.phone}
+                    id="phone"
+                    label="Tel"
+                    type="text"
+                    name="phone"
+                  />
+                  <ButtonSubmit
+                    apply="big"
+                    name="Mettre à jour"
+                    onClick={() => setIsEditing(false)}
+                  />
+                </>
+              ) : (
+                <>
+                  <li>Mail: {formData.email}</li>
+                  <li>Tel: {formData.phone}</li>
+                  <Button
+                    type="button"
+                    apply="small"
+                    name="Modifier"
+                    handleChange={() => setIsEditing(true)}
+                  />
+                </>
+              )}
+            </form>
           </ul>
           <img
             src={data.picture || "https://picsum.photos/200"}
@@ -121,6 +217,12 @@ function DashboardCandidate() {
           apply="big"
           name="Déconnexion"
           handleChange={logout}
+        />
+        <Button
+          type="button"
+          apply="bigDelete"
+          name="Supprimer mon compte"
+          handleChange={handleDeleteAccount}
         />
       </footer>
     </main>
