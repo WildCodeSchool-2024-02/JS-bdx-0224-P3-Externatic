@@ -7,14 +7,17 @@ class FavoriteRepository extends AbstractRepository {
 
   async create(favorite) {
     const [candidateRows] = await this.database.query(
-      `SELECT * FROM candidate WHERE id = ?`,
-      [favorite.candidateId]
+        `SELECT c.id FROM candidate c
+         WHERE c.user_id = ?`,
+        [favorite.candidateId]
     );
+
     if (candidateRows.length === 0) {
-      throw new Error(
-        `Candidate with id ${favorite.candidateId} does not exist`
-      );
+        throw new Error(`Candidate for user_id ${favorite.userId} does not exist`);
     }
+
+    const candidateId = candidateRows[0].id;
+
     const [offerRows] = await this.database.query(
       `SELECT * FROM offer WHERE id = ?`,
       [favorite.offerId]
@@ -24,13 +27,24 @@ class FavoriteRepository extends AbstractRepository {
     }
     const [result] = await this.database.query(
       `INSERT INTO ${this.table} (candidate_id, offer_id) VALUES (?, ?)`,
-      [favorite.candidateId, favorite.offerId]
+      [candidateId, favorite.offerId]
     );
     return result.insertId;
   }
   
-    async read(candidate) {
-      const [rows] = await this.database.query(
+  async read(userId) {
+    const [candidateRows] = await this.database.query(
+        `SELECT id FROM candidate WHERE user_id = ?`,
+        [userId]
+    );
+
+    if (candidateRows.length === 0) {
+        throw new Error(`Candidate for user_id ${userId} does not exist`);
+    }
+
+    const candidateId = candidateRows[0].id;
+
+    const [rows] = await this.database.query(
         `SELECT ${this.table}.*, offer.*,
         (
           SELECT JSON_ARRAYAGG(JSON_OBJECT('name', techno.name))
@@ -41,10 +55,11 @@ class FavoriteRepository extends AbstractRepository {
         FROM ${this.table}
         INNER JOIN offer ON ${this.table}.offer_id = offer.id
         WHERE candidate_id = ?`,
-        [candidate]
-      );
-      return rows;
-    }
+        [candidateId]
+    );
+
+    return rows;
+}
     
     async delete(favorite) {
       const [result] = await this.database.query(

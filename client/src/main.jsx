@@ -22,9 +22,8 @@ import CandidacyPage from "./pages/CandidacyPage";
 
 const offersUrl = "/api/offers";
 const technosUrl = "/api/technos";
-const jobsUrl = "/api/jobs";
 const companiesUrl = "/api/companies";
-const urls = [technosUrl, jobsUrl, companiesUrl];
+const urls = [technosUrl, companiesUrl];
 const usersUrl = "/api/users";
 
 const router = createBrowserRouter([

@@ -22,6 +22,7 @@ const removeFavorite = async (req, res) => {
 
 const readFavorite = async (req, res) => {
   const { id } = req.auth;
+
   try {
     const favorite = await tables.favorite.read(id);
     if (favorite) {

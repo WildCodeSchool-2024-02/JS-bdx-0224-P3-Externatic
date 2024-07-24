@@ -34,7 +34,6 @@ export default function CardOfferForCandidate({ offer }) {
           body,
         });
       }
-
       if (!response.ok)
         throw new Error(`HTTP error! status: ${response.status}`);
       setIsFavorite(isChecked);
