@@ -58,6 +58,9 @@ function OfferDetails() {
             />
           </svg>
         </label>
+        <h2 className="text-2xl ml-4 md:ml-10 md:mx-10  font-bold text-[var(--secondary-color)]">
+          {offerData.name}
+        </h2>
         <ul className="ml-4 md:ml-10 gap-4 flex flex-row mt-4">
           {offerData.technos.map((techno) => (
             <li key={techno.name}>
@@ -77,10 +80,6 @@ function OfferDetails() {
           Description du poste
         </h2>
         <p className="md:mx-10 mx-4">{offerData.details}</p>
-        <h2 className="text-3xl ml-4 md:ml-10 my-16 semi-bold text-[var(--primary-color)]">
-          Détais de l'entreprise
-        </h2>
-        <p className="md:mx-10 mx-4">{offerData.description}</p>
         <h2 className="text-3xl ml-4 md:ml-10 my-16 semi-bold text-[var(--primary-color)]">
           Avantages
         </h2>

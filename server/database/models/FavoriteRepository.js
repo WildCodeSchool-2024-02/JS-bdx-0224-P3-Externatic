@@ -61,13 +61,13 @@ class FavoriteRepository extends AbstractRepository {
     return rows;
 }
     
-    async delete(favorite) {
-      const [result] = await this.database.query(
-        `DELETE FROM ${this.table} WHERE candidate_id = ? AND offer_id = ?`,
-        [favorite.candidateId, favorite.offerId]
-      );
-      return result.affectedRows;
-    }
+async delete(favorite) {
+  const [result] = await this.database.query(
+    `DELETE FROM ${this.table} WHERE candidate_id = ? AND offer_id = ?`,
+    [favorite.candidateId, favorite.offerId]
+  );
+  return result.affectedRows;
+}
   }
     
 module.exports = FavoriteRepository;

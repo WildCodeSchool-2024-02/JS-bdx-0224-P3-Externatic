@@ -11,7 +11,7 @@ class UploadFile {
         } else {
           res.status(203).json({
             msg: "Upload success",
-            url: `http://localhost:3310/public/images/${req.file.originalname}`,
+            url: `${process.env.CLIENT_URL}/public/images/${req.file.originalname}`,
           });
         }
       }
