@@ -62,9 +62,28 @@ class FavoriteRepository extends AbstractRepository {
 }
     
     async delete(favorite) {
+      const [candidateRows] = await this.database.query(
+        `SELECT c.id FROM candidate c
+         WHERE c.user_id = ?`,
+        [favorite.candidateId]
+    );
+
+    if (candidateRows.length === 0) {
+        throw new Error(`Candidate for user_id ${favorite.userId} does not exist`);
+    }
+
+    const candidateId = candidateRows[0].id;
+
+    const [offerRows] = await this.database.query(
+      `SELECT * FROM offer WHERE id = ?`,
+      [favorite.offerId]
+    );
+
+    const offerId = offerRows[0].id;
+      
       const [result] = await this.database.query(
         `DELETE FROM ${this.table} WHERE candidate_id = ? AND offer_id = ?`,
-        [favorite.candidateId, favorite.offerId]
+        [candidateId, offerId]
       );
       return result.affectedRows;
     }
