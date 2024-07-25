@@ -25,7 +25,6 @@ class UserRepository extends AbstractRepository {
   }
 
   async read(id) {
-    // Execute the SQL SELECT query to retrieve a specific offer by its ID
     const [rows] = await this.database.query(
       `
       SELECT 
@@ -100,6 +99,42 @@ class UserRepository extends AbstractRepository {
       [id]
     );
     return rows;
+  }
+
+  async update(data, id) {
+    const { email, phone } = data;
+    const query = `
+      UPDATE ${this.table}
+      SET email = ?, phone = ?
+      WHERE id = ?
+    `;
+    const [result] = await this.database.query(query, [email, phone, id]);
+    return result;
+  }
+
+  async delete(id) {
+    await this.database.query("START TRANSACTION");
+
+    try {
+      await this.database.query(
+        `DELETE FROM favorite WHERE candidate_id = (SELECT id FROM candidate WHERE user_id = ?)`,
+        [id]
+      );
+
+      await this.database.query(
+        `DELETE FROM candidacy WHERE candidate_id = (SELECT id FROM candidate WHERE user_id = ?)`,
+        [id]
+      );
+
+      await this.database.query(`DELETE FROM candidate WHERE user_id = ?`, [id]);
+
+      await this.database.query(`DELETE FROM ${this.table} WHERE id = ?`, [id]);
+
+      await this.database.query("COMMIT");
+    } catch (error) {
+      await this.database.query("ROLLBACK");
+      throw error;
+    }
   }
 }
 
