@@ -5,7 +5,7 @@ const router = express.Router();
 
 const { browse, read, add } = require("../../../controllers/offerActions");
 
-router.get("/", verifyAuthCurrent, browse);
+router.get("/", browse);
 
 router.get("/:id", verifyAuthCurrent, read);
 
