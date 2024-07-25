@@ -14,7 +14,7 @@ export default async function fetchApi(url) {
 
 export async function sendUser(url, user, http) {
   try {
-    const response = await fetch(import.meta.env.VITE_API_URL + url, {
+    const response = await fetch(`http://localhost:3310${url}`, {
       method: http,
       headers: {
         "content-Type": "application/json",

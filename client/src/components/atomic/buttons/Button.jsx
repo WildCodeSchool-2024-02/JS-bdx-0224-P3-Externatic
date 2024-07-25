@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function Button({ name, img, apply, handleChange, buttonAnimate }) {
+function Button({ name, img, apply, handleChange, buttonAnimate}) {
   return (
     <button
       onClick={handleChange}
