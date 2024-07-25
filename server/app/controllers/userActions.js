@@ -38,7 +38,7 @@ const readByCandidates = async (req, res, next) => {
     if (!candidates || candidates.length === 0) {
       res.sendStatus(404);
     } else {
-      res.json(candidates); 
+      res.json(candidates);
     }
   } catch (err) {
     next(err);
@@ -57,4 +57,35 @@ const add = async (req, res, next) => {
   }
 };
 
-module.exports = { add, read, readByCandidates, readCandidates, browse };
+const updateCandidate = async (req, res) => {
+  const { email, phone } = req.body;
+  const candidateId = req.params.id;
+
+  try {
+    await tables.user.update({ email, phone }, candidateId);
+
+    res.status(200).json({ message: "Informations mises à jour avec succès" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+const deleteUser = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    await tables.user.delete(userId);
+    res.status(204).send();
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = {
+  add,
+  read,
+  readByCandidates,
+  readCandidates,
+  browse,
+  updateCandidate,
+  deleteUser,
+};

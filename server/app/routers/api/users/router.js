@@ -8,6 +8,8 @@ const {
   readByCandidates,
   readCandidates,
   browse,
+  updateCandidate,
+  deleteUser,
 } = require("../../../controllers/userActions");
 
 const { hashPassword } = require("../../../services/hashPassword");
@@ -23,6 +25,8 @@ router.get("/candidates/:id", verifyAuthCurrent, readCandidates);
 
 router.post("/", hashPassword, add);
 
-router.get("/:id", verifyAuthCurrent, read);
+router.put("/:id", verifyAuthCurrent, updateCandidate);
+
+router.delete("/:id", verifyAuthCurrent, deleteUser);
 
 module.exports = router;
