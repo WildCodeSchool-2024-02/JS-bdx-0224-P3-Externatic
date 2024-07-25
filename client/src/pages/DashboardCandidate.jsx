@@ -65,7 +65,6 @@ function DashboardCandidate() {
                   <ButtonSubmit
                     apply="big"
                     name="Mettre à jour"
-                    onClick={() => setIsEditing(false)}
                   />
                 </>
               ) : (

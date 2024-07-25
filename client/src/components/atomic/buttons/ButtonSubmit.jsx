@@ -1,11 +1,10 @@
 import PropTypes from "prop-types";
 
-function ButtonSubmit({ apply, name, onClick }) {
+function ButtonSubmit({ apply, name }) {
   return (
     <button
       className={`${apply} buttonAnimate`}
       type="submit"
-      onClick={onClick}
     >
       {name}
     </button>
@@ -15,7 +14,6 @@ function ButtonSubmit({ apply, name, onClick }) {
 ButtonSubmit.propTypes = {
   apply: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 export default ButtonSubmit;

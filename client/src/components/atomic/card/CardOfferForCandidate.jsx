@@ -10,7 +10,7 @@ export default function CardOfferForCandidate({ offer }) {
   const { auth } = useContext(AuthContext);
   const { handleChangeModal } = useModal();
   const [isFavorite, setIsFavorite] = useState(offer.is_favorite);
-
+  
   const handleCheckboxChange = async (e) => {
     const isChecked = e.target.checked;
     const url = `${import.meta.env.VITE_API_URL}/api/favorites`;

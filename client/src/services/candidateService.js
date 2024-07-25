@@ -57,6 +57,7 @@ const useDashboardCandidateService = (data, logout, navigate, Reload) => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       await response.json();
+      setIsEditing(false);
     } catch (err) {
       throw new Error("Error updating user:", err);
     }
