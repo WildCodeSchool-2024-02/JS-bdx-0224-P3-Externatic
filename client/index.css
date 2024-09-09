@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 :root {
   --primary-font: "Jost", sans-serif;
@@ -67,10 +67,6 @@ p {
   @apply duration-500 top-20 opacity-0;
 }
 
-.small {
-  @apply flex justify-around items-center w-36 h-11 z-30 bg-[var(--primary-color)] rounded-md relative font-semibold text-[var(--primary-background-color)] max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm;
-}
-
 .basic {
   @apply md:text-[var(--secondary-color)] md:hover:text-[var(--primary-color)];
 }
@@ -84,23 +80,26 @@ p {
 }
 
 .register {
-  @apply relative bg-[var(--secondary-background-color)] pt-1 pb-1 pr-2 pl-2 rounded-md text-[var(--primary-color)] font-medium md:bg-[var(--primary-color)] md:text-[var(--primary-background-color)] md:-mr-8;
+  @apply relative bg-[var(--secondary-background-color)] pt-1 pb-1 pr-2 pl-2 rounded-md text-[var(--primary-color)] font-medium md:bg-[var(--primary-color)] md:text-[var(--primary-background-color)] md:-mr-8 active:animate-wiggle animate-once animate-duration-500 animate-ease-in-out animate-alternate after:-z-20 after:absolute after:h-1 after:w-1 after:bg-[var(--secondary-color)]  after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-300 after:transition-all after:duration-300 transition-all duration-300;
+}
+
+.small {
+  @apply flex justify-around items-center w-36 h-11 z-30 bg-[var(--primary-color)] rounded-md relative font-semibold text-[var(--primary-background-color)] max-md:w-24 max-md:h-8 max-md:font-normal max-md:text-sm active:animate-wiggle animate-once animate-duration-500 animate-ease-in-out animate-alternate after:-z-20 after:absolute after:h-1 after:w-1 after:bg-[var(--secondary-color)]  after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-300 after:transition-all after:duration-300 transition-all duration-300;
 }
 
 .medium {
-  @apply w-56 h-11 z-30 bg-[var(--primary-color)] rounded-md relative font-semibold text-[var(--primary-background-color)] max-md:w-36 max-md:h-8 max-md:text-sm;
+  @apply w-56 h-11 z-30 bg-[var(--primary-color)] rounded-md relative font-semibold text-[var(--primary-background-color)] max-md:w-36 max-md:h-8 max-md:text-sm active:animate-wiggle animate-once animate-duration-500 animate-ease-in-out animate-alternate after:-z-20 after:absolute after:h-1 after:w-1 after:bg-[var(--secondary-color)]  after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-300 after:transition-all after:duration-300 transition-all duration-300;
 }
 
 .big {
-  @apply w-80 h-20 z-30 bg-[var(--primary-color)] rounded-md relative font-semibold text-[var(--primary-background-color)] max-md:w-60 max-md:h-11 max-md:text-sm;
+  @apply w-80 h-20 z-30 bg-[var(--primary-color)] rounded-md relative font-semibold text-[var(--primary-background-color)] max-md:w-60 max-md:h-11 max-md:text-sm active:animate-wiggle animate-once animate-duration-500 animate-ease-in-out animate-alternate after:-z-20 after:absolute after:h-1 after:w-1 after:bg-[var(--secondary-color)]  after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-300 after:transition-all after:duration-300 transition-all duration-300;
 }
 
 .bigDelete {
   @apply active:animate-wiggle animate-once animate-duration-500 animate-ease-in-out animate-alternate w-80 h-20 z-30 bg-white rounded-md relative font-semibold text-[var(--secondary-color)] border border-[var(--secondary-color)] after:-z-20 after:absolute after:h-1 after:w-1 after:bg-[var(--secondary-color)] hover:text-[var(--primary-background-color)] after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-300 after:transition-all after:duration-300 transition-all duration-700 max-md:w-60 max-md:h-11 max-md:text-sm;
 }
-
-.buttonAnimate {
-  @apply block active:animate-wiggle animate-once animate-duration-500 animate-ease-in-out animate-alternate after:-z-20 after:absolute after:h-1 after:w-1 after:bg-[var(--secondary-color)]  after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-300 after:transition-all after:duration-300 transition-all duration-300;
+’ .buttonAnimate {
+  @apply active:animate-wiggle animate-once animate-duration-500 animate-ease-in-out animate-alternate after:-z-20 after:absolute after:h-1 after:w-1 after:bg-[var(--secondary-color)]  after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-300 after:transition-all after:duration-300 transition-all duration-300;
 }
 
 .tag {

@@ -126,9 +126,23 @@ class UserRepository extends AbstractRepository {
         [id]
       );
 
-      await this.database.query(`DELETE FROM candidate WHERE user_id = ?`, [id]);
+      const [candidateResult] = await this.database.query(
+        `DELETE FROM candidate WHERE user_id = ?`,
+        [id]
+      );
+      if (candidateResult.affectedRows === 0) {
+        throw new Error(
+          `Aucun candidat n'a été trouvé pour l'utilisateur avec l'ID ${id}`
+        );
+      }
 
-      await this.database.query(`DELETE FROM ${this.table} WHERE id = ?`, [id]);
+      const [userResult] = await this.database.query(
+        `DELETE FROM ${this.table} WHERE id = ?`,
+        [id]
+      );
+      if (userResult.affectedRows === 0) {
+        throw new Error(`L'utilisateur avec l'ID ${id} n'a pas été trouvé`);
+      }
 
       await this.database.query("COMMIT");
     } catch (error) {
@@ -137,5 +151,4 @@ class UserRepository extends AbstractRepository {
     }
   }
 }
-
 module.exports = UserRepository;

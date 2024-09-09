@@ -1,10 +1,9 @@
 // Import the repository modules responsible for handling data operations on the tables
 const OfferRepository = require("./models/OfferRepository");
 const TechnoRepository = require("./models/TechnoRepository");
-const JobRepository = require("./models/JobRepository");
 const CompanyRepository = require("./models/CompanyRepository");
-const UserRepository = require("./models/UserRepository")
-const CandidacyRepository = require("./models/CandidacyRepository")
+const UserRepository = require("./models/UserRepository");
+const CandidacyRepository = require("./models/CandidacyRepository");
 const FavoriteRepository = require("./models/FavoriteRepository");
 const CandidateRepository = require("./models/CandidateRepository");
 const RegionRepository = require("./models/RegionRepository");
@@ -19,14 +18,12 @@ const tables = {};
 // Register each repository as data access point for its table
 tables.offer = new OfferRepository();
 tables.techno = new TechnoRepository();
-tables.job = new JobRepository();
 tables.company = new CompanyRepository();
 tables.user = new UserRepository();
 tables.candidacy = new CandidacyRepository();
 tables.favorite = new FavoriteRepository();
 tables.candidate = new CandidateRepository();
 tables.region = new RegionRepository();
-
 
 /* ************************************************************************* */
 

@@ -28,7 +28,6 @@ function CandidacyPage() {
       setAuthId(userData.auth.id);
     }
   }, [userData, authId]);
-
   useEffect(() => {
     setFormData(userLoaderData[authId - 1]);
   }, [setFormData, userLoaderData, authId]);

@@ -13,11 +13,11 @@ function Button({ name, img, apply, handleChange, buttonAnimate }) {
   );
 }
 Button.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   img: PropTypes.string,
   apply: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
-  buttonAnimate: PropTypes.bool,
+  buttonAnimate: PropTypes.string,
 };
 Button.defaultProps = {
   buttonAnimate: true,

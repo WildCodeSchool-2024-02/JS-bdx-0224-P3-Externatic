@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
-
 import Tag from "../tag/Tag";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useModal } from "../../../contexts/ModalContext";
@@ -9,7 +8,25 @@ import AccessOfferDetailsCondition from "../../AccessOfferDetailsCondition";
 export default function CardOfferForCandidate({ offer }) {
   const { auth } = useContext(AuthContext);
   const { handleChangeModal } = useModal();
-  const [isFavorite, setIsFavorite] = useState(offer.is_favorite);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    const checkIfFavorite = async () => {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/favorites`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      const favorites = await response.json();
+      const isFav = favorites.some((fav) => fav.offer_id === offer.id);
+      setIsFavorite(isFav);
+    };
+
+    checkIfFavorite();
+  }, [offer.id]);
 
   const handleCheckboxChange = async (e) => {
     const isChecked = e.target.checked;

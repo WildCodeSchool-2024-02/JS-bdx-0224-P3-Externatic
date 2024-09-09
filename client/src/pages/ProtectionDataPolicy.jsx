@@ -1,4 +1,7 @@
+import ScrollToTop from "../services/scrollToTop";
+
 function ProtectionDataPolicy() {
+  ScrollToTop();
   return (
     <main className=" mt-10 mx-auto w-4/5">
       <h1 className="my-8 text-[var(--secondary-color)]">

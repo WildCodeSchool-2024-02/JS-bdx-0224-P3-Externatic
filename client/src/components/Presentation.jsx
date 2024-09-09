@@ -34,6 +34,7 @@ function Presentation() {
       </p>
       <Button
         apply="medium"
+        buttonAnimate="buttonAnimate"
         name="S'inscrire"
         handleChange={handleChangeModal}
       />

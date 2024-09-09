@@ -14,8 +14,8 @@ function ProtectedRoute({ element, roles }) {
 }
 
 ProtectedRoute.propTypes = {
-  element: PropTypes.elementType.isRequired,
-  roles: PropTypes.string.isRequired,
+  element: PropTypes.element.isRequired, 
+  roles: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default ProtectedRoute;

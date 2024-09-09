@@ -29,15 +29,18 @@ function ProfilCondition({ handleChangeNav, handleClick, authId, userData }) {
 }
 
 ProfilCondition.propTypes = {
+  authId: PropTypes.string, 
   handleChangeNav: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
-  authId: PropTypes.string.isRequired,
   userData: PropTypes.shape({
     auth: PropTypes.shape({
-      id: PropTypes.string,
       role: PropTypes.string,
     }),
   }).isRequired,
+};
+
+ProfilCondition.defaultProps = {
+  authId: undefined, 
 };
 
 export default ProfilCondition;

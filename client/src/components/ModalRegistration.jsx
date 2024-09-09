@@ -28,6 +28,7 @@ function ModalRegistration({
     return () => {};
   }, [modalRef]);
 
+
   return (
     <dialog
       ref={modalRef}

@@ -57,7 +57,7 @@ const add = async (req, res, next) => {
   }
 };
 
-const updateCandidate = async (req, res) => {
+const updateCandidate = async (req, res, next) => {
   const { email, phone } = req.body;
   const candidateId = req.params.id;
 
@@ -66,7 +66,7 @@ const updateCandidate = async (req, res) => {
 
     res.status(200).json({ message: "Informations mises à jour avec succès" });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    next(err);
   }
 };
 

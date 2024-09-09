@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import ScrollToTop from "../services/scrollToTop";
 
 function LegalMentions() {
+  ScrollToTop();
   return (
     <main className=" mt-10 mx-auto w-4/5">
       <h1 className="my-8 text-[var(--secondary-color)]">Mentions Légales</h1>
