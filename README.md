@@ -1,4 +1,10 @@
 # externatic
+The projet is called Externatic. It's a web application that was created to be like a job-board that you know well like Indeed or Welcome to the jungle but Externatic is a little bit different because there is a consultant between candidate and companies. Indeed, this is the big difference with the other job-board, the role of the consultant is to be the gateway between candidate and companies, when the candidate applies for a job, he's connected to the consultant that posted the offer. 
+
+The consultant have the access to the informations of the candidate when he applies to his offer to be allow to contact him. 
+
+For the structure of the project, there is two sides, the client side (front-end) and the server side (back-end), this is thanks to Harmonia.
+
 
 This project uses Harmonia. Harmonia is a framework meant to serve as a foundation for every project following the React-Express-MySQL stack, as learned in Wild Code School.
 It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying a pedagogical tool.
@@ -85,4 +91,5 @@ To add it during deployment, follow these 2 steps:
 
 If you want to access the logs of your online projet (to follow the deployement or to watch any bug error), connect to your VPS (`ssh user@host`).
 Then, go on your specific project and run  `docker compose logs -t -f`.
+
 # JS-bdx-0224-P3-Externatic
